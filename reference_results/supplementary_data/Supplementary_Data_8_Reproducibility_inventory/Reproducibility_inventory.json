@@ -1,0 +1,170 @@
+{
+  "status": "Public GitHub source and supporting-data package; accompanying supplementary inventory",
+  "verified_date": "2026-10-27",
+  "repository_url": "https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury",
+  "verified_analysis_commit": "6415b0bdc3dff91d3949e940c363ed22f48f387c",
+  "immutable_source_url": "https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury/tree/6415b0bdc3dff91d3949e940c363ed22f48f387c",
+  "package_version": "1.0.0",
+  "package_version_note": "Package metadata version; no Git tag or GitHub Release has been published.",
+  "archive_doi": null,
+  "original_code_license": "PENDING_AUTHOR_DECISION",
+  "source_accessions": [
+    "GSE151371",
+    "GSE226238",
+    "GSE293559"
+  ],
+  "metadata_only_accession": "GSE177034",
+  "ODC405": {
+    "doi": "10.34945/F5QC7J",
+    "license": "CC BY 4.0",
+    "public_clinical_crosswalk": "inputs/project/revision_integrated_20261012/tables/ODC405_sample_crosswalk.csv",
+    "attribution": "licenses/THIRD_PARTY_NOTICES.md"
+  },
+  "numeric_authority": {
+    "freeze_utc": "2026-10-19T13:03:22.705708+00:00",
+    "analysis_id": "bridge43_gene_GO_20261018_v1",
+    "protocol_sha256": "5ac8f4d2ef44eb0002456131d5466e10d8f8005515a5cf15313825176d8033a3",
+    "manifest_sha256": "f48d91e725c843c14f61986a8ee60d0652a19ca205b592802cde713ef9e3d752"
+  },
+  "seeds": {
+    "original_signature": 20260713,
+    "selection_sensitivity": 20261007,
+    "GO_preranked": 20261008,
+    "clustering": 20261008
+  },
+  "public_reproducibility_paths": {
+    "entry_point": "reproduce.py",
+    "R_package_versions": "renv.lock",
+    "Python_dependencies": "environment/requirements.txt",
+    "original_session": "environment/original_analysis_sessionInfo.txt",
+    "verification_session": "validation/upload_v1_runtime_sessionInfo.txt",
+    "random_seeds": "metadata/RANDOM_SEEDS.json",
+    "source_portable_mapping": "metadata/source_to_release_manifest.csv",
+    "metadata_rules": "docs/METADATA_CURATION.md",
+    "sample_and_reuse_mapping": "inputs/project/revision_R2_20261008/tables/sample_manifest_R2.csv",
+    "gene_lists": "inputs/project/revision_R1_20261007/tables/",
+    "file_hashes": "manifest.csv",
+    "manifest_hash": "SHA256SUMS",
+    "verification_scope": "docs/VALIDATION.md",
+    "protocols": [
+      "inputs/project/revision_scope_lock_20261018/bridge43/analysis_protocol_en.md",
+      "inputs/project/revision_external_adjusted_20261016/analysis-protocol.md",
+      "inputs/project/revision_integrated_20261012/fixed_sample/analysis-protocol.md",
+      "inputs/project/revision_R1_20261007/tables/external_module_protocol_lock.json"
+    ]
+  },
+  "verification": {
+    "anonymous_repository_and_archive_access": true,
+    "tracked_files_at_verified_analysis_commit": 620,
+    "manifest_entries_at_that_commit": 618,
+    "downloaded_file_SHA256_matches": true,
+    "standard_pipeline_stages": 19,
+    "numerical_groups_checked": 21,
+    "numeric_values_checked": 357077,
+    "figure_names_exported": 10,
+    "not_fully_rerun_during_packaging": [
+      "original count-based 500-iteration selection",
+      "extended historical clustering",
+      "historical preranked GO"
+    ],
+    "not_tested": [
+      "clean-machine dependency installation",
+      "cross-operating-system execution"
+    ]
+  },
+  "historical_source_hashes": [
+    {
+      "relative_source": "revision_numeric_freeze_20261019/scripts/run_bridge43.R",
+      "sha256": "9660fe452ea5ff4e495e4f874cdc280eeefe2e51060de82fde67609fe2975275",
+      "bytes": 14592,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_numeric_freeze_20261019/scripts/independent_formula_QA.R",
+      "sha256": "fed2d01faee751c23c5cf3d027ab936311cdb35e1855d668fc415e8368f2fb22",
+      "bytes": 4600,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_numeric_freeze_20261019/scripts/check_consolidated_inference.R",
+      "sha256": "ff06a076d8cc9614ce144d0a860d655ee17df64368042c07e33d922daddf9018",
+      "bytes": 1646,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_numeric_freeze_20261019/scripts/figures.R",
+      "sha256": "15f991288f5f614ec035527edc3a03994fff8ee2da19a0f944c855684b5b5337",
+      "bytes": 4318,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_numeric_freeze_20261019/scripts/verify_freeze.py",
+      "sha256": "96f3375fabd350e9aec7b6b6fddb9dde3ed31fb04cd4b6efd47fdc369f4274c0",
+      "bytes": 1393,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_external_adjusted_20261016/scripts/analyze.R",
+      "sha256": "3945d7506a0ab39a4729df90a156277da1764d1664a856e5cc91e97b972b0079",
+      "bytes": 15110,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_external_adjusted_20261016/scripts/verify_mixed.R",
+      "sha256": "a1032438b13cac567922df41c0165f5ce2f40d6464173af87dc48bf404fc49de",
+      "bytes": 2065,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_external_adjusted_20261016/scripts/verify_integration.py",
+      "sha256": "66ad342c7d0201583e75bf18e93eaaf8ea3e4bdfb67ac153b701b45ba9d644c9",
+      "bytes": 9158,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_external_adjusted_20261016/scripts/figures.R",
+      "sha256": "54d996d4948f61564a0e72c112aaa46ffecbe8169539d92527c8ba2965ace887",
+      "bytes": 4200,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/day3_content.py",
+      "sha256": "9868c5c5a02d0dbbaf63db4c8eeb02c99134aa6610499b524375dbb9f0ce7338",
+      "bytes": 34917,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/day3_replies.py",
+      "sha256": "0fde9685f4eb3583511399b4441728212933a5040ad81ce6742940bbf88b27ed",
+      "bytes": 36406,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/build_day3_package.py",
+      "sha256": "1452069337383ea476b572025304b403b0a5a34a0120eeff80c7041eceab685d",
+      "bytes": 64504,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/build_mentor_report.py",
+      "sha256": "0a16f6843a2ff067fd41869f2809094e16c7e27594312f10bc7afad8a297f19b",
+      "bytes": 47587,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/Figure1_BTM_supported4.R",
+      "sha256": "28a4c64799df7bd8aa370b51486c55d5bc606190d7f7b11f502a0997f8f47552",
+      "bytes": 4941,
+      "public_source_in_archive": false
+    },
+    {
+      "relative_source": "revision_Day3_20261021/scripts/verify_teacher_revision.py",
+      "sha256": "bfd3bdfa5c60fe4e603c112c5dada882c1ee3f393086e88a7e2561c6a90b8752",
+      "bytes": 8940,
+      "public_source_in_archive": false
+    }
+  ],
+  "hash_note": "Historical source hashes describe the original project scripts, not portable copies. Public portable paths and hashes are in the repository source mapping and manifest. This inventory ZIP does not duplicate the entire public code repository.",
+  "scope_boundary": "No nested LASSO or repaired label-permutation analysis was performed; their claims remain withdrawn.",
+  "historical_protocol_note": "These dated protocol records retain their original context. The current public-access status is stated in this inventory; earlier local-only wording in historical records is superseded. Revision protocols were set after earlier results were known."
+}

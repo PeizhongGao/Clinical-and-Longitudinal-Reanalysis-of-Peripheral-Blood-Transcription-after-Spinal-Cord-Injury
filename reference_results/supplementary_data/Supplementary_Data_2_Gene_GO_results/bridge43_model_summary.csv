@@ -1,0 +1,4 @@
+﻿model,n_participants,SCI_n,TC_n,genes_tested,genes_P_lt_0_05,genes_BH_q_lt_0_05,historical_abs_logFC_gt1_and_q_lt_0_05,GO_tested,GO_BH_q_lt_0_05
+M0,43,36,7,17498,4910,953,357,4032,76
+M1,43,36,7,17498,4126,349,198,4032,77
+M2,43,36,7,17498,1451,0,0,4032,45

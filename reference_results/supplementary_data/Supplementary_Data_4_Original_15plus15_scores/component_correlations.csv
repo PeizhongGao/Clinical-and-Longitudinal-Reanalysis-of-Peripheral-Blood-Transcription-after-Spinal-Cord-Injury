@@ -1,0 +1,11 @@
+dataset,stratum,n_samples,n_participants,pearson,spearman,interpretation
+"GSE151371","HC",10,10,-0.816868766365704,-0.745454545454545,"within-stratum association; not causal coupling"
+"GSE151371","TC",10,10,-0.848819490953843,-0.878787878787879,"within-stratum association; not causal coupling"
+"GSE151371","SCI",38,38,-0.691223311762027,-0.669985775248933,"within-stratum association; not causal coupling"
+"GSE226238","acute",10,10,-0.341718634896935,-0.139393939393939,"within-stratum association; not causal coupling"
+"GSE226238","3m",10,10,-0.874046061356729,-0.745454545454545,"within-stratum association; not causal coupling"
+"GSE226238","6m",10,10,-0.805829875345523,-0.781818181818182,"within-stratum association; not causal coupling"
+"GSE226238","12m",7,7,-0.763955788208134,-0.714285714285714,"within-stratum association; not causal coupling"
+"GSE226238","Control",9,9,-0.506583934732629,-0.266666666666667,"within-stratum association; not causal coupling"
+"GSE293559","SCI",36,36,-0.627945542541413,-0.55032175032175,"within-stratum association; not causal coupling"
+"GSE293559","CTL",9,9,-0.695036120513081,-0.716666666666667,"within-stratum association; not causal coupling"

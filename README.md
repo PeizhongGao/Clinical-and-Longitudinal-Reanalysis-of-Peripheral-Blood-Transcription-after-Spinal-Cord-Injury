@@ -11,7 +11,7 @@ curation, frozen gene definitions, complete retained statistical families, refer
 results, and an executable reproduction workflow. It is not merely a script inventory.
 Read `docs/RELEASE_CHECKLIST.md` for deposition guidance and
 `docs/CODE_COMPLETENESS.md` for the code audit.
-Run `python check_upload.py` to verify the release files before upload.
+Run `python check_upload.py` to verify the package after a clone or download.
 
 ## What the workflow reproduces
 
@@ -126,8 +126,18 @@ ODC405 is a reused public CC BY 4.0 dataset; its participant-linked public clini
 fields and the derived crosswalk are included with attribution, not described as
 prohibited-to-redistribute data. Dataset-specific rights continue to apply.
 
-The software license for the authors' original code and the permanent repository
-URL/version/DOI remain pending. Version 1.0.0 identifies this local upload bundle, not an already published release.
+The code and supporting data are publicly available at https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury.
+Anonymous access and the downloaded archive were verified on 27 October 2026.
+The analysis snapshot cited in the manuscript is commit `6415b0bdc3dff91d3949e940c363ed22f48f387c`.
+Version 1.0.0 is the package metadata version; no Git tag, GitHub Release or
+separate archive DOI has been assigned. The original-code license remains
+awaiting author decision. See `docs/AVAILABILITY_STATUS.md` for the verified scope.
+
+The 27 October documentation update also supplies the previously omitted
+supplementary annotation, score sensitivity and clustering tables without
+changing scientific calculations. `docs/SUPPLEMENTARY_INDEX.md` lists the
+current archive contents; `reference_results/supplementary_data` contains
+their expanded files. Historical validation records retain their original dates.
 
 GitHub import preparation and byte-preserving file handling are documented in
 `docs/GITHUB_IMPORT.md`. The article title above follows the current revised manuscript.

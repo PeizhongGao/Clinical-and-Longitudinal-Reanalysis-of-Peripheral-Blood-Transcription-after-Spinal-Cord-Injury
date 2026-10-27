@@ -17,7 +17,8 @@ Run `python check_upload.py` after a clone or download to check the files agains
 manifest.csv and SHA256SUMS. The existing validation records retain the actual
 versions and dates on which numerical tests were performed.
 
-At this local preparation step no GitHub repository was created, no publication
-action was executed, and no archive DOI was assigned. The original-code license
-continues to await the author's decision. Historic NOT_UPLOADED records describe
-their recorded test/preparation state; actual publication is a separate operation.
+The first public push and unauthenticated access verification were completed on
+27 October 2026 at analysis commit `6415b0bdc3dff91d3949e940c363ed22f48f387c`.
+Current access information is in AVAILABILITY_STATUS.md. The original-code license
+remains undecided, and no archive DOI, Git tag or GitHub Release is assigned.
+Historic NOT_UPLOADED records retain their recorded preparation state.

@@ -45,9 +45,9 @@ biological validation. The original selected gene identities were checked as wel
 - Fixed definitions, selection checkpoints and historical diagnostic results are
   explicitly identified as reused inputs; their presence is not misreported as a new fit.
 
-## Remaining author/deposit fields
+## Public availability and remaining choices
 
-The original-code license remains undecided at the author's request. Repository
-ownership, actual publication URL and archive DOI can only be filled at deposition.
-They are publication metadata decisions, not missing code. This package has not
-been uploaded, and no permanent identifier has been invented.
+The public GitHub repository and its verified analysis commit are recorded in
+`AVAILABILITY_STATUS.md`. The original-code license remains undecided at the
+author's request. No separate archive DOI, Git tag or GitHub Release is assigned.
+These remaining metadata/reuse choices are distinct from the included analysis code.

@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "Please cite the associated manuscript and each reused source dataset. Add the verified archive DOI after publication of this release."
+message: "Please cite the associated manuscript and each reused source dataset. The public analysis snapshot is identified by the recorded Git commit; no archive DOI is assigned."
 type: software
 title: "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury — code and supporting data"
 authors:
@@ -8,9 +8,12 @@ authors:
   - family-names: Zhong
     given-names: Huan
 version: 1.0.0
-abstract: "Reproducibility materials containing the analysis source, published-data inputs, metadata curation, complete retained statistical families, numerical reference results and an executable reproduction workflow. Original-code licensing and permanent deposition remain pending."
+abstract: "Reproducibility materials containing the analysis source, published-data inputs, metadata curation, complete retained statistical families, numerical reference results and an executable reproduction workflow. Public GitHub access has been verified. Original-code licensing and a separate DOI-bearing archive remain pending."
 keywords:
   - spinal cord injury
   - blood transcriptomics
   - reproducibility
   - exploratory reanalysis
+repository-code: "https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury"
+url: "https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury/tree/6415b0bdc3dff91d3949e940c363ed22f48f387c"
+date-released: 2026-10-27

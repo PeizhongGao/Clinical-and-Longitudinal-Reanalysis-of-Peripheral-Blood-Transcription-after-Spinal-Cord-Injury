@@ -1,5 +1,5 @@
 {
-  "status": "LOCAL_UPLOAD_BUNDLE_NOT_PUBLISHED",
+  "status": "PUBLIC_GITHUB_REPOSITORY_VERIFIED",
   "title": "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury — code and supporting data",
   "creators": [
     {
@@ -32,13 +32,16 @@
   "reused_dataset_doi": "10.34945/F5QC7J",
   "original_code_license": "PENDING_AUTHOR_DECISION",
   "third_party_rights": "See LICENSE_STATUS.md and licenses/THIRD_PARTY_NOTICES.md",
-  "permanent_repository_url": null,
+  "permanent_repository_url": "https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury",
   "archive_doi": null,
   "manuscript": {
     "journal": "Neurology International",
     "submission_id": "neurolint-4585750",
     "current_revision_title": "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury"
   },
-  "note": "This is descriptive metadata for author review, not a ready API request. Repository-specific required fields and the selected license must be completed at actual publication.",
-  "github_prepared_date": "2026-10-27"
+  "note": "Current public repository metadata. A separate archive DOI and original-code license are not assigned. This JSON is descriptive metadata, not an archive API request.",
+  "github_prepared_date": "2026-10-27",
+  "verified_analysis_commit": "6415b0bdc3dff91d3949e940c363ed22f48f387c",
+  "public_access_verified_date": "2026-10-27",
+  "package_version_note": "Metadata version 1.0.0; no Git tag or GitHub Release published."
 }

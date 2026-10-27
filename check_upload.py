@@ -121,7 +121,8 @@ def main():
               'manifest_files_checked': file_count, 'python_sources_parsed': syntax_count,
               'largest_release_file': largest, 'execution_entries': entries,
               'environment': environment, 'errors': errors,
-              'original_code_license': 'PENDING_AUTHOR_DECISION', 'publication_status': 'NOT_UPLOADED',
+              'original_code_license': 'PENDING_AUTHOR_DECISION', 'publication_status': 'PUBLIC_GITHUB_ACCESS_VERIFIED_2026_10_27',
+              'availability_note': 'Recorded public-access verification; this local integrity check does not query the remote repository.',
               'scope': 'Package integrity and declared entry points; not a new complete numerical rerun or clean-machine installation test.'}
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)

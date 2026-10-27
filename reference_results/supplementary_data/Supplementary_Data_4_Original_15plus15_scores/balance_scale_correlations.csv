@@ -1,0 +1,7 @@
+dataset,variant,spearman_original,reference,n_reference
+"GSE151371","balance_component_z",0.999753914300655,"TC",10
+"GSE151371","balance_rank",0.991692841903201,"TC",10
+"GSE226238","balance_component_z",0.999259944495837,"CTL",9
+"GSE226238","balance_rank",0.993273870084201,"CTL",9
+"GSE293559","balance_component_z",1,"CTL",9
+"GSE293559","balance_rank",0.996376342818038,"CTL",9

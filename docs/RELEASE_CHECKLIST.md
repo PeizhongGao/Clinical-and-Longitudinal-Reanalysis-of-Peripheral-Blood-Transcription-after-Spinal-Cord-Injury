@@ -1,30 +1,29 @@
-# Local release checklist
+# Public package and remaining release choices
 
-## Prepared in this bundle
+The code and supporting-data repository is public. Anonymous access and downloaded
+file hashes were verified on 27 October 2026; see `AVAILABILITY_STATUS.md`.
 
-- Actual source scripts, source matrices and explicitly labeled intermediate inputs.
-- Metadata curation, participant overlap/exclusion rules, gene lists and seeds.
-- Main and supplementary numerical results, including negative and uncertain findings.
-- A runnable entry point that stages an isolated workspace and stops on failed steps.
-- R environment lock, Python dependency lists and restore instructions.
-- Original/public file mapping, file checksums, data provenance and third-party notices.
-- Numerical test records and stated limits; no invented permanent identifiers.
+## Included and checked
 
-## Author decisions deliberately left open
+- Actual scientific source and public source matrices, metadata and checkpoints.
+- Curation, overlap and exclusion rules, fixed gene lists and random seeds.
+- Complete retained results, including negative and uncertain estimates.
+- Executable workflow, environment records, dependency lock and source/file hashes.
+- Recorded standard-pipeline numerical validation and clearly stated untested scope.
+- Current supplementary archive contents indexed in `SUPPLEMENTARY_INDEX.md`.
 
-- Select a license for author-owned original code. The author explicitly deferred it.
-- Select repository ownership and confirm the final public release name/version.
-- After actual publication, verify anonymous access and the archived version/DOI.
-- Insert the real URL/version/DOI in manuscript and reviewer response R2-M19.
+## Author choices still open
 
-Preparing a folder does not fulfil the permanent-public-deposition part of R2-M19.
-Do not state that this is already an open-source public archive while license and
-publication decisions are pending.
+- Select an original-code reuse license; this was explicitly deferred.
+- Optionally create a Git tag/Release and separate archival deposit for a DOI.
 
-## Upload guidance
+Version 1.0.0 is package metadata, not a claim that a Git tag or DOI-bearing release
+exists. Do not apply a blanket software license to third-party data or components.
+Use the verified repository and analysis commit in correspondence.
 
-Use this directory as the Git repository root, respecting `.gitignore`. A ZIP in
-`upload_archives` is provided for a general-purpose archive. It contains the same
-release files, excluding installed environments, run workspaces and recursively nested
-archives. Do not upload the entire parent SCI project, original reviewer correspondence,
-old Word drafts, caches or unrelated withdrawn-analysis outputs.
+## Updating the repository
+
+Use this directory as the repository root and respect `.gitignore` and the
+byte-preserving `.gitattributes`. Rebuild manifests after an intentional package
+change, then run `python check_upload.py`. Keep manuscripts, reviewer correspondence,
+local caches and working outputs outside this public repository.

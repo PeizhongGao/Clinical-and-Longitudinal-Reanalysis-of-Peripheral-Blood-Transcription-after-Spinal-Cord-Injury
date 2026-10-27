@@ -1,7 +1,7 @@
-# Licensing status of this upload bundle
+# Licensing status of the public package
 
 The authors have explicitly deferred choosing a license for their original analysis
-code. This candidate therefore does **not** grant an MIT, GPL or other new open-source
+code. This public package therefore does **not** grant an MIT, GPL or other new open-source
 license for author-owned code. Resolve this item before describing the release as
 open source or selecting a repository-wide license field. Code visibility and an
 open-source reuse license are different matters.
@@ -21,5 +21,6 @@ Do not apply one blanket license to every file in this mixed code/data deposit.
 - R/Python dependencies are not redistributed as installed binaries. Their respective
   upstream licenses apply when installed.
 
-No repository URL, archived DOI, public release date or repository license has been
-invented. Version `1.0.0` identifies the local upload bundle; it does not certify public deposition.
+Public GitHub access is verified; see `docs/AVAILABILITY_STATUS.md`. Version 1.0.0
+is package metadata. No separate archive DOI, Git tag or GitHub Release has been
+assigned, and no original-code open-source license is claimed.
