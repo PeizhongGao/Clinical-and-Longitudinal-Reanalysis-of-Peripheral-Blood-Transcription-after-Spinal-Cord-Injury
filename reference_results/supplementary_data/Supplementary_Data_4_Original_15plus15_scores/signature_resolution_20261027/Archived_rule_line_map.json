@@ -1,0 +1,51 @@
+[
+  {
+    "stage": "candidate_pool_definition",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 601,
+    "end_line": 634,
+    "excerpt": "601: # 3. Predefined candidate pools\n602: ############################\n603: # These are broad biologically interpretable candidate pools.\n604: # The final signature is selected only from GSE151371 stability analysis.\n605: # GSE293559 is never used for feature selection.\n606: \n607: innate_candidate_pool <- unique(c(\n608:   \"S100A8\", \"S100A9\", \"S100A12\",\n609:   \"ANXA3\", \"CLEC4D\", \"FCGR1A\", \"FCGR1B\", \"FCGR2A\", \"FCGR3A\",\n610:   \"BST1\", \"IRAK3\", \"TLR2\", \"TLR4\", \"TLR5\", \"TLR8\",\n611:   \"NLRC4\", \"BCL2A1\", \"MIR223\", \"QPCT\", \"SLC37A3\", \"SLC22A4\",\n612:   \"PLIN3\", \"CD14\", \"IL1B\", \"IL1R1\", \"IL1RN\", \"NLRP3\",\n613:   \"LYZ\", \"FCN1\", \"LST1\", \"CTSS\", \"CTSD\", \"LGALS3\",\n614:   \"LILRB1\", \"LILRB2\", \"MS4A7\", \"MNDA\", \"CEACAM8\",\n615:   \"MPO\", \"ELANE\", \"OLR1\", \"ARG1\", \"RETN\", \"HP\",\n616:   \"CXCL1\", \"CXCL2\", \"CXCL8\", \"CXCR1\", \"CXCR2\",\n617:   \"C5AR1\", \"FPR1\", \"FPR2\", \"ITGAM\", \"ITGAX\",\n618:   \"TYROBP\", \"AIF1\", \"S100P\", \"VCAN\", \"NAMPT\"\n619: ))\n620: \n621: adaptive_candidate_pool <- unique(c(\n622:   \"CD3D\", \"CD3E\", \"CD3G\",\n623:   \"TRAC\", \"TRBC1\", \"TRBC2\",\n624:   \"IL7R\", \"CCR7\", \"TCF7\", \"LEF1\",\n625:   \"ZAP70\", \"LCK\", \"LAT\", \"CD247\",\n626:   \"CD27\", \"CD28\", \"CD2\", \"LTB\",\n627:   \"FOXP3\", \"RUNX3\", \"GATA3\", \"CXCR3\",\n628:   \"IL2RB\", \"IL2RG\", \"CD40LG\",\n629:   \"KLRD1\", \"NKG7\", \"GNLY\", \"PRF1\", \"GZMB\", \"GZMA\",\n630:   \"GZMK\", \"KLRB1\", \"KLRF1\", \"KLRK1\",\n631:   \"MS4A1\", \"CD79A\", \"CD79B\",\n632:   \"HLA-DRA\", \"HLA-DRB1\", \"HLA-DPA1\", \"HLA-DPB1\",\n633:   \"CD74\", \"ICOS\", \"ITK\", \"BCL11B\", \"SELL\"\n634: ))"
+  },
+  {
+    "stage": "candidate_expression_intersection",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 694,
+    "end_line": 697,
+    "excerpt": "694: expr_genes <- rownames(fit151$v$E)\n695: \n696: innate_pool_present <- intersect(innate_candidate_pool, expr_genes)\n697: adaptive_pool_present <- intersect(adaptive_candidate_pool, expr_genes)"
+  },
+  {
+    "stage": "stratified_subsampling",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 720,
+    "end_line": 744,
+    "excerpt": "720: for (b in seq_len(B)) {\n721:   if (b %% 25 == 0) {\n722:     message(\"Stability iteration: \", b, \" / \", B)\n723:   }\n724: \n725:   sampled_samples <- unlist(lapply(levels(meta151$group), function(g) {\n726:     ss <- meta151$sample[meta151$group == g]\n727:     n_take <- max(2, floor(length(ss) * subsample_fraction))\n728:     sample(ss, n_take, replace = FALSE)\n729:   }))\n730: \n731:   counts_b <- counts151[, sampled_samples, drop = FALSE]\n732:   meta_b <- meta151[match(sampled_samples, meta151$sample), , drop = FALSE]\n733: \n734:   fit_b <- tryCatch(\n735:     run_voom_limma(counts_b, meta_b),\n736:     error = function(e) NULL\n737:   )\n738: \n739:   if (is.null(fit_b)) {\n740:     next\n741:   }\n742: \n743:   tt_primary <- top_table_all(fit_b$fit, \"SCI_vs_TC\")\n744:   tt_support <- top_table_all(fit_b$fit, \"SCI_vs_HC\")"
+  },
+  {
+    "stage": "direction_and_top15_ranking",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 749,
+    "end_line": 775,
+    "excerpt": "749:   # Innate: higher in SCI than TC and directionally higher than HC.\n750:   innate_present_b <- intersect(innate_pool_present, rownames(tt_primary))\n751:   innate_df <- data.frame(\n752:     gene = innate_present_b,\n753:     logFC_primary = tt_primary[innate_present_b, \"logFC\"],\n754:     p_primary = tt_primary[innate_present_b, \"P.Value\"],\n755:     logFC_support = tt_support[innate_present_b, \"logFC\"],\n756:     stringsAsFactors = FALSE\n757:   )\n758: \n759:   innate_df$direction_ok <- innate_df$logFC_primary > 0 & innate_df$logFC_support > 0\n760:   innate_df <- innate_df[order(innate_df$p_primary), , drop = FALSE]\n761:   selected_innate <- head(innate_df$gene[innate_df$direction_ok], top_n_per_module_per_iteration)\n762: \n763:   # Adaptive: lower in SCI than TC and directionally lower than HC.\n764:   adaptive_present_b <- intersect(adaptive_pool_present, rownames(tt_primary))\n765:   adaptive_df <- data.frame(\n766:     gene = adaptive_present_b,\n767:     logFC_primary = tt_primary[adaptive_present_b, \"logFC\"],\n768:     p_primary = tt_primary[adaptive_present_b, \"P.Value\"],\n769:     logFC_support = tt_support[adaptive_present_b, \"logFC\"],\n770:     stringsAsFactors = FALSE\n771:   )\n772: \n773:   adaptive_df$direction_ok <- adaptive_df$logFC_primary < 0 & adaptive_df$logFC_support < 0\n774:   adaptive_df <- adaptive_df[order(adaptive_df$p_primary), , drop = FALSE]\n775:   selected_adaptive <- head(adaptive_df$gene[adaptive_df$direction_ok], top_n_per_module_per_iteration)"
+  },
+  {
+    "stage": "frequency_calculation",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 813,
+    "end_line": 814,
+    "excerpt": "813: stability_record$selection_frequency <- stability_record$selected_n / B\n814: stability_record$direction_consistency <- stability_record$direction_correct_n / pmax(stability_record$tested_n, 1)"
+  },
+  {
+    "stage": "retention_and_size_rules",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 839,
+    "end_line": 883,
+    "excerpt": "839: lock_module <- function(stab, module_name) {\n840:   d <- stab[stab$module == module_name, , drop = FALSE]\n841: \n842:   if (module_name == \"innate\") {\n843:     direction_full_ok <- d$full_logFC_SCI_vs_TC > 0 & d$full_logFC_SCI_vs_HC > 0\n844:   } else {\n845:     direction_full_ok <- d$full_logFC_SCI_vs_TC < 0 & d$full_logFC_SCI_vs_HC < 0\n846:   }\n847: \n848:   locked <- d[\n849:     d$selection_frequency >= min_selection_frequency &\n850:       d$direction_consistency >= min_direction_consistency &\n851:       direction_full_ok,\n852:     ,\n853:     drop = FALSE\n854:   ]\n855: \n856:   locked <- locked[order(\n857:     -locked$selection_frequency,\n858:     -locked$direction_consistency,\n859:     locked$full_FDR_SCI_vs_TC\n860:   ), , drop = FALSE]\n861: \n862:   if (nrow(locked) < min_genes_per_module) {\n863:     warning(\n864:       \"Fewer than \", min_genes_per_module,\n865:       \" genes passed strict threshold for \", module_name,\n866:       \". Falling back to top-ranked stable direction-consistent genes.\"\n867:     )\n868: \n869:     fallback <- d[direction_full_ok, , drop = FALSE]\n870:     fallback <- fallback[order(\n871:       -fallback$selection_frequency,\n872:       -fallback$direction_consistency,\n873:       fallback$full_FDR_SCI_vs_TC\n874:     ), , drop = FALSE]\n875: \n876:     locked <- head(fallback, min_genes_per_module)\n877:   }\n878: \n879:   head(locked, max_genes_per_module)\n880: }\n881: \n882: locked_innate <- lock_module(stability_record, \"innate\")\n883: locked_adaptive <- lock_module(stability_record, \"adaptive\")"
+  },
+  {
+    "stage": "control_referenced_scoring",
+    "archived_source": "4_archived_source.Rmd",
+    "start_line": 943,
+    "end_line": 965,
+    "excerpt": "943: score151_innate <- control_referenced_z_score(\n944:   expr = expr151,\n945:   meta = data.frame(sample = meta151$sample, group = meta151$group, stringsAsFactors = FALSE),\n946:   genes = locked_innate$gene,\n947:   ref_group = \"TC\"\n948: )\n949: \n950: score151_adaptive <- control_referenced_z_score(\n951:   expr = expr151,\n952:   meta = data.frame(sample = meta151$sample, group = meta151$group, stringsAsFactors = FALSE),\n953:   genes = locked_adaptive$gene,\n954:   ref_group = \"TC\"\n955: )\n956: \n957: scores151 <- data.frame(\n958:   sample = colnames(expr151),\n959:   group = as.character(meta151$group),\n960:   innate_score = as.numeric(score151_innate$score[colnames(expr151)]),\n961:   adaptive_score = as.numeric(score151_adaptive$score[colnames(expr151)]),\n962:   stringsAsFactors = FALSE\n963: )\n964: \n965: scores151$balance_score <- scores151$innate_score - scores151$adaptive_score"
+  }
+]

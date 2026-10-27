@@ -1,0 +1,41 @@
+{
+  "audit_date": "2026-10-27",
+  "candidate_counts": {
+    "innate": 59,
+    "adaptive": 47
+  },
+  "frequency_table_counts": {
+    "innate": 59,
+    "adaptive": 44
+  },
+  "not_in_frequency_table": [
+    {
+      "module": "adaptive",
+      "gene": "TRAC"
+    },
+    {
+      "module": "adaptive",
+      "gene": "TRBC1"
+    },
+    {
+      "module": "adaptive",
+      "gene": "TRBC2"
+    }
+  ],
+  "frozen_counts": {
+    "innate": 15,
+    "adaptive": 15
+  },
+  "all_frozen_genes_in_correct_candidate_pool": true,
+  "retention_rule_reproduces_frozen_order_and_membership": true,
+  "frequency_arithmetic_verified": true,
+  "fallback_triggered": false,
+  "max20_truncation_triggered": false,
+  "extra_MCP_marker_exclusions_from_original30": 0,
+  "BTM_main_results_need_rerun_for_this_clarification": false,
+  "expression_analysis_rerun": false,
+  "historical_pre_data_timing_established": false,
+  "original_numeric_rationale_for15_established": false,
+  "candidate_historical_gene_level_sources_established": false,
+  "source_table_authentication_boundary": "Local archived contents were reconciled; an independently dated original execution log was not recovered."
+}

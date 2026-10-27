@@ -1,0 +1,23 @@
+{
+  "project": "SCI discovery-replication",
+  "discovery_dataset": "GSE151371",
+  "validation_dataset": "GSE293559",
+  "primary_contrast": "SCI_vs_TC",
+  "supporting_contrast": "SCI_vs_HC",
+  "stability_selection": {
+    "B": 500,
+    "subsample_fraction": 0.8,
+    "top_n_per_module_per_iteration": 15,
+    "min_selection_frequency": 0.4,
+    "min_direction_consistency": 0.8,
+    "min_genes_per_module": 5,
+    "max_genes_per_module": 20
+  },
+  "innate_genes": ["ARG1", "S100A8", "S100A12", "NLRC4", "ANXA3", "CLEC4D", "TLR5", "FCGR1A", "S100A9", "TLR8", "IRAK3", "BST1", "SLC37A3", "BCL2A1", "LGALS3"],
+  "adaptive_genes": ["TCF7", "BCL11B", "LEF1", "CD28", "GATA3", "CD3G", "CD27", "ICOS", "FOXP3", "ITK", "CD3E", "IL2RB", "RUNX3", "CD40LG", "CCR7"],
+  "score_formula": {
+    "innate_score": "mean control-referenced z-score of locked innate genes",
+    "adaptive_score": "mean control-referenced z-score of locked adaptive genes",
+    "balance_score": "innate_score - adaptive_score"
+  }
+}

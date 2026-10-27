@@ -36,7 +36,11 @@ def main():
                 'environment/restore.R', 'metadata/FIGURE_TABLE_CODE_MAP.csv',
                 'metadata/CODE_COMPLETENESS.csv', 'docs/CODE_COMPLETENESS.md',
                 'docs/DATA_PROVENANCE.md', 'docs/VALIDATION.md',
-                'licenses/THIRD_PARTY_NOTICES.md', 'manifest.csv', 'SHA256SUMS']
+                'licenses/THIRD_PARTY_NOTICES.md', 'manifest.csv', 'SHA256SUMS', 'reproduce_revision.py',
+                'docs/REVISION_EXTENSIONS.md', 'extensions/nested_validation/scripts/nested_core.R',
+                'extensions/nested_validation/scripts/verify_results.py',
+                'extensions/figure_redraw/make_figures.R',
+                'validation/revision_extension_20261028.json']
     for relative in required:
         if not (ROOT / relative).is_file():
             errors.append({'path': relative, 'problem': 'missing required release file'})
@@ -81,7 +85,7 @@ def main():
                 errors.append({'path': 'manifest.csv', 'problem': 'manifest checksum mismatch'})
 
     syntax_count = 0
-    for path in [*ROOT.glob('*.py'), *(ROOT / 'code').rglob('*.py')]:
+    for path in [*ROOT.glob('*.py'), *(ROOT / 'code').rglob('*.py'), *(ROOT / 'extensions').rglob('*.py')]:
         try:
             ast.parse(path.read_text(encoding='utf-8-sig'))
             syntax_count += 1

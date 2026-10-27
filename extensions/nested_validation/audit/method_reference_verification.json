@@ -1,0 +1,196 @@
+[
+  {
+    "doi": "10.1186/1471-2105-7-91",
+    "source": "https://api.crossref.org/works/10.1186/1471-2105-7-91",
+    "title": [
+      "Bias in error estimation when using cross-validation for model selection"
+    ],
+    "author": [
+      {
+        "given": "Sudhir",
+        "family": "Varma",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Richard",
+        "family": "Simon",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      "BMC Bioinformatics"
+    ],
+    "year": {
+      "date-parts": [
+        [
+          2006,
+          2,
+          23
+        ]
+      ]
+    },
+    "volume": "7",
+    "issue": "1",
+    "page": null,
+    "verified": true
+  },
+  {
+    "doi": "10.1016/j.neuroimage.2014.01.060",
+    "source": "https://api.crossref.org/works/10.1016/j.neuroimage.2014.01.060",
+    "title": [
+      "Permutation inference for the general linear model"
+    ],
+    "author": [
+      {
+        "given": "Anderson M.",
+        "family": "Winkler",
+        "sequence": "first",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-7676-7860",
+        "authenticated-orcid": false,
+        "given": "Gerard R.",
+        "family": "Ridgway",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Matthew A.",
+        "family": "Webster",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Stephen M.",
+        "family": "Smith",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-4516-5103",
+        "authenticated-orcid": false,
+        "given": "Thomas E.",
+        "family": "Nichols",
+        "sequence": "additional",
+        "affiliation": [],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      "NeuroImage"
+    ],
+    "year": {
+      "date-parts": [
+        [
+          2014,
+          5
+        ]
+      ]
+    },
+    "volume": "92",
+    "issue": null,
+    "page": "381-397",
+    "verified": true
+  },
+  {
+    "doi": "10.2202/1544-6115.1585",
+    "source": "https://api.crossref.org/works/10.2202/1544-6115.1585",
+    "title": [
+      "Permutation P-values Should Never Be Zero: Calculating Exact P-values When Permutations Are Randomly Drawn"
+    ],
+    "author": [
+      {
+        "given": "Belinda",
+        "family": "Phipson",
+        "sequence": "first",
+        "affiliation": [
+          {
+            "name": "The Walter and Eliza Hall Institute of Medical Research"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      },
+      {
+        "given": "Gordon K",
+        "family": "Smyth",
+        "sequence": "additional",
+        "affiliation": [
+          {
+            "name": "The Walter and Eliza Hall Institute of Medical Reseach"
+          }
+        ],
+        "role": [
+          {
+            "vocabulary": "crossref",
+            "role": "author"
+          }
+        ]
+      }
+    ],
+    "journal": [
+      "Statistical Applications in Genetics and Molecular Biology"
+    ],
+    "year": {
+      "date-parts": [
+        [
+          2010,
+          10,
+          31
+        ]
+      ]
+    },
+    "volume": "9",
+    "issue": "1",
+    "page": null,
+    "verified": true
+  }
+]

@@ -1,0 +1,4414 @@
+---
+title: "Untitled"
+author: "Peizhong Gao"
+date: "2026-05-18"
+output: html_document
+---
+
+```{r fig4 基因选取}
+## ============================================================
+## New Figure 4: ML-refined immune modules for SCI
+## 修复版：
+## 1. 修复 read.csv(row.names = 1) 因重复 gene symbol 报错的问题
+## 2. 用 stability LASSO 从机制候选池中筛选 refined module genes
+## 3. 用 refined modules 绘制 Fig4A/B/C/D/E
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(limma)
+  library(glmnet)
+  library(pROC)
+  library(pheatmap)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(14)
+
+## =========================
+## 0. 路径设置
+## =========================
+
+outdir <- "New_Figure4_ML_refined_modules"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_gse151371 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+file_gse177034 <- "GSE177034_counts_only.csv"
+file_gse226238 <- "GSE226238.csv"
+
+## =========================
+## 1. 通用函数
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  message("Reading file: ", file)
+  
+  df <- read.csv(
+    file,
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+  
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+  
+  rownames(df) <- make.unique(as.character(gene_col))
+  
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+  
+  mat <- as.matrix(df)
+  return(mat)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+  
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+  
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  return(mat)
+}
+
+z_score_rows <- function(mat) {
+  mat <- as.matrix(mat)
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  return(z)
+}
+
+module_score <- function(expr_mat, genes) {
+  genes <- intersect(genes, rownames(expr_mat))
+  
+  if (length(genes) < 2) {
+    warning("Too few genes found for module score: ", paste(genes, collapse = ", "))
+    return(rep(NA, ncol(expr_mat)))
+  }
+  
+  z <- z_score_rows(expr_mat[genes, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+safe_pdf <- function(filename, width, height) {
+  pdf(filename, width = width, height = height, useDingbats = FALSE)
+}
+
+## =========================
+## 2. 读取 GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_gse151371)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  )
+)
+
+meta151 <- meta151 %>% filter(!is.na(group))
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+meta151$group <- factor(meta151$group, levels = c("HC", "TC", "SCI"))
+
+message("GSE151371 expression matrix: ", nrow(expr151), " genes x ", ncol(expr151), " samples")
+print(table(meta151$group))
+
+## =========================
+## 3. SCI vs HC 差异分析
+## =========================
+
+idx_hc_sci <- meta151$group %in% c("HC", "SCI")
+expr_hc_sci <- expr151[, idx_hc_sci, drop = FALSE]
+meta_hc_sci <- meta151[idx_hc_sci, ]
+
+meta_hc_sci$group <- droplevels(meta_hc_sci$group)
+
+design <- model.matrix(~ 0 + group, data = meta_hc_sci)
+colnames(design) <- levels(meta_hc_sci$group)
+
+fit <- lmFit(expr_hc_sci, design)
+contrast <- makeContrasts(SCI_vs_HC = SCI - HC, levels = design)
+fit2 <- contrasts.fit(fit, contrast)
+fit2 <- eBayes(fit2)
+
+deg151 <- topTable(fit2, coef = "SCI_vs_HC", number = Inf, adjust.method = "BH")
+deg151$gene <- rownames(deg151)
+
+write.csv(
+  deg151,
+  file.path(outdir, "GSE151371_DEG_SCI_vs_HC.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 4. 构建机制候选基因池
+## =========================
+
+innate_keywords <- c(
+  "S100", "FCGR", "TLR", "CLEC", "NLR", "IL1", "CXCL", "CCR",
+  "LILR", "CD14", "CD68", "ITG", "MMP", "MPO", "ELANE",
+  "AZU", "CAMP", "CEACAM", "CSF", "IRAK", "MYD88", "NFKB",
+  "ANXA", "BST", "BCL2A1", "MIR223", "SLC", "PLIN", "QPCT"
+)
+
+adaptive_keywords <- c(
+  "CD3", "CD4", "CD8", "TRAC", "TRBC", "TRAV", "TRBV",
+  "IL7R", "CCR7", "TCF7", "LEF1", "LCK", "ZAP70",
+  "NKG7", "GNLY", "PRF1", "GZMA", "GZMB", "KLR", "FCGR3A"
+)
+
+innate_pool <- deg151 %>%
+  filter(logFC > 0, adj.P.Val < 0.1) %>%
+  filter(grepl(paste(innate_keywords, collapse = "|"), gene, ignore.case = TRUE)) %>%
+  arrange(adj.P.Val) %>%
+  pull(gene) %>%
+  unique()
+
+adaptive_pool <- deg151 %>%
+  filter(logFC < 0, adj.P.Val < 0.1) %>%
+  filter(grepl(paste(adaptive_keywords, collapse = "|"), gene, ignore.case = TRUE)) %>%
+  arrange(adj.P.Val) %>%
+  pull(gene) %>%
+  unique()
+
+innate_manual <- c(
+  "S100A8", "S100A9", "S100A12", "ANXA3", "CLEC4D", "FCGR1A",
+  "BST1", "IRAK3", "TLR5", "NLRC4", "BCL2A1", "MIR223",
+  "QPCT", "SLC37A3", "SLC22A4", "PLIN3"
+)
+
+adaptive_manual <- c(
+  "CD3D", "CD3E", "TRAC", "TRBC1", "TRBC2", "IL7R", "CCR7",
+  "TCF7", "LEF1", "ZAP70", "NKG7", "GNLY", "PRF1", "GZMA",
+  "GZMB", "KLRD1", "FCGR3A"
+)
+
+innate_pool <- unique(c(innate_pool, intersect(innate_manual, rownames(expr151))))
+adaptive_pool <- unique(c(adaptive_pool, intersect(adaptive_manual, rownames(expr151))))
+
+write.csv(
+  data.frame(gene = innate_pool),
+  file.path(outdir, "Candidate_pool_innate.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(gene = adaptive_pool),
+  file.path(outdir, "Candidate_pool_adaptive.csv"),
+  row.names = FALSE
+)
+
+message("Innate candidate genes: ", length(innate_pool))
+message("Adaptive candidate genes: ", length(adaptive_pool))
+
+## =========================
+## 5. Stability LASSO 函数
+## =========================
+stability_lasso <- function(expr_mat,
+                            meta,
+                            candidate_genes,
+                            positive_class = "SCI",
+                            negative_class = "HC",
+                            n_boot = 200,
+                            alpha = 1,
+                            min_freq = 0.35) {
+  
+  use_meta <- meta %>%
+    filter(group %in% c(negative_class, positive_class))
+  
+  use_meta$group <- droplevels(use_meta$group)
+  use_expr <- expr_mat[, use_meta$sample, drop = FALSE]
+  
+  genes <- intersect(candidate_genes, rownames(use_expr))
+  
+  if (length(genes) < 3) {
+    stop("Candidate gene number is too small for LASSO: ", length(genes))
+  }
+  
+  x_all <- t(use_expr[genes, , drop = FALSE])
+  x_all <- scale(x_all)
+  x_all[is.na(x_all)] <- 0
+  
+  y_all <- ifelse(use_meta$group == positive_class, 1, 0)
+  
+  idx_pos <- which(y_all == 1)
+  idx_neg <- which(y_all == 0)
+  
+  message("Positive samples: ", length(idx_pos))
+  message("Negative samples: ", length(idx_neg))
+  
+  if (length(idx_pos) < 2 || length(idx_neg) < 2) {
+    stop("Too few samples in one class. Check group parsing.")
+  }
+  
+  selected_list <- vector("list", n_boot)
+  
+  for (i in seq_len(n_boot)) {
+    
+    ## 分层 bootstrap：SCI 和 HC 分别抽样
+    boot_pos <- sample(idx_pos, size = length(idx_pos), replace = TRUE)
+    boot_neg <- sample(idx_neg, size = length(idx_neg), replace = TRUE)
+    boot_idx <- c(boot_pos, boot_neg)
+    
+    x <- x_all[boot_idx, , drop = FALSE]
+    y <- y_all[boot_idx]
+    
+    ## nfolds 不能超过最小类别样本数
+    nfold_use <- min(5, table(y))
+    nfold_use <- max(3, as.integer(nfold_use))
+    
+    cvfit <- cv.glmnet(
+      x = x,
+      y = y,
+      family = "binomial",
+      alpha = alpha,
+      nfolds = nfold_use,
+      type.measure = "deviance"
+    )
+    
+    coef_i <- coef(cvfit, s = "lambda.1se")
+    sel <- rownames(coef_i)[as.vector(coef_i != 0)]
+    sel <- setdiff(sel, "(Intercept)")
+    
+    selected_list[[i]] <- sel
+  }
+  
+  freq <- table(unlist(selected_list))
+  
+  ## 如果 lambda.1se 过于严格，改用 lambda.min
+  if (length(freq) == 0) {
+    
+    warning("No genes selected with lambda.1se. Trying lambda.min instead.")
+    
+    selected_list <- vector("list", n_boot)
+    
+    for (i in seq_len(n_boot)) {
+      
+      boot_pos <- sample(idx_pos, size = length(idx_pos), replace = TRUE)
+      boot_neg <- sample(idx_neg, size = length(idx_neg), replace = TRUE)
+      boot_idx <- c(boot_pos, boot_neg)
+      
+      x <- x_all[boot_idx, , drop = FALSE]
+      y <- y_all[boot_idx]
+      
+      nfold_use <- min(5, table(y))
+      nfold_use <- max(3, as.integer(nfold_use))
+      
+      cvfit <- cv.glmnet(
+        x = x,
+        y = y,
+        family = "binomial",
+        alpha = alpha,
+        nfolds = nfold_use,
+        type.measure = "deviance"
+      )
+      
+      coef_i <- coef(cvfit, s = "lambda.min")
+      sel <- rownames(coef_i)[as.vector(coef_i != 0)]
+      sel <- setdiff(sel, "(Intercept)")
+      
+      selected_list[[i]] <- sel
+    }
+    
+    freq <- table(unlist(selected_list))
+  }
+  
+  freq_df <- data.frame(
+    gene = names(freq),
+    selection_frequency = as.numeric(freq) / n_boot
+  ) %>%
+    arrange(desc(selection_frequency))
+  
+  refined <- freq_df %>%
+    filter(selection_frequency >= min_freq) %>%
+    pull(gene)
+  
+  if (length(refined) < 2) {
+    warning("Too few genes passed min_freq. Using top selected genes instead.")
+    refined <- freq_df %>%
+      slice_head(n = min(8, nrow(freq_df))) %>%
+      pull(gene)
+  }
+  
+  list(
+    frequency = freq_df,
+    refined_genes = refined
+  )
+}
+
+## =========================
+## 6. ML-refined module gene selection
+## =========================
+
+lasso_innate <- stability_lasso(
+  expr_mat = expr151,
+  meta = meta151,
+  candidate_genes = innate_pool,
+  n_boot = 200,
+  min_freq = 0.35
+)
+
+lasso_adaptive <- stability_lasso(
+  expr_mat = expr151,
+  meta = meta151,
+  candidate_genes = adaptive_pool,
+  n_boot = 200,
+  min_freq = 0.35
+)
+
+refined_innate <- lasso_innate$refined_genes
+refined_adaptive <- lasso_adaptive$refined_genes
+
+write.csv(
+  lasso_innate$frequency,
+  file.path(outdir, "ML_selection_frequency_innate.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  lasso_adaptive$frequency,
+  file.path(outdir, "ML_selection_frequency_adaptive.csv"),
+  row.names = FALSE
+)
+
+writeLines(refined_innate, file.path(outdir, "Refined_innate_module_genes.txt"))
+writeLines(refined_adaptive, file.path(outdir, "Refined_adaptive_module_genes.txt"))
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 7. Fig4A: selection frequency barplot
+## =========================
+
+plot_selection_frequency <- function(freq_df, title) {
+  freq_df %>%
+    slice_max(selection_frequency, n = 20) %>%
+    mutate(gene = factor(gene, levels = rev(gene))) %>%
+    ggplot(aes(x = gene, y = selection_frequency)) +
+    geom_col(width = 0.75) +
+    coord_flip() +
+    theme_classic(base_size = 8) +
+    labs(x = NULL, y = "Selection frequency", title = title) +
+    theme(
+      plot.title = element_text(size = 9, face = "bold"),
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 8)
+    )
+}
+
+p4A1 <- plot_selection_frequency(
+  lasso_innate$frequency,
+  "ML-refined innate module"
+)
+
+p4A2 <- plot_selection_frequency(
+  lasso_adaptive$frequency,
+  "ML-refined adaptive module"
+)
+
+p4A <- p4A1 / p4A2
+
+ggsave(
+  file.path(outdir, "Fig4A_ML_selection_frequency.pdf"),
+  p4A,
+  width = 8,
+  height = 10,
+  units = "cm"
+)
+
+## =========================
+## 8. Fig4B: GSE177034 refined module heatmap
+## =========================
+
+if (file.exists(file_gse177034)) {
+  
+  expr177 <- read_expr_csv_safe(file_gse177034)
+  expr177 <- collapse_by_gene(expr177)
+  
+  meta177 <- data.frame(
+    sample = colnames(expr177),
+    time = case_when(
+      grepl("t0|baseline|pre", colnames(expr177), ignore.case = TRUE) ~ "t0",
+      grepl("t1|post|follow", colnames(expr177), ignore.case = TRUE) ~ "t1",
+      TRUE ~ NA_character_
+    )
+  )
+  
+  meta177 <- meta177 %>% filter(!is.na(time))
+  
+  if (nrow(meta177) >= 2) {
+    
+    expr177 <- expr177[, meta177$sample, drop = FALSE]
+    meta177$time <- factor(meta177$time, levels = c("t0", "t1"))
+    
+    heat_genes <- unique(c(refined_innate, refined_adaptive))
+    heat_genes <- intersect(heat_genes, rownames(expr177))
+    
+    if (length(heat_genes) >= 2) {
+      
+      mat_heat <- expr177[heat_genes, , drop = FALSE]
+      mat_heat_z <- z_score_rows(log2(mat_heat + 1))
+      
+      gene_class <- data.frame(
+        Module = ifelse(
+          rownames(mat_heat_z) %in% refined_innate,
+          "Refined innate",
+          "Refined adaptive"
+        )
+      )
+      rownames(gene_class) <- rownames(mat_heat_z)
+      
+      ann_col <- data.frame(Time = meta177$time)
+      rownames(ann_col) <- meta177$sample
+      
+      safe_pdf(
+        file.path(outdir, "Fig4B_GSE177034_refined_module_heatmap.pdf"),
+        width = 7,
+        height = 6
+      )
+      
+      pheatmap(
+        mat_heat_z,
+        annotation_col = ann_col,
+        annotation_row = gene_class,
+        cluster_rows = TRUE,
+        cluster_cols = TRUE,
+        fontsize = 8,
+        fontsize_row = 7,
+        fontsize_col = 7,
+        border_color = NA,
+        main = "ML-refined immune modules in GSE177034"
+      )
+      
+      dev.off()
+      
+      write.csv(
+        mat_heat_z,
+        file.path(outdir, "Fig4B_heatmap_matrix_GSE177034.csv")
+      )
+    }
+  }
+}
+
+## =========================
+## 9. 读取 GSE226238 并计算 trajectory score
+## =========================
+
+expr226_raw <- read_expr_csv_safe(file_gse226238)
+
+## 如果列名看起来像基因名，说明当前是 samples x genes，需要转置
+if (mean(grepl(">|^NM_|^ENSG|^[A-Z0-9-]+$", colnames(expr226_raw))) > 0.5) {
+  message("GSE226238 appears to be samples x genes. Transposing to genes x samples.")
+  expr226_raw <- t(expr226_raw)
+}
+
+expr226 <- collapse_by_gene(expr226_raw)
+
+meta226 <- data.frame(
+  sample = colnames(expr226),
+  group = case_when(
+    grepl("control|ctrl|healthy|uninj", colnames(expr226), ignore.case = TRUE) ~ "Control",
+    TRUE ~ "SCI"
+  ),
+  time = case_when(
+    grepl("control|ctrl|healthy|uninj", colnames(expr226), ignore.case = TRUE) ~ "Control",
+    grepl("0.?3d|0_3d|d0|day0|acute|v0", colnames(expr226), ignore.case = TRUE) ~ "0-3d",
+    grepl("3m|m3|3mpi|v3", colnames(expr226), ignore.case = TRUE) ~ "3m",
+    grepl("6m|m6|6mpi|v6", colnames(expr226), ignore.case = TRUE) ~ "6m",
+    grepl("12m|m12|1y|1yr|v12", colnames(expr226), ignore.case = TRUE) ~ "12m",
+    TRUE ~ NA_character_
+  ),
+  subject = str_extract(
+    colnames(expr226),
+    "ID\\d+|P\\d{2,4}|PT\\d{2,4}|subj\\d{2,4}|patient\\d{2,4}|\\d{2,4}"
+  )
+)
+
+meta226 <- meta226 %>% filter(!is.na(time))
+expr226 <- expr226[, meta226$sample, drop = FALSE]
+meta226$time <- factor(meta226$time, levels = c("Control", "0-3d", "3m", "6m", "12m"))
+
+message("GSE226238 samples by time:")
+print(table(meta226$time))
+
+score226 <- meta226 %>%
+  mutate(
+    refined_innate_score = module_score(expr226, refined_innate),
+    refined_adaptive_score = module_score(expr226, refined_adaptive),
+    immune_reprogramming_score = refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score226,
+  file.path(outdir, "Fig4CDE_GSE226238_refined_module_scores.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 10. Fig4C/D: trajectory plots
+## =========================
+
+plot_trajectory <- function(df, score_col, ylab, title) {
+  ggplot(df, aes(x = time, y = .data[[score_col]])) +
+    geom_boxplot(outlier.shape = NA, width = 0.6) +
+    geom_jitter(width = 0.12, size = 1.5, alpha = 0.8) +
+    stat_compare_means(
+      comparisons = list(
+        c("0-3d", "3m"),
+        c("0-3d", "6m"),
+        c("0-3d", "12m")
+      ),
+      method = "wilcox.test",
+      label = "p.signif",
+      size = 3
+    ) +
+    theme_classic(base_size = 8) +
+    labs(x = NULL, y = ylab, title = title) +
+    theme(
+      plot.title = element_text(size = 9, face = "bold"),
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 8)
+    )
+}
+
+p4C <- plot_trajectory(
+  score226,
+  "refined_innate_score",
+  "Refined innate module score",
+  "Acute innate activation"
+)
+
+p4D <- plot_trajectory(
+  score226,
+  "refined_adaptive_score",
+  "Refined adaptive module score",
+  "Adaptive immune suppression"
+)
+
+ggsave(
+  file.path(outdir, "Fig4C_Refined_innate_trajectory.pdf"),
+  p4C,
+  width = 8,
+  height = 7,
+  units = "cm"
+)
+
+ggsave(
+  file.path(outdir, "Fig4D_Refined_adaptive_trajectory.pdf"),
+  p4D,
+  width = 8,
+  height = 7,
+  units = "cm"
+)
+
+## =========================
+## 11. Fig4E: acute innate vs chronic adaptive correlation
+## =========================
+
+paired_df <- score226 %>%
+  filter(!is.na(subject), time %in% c("0-3d", "12m")) %>%
+  select(subject, time, refined_innate_score, refined_adaptive_score) %>%
+  pivot_wider(
+    names_from = time,
+    values_from = c(refined_innate_score, refined_adaptive_score)
+  ) %>%
+  filter(
+    !is.na(`refined_innate_score_0-3d`),
+    !is.na(`refined_adaptive_score_12m`)
+  )
+
+if (nrow(paired_df) >= 3) {
+  
+  cor_test <- cor.test(
+    paired_df$`refined_innate_score_0-3d`,
+    paired_df$`refined_adaptive_score_12m`,
+    method = "spearman"
+  )
+  
+  p4E <- ggplot(
+    paired_df,
+    aes(
+      x = `refined_innate_score_0-3d`,
+      y = `refined_adaptive_score_12m`
+    )
+  ) +
+    geom_point(size = 2) +
+    geom_smooth(method = "lm", se = TRUE, linewidth = 0.6) +
+    theme_classic(base_size = 8) +
+    labs(
+      x = "Acute refined innate score",
+      y = "Chronic refined adaptive score",
+      title = paste0(
+        "Acute innate vs chronic adaptive\n",
+        "Spearman rho = ",
+        round(cor_test$estimate, 2),
+        ", P = ",
+        signif(cor_test$p.value, 2)
+      )
+    ) +
+    theme(
+      plot.title = element_text(size = 9, face = "bold"),
+      axis.text = element_text(size = 8),
+      axis.title = element_text(size = 8)
+    )
+  
+  ggsave(
+    file.path(outdir, "Fig4E_Acute_innate_to_chronic_adaptive_correlation.pdf"),
+    p4E,
+    width = 8,
+    height = 7,
+    units = "cm"
+  )
+  
+  write.csv(
+    paired_df,
+    file.path(outdir, "Fig4E_paired_subject_scores.csv"),
+    row.names = FALSE
+  )
+  
+  write.csv(
+    data.frame(
+      spearman_rho = as.numeric(cor_test$estimate),
+      p_value = cor_test$p.value,
+      n_subjects = nrow(paired_df)
+    ),
+    file.path(outdir, "Fig4E_correlation_stats.csv"),
+    row.names = FALSE
+  )
+}
+
+## =========================
+## 12. Combined CDE figure
+## =========================
+
+if (exists("p4E")) {
+  p4CDE <- p4C + p4D + p4E + plot_layout(ncol = 3)
+  
+  ggsave(
+    file.path(outdir, "Fig4CDE_combined_refined_modules.pdf"),
+    p4CDE,
+    width = 18,
+    height = 7,
+    units = "cm"
+  )
+}
+
+## =========================
+## 13. 输出 summary
+## =========================
+
+summary_table <- data.frame(
+  module = c("Refined innate", "Refined adaptive"),
+  n_genes = c(length(refined_innate), length(refined_adaptive)),
+  genes = c(
+    paste(refined_innate, collapse = "; "),
+    paste(refined_adaptive, collapse = "; ")
+  )
+)
+
+write.csv(
+  summary_table,
+  file.path(outdir, "New_Figure4_refined_module_summary.csv"),
+  row.names = FALSE
+)
+
+message("All outputs saved to: ", outdir)
+```
+
+```{r fig4 重新绘图}
+## ============================================================
+## Figure 4B/C/D/E plotting only
+## 不重新跑 LASSO，不拼图
+##
+## Inputs:
+## New_Figure4_ML_refined_modules/
+## ├── New_Figure4_refined_module_summary.csv
+## ├── Fig4B_heatmap_matrix_GSE177034.csv
+## └── Fig4CDE_GSE226238_refined_module_scores.csv
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(pheatmap)
+  library(ggpubr)
+  library(RColorBrewer)
+})
+
+## =========================
+## 0. 路径
+## =========================
+
+indir  <- "New_Figure4_ML_refined_modules"
+outdir <- file.path(indir, "Publication_ready_Fig4_redraw_BCDE")
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+## =========================
+## 1. 配色与主题
+## =========================
+
+col_innate   <- "#D73027"
+col_adaptive <- "#4575B4"
+col_index    <- "#7B3294"
+
+time_cols <- c(
+  "0-3d" = "#D73027",
+  "3m"   = "#FDAE61",
+  "6m"   = "#ABD9E9",
+  "12m"  = "#4575B4",
+  "t0"   = "#D73027",
+  "t1"   = "#4575B4"
+)
+
+module_cols <- c(
+  "Refined innate"   = col_innate,
+  "Refined adaptive" = col_adaptive
+)
+
+theme_pub <- function(base_size = 8) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 9, face = "bold", hjust = 0),
+      axis.title = element_text(size = 8, color = "black"),
+      axis.text = element_text(size = 8, color = "black"),
+      axis.line = element_line(linewidth = 0.35, color = "black"),
+      axis.ticks = element_line(linewidth = 0.35, color = "black"),
+      legend.title = element_text(size = 8, face = "bold"),
+      legend.text = element_text(size = 7),
+      plot.margin = margin(4, 4, 4, 4)
+    )
+}
+
+## =========================
+## 2. 读取 refined genes
+## =========================
+
+summary_df <- read.csv(
+  file.path(indir, "New_Figure4_refined_module_summary.csv"),
+  stringsAsFactors = FALSE
+)
+
+refined_innate <- summary_df %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist()
+
+refined_adaptive <- summary_df %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+## ============================================================
+## Fig4B: Heatmap
+## ============================================================
+
+mat_heat <- read.csv(
+  file.path(indir, "Fig4B_heatmap_matrix_GSE177034.csv"),
+  row.names = 1,
+  check.names = FALSE
+)
+
+mat_heat <- as.matrix(mat_heat)
+
+## 限制极端值，增强可读性
+mat_heat[mat_heat > 3]  <- 3
+mat_heat[mat_heat < -3] <- -3
+
+gene_module <- data.frame(
+  Module = ifelse(
+    rownames(mat_heat) %in% refined_innate,
+    "Refined innate",
+    "Refined adaptive"
+  )
+)
+rownames(gene_module) <- rownames(mat_heat)
+
+sample_time <- case_when(
+  grepl("t0|baseline|pre", colnames(mat_heat), ignore.case = TRUE) ~ "t0",
+  grepl("t1|post|follow", colnames(mat_heat), ignore.case = TRUE) ~ "t1",
+  TRUE ~ "Unknown"
+)
+
+ann_col <- data.frame(Time = sample_time)
+rownames(ann_col) <- colnames(mat_heat)
+
+## 按时间排序，但不丢失任何样本
+ord_col <- order(factor(ann_col$Time, levels = c("t0", "t1", "Unknown")))
+mat_heat <- mat_heat[, ord_col, drop = FALSE]
+ann_col <- ann_col[ord_col, , drop = FALSE]
+
+## 行按 module 排列，module 内部允许聚类会更自然
+ord_row <- order(factor(gene_module$Module, levels = c("Refined innate", "Refined adaptive")))
+mat_heat <- mat_heat[ord_row, , drop = FALSE]
+gene_module <- gene_module[ord_row, , drop = FALSE]
+
+ann_colors <- list(
+  Time = time_cols,
+  Module = module_cols
+)
+
+col_heat <- colorRampPalette(c(
+  "#2166AC",   # softer blue
+  "#67A9CF",
+  "#D1E5F0",
+  "#F7F7F7",
+  "#FDDBC7",
+  "#EF8A62",
+  "#B2182B"    # softer red
+))(100)
+
+breaks_use <- seq(-3, 3, length.out = 101)
+
+## 关键：自动根据样本数调整宽度
+## 这样不会丢数据，但每个 cell 会比之前更宽
+n_sample <- ncol(mat_heat)
+n_gene   <- nrow(mat_heat)
+
+heat_width_cm  <- max(16, min(34, n_sample * 0.18 + 6))
+heat_height_cm <- max(6.5, n_gene * 0.55 + 2.5)
+
+pdf(
+  file.path(outdir, "Fig4B_refined_module_heatmap_redraw.pdf"),
+  width = heat_width_cm / 2.54,
+  height = heat_height_cm / 2.54,
+  useDingbats = FALSE
+)
+
+pheatmap(
+  mat_heat,
+  color = col_heat,
+  breaks = breaks_use,
+  annotation_col = ann_col,
+  annotation_row = gene_module,
+  annotation_colors = ann_colors,
+  cluster_rows = FALSE,
+  cluster_cols = FALSE,
+  show_colnames = FALSE,
+  show_rownames = TRUE,
+  fontsize = 8,
+  fontsize_row = 9,
+  fontsize_col = 6,
+  annotation_names_col = FALSE,
+  annotation_names_row = FALSE,
+  border_color = NA,
+  main = "ML-refined immune programs in GSE177034"
+)
+
+dev.off()
+
+## ============================================================
+## Fig4C/D/E: trajectories
+## ============================================================
+
+scores <- read.csv(
+  file.path(indir, "Fig4CDE_GSE226238_refined_module_scores.csv"),
+  stringsAsFactors = FALSE
+)
+
+scores$time <- factor(scores$time, levels = c("0-3d", "3m", "6m", "12m"))
+
+scores <- scores %>%
+  mutate(
+    immune_reprogramming_index =
+      refined_innate_score - refined_adaptive_score
+  )
+
+plot_traj <- function(df, score_col, ylab, title) {
+  
+  ggplot(df, aes(x = time, y = .data[[score_col]])) +
+    geom_boxplot(
+      aes(fill = time),
+      width = 0.52,
+      outlier.shape = NA,
+      color = "black",
+      linewidth = 0.35,
+      alpha = 0.75
+    ) +
+    geom_jitter(
+      width = 0.09,
+      size = 0.85,
+      alpha = 0.75,
+      color = "black"
+    ) +
+    stat_compare_means(
+      comparisons = list(
+        c("0-3d", "3m"),
+        c("0-3d", "6m"),
+        c("0-3d", "12m")
+      ),
+      method = "wilcox.test",
+      label = "p.signif",
+      size = 2.8,
+      tip.length = 0.01,
+      bracket.size = 0.3
+    ) +
+    scale_fill_manual(values = time_cols) +
+    labs(
+      title = title,
+      x = NULL,
+      y = ylab
+    ) +
+    theme_pub(8) +
+    theme(
+      legend.position = "none",
+      axis.text.x = element_text(size = 8)
+    )
+}
+
+pC <- plot_traj(
+  scores,
+  "refined_innate_score",
+  "Refined innate module score",
+  "Transient acute innate activation"
+)
+
+pD <- plot_traj(
+  scores,
+  "refined_adaptive_score",
+  "Refined adaptive module score",
+  "Acute adaptive suppression and recovery"
+)
+
+pE <- plot_traj(
+  scores,
+  "immune_reprogramming_index",
+  "Innate − adaptive score",
+  "Immune reprogramming index"
+)
+
+ggsave(
+  file.path(outdir, "Fig4C_innate_trajectory_redraw.pdf"),
+  pC,
+  width = 7.5,
+  height = 6.5,
+  units = "cm",
+  device = "pdf"
+)
+
+ggsave(
+  file.path(outdir, "Fig4D_adaptive_trajectory_redraw.pdf"),
+  pD,
+  width = 7.5,
+  height = 6.5,
+  units = "cm",
+  device = "pdf"
+)
+
+ggsave(
+  file.path(outdir, "Fig4E_reprogramming_index_redraw.pdf"),
+  pE,
+  width = 7.5,
+  height = 6.5,
+  units = "cm",
+  device = "pdf"
+)
+
+message("Redrawn Fig4B/C/D/E saved to: ", outdir)
+```
+
+```{r fig5 5.19}
+## ============================================================
+## New Figure 5: Low-complexity classifier based on ML-refined immune modules
+##
+## 思路：
+## Fig4 已经得到 refined innate / adaptive genes
+## Fig5 不再做多模型竞赛，而是：
+## 1. 计算 refined innate score / refined adaptive score
+## 2. 用两个 module score 建 logistic classifier
+## 3. 输出 ROC
+## 4. bootstrap AUC confidence interval
+## 5. permutation test
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(glmnet)
+  library(pROC)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(123)
+
+## =========================
+## 0. 路径
+## =========================
+
+outdir <- "New_Figure5_low_complexity_classifier"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_expr151 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+
+fig4_dir <- "New_Figure4_ML_refined_modules"
+file_module_summary <- file.path(fig4_dir, "New_Figure4_refined_module_summary.csv")
+
+## =========================
+## 1. 通用函数
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  df <- read.csv(
+    file,
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+  
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+  
+  rownames(df) <- make.unique(as.character(gene_col))
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+  
+  as.matrix(df)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+  
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+  
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  mat
+}
+
+z_score_rows <- function(mat) {
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  z
+}
+
+module_score <- function(expr_mat, genes) {
+  genes <- intersect(genes, rownames(expr_mat))
+  
+  if (length(genes) < 2) {
+    stop("Too few genes found for module score: ", paste(genes, collapse = ", "))
+  }
+  
+  z <- z_score_rows(expr_mat[genes, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+theme_pub <- function(base_size = 8) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 9, face = "bold", hjust = 0),
+      axis.title = element_text(size = 8, color = "black"),
+      axis.text = element_text(size = 8, color = "black"),
+      axis.line = element_line(linewidth = 0.35, color = "black"),
+      axis.ticks = element_line(linewidth = 0.35, color = "black"),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 7),
+      plot.margin = margin(4, 4, 4, 4)
+    )
+}
+
+## =========================
+## 2. 读取 refined module genes
+## =========================
+
+module_summary <- read.csv(
+  file_module_summary,
+  stringsAsFactors = FALSE
+)
+
+refined_innate <- module_summary %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist()
+
+refined_adaptive <- module_summary %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 3. 读取 GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_expr151)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  )
+)
+
+meta151 <- meta151 %>% filter(!is.na(group))
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+meta151$group <- factor(meta151$group, levels = c("HC", "TC", "SCI"))
+
+print(table(meta151$group))
+
+## =========================
+## 4. 计算 module scores
+## =========================
+
+score_df <- meta151 %>%
+  mutate(
+    refined_innate_score = module_score(expr151, refined_innate),
+    refined_adaptive_score = module_score(expr151, refined_adaptive),
+    immune_reprogramming_index = refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_module_scores_GSE151371.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 5. 只用 HC vs SCI 建低复杂度 classifier
+## =========================
+
+clf_df <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  mutate(
+    outcome = ifelse(group == "SCI", 1, 0),
+    group = factor(group, levels = c("HC", "SCI"))
+  )
+
+x <- clf_df %>%
+  select(refined_innate_score, refined_adaptive_score) %>%
+  as.matrix()
+
+y <- clf_df$outcome
+
+## =========================
+## 6. Logistic regression classifier
+## =========================
+
+fit_logit <- glm(
+  outcome ~ refined_innate_score + refined_adaptive_score,
+  data = clf_df,
+  family = binomial()
+)
+
+clf_df$pred_prob <- predict(fit_logit, type = "response")
+
+roc_obj <- roc(
+  response = clf_df$group,
+  predictor = clf_df$pred_prob,
+  levels = c("HC", "SCI"),
+  direction = "<"
+)
+
+auc_real <- as.numeric(auc(roc_obj))
+
+write.csv(
+  data.frame(
+    AUC = auc_real,
+    model = "Two-module logistic classifier"
+  ),
+  file.path(outdir, "Fig5_main_classifier_auc.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  clf_df,
+  file.path(outdir, "Fig5_classifier_predictions.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 7. Fig5A: classifier schematic
+## =========================
+
+schematic_df <- data.frame(
+  x = c(1, 1, 2.2, 3.4),
+  y = c(1.7, 0.7, 1.2, 1.2),
+  label = c(
+    "Refined innate\nmodule score",
+    "Refined adaptive\nmodule score",
+    "Low-complexity\nlogistic model",
+    "SCI probability"
+  )
+)
+
+pA <- ggplot() +
+  geom_label(
+    data = schematic_df,
+    aes(x = x, y = y, label = label),
+    size = 2.8,
+    label.size = 0.25,
+    fill = "white",
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 1.35, y = 1.7, xend = 1.85, yend = 1.3),
+    arrow = arrow(length = unit(0.15, "cm")),
+    linewidth = 0.35
+  ) +
+  geom_segment(
+    aes(x = 1.35, y = 0.7, xend = 1.85, yend = 1.1),
+    arrow = arrow(length = unit(0.15, "cm")),
+    linewidth = 0.35
+  ) +
+  geom_segment(
+    aes(x = 2.55, y = 1.2, xend = 3.05, yend = 1.2),
+    arrow = arrow(length = unit(0.15, "cm")),
+    linewidth = 0.35
+  ) +
+  xlim(0.5, 3.9) +
+  ylim(0.25, 2.15) +
+  labs(title = "Two-module immune classifier") +
+  theme_void(base_size = 8) +
+  theme(
+    plot.title = element_text(size = 9, face = "bold", hjust = 0)
+  )
+
+ggsave(
+  file.path(outdir, "Fig5A_classifier_schematic.pdf"),
+  pA,
+  width = 8,
+  height = 5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 8. Fig5B: ROC curve
+## =========================
+
+roc_df <- data.frame(
+  specificity = roc_obj$specificities,
+  sensitivity = roc_obj$sensitivities
+) %>%
+  mutate(
+    FPR = 1 - specificity,
+    TPR = sensitivity
+  )
+
+pB <- ggplot(roc_df, aes(x = FPR, y = TPR)) +
+  geom_abline(
+    slope = 1,
+    intercept = 0,
+    linetype = "dashed",
+    linewidth = 0.35,
+    color = "grey50"
+  ) +
+  geom_line(linewidth = 0.75, color = "#7B3294") +
+  coord_equal() +
+  labs(
+    title = "ROC of low-complexity classifier",
+    subtitle = paste0("AUC = ", round(auc_real, 3)),
+    x = "False positive rate",
+    y = "True positive rate"
+  ) +
+  theme_pub(8)
+
+ggsave(
+  file.path(outdir, "Fig5B_ROC_low_complexity_classifier.pdf"),
+  pB,
+  width = 7,
+  height = 6.5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 9. Bootstrap AUC confidence interval
+## =========================
+
+n_boot <- 1000
+boot_auc <- rep(NA_real_, n_boot)
+
+for (i in seq_len(n_boot)) {
+  
+  idx_hc  <- which(clf_df$group == "HC")
+  idx_sci <- which(clf_df$group == "SCI")
+  
+  boot_idx <- c(
+    sample(idx_hc, length(idx_hc), replace = TRUE),
+    sample(idx_sci, length(idx_sci), replace = TRUE)
+  )
+  
+  boot_df <- clf_df[boot_idx, ]
+  
+  fit_i <- tryCatch(
+    glm(
+      outcome ~ refined_innate_score + refined_adaptive_score,
+      data = boot_df,
+      family = binomial()
+    ),
+    error = function(e) NULL
+  )
+  
+  if (is.null(fit_i)) next
+  
+  boot_df$pred_prob <- predict(fit_i, type = "response")
+  
+  roc_i <- tryCatch(
+    roc(
+      response = boot_df$group,
+      predictor = boot_df$pred_prob,
+      levels = c("HC", "SCI"),
+      direction = "<",
+      quiet = TRUE
+    ),
+    error = function(e) NULL
+  )
+  
+  if (!is.null(roc_i)) {
+    boot_auc[i] <- as.numeric(auc(roc_i))
+  }
+}
+
+boot_auc <- boot_auc[!is.na(boot_auc)]
+
+ci_auc <- quantile(boot_auc, probs = c(0.025, 0.5, 0.975), na.rm = TRUE)
+
+boot_auc_df <- data.frame(AUC = boot_auc)
+
+write.csv(
+  boot_auc_df,
+  file.path(outdir, "Fig5C_bootstrap_auc_distribution.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    AUC_real = auc_real,
+    AUC_boot_median = ci_auc[2],
+    AUC_boot_CI_low = ci_auc[1],
+    AUC_boot_CI_high = ci_auc[3],
+    n_boot_valid = length(boot_auc)
+  ),
+  file.path(outdir, "Fig5C_bootstrap_auc_CI.csv"),
+  row.names = FALSE
+)
+
+pC <- ggplot(boot_auc_df, aes(x = AUC)) +
+  geom_histogram(
+    bins = 30,
+    fill = "#7B3294",
+    color = "white",
+    linewidth = 0.2,
+    alpha = 0.85
+  ) +
+  geom_vline(
+    xintercept = auc_real,
+    color = "black",
+    linewidth = 0.6
+  ) +
+  geom_vline(
+    xintercept = ci_auc[c(1, 3)],
+    color = "grey30",
+    linetype = "dashed",
+    linewidth = 0.45
+  ) +
+  labs(
+    title = "Bootstrap validation of classifier AUC",
+    subtitle = paste0(
+      "Median AUC = ", round(ci_auc[2], 3),
+      "; 95% CI = ",
+      round(ci_auc[1], 3), "–", round(ci_auc[3], 3)
+    ),
+    x = "Bootstrap AUC",
+    y = "Frequency"
+  ) +
+  theme_pub(8)
+
+ggsave(
+  file.path(outdir, "Fig5C_bootstrap_AUC_CI.pdf"),
+  pC,
+  width = 7.5,
+  height = 6.5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 10. Permutation test
+## =========================
+
+n_perm <- 1000
+perm_auc <- rep(NA_real_, n_perm)
+
+for (i in seq_len(n_perm)) {
+  
+  perm_df <- clf_df
+  perm_df$outcome_perm <- sample(perm_df$outcome)
+  perm_df$group_perm <- factor(
+    ifelse(perm_df$outcome_perm == 1, "SCI", "HC"),
+    levels = c("HC", "SCI")
+  )
+  
+  fit_perm <- tryCatch(
+    glm(
+      outcome_perm ~ refined_innate_score + refined_adaptive_score,
+      data = perm_df,
+      family = binomial()
+    ),
+    error = function(e) NULL
+  )
+  
+  if (is.null(fit_perm)) next
+  
+  perm_df$pred_prob_perm <- predict(fit_perm, type = "response")
+  
+  roc_perm <- tryCatch(
+    roc(
+      response = perm_df$group_perm,
+      predictor = perm_df$pred_prob_perm,
+      levels = c("HC", "SCI"),
+      direction = "<",
+      quiet = TRUE
+    ),
+    error = function(e) NULL
+  )
+  
+  if (!is.null(roc_perm)) {
+    perm_auc[i] <- as.numeric(auc(roc_perm))
+  }
+}
+
+perm_auc <- perm_auc[!is.na(perm_auc)]
+
+perm_p <- (sum(perm_auc >= auc_real) + 1) / (length(perm_auc) + 1)
+
+perm_df_out <- data.frame(AUC = perm_auc)
+
+write.csv(
+  perm_df_out,
+  file.path(outdir, "Fig5D_permutation_auc_distribution.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    AUC_real = auc_real,
+    permutation_p_value = perm_p,
+    n_perm_valid = length(perm_auc)
+  ),
+  file.path(outdir, "Fig5D_permutation_test_stats.csv"),
+  row.names = FALSE
+)
+
+pD <- ggplot(perm_df_out, aes(x = AUC)) +
+  geom_histogram(
+    bins = 30,
+    fill = "grey70",
+    color = "white",
+    linewidth = 0.2
+  ) +
+  geom_vline(
+    xintercept = auc_real,
+    color = "#D73027",
+    linewidth = 0.75
+  ) +
+  labs(
+    title = "Permutation test against random labels",
+    subtitle = paste0(
+      "Observed AUC = ", round(auc_real, 3),
+      "; permutation P = ", signif(perm_p, 3)
+    ),
+    x = "Permutation AUC",
+    y = "Frequency"
+  ) +
+  theme_pub(8)
+
+ggsave(
+  file.path(outdir, "Fig5D_permutation_test.pdf"),
+  pD,
+  width = 7.5,
+  height = 6.5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 11. Optional: module score distribution by group
+## =========================
+## 这张图可以作为补充或替代 Fig5A
+
+score_long <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  select(sample, group, refined_innate_score, refined_adaptive_score, immune_reprogramming_index) %>%
+  pivot_longer(
+    cols = c(refined_innate_score, refined_adaptive_score, immune_reprogramming_index),
+    names_to = "score_type",
+    values_to = "score"
+  ) %>%
+  mutate(
+    score_type = recode(
+      score_type,
+      refined_innate_score = "Refined innate",
+      refined_adaptive_score = "Refined adaptive",
+      immune_reprogramming_index = "Innate − adaptive"
+    )
+  )
+
+p_score <- ggplot(score_long, aes(x = group, y = score, fill = group)) +
+  geom_boxplot(
+    width = 0.55,
+    outlier.shape = NA,
+    linewidth = 0.35,
+    color = "black",
+    alpha = 0.75
+  ) +
+  geom_jitter(
+    width = 0.10,
+    size = 1.0,
+    alpha = 0.8,
+    color = "black"
+  ) +
+  facet_wrap(~ score_type, scales = "free_y", nrow = 1) +
+  scale_fill_manual(values = c("HC" = "#4D4D4D", "SCI" = "#D73027")) +
+  stat_compare_means(
+    method = "wilcox.test",
+    label = "p.signif",
+    size = 3
+  ) +
+  labs(
+    title = "Refined immune program scores distinguish SCI",
+    x = NULL,
+    y = "Module score"
+  ) +
+  theme_pub(8) +
+  theme(
+    legend.position = "none",
+    strip.background = element_blank(),
+    strip.text = element_text(size = 8, face = "bold")
+  )
+
+ggsave(
+  file.path(outdir, "Fig5_optional_module_score_distribution.pdf"),
+  p_score,
+  width = 13,
+  height = 5.5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 12. Combined ABCD
+## =========================
+
+pABCD <- pA + pB + pC + pD +
+  plot_layout(ncol = 4, widths = c(1.05, 1, 1, 1)) +
+  plot_annotation(
+    tag_levels = "A",
+    theme = theme(
+      plot.tag = element_text(size = 10, face = "bold")
+    )
+  )
+
+ggsave(
+  file.path(outdir, "Fig5ABCD_combined_low_complexity_classifier.pdf"),
+  pABCD,
+  width = 18,
+  height = 6.5,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 13. 输出 summary
+## =========================
+
+summary_out <- data.frame(
+  model = "Two-module logistic classifier",
+  features = "refined_innate_score + refined_adaptive_score",
+  AUC_observed = auc_real,
+  bootstrap_AUC_median = as.numeric(ci_auc[2]),
+  bootstrap_AUC_CI_low = as.numeric(ci_auc[1]),
+  bootstrap_AUC_CI_high = as.numeric(ci_auc[3]),
+  permutation_p_value = perm_p,
+  n_HC = sum(clf_df$group == "HC"),
+  n_SCI = sum(clf_df$group == "SCI")
+)
+
+write.csv(
+  summary_out,
+  file.path(outdir, "Fig5_low_complexity_classifier_summary.csv"),
+  row.names = FALSE
+)
+
+message("All New Fig5 outputs saved to: ", outdir)
+```
+
+```{r fig5 5.20}
+## ============================================================
+## Final Figure 5 - enlarged version
+## Mechanism-constrained low-complexity classifier
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(pROC)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(123)
+
+## =========================
+## 0. Paths
+## =========================
+
+outdir <- "Final_Figure5_mechanism_constrained_classifier_large"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_expr151 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+
+fig4_dir <- "New_Figure4_ML_refined_modules"
+file_module_summary <- file.path(
+  fig4_dir,
+  "New_Figure4_refined_module_summary.csv"
+)
+
+## =========================
+## 1. Helper functions
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  df <- read.csv(file, check.names = FALSE, stringsAsFactors = FALSE)
+
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+
+  rownames(df) <- make.unique(as.character(gene_col))
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+
+  as.matrix(df)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  mat
+}
+
+z_score_rows <- function(mat) {
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  z
+}
+
+module_score <- function(expr_mat, genes, module_name = "module") {
+  genes <- clean_gene_symbol(genes)
+  genes_found <- intersect(genes, rownames(expr_mat))
+
+  message(
+    module_name,
+    ": ",
+    length(genes_found),
+    "/",
+    length(unique(genes)),
+    " genes found: ",
+    paste(genes_found, collapse = ", ")
+  )
+
+  if (length(genes_found) < 2) {
+    stop("Too few genes found for ", module_name)
+  }
+
+  z <- z_score_rows(expr_mat[genes_found, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+theme_pub <- function(base_size = 11) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 13, face = "bold", hjust = 0),
+      plot.subtitle = element_text(size = 10, color = "black"),
+      axis.title = element_text(size = 11, color = "black"),
+      axis.text = element_text(size = 10, color = "black"),
+      axis.line = element_line(linewidth = 0.45, color = "black"),
+      axis.ticks = element_line(linewidth = 0.45, color = "black"),
+      legend.title = element_text(size = 10),
+      legend.text = element_text(size = 10),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 11, face = "bold"),
+      plot.margin = margin(8, 8, 8, 8)
+    )
+}
+
+## =========================
+## 2. Read refined module genes
+## =========================
+
+module_summary <- read.csv(file_module_summary, stringsAsFactors = FALSE)
+
+refined_innate <- module_summary %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_adaptive <- module_summary %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 3. Read GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_expr151)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  ),
+  stringsAsFactors = FALSE
+)
+
+meta151 <- meta151 %>% filter(!is.na(group))
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+
+meta151$group <- factor(meta151$group, levels = c("HC", "TC", "SCI"))
+
+message("Sample size:")
+print(table(meta151$group))
+
+## =========================
+## 4. Module scores
+## =========================
+
+score_df <- meta151 %>%
+  mutate(
+    refined_innate_score = module_score(
+      expr151,
+      refined_innate,
+      "Refined innate"
+    ),
+    refined_adaptive_score = module_score(
+      expr151,
+      refined_adaptive,
+      "Refined adaptive"
+    ),
+    immune_reprogramming_index =
+      refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_module_scores_GSE151371.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 5. HC vs SCI classifier data
+## =========================
+
+clf_df <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  mutate(
+    group = factor(group, levels = c("HC", "SCI")),
+    outcome = ifelse(group == "SCI", 1, 0)
+  )
+
+message("Classifier sample size:")
+print(table(clf_df$group))
+
+## =========================
+## 6. Logistic classifier
+## =========================
+
+fit_logit <- glm(
+  outcome ~ refined_innate_score + refined_adaptive_score,
+  data = clf_df,
+  family = binomial()
+)
+
+clf_df$pred_prob <- predict(fit_logit, type = "response")
+
+roc_obj <- roc(
+  response = clf_df$group,
+  predictor = clf_df$pred_prob,
+  levels = c("HC", "SCI"),
+  direction = "<",
+  quiet = TRUE
+)
+
+auc_real <- as.numeric(auc(roc_obj))
+
+write.csv(
+  clf_df,
+  file.path(outdir, "Fig5_classifier_predictions.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 7. Fig5A: enlarged schematic
+## =========================
+
+schematic_df <- data.frame(
+  x = c(1, 1, 2.45, 3.9),
+  y = c(1.8, 0.8, 1.3, 1.3),
+  label = c(
+    "Refined innate\nprogram score",
+    "Refined adaptive\nprogram score",
+    "Two-feature\nlogistic classifier",
+    "Within-cohort\nSCI probability"
+  )
+)
+
+pA <- ggplot() +
+  geom_label(
+    data = schematic_df,
+    aes(x = x, y = y, label = label),
+    size = 4.2,
+    label.size = 0.35,
+    fill = "white",
+    color = "black"
+  ) +
+  geom_segment(
+    aes(x = 1.45, y = 1.8, xend = 1.95, yend = 1.4),
+    arrow = arrow(length = unit(0.22, "cm")),
+    linewidth = 0.55
+  ) +
+  geom_segment(
+    aes(x = 1.45, y = 0.8, xend = 1.95, yend = 1.2),
+    arrow = arrow(length = unit(0.22, "cm")),
+    linewidth = 0.55
+  ) +
+  geom_segment(
+    aes(x = 2.95, y = 1.3, xend = 3.4, yend = 1.3),
+    arrow = arrow(length = unit(0.22, "cm")),
+    linewidth = 0.55
+  ) +
+  annotate(
+    "text",
+    x = 2.45,
+    y = 0.42,
+    label = "Mechanism-constrained, low-complexity model",
+    size = 4
+  ) +
+  xlim(0.35, 4.45) +
+  ylim(0.2, 2.25) +
+  labs(title = "Mechanism-constrained classifier") +
+  theme_void(base_size = 12) +
+  theme(
+    plot.title = element_text(size = 15, face = "bold", hjust = 0)
+  )
+
+ggsave(
+  file.path(outdir, "Fig5A_classifier_design_large.pdf"),
+  pA,
+  width = 12,
+  height = 8,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 8. Fig5B: enlarged two-module score space
+## =========================
+
+pB <- ggplot(
+  clf_df,
+  aes(
+    x = refined_innate_score,
+    y = refined_adaptive_score,
+    color = group,
+    fill = group
+  )
+) +
+  stat_ellipse(
+    geom = "polygon",
+    alpha = 0.12,
+    linewidth = 0.55,
+    show.legend = FALSE
+  ) +
+  geom_point(
+    size = 3.2,
+    alpha = 0.9,
+    stroke = 0.35
+  ) +
+  scale_color_manual(
+    values = c("HC" = "#4D4D4D", "SCI" = "#D73027")
+  ) +
+  scale_fill_manual(
+    values = c("HC" = "#4D4D4D", "SCI" = "#D73027")
+  ) +
+  labs(
+    title = "Two-dimensional immune-program space",
+    subtitle = "SCI shifts toward innate-high / adaptive-low state",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "right"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5B_two_module_score_space_large.pdf"),
+  pB,
+  width = 12,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 9. Fig5C: enlarged ROC
+## =========================
+
+roc_df <- data.frame(
+  specificity = roc_obj$specificities,
+  sensitivity = roc_obj$sensitivities
+) %>%
+  mutate(
+    FPR = 1 - specificity,
+    TPR = sensitivity
+  )
+
+pC <- ggplot(roc_df, aes(x = FPR, y = TPR)) +
+  geom_abline(
+    slope = 1,
+    intercept = 0,
+    linetype = "dashed",
+    linewidth = 0.45,
+    color = "grey55"
+  ) +
+  geom_line(
+    linewidth = 1.0,
+    color = "#7B3294"
+  ) +
+  coord_equal() +
+  labs(
+    title = "Internal classifier performance",
+    subtitle = paste0("Within-cohort AUC = ", round(auc_real, 3)),
+    x = "False positive rate",
+    y = "True positive rate"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5C_ROC_internal_performance_large.pdf"),
+  pC,
+  width = 10,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 10. Bootstrap AUC CI
+## =========================
+
+n_boot <- 1000
+boot_auc <- rep(NA_real_, n_boot)
+
+idx_hc <- which(clf_df$group == "HC")
+idx_sci <- which(clf_df$group == "SCI")
+
+for (i in seq_len(n_boot)) {
+
+  boot_idx <- c(
+    sample(idx_hc, length(idx_hc), replace = TRUE),
+    sample(idx_sci, length(idx_sci), replace = TRUE)
+  )
+
+  boot_df <- clf_df[boot_idx, ]
+
+  fit_i <- tryCatch(
+    glm(
+      outcome ~ refined_innate_score + refined_adaptive_score,
+      data = boot_df,
+      family = binomial()
+    ),
+    error = function(e) NULL
+  )
+
+  if (is.null(fit_i)) next
+
+  boot_df$pred_prob_i <- predict(fit_i, type = "response")
+
+  roc_i <- tryCatch(
+    roc(
+      response = boot_df$group,
+      predictor = boot_df$pred_prob_i,
+      levels = c("HC", "SCI"),
+      direction = "<",
+      quiet = TRUE
+    ),
+    error = function(e) NULL
+  )
+
+  if (!is.null(roc_i)) {
+    boot_auc[i] <- as.numeric(auc(roc_i))
+  }
+}
+
+boot_auc <- boot_auc[!is.na(boot_auc)]
+
+boot_ci <- quantile(
+  boot_auc,
+  probs = c(0.025, 0.5, 0.975),
+  na.rm = TRUE
+)
+
+write.csv(
+  data.frame(AUC = boot_auc),
+  file.path(outdir, "Fig5_bootstrap_auc_distribution.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    AUC_observed = auc_real,
+    bootstrap_AUC_median = as.numeric(boot_ci[2]),
+    bootstrap_AUC_CI_low = as.numeric(boot_ci[1]),
+    bootstrap_AUC_CI_high = as.numeric(boot_ci[3]),
+    n_boot_valid = length(boot_auc)
+  ),
+  file.path(outdir, "Fig5_bootstrap_auc_CI.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 11. Fig5D: enlarged permutation test
+## =========================
+
+n_perm <- 1000
+perm_auc <- rep(NA_real_, n_perm)
+
+for (i in seq_len(n_perm)) {
+
+  perm_df <- clf_df
+
+  perm_df$outcome_perm <- sample(perm_df$outcome)
+  perm_df$group_perm <- factor(
+    ifelse(perm_df$outcome_perm == 1, "SCI", "HC"),
+    levels = c("HC", "SCI")
+  )
+
+  fit_perm <- tryCatch(
+    glm(
+      outcome_perm ~ refined_innate_score + refined_adaptive_score,
+      data = perm_df,
+      family = binomial()
+    ),
+    error = function(e) NULL
+  )
+
+  if (is.null(fit_perm)) next
+
+  perm_df$pred_prob_perm <- predict(fit_perm, type = "response")
+
+  roc_perm <- tryCatch(
+    roc(
+      response = perm_df$group_perm,
+      predictor = perm_df$pred_prob_perm,
+      levels = c("HC", "SCI"),
+      direction = "<",
+      quiet = TRUE
+    ),
+    error = function(e) NULL
+  )
+
+  if (!is.null(roc_perm)) {
+    perm_auc[i] <- as.numeric(auc(roc_perm))
+  }
+}
+
+perm_auc <- perm_auc[!is.na(perm_auc)]
+
+perm_p <- (sum(perm_auc >= auc_real) + 1) / (length(perm_auc) + 1)
+
+perm_df_out <- data.frame(AUC = perm_auc)
+
+write.csv(
+  perm_df_out,
+  file.path(outdir, "Fig5_permutation_auc_distribution.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    observed_AUC = auc_real,
+    permutation_p_value = perm_p,
+    n_perm_valid = length(perm_auc)
+  ),
+  file.path(outdir, "Fig5_permutation_test_stats.csv"),
+  row.names = FALSE
+)
+
+pD <- ggplot(perm_df_out, aes(x = AUC)) +
+  geom_histogram(
+    bins = 30,
+    fill = "grey70",
+    color = "white",
+    linewidth = 0.25
+  ) +
+  geom_vline(
+    xintercept = auc_real,
+    color = "#D73027",
+    linewidth = 1.0
+  ) +
+  labs(
+    title = "Permutation test",
+    subtitle = paste0(
+      "Observed AUC = ",
+      round(auc_real, 3),
+      "; permutation P = ",
+      signif(perm_p, 3)
+    ),
+    x = "AUC under random label permutation",
+    y = "Frequency"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5D_permutation_test_large.pdf"),
+  pD,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 12. Optional bootstrap panel
+## =========================
+
+p_boot <- ggplot(data.frame(AUC = boot_auc), aes(x = AUC)) +
+  geom_histogram(
+    bins = 30,
+    fill = "#7B3294",
+    color = "white",
+    linewidth = 0.25,
+    alpha = 0.85
+  ) +
+  geom_vline(
+    xintercept = auc_real,
+    color = "black",
+    linewidth = 0.8
+  ) +
+  geom_vline(
+    xintercept = boot_ci[c(1, 3)],
+    color = "grey30",
+    linetype = "dashed",
+    linewidth = 0.6
+  ) +
+  labs(
+    title = "Bootstrap AUC stability",
+    subtitle = paste0(
+      "Median = ",
+      round(boot_ci[2], 3),
+      "; 95% CI = ",
+      round(boot_ci[1], 3),
+      "–",
+      round(boot_ci[3], 3)
+    ),
+    x = "Bootstrap AUC",
+    y = "Frequency"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5_optional_bootstrap_AUC_CI_large.pdf"),
+  p_boot,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 13. Combined enlarged Figure 5 ABCD
+## =========================
+
+pABCD <- pA + pB + pC + pD +
+  plot_layout(
+    ncol = 4,
+    widths = c(1.2, 1.2, 1, 1.1)
+  ) +
+  plot_annotation(
+    tag_levels = "A",
+    theme = theme(
+      plot.tag = element_text(size = 15, face = "bold")
+    )
+  )
+
+ggsave(
+  file.path(outdir, "Fig5ABCD_combined_final_large.pdf"),
+  pABCD,
+  width = 36,
+  height = 11,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 14. Summary table
+## =========================
+
+summary_out <- data.frame(
+  figure = "Figure 5",
+  model = "Mechanism-constrained two-feature logistic classifier",
+  features = "refined_innate_score + refined_adaptive_score",
+  interpretation = "Within-cohort proof-of-concept, not external clinical validation",
+  AUC_observed = auc_real,
+  bootstrap_AUC_median = as.numeric(boot_ci[2]),
+  bootstrap_AUC_CI_low = as.numeric(boot_ci[1]),
+  bootstrap_AUC_CI_high = as.numeric(boot_ci[3]),
+  permutation_p_value = perm_p,
+  n_HC = sum(clf_df$group == "HC"),
+  n_SCI = sum(clf_df$group == "SCI"),
+  n_total_classifier = nrow(clf_df)
+)
+
+write.csv(
+  summary_out,
+  file.path(outdir, "Fig5_classifier_summary.csv"),
+  row.names = FALSE
+)
+
+message("Done. Enlarged Final Fig5 outputs saved to: ", outdir)
+```
+
+```{r fig5 5.26}
+## ============================================================
+## Final Figure 5 - Immune-state landscape version
+##
+## Core idea:
+## Fig5 is no longer a classifier figure.
+## It shows that SCI occupies a distinct low-dimensional
+## immune-program state defined by refined innate/adaptive axes.
+##
+## Panels:
+## A: conceptual immune-state landscape schematic
+## B: HC/TC/SCI in two-dimensional immune-program space
+## C: group-level immune-state shift vectors
+## D: permutation test for HC-SCI state-space separation
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(123)
+
+## =========================
+## 0. Paths
+## =========================
+
+outdir <- "Final_Figure5_immune_state_landscape"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_expr151 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+
+fig4_dir <- "New_Figure4_ML_refined_modules"
+file_module_summary <- file.path(
+  fig4_dir,
+  "New_Figure4_refined_module_summary.csv"
+)
+
+## =========================
+## 1. Helper functions
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  df <- read.csv(file, check.names = FALSE, stringsAsFactors = FALSE)
+
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+
+  rownames(df) <- make.unique(as.character(gene_col))
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+
+  as.matrix(df)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  mat
+}
+
+z_score_rows <- function(mat) {
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  z
+}
+
+module_score <- function(expr_mat, genes, module_name = "module") {
+  genes <- clean_gene_symbol(genes)
+  genes_found <- intersect(genes, rownames(expr_mat))
+
+  message(
+    module_name,
+    ": ",
+    length(genes_found),
+    "/",
+    length(unique(genes)),
+    " genes found: ",
+    paste(genes_found, collapse = ", ")
+  )
+
+  if (length(genes_found) < 2) {
+    stop("Too few genes found for ", module_name)
+  }
+
+  z <- z_score_rows(expr_mat[genes_found, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+theme_pub <- function(base_size = 11) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 13, face = "bold", hjust = 0),
+      plot.subtitle = element_text(size = 10, color = "black"),
+      axis.title = element_text(size = 11, color = "black"),
+      axis.text = element_text(size = 10, color = "black"),
+      axis.line = element_line(linewidth = 0.45, color = "black"),
+      axis.ticks = element_line(linewidth = 0.45, color = "black"),
+      legend.title = element_text(size = 10),
+      legend.text = element_text(size = 10),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 11, face = "bold"),
+      plot.margin = margin(8, 8, 8, 8)
+    )
+}
+
+centroid_distance <- function(df, group1, group2) {
+  c1 <- df %>%
+    filter(group == group1) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  c2 <- df %>%
+    filter(group == group2) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  sqrt((c1$innate - c2$innate)^2 + (c1$adaptive - c2$adaptive)^2)
+}
+
+## =========================
+## 2. Read refined module genes
+## =========================
+
+module_summary <- read.csv(file_module_summary, stringsAsFactors = FALSE)
+
+refined_innate <- module_summary %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_adaptive <- module_summary %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 3. Read GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_expr151)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  ),
+  stringsAsFactors = FALSE
+)
+
+meta151 <- meta151 %>% filter(!is.na(group))
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+
+meta151$group <- factor(meta151$group, levels = c("HC", "TC", "SCI"))
+
+message("Sample size:")
+print(table(meta151$group))
+
+## =========================
+## 4. Calculate immune-program scores
+## =========================
+
+score_df <- meta151 %>%
+  mutate(
+    refined_innate_score = module_score(
+      expr151,
+      refined_innate,
+      "Refined innate"
+    ),
+    refined_adaptive_score = module_score(
+      expr151,
+      refined_adaptive,
+      "Refined adaptive"
+    ),
+    immune_reprogramming_index =
+      refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_immune_state_scores_GSE151371.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 5. Group centroids
+## =========================
+
+centroid_df <- score_df %>%
+  group_by(group) %>%
+  summarise(
+    centroid_innate = mean(refined_innate_score),
+    centroid_adaptive = mean(refined_adaptive_score),
+    n = n(),
+    .groups = "drop"
+  )
+
+write.csv(
+  centroid_df,
+  file.path(outdir, "Fig5_group_centroids.csv"),
+  row.names = FALSE
+)
+
+hc_centroid <- centroid_df %>% filter(group == "HC")
+
+vector_df <- centroid_df %>%
+  filter(group %in% c("TC", "SCI")) %>%
+  mutate(
+    x_start = hc_centroid$centroid_innate,
+    y_start = hc_centroid$centroid_adaptive,
+    x_end = centroid_innate,
+    y_end = centroid_adaptive,
+    distance_from_HC = sqrt(
+      (x_end - x_start)^2 + (y_end - y_start)^2
+    )
+  )
+
+write.csv(
+  vector_df,
+  file.path(outdir, "Fig5_state_shift_vectors.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 6. Fig5A: conceptual schematic
+## =========================
+
+axis_df <- data.frame(
+  x = c(0.2, 0.2),
+  y = c(0.2, 0.2),
+  xend = c(2.2, 0.2),
+  yend = c(0.2, 2.0)
+)
+
+state_df <- data.frame(
+  x = c(0.55, 1.25, 1.85),
+  y = c(1.45, 0.9, 0.45),
+  label = c("HC\nhomeostatic state", "TC\ntrauma-shifted state", "SCI\nimmune-reprogrammed state")
+)
+
+pA <- ggplot() +
+  geom_segment(
+    data = axis_df,
+    aes(x = x, y = y, xend = xend, yend = yend),
+    arrow = arrow(length = unit(0.22, "cm")),
+    linewidth = 0.6
+  ) +
+  geom_point(
+    data = state_df,
+    aes(x = x, y = y),
+    size = 4,
+    color = "black"
+  ) +
+  geom_text(
+    data = state_df,
+    aes(x = x, y = y, label = label),
+    size = 3.5,
+    vjust = -0.9
+  ) +
+  geom_curve(
+    aes(x = 0.6, y = 1.35, xend = 1.75, yend = 0.55),
+    curvature = -0.25,
+    arrow = arrow(length = unit(0.2, "cm")),
+    linewidth = 0.5
+  ) +
+  annotate(
+    "text",
+    x = 1.35,
+    y = 0.05,
+    label = "Refined innate activation",
+    size = 3.7
+  ) +
+  annotate(
+    "text",
+    x = -0.15,
+    y = 1.2,
+    label = "Refined adaptive activity",
+    angle = 90,
+    size = 3.7
+  ) +
+  annotate(
+    "text",
+    x = 1.25,
+    y = 2.15,
+    label = "Transcriptome compressed into immune-program state space",
+    size = 3.8,
+    fontface = "bold"
+  ) +
+  xlim(-0.3, 2.45) +
+  ylim(-0.15, 2.35) +
+  labs(title = "Immune-state landscape concept") +
+  theme_void(base_size = 11) +
+  theme(
+    plot.title = element_text(size = 13, face = "bold", hjust = 0)
+  )
+
+ggsave(
+  file.path(outdir, "Fig5A_immune_state_concept.pdf"),
+  pA,
+  width = 12,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 7. Fig5B: immune-program state space
+## =========================
+
+group_cols <- c(
+  "HC" = "#4D4D4D",
+  "TC" = "#4575B4",
+  "SCI" = "#D73027"
+)
+
+pB <- ggplot(
+  score_df,
+  aes(
+    x = refined_innate_score,
+    y = refined_adaptive_score,
+    color = group,
+    fill = group
+  )
+) +
+  stat_ellipse(
+    geom = "polygon",
+    alpha = 0.10,
+    linewidth = 0.45,
+    show.legend = FALSE
+  ) +
+  geom_point(
+    size = 3,
+    alpha = 0.9
+  ) +
+  geom_point(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      color = group
+    ),
+    inherit.aes = FALSE,
+    size = 5,
+    shape = 18
+  ) +
+  scale_color_manual(values = group_cols) +
+  scale_fill_manual(values = group_cols) +
+  labs(
+    title = "SCI occupies a distinct immune-program state",
+    subtitle = "State space defined by refined innate and adaptive immune axes",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "right"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5B_immune_state_space_HC_TC_SCI.pdf"),
+  pB,
+  width = 12,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 8. Fig5C: state-shift vectors from HC
+## =========================
+
+pC <- ggplot() +
+  geom_point(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      color = group
+    ),
+    size = 6
+  ) +
+  geom_text(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      label = paste0(group, "\n", "n=", n)
+    ),
+    size = 3.8,
+    vjust = -1.1
+  ) +
+  geom_segment(
+    data = vector_df,
+    aes(
+      x = x_start,
+      y = y_start,
+      xend = x_end,
+      yend = y_end,
+      color = group
+    ),
+    arrow = arrow(length = unit(0.25, "cm")),
+    linewidth = 0.9
+  ) +
+  scale_color_manual(values = group_cols) +
+  labs(
+    title = "Direction of immune-state shift",
+    subtitle = "Centroid displacement from HC reference state",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5C_immune_state_shift_vectors.pdf"),
+  pC,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 9. Permutation test for HC-SCI centroid separation
+## =========================
+
+hc_sci_df <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  mutate(group = droplevels(group))
+
+obs_dist <- centroid_distance(hc_sci_df, "HC", "SCI")
+
+n_perm <- 5000
+perm_dist <- rep(NA_real_, n_perm)
+
+for (i in seq_len(n_perm)) {
+  perm_df <- hc_sci_df
+  perm_df$group <- sample(perm_df$group)
+
+  perm_dist[i] <- centroid_distance(perm_df, "HC", "SCI")
+}
+
+perm_p <- (sum(perm_dist >= obs_dist) + 1) / (n_perm + 1)
+
+perm_out <- data.frame(
+  permutation_distance = perm_dist
+)
+
+write.csv(
+  perm_out,
+  file.path(outdir, "Fig5D_permutation_centroid_distance.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    observed_HC_SCI_centroid_distance = obs_dist,
+    permutation_p_value = perm_p,
+    n_perm = n_perm
+  ),
+  file.path(outdir, "Fig5D_permutation_stats.csv"),
+  row.names = FALSE
+)
+
+pD <- ggplot(perm_out, aes(x = permutation_distance)) +
+  geom_histogram(
+    bins = 40,
+    fill = "grey70",
+    color = "white",
+    linewidth = 0.25
+  ) +
+  geom_vline(
+    xintercept = obs_dist,
+    color = "#D73027",
+    linewidth = 1.1
+  ) +
+  labs(
+    title = "Non-random immune-state separation",
+    subtitle = paste0(
+      "Observed HC-SCI distance = ",
+      round(obs_dist, 3),
+      "; permutation P = ",
+      signif(perm_p, 3)
+    ),
+    x = "Permuted HC-SCI centroid distance",
+    y = "Frequency"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5D_permutation_immune_state_separation.pdf"),
+  pD,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 10. Optional: immune reprogramming index
+## =========================
+
+p_index <- ggplot(
+  score_df,
+  aes(x = group, y = immune_reprogramming_index, fill = group)
+) +
+  geom_boxplot(
+    width = 0.55,
+    outlier.shape = NA,
+    linewidth = 0.45,
+    color = "black",
+    alpha = 0.75
+  ) +
+  geom_jitter(
+    width = 0.12,
+    size = 2.2,
+    alpha = 0.8,
+    color = "black"
+  ) +
+  scale_fill_manual(values = group_cols) +
+  stat_compare_means(
+    comparisons = list(c("HC", "TC"), c("HC", "SCI"), c("TC", "SCI")),
+    method = "wilcox.test",
+    label = "p.signif",
+    size = 4
+  ) +
+  labs(
+    title = "Immune reprogramming index",
+    subtitle = "Innate score minus adaptive score",
+    x = NULL,
+    y = "Innate − adaptive score"
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5_optional_immune_reprogramming_index.pdf"),
+  p_index,
+  width = 10,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 11. Combined Figure 5 ABCD
+## =========================
+
+pABCD <- pA + pB + pC + pD +
+  plot_layout(
+    ncol = 4,
+    widths = c(1.15, 1.15, 1, 1)
+  ) +
+  plot_annotation(
+    tag_levels = "A",
+    theme = theme(
+      plot.tag = element_text(size = 15, face = "bold")
+    )
+  )
+
+ggsave(
+  file.path(outdir, "Fig5ABCD_immune_state_landscape.pdf"),
+  pABCD,
+  width = 40,
+  height = 11,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 12. Summary table
+## =========================
+
+summary_out <- data.frame(
+  figure = "Figure 5",
+  concept = "Immune-state landscape",
+  x_axis = "Refined innate module score",
+  y_axis = "Refined adaptive module score",
+  interpretation = "SCI occupies a distinct innate-high/adaptive-low immune-program state",
+  HC_n = sum(score_df$group == "HC"),
+  TC_n = sum(score_df$group == "TC"),
+  SCI_n = sum(score_df$group == "SCI"),
+  HC_SCI_centroid_distance = obs_dist,
+  permutation_p_value = perm_p
+)
+
+write.csv(
+  summary_out,
+  file.path(outdir, "Fig5_immune_state_landscape_summary.csv"),
+  row.names = FALSE
+)
+
+message("Done. New Fig5 immune-state landscape outputs saved to: ", outdir)
+```
+
+```{r fig5 5.26}
+## ============================================================
+## Final Figure 5 - Simplified immune-state landscape version
+##
+## Main message:
+## SCI induces a coordinated transition toward an
+## innate-high / adaptive-low immune state.
+##
+## Main figure:
+## A: immune-program state space
+## B: centroid shift from HC to TC/SCI
+## C: immune reprogramming index
+##
+## Supplementary:
+## permutation test for HC-SCI centroid separation
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(123)
+
+## =========================
+## 0. Paths
+## =========================
+
+outdir <- "Final_Figure5_simplified_immune_state"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_expr151 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+
+fig4_dir <- "New_Figure4_ML_refined_modules"
+file_module_summary <- file.path(
+  fig4_dir,
+  "New_Figure4_refined_module_summary.csv"
+)
+
+## =========================
+## 1. Helper functions
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  df <- read.csv(
+    file,
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+
+  rownames(df) <- make.unique(as.character(gene_col))
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+
+  as.matrix(df)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  mat
+}
+
+z_score_rows <- function(mat) {
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  z
+}
+
+module_score <- function(expr_mat, genes, module_name = "module") {
+  genes <- clean_gene_symbol(genes)
+  genes_found <- intersect(genes, rownames(expr_mat))
+
+  message(
+    module_name,
+    ": ",
+    length(genes_found),
+    "/",
+    length(unique(genes)),
+    " genes found: ",
+    paste(genes_found, collapse = ", ")
+  )
+
+  if (length(genes_found) < 2) {
+    stop("Too few genes found for ", module_name)
+  }
+
+  z <- z_score_rows(expr_mat[genes_found, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+centroid_distance <- function(df, group1, group2) {
+  c1 <- df %>%
+    filter(group == group1) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  c2 <- df %>%
+    filter(group == group2) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  sqrt((c1$innate - c2$innate)^2 + (c1$adaptive - c2$adaptive)^2)
+}
+
+theme_pub <- function(base_size = 11) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 13, face = "bold", hjust = 0),
+      plot.subtitle = element_text(size = 10, color = "black"),
+      axis.title = element_text(size = 11, color = "black"),
+      axis.text = element_text(size = 10, color = "black"),
+      axis.line = element_line(linewidth = 0.45, color = "black"),
+      axis.ticks = element_line(linewidth = 0.45, color = "black"),
+      legend.title = element_text(size = 10),
+      legend.text = element_text(size = 10),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 11, face = "bold"),
+      plot.margin = margin(8, 8, 8, 8)
+    )
+}
+
+## =========================
+## 2. Read refined module genes
+## =========================
+
+module_summary <- read.csv(
+  file_module_summary,
+  stringsAsFactors = FALSE
+)
+
+refined_innate <- module_summary %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_adaptive <- module_summary %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 3. Read GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_expr151)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  ),
+  stringsAsFactors = FALSE
+)
+
+meta151 <- meta151 %>%
+  filter(!is.na(group))
+
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+
+meta151$group <- factor(
+  meta151$group,
+  levels = c("HC", "TC", "SCI")
+)
+
+message("Sample size:")
+print(table(meta151$group))
+
+## =========================
+## 4. Calculate immune-program scores
+## =========================
+
+score_df <- meta151 %>%
+  mutate(
+    refined_innate_score = module_score(
+      expr151,
+      refined_innate,
+      "Refined innate"
+    ),
+    refined_adaptive_score = module_score(
+      expr151,
+      refined_adaptive,
+      "Refined adaptive"
+    ),
+    immune_reprogramming_index =
+      refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_immune_state_scores_GSE151371.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 5. Group centroids and vectors
+## =========================
+
+centroid_df <- score_df %>%
+  group_by(group) %>%
+  summarise(
+    centroid_innate = mean(refined_innate_score),
+    centroid_adaptive = mean(refined_adaptive_score),
+    n = n(),
+    .groups = "drop"
+  )
+
+write.csv(
+  centroid_df,
+  file.path(outdir, "Fig5_group_centroids.csv"),
+  row.names = FALSE
+)
+
+hc_centroid <- centroid_df %>%
+  filter(group == "HC")
+
+vector_df <- centroid_df %>%
+  filter(group %in% c("TC", "SCI")) %>%
+  mutate(
+    x_start = hc_centroid$centroid_innate,
+    y_start = hc_centroid$centroid_adaptive,
+    x_end = centroid_innate,
+    y_end = centroid_adaptive,
+    distance_from_HC = sqrt(
+      (x_end - x_start)^2 + (y_end - y_start)^2
+    )
+  )
+
+write.csv(
+  vector_df,
+  file.path(outdir, "Fig5_state_shift_vectors.csv"),
+  row.names = FALSE
+)
+
+group_cols <- c(
+  "HC" = "#4D4D4D",
+  "TC" = "#4575B4",
+  "SCI" = "#D73027"
+)
+
+## =========================
+## 6. Fig5A: immune-program state space
+## =========================
+
+pA <- ggplot(
+  score_df,
+  aes(
+    x = refined_innate_score,
+    y = refined_adaptive_score,
+    color = group,
+    fill = group
+  )
+) +
+  stat_ellipse(
+    geom = "polygon",
+    alpha = 0.10,
+    linewidth = 0.45,
+    show.legend = FALSE
+  ) +
+  geom_point(
+    size = 3,
+    alpha = 0.9
+  ) +
+  geom_point(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      color = group
+    ),
+    inherit.aes = FALSE,
+    size = 5,
+    shape = 18
+  ) +
+  scale_color_manual(values = group_cols) +
+  scale_fill_manual(values = group_cols) +
+  labs(
+    title = "SCI occupies a distinct immune-program state",
+    subtitle = "Refined innate and adaptive modules define a low-dimensional immune-state space",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "right"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5A_immune_state_space_HC_TC_SCI.pdf"),
+  pA,
+  width = 14,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 7. Fig5B: centroid shift
+## =========================
+
+pB <- ggplot() +
+  geom_point(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      color = group
+    ),
+    size = 6
+  ) +
+  geom_segment(
+    data = vector_df,
+    aes(
+      x = x_start,
+      y = y_start,
+      xend = x_end,
+      yend = y_end,
+      color = group
+    ),
+    arrow = arrow(length = unit(0.25, "cm")),
+    linewidth = 0.9
+  ) +
+  geom_text(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      label = paste0(group, "\n", "n=", n)
+    ),
+    size = 4,
+    vjust = -1.15
+  ) +
+  scale_color_manual(values = group_cols) +
+  labs(
+    title = "Centroid shift toward innate-high/adaptive-low state",
+    subtitle = "Group-level displacement from the HC reference state",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5B_centroid_shift_HC_to_TC_SCI.pdf"),
+  pB,
+  width = 12,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 8. Fig5C: immune reprogramming index
+## =========================
+
+index_stats <- score_df %>%
+  select(sample, group, immune_reprogramming_index) %>%
+  group_by(group) %>%
+  summarise(
+    n = n(),
+    median = median(immune_reprogramming_index),
+    mean = mean(immune_reprogramming_index),
+    sd = sd(immune_reprogramming_index),
+    .groups = "drop"
+  )
+
+write.csv(
+  index_stats,
+  file.path(outdir, "Fig5_immune_reprogramming_index_summary.csv"),
+  row.names = FALSE
+)
+
+pC <- ggplot(
+  score_df,
+  aes(
+    x = group,
+    y = immune_reprogramming_index,
+    fill = group
+  )
+) +
+  geom_boxplot(
+    width = 0.55,
+    outlier.shape = NA,
+    linewidth = 0.45,
+    color = "black",
+    alpha = 0.75
+  ) +
+  geom_jitter(
+    width = 0.12,
+    size = 2.2,
+    alpha = 0.8,
+    color = "black"
+  ) +
+  scale_fill_manual(values = group_cols) +
+  stat_compare_means(
+    comparisons = list(
+      c("HC", "TC"),
+      c("HC", "SCI"),
+      c("TC", "SCI")
+    ),
+    method = "wilcox.test",
+    label = "p.signif",
+    size = 4
+  ) +
+  labs(
+    title = "Immune reprogramming index",
+    subtitle = "Integrated innate activation and adaptive suppression",
+    x = NULL,
+    y = "Innate score − adaptive score"
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5C_immune_reprogramming_index.pdf"),
+  pC,
+  width = 10,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 9. Supplementary permutation test
+## =========================
+
+hc_sci_df <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  mutate(group = droplevels(group))
+
+obs_dist <- centroid_distance(hc_sci_df, "HC", "SCI")
+
+n_perm <- 5000
+perm_dist <- rep(NA_real_, n_perm)
+
+for (i in seq_len(n_perm)) {
+  perm_df <- hc_sci_df
+  perm_df$group <- sample(perm_df$group)
+
+  perm_dist[i] <- centroid_distance(
+    perm_df,
+    "HC",
+    "SCI"
+  )
+}
+
+perm_p <- (sum(perm_dist >= obs_dist) + 1) / (n_perm + 1)
+
+perm_out <- data.frame(
+  permutation_distance = perm_dist
+)
+
+write.csv(
+  perm_out,
+  file.path(outdir, "Fig5_supp_permutation_centroid_distance.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    observed_HC_SCI_centroid_distance = obs_dist,
+    permutation_p_value = perm_p,
+    n_perm = n_perm
+  ),
+  file.path(outdir, "Fig5_supp_permutation_stats.csv"),
+  row.names = FALSE
+)
+
+p_perm <- ggplot(
+  perm_out,
+  aes(x = permutation_distance)
+) +
+  geom_histogram(
+    bins = 40,
+    fill = "grey70",
+    color = "white",
+    linewidth = 0.25
+  ) +
+  geom_vline(
+    xintercept = obs_dist,
+    color = "#D73027",
+    linewidth = 1.1
+  ) +
+  labs(
+    title = "Permutation test for HC-SCI immune-state separation",
+    subtitle = paste0(
+      "Observed distance = ",
+      round(obs_dist, 3),
+      "; permutation P = ",
+      signif(perm_p, 3)
+    ),
+    x = "Permuted HC-SCI centroid distance",
+    y = "Frequency"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5_supp_permutation_immune_state_separation.pdf"),
+  p_perm,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 10. Combined main Figure 5 ABC
+## =========================
+
+pABC <- pA + pB + pC +
+  plot_layout(
+    ncol = 3,
+    widths = c(1.25, 1.05, 0.9)
+  ) +
+  plot_annotation(
+    tag_levels = "A",
+    theme = theme(
+      plot.tag = element_text(size = 16, face = "bold")
+    )
+  )
+
+ggsave(
+  file.path(outdir, "Fig5ABC_simplified_immune_state_main.pdf"),
+  pABC,
+  width = 34,
+  height = 11,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 11. Summary table
+## =========================
+
+summary_out <- data.frame(
+  figure = "Figure 5",
+  concept = "Immune-state landscape",
+  main_message = "SCI induces a coordinated transition toward an innate-high/adaptive-low immune state",
+  x_axis = "Refined innate module score",
+  y_axis = "Refined adaptive module score",
+  index = "Refined innate score minus refined adaptive score",
+  HC_n = sum(score_df$group == "HC"),
+  TC_n = sum(score_df$group == "TC"),
+  SCI_n = sum(score_df$group == "SCI"),
+  HC_SCI_centroid_distance = obs_dist,
+  permutation_p_value = perm_p
+)
+
+write.csv(
+  summary_out,
+  file.path(outdir, "Fig5_simplified_immune_state_summary.csv"),
+  row.names = FALSE
+)
+
+message("Done. Simplified Fig5 outputs saved to: ", outdir)
+```
+
+```{r fig5 5.27}
+## ============================================================
+## Final Figure 5 - Immune-state landscape ABCD version
+##
+## Main message:
+## SCI induces a coordinated transition toward an
+## innate-high / adaptive-low immune state.
+##
+## Panels:
+## A: immune-program state space, circular points only
+## B: centroid shift from HC to TC/SCI
+## C: immune reprogramming index
+## D: HC-to-SCI immune-state projection / continuum score
+##
+## Supplementary:
+## permutation test for HC-SCI centroid separation
+## ============================================================
+
+suppressPackageStartupMessages({
+  library(tidyverse)
+  library(ggpubr)
+  library(patchwork)
+})
+
+set.seed(123)
+
+## =========================
+## 0. Paths
+## =========================
+
+outdir <- "Final_Figure5_immune_state_ABCD"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+file_expr151 <- "GSE151371_normalized_expression_matrix_ComBat_de-ID.csv"
+
+fig4_dir <- "New_Figure4_ML_refined_modules"
+file_module_summary <- file.path(
+  fig4_dir,
+  "New_Figure4_refined_module_summary.csv"
+)
+
+## =========================
+## 1. Helper functions
+## =========================
+
+read_expr_csv_safe <- function(file) {
+  df <- read.csv(
+    file,
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+
+  gene_col <- df[[1]]
+  df <- df[, -1, drop = FALSE]
+
+  rownames(df) <- make.unique(as.character(gene_col))
+  df[] <- lapply(df, function(x) as.numeric(as.character(x)))
+
+  as.matrix(df)
+}
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- sub("^.*>", "", x)
+  x <- sub("\\|.*$", "", x)
+  x <- trimws(x)
+  toupper(x)
+}
+
+collapse_by_gene <- function(expr) {
+  expr <- as.data.frame(expr)
+  expr$gene <- clean_gene_symbol(rownames(expr))
+
+  expr <- expr %>%
+    filter(!is.na(gene), gene != "", gene != "NA") %>%
+    mutate(mean_expr = rowMeans(across(where(is.numeric)), na.rm = TRUE)) %>%
+    arrange(desc(mean_expr)) %>%
+    distinct(gene, .keep_all = TRUE) %>%
+    select(-mean_expr)
+
+  mat <- as.matrix(expr[, setdiff(colnames(expr), "gene")])
+  rownames(mat) <- expr$gene
+  mat
+}
+
+z_score_rows <- function(mat) {
+  z <- t(scale(t(mat)))
+  z[is.na(z)] <- 0
+  z
+}
+
+module_score <- function(expr_mat, genes, module_name = "module") {
+  genes <- clean_gene_symbol(genes)
+  genes_found <- intersect(genes, rownames(expr_mat))
+
+  message(
+    module_name,
+    ": ",
+    length(genes_found),
+    "/",
+    length(unique(genes)),
+    " genes found: ",
+    paste(genes_found, collapse = ", ")
+  )
+
+  if (length(genes_found) < 2) {
+    stop("Too few genes found for ", module_name)
+  }
+
+  z <- z_score_rows(expr_mat[genes_found, , drop = FALSE])
+  colMeans(z, na.rm = TRUE)
+}
+
+centroid_distance <- function(df, group1, group2) {
+  c1 <- df %>%
+    filter(group == group1) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  c2 <- df %>%
+    filter(group == group2) %>%
+    summarise(
+      innate = mean(refined_innate_score),
+      adaptive = mean(refined_adaptive_score)
+    )
+
+  sqrt((c1$innate - c2$innate)^2 + (c1$adaptive - c2$adaptive)^2)
+}
+
+theme_pub <- function(base_size = 11) {
+  theme_classic(base_size = base_size) +
+    theme(
+      text = element_text(color = "black"),
+      plot.title = element_text(size = 13, face = "bold", hjust = 0),
+      plot.subtitle = element_text(size = 10, color = "black"),
+      axis.title = element_text(size = 11, color = "black"),
+      axis.text = element_text(size = 10, color = "black"),
+      axis.line = element_line(linewidth = 0.45, color = "black"),
+      axis.ticks = element_line(linewidth = 0.45, color = "black"),
+      legend.title = element_text(size = 10),
+      legend.text = element_text(size = 10),
+      strip.background = element_blank(),
+      strip.text = element_text(size = 11, face = "bold"),
+      plot.margin = margin(8, 8, 8, 8)
+    )
+}
+
+## =========================
+## 2. Read refined module genes
+## =========================
+
+module_summary <- read.csv(
+  file_module_summary,
+  stringsAsFactors = FALSE
+)
+
+refined_innate <- module_summary %>%
+  filter(module == "Refined innate") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_adaptive <- module_summary %>%
+  filter(module == "Refined adaptive") %>%
+  pull(genes) %>%
+  strsplit(";\\s*") %>%
+  unlist() %>%
+  clean_gene_symbol()
+
+refined_innate <- refined_innate[refined_innate != ""]
+refined_adaptive <- refined_adaptive[refined_adaptive != ""]
+
+message("Refined innate genes: ", paste(refined_innate, collapse = ", "))
+message("Refined adaptive genes: ", paste(refined_adaptive, collapse = ", "))
+
+## =========================
+## 3. Read GSE151371
+## =========================
+
+expr151 <- read_expr_csv_safe(file_expr151)
+expr151 <- collapse_by_gene(expr151)
+
+meta151 <- data.frame(
+  sample = colnames(expr151),
+  group = case_when(
+    grepl("^HC", colnames(expr151), ignore.case = TRUE) ~ "HC",
+    grepl("^TC", colnames(expr151), ignore.case = TRUE) ~ "TC",
+    grepl("^SCI", colnames(expr151), ignore.case = TRUE) ~ "SCI",
+    TRUE ~ NA_character_
+  ),
+  stringsAsFactors = FALSE
+)
+
+meta151 <- meta151 %>%
+  filter(!is.na(group))
+
+expr151 <- expr151[, meta151$sample, drop = FALSE]
+
+meta151$group <- factor(
+  meta151$group,
+  levels = c("HC", "TC", "SCI")
+)
+
+message("Sample size:")
+print(table(meta151$group))
+
+## =========================
+## 4. Calculate immune-program scores
+## =========================
+
+score_df <- meta151 %>%
+  mutate(
+    refined_innate_score = module_score(
+      expr151,
+      refined_innate,
+      "Refined innate"
+    ),
+    refined_adaptive_score = module_score(
+      expr151,
+      refined_adaptive,
+      "Refined adaptive"
+    ),
+    immune_reprogramming_index =
+      refined_innate_score - refined_adaptive_score
+  )
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_immune_state_scores_GSE151371.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 5. Group centroids and vectors
+## =========================
+
+centroid_df <- score_df %>%
+  group_by(group) %>%
+  summarise(
+    centroid_innate = mean(refined_innate_score),
+    centroid_adaptive = mean(refined_adaptive_score),
+    n = n(),
+    .groups = "drop"
+  )
+
+write.csv(
+  centroid_df,
+  file.path(outdir, "Fig5_group_centroids.csv"),
+  row.names = FALSE
+)
+
+hc_centroid <- centroid_df %>%
+  filter(group == "HC")
+
+sci_centroid <- centroid_df %>%
+  filter(group == "SCI")
+
+vector_df <- centroid_df %>%
+  filter(group %in% c("TC", "SCI")) %>%
+  mutate(
+    x_start = hc_centroid$centroid_innate,
+    y_start = hc_centroid$centroid_adaptive,
+    x_end = centroid_innate,
+    y_end = centroid_adaptive,
+    distance_from_HC = sqrt(
+      (x_end - x_start)^2 + (y_end - y_start)^2
+    )
+  )
+
+write.csv(
+  vector_df,
+  file.path(outdir, "Fig5_state_shift_vectors.csv"),
+  row.names = FALSE
+)
+
+group_cols <- c(
+  "HC" = "#4D4D4D",
+  "TC" = "#4575B4",
+  "SCI" = "#D73027"
+)
+
+## =========================
+## 6. Fig5D score:
+## HC-to-SCI immune-state projection
+## =========================
+
+hc_vec <- c(
+  hc_centroid$centroid_innate,
+  hc_centroid$centroid_adaptive
+)
+
+sci_vec <- c(
+  sci_centroid$centroid_innate,
+  sci_centroid$centroid_adaptive
+)
+
+axis_vec <- sci_vec - hc_vec
+axis_len2 <- sum(axis_vec^2)
+
+score_mat <- score_df %>%
+  select(refined_innate_score, refined_adaptive_score) %>%
+  as.matrix()
+
+projection_raw <- apply(score_mat, 1, function(z) {
+  sample_vec <- as.numeric(z)
+  sum((sample_vec - hc_vec) * axis_vec) / axis_len2
+})
+
+score_df$HC_to_SCI_projection <- projection_raw
+
+## 解释：
+## projection = 0 表示接近 HC centroid
+## projection = 1 表示接近 SCI centroid
+## >1 表示比 SCI centroid 更 SCI-like
+## <0 表示比 HC centroid 更远离 SCI direction
+
+write.csv(
+  score_df,
+  file.path(outdir, "Fig5_immune_state_scores_with_projection.csv"),
+  row.names = FALSE
+)
+
+projection_stats <- score_df %>%
+  group_by(group) %>%
+  summarise(
+    n = n(),
+    median_projection = median(HC_to_SCI_projection),
+    mean_projection = mean(HC_to_SCI_projection),
+    sd_projection = sd(HC_to_SCI_projection),
+    .groups = "drop"
+  )
+
+write.csv(
+  projection_stats,
+  file.path(outdir, "Fig5D_HC_to_SCI_projection_summary.csv"),
+  row.names = FALSE
+)
+
+## =========================
+## 7. Fig5A: immune-program state space
+## 只保留圆形点，不显示菱形 centroid
+## =========================
+
+pA <- ggplot(
+  score_df,
+  aes(
+    x = refined_innate_score,
+    y = refined_adaptive_score,
+    color = group,
+    fill = group
+  )
+) +
+  stat_ellipse(
+    geom = "polygon",
+    alpha = 0.10,
+    linewidth = 0.45,
+    show.legend = FALSE
+  ) +
+  geom_point(
+    size = 3,
+    alpha = 0.9
+  ) +
+  scale_color_manual(values = group_cols) +
+  scale_fill_manual(values = group_cols) +
+  labs(
+    title = "SCI occupies a distinct immune-program state",
+    subtitle = "Refined innate and adaptive modules define a low-dimensional immune-state space",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "right"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5A_immune_state_space_HC_TC_SCI.pdf"),
+  pA,
+  width = 14,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 8. Fig5B: centroid shift
+## =========================
+
+pB <- ggplot() +
+  geom_point(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      color = group
+    ),
+    size = 6
+  ) +
+  geom_segment(
+    data = vector_df,
+    aes(
+      x = x_start,
+      y = y_start,
+      xend = x_end,
+      yend = y_end,
+      color = group
+    ),
+    arrow = arrow(length = unit(0.25, "cm")),
+    linewidth = 0.9
+  ) +
+  geom_text(
+    data = centroid_df,
+    aes(
+      x = centroid_innate,
+      y = centroid_adaptive,
+      label = paste0(group, "\n", "n=", n)
+    ),
+    size = 4,
+    vjust = -1.15
+  ) +
+  scale_color_manual(values = group_cols) +
+  labs(
+    title = "Centroid shift toward innate-high/adaptive-low state",
+    subtitle = "Group-level displacement from the HC reference state",
+    x = "Refined innate module score",
+    y = "Refined adaptive module score",
+    color = NULL
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5B_centroid_shift_HC_to_TC_SCI.pdf"),
+  pB,
+  width = 12,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 9. Fig5C: immune reprogramming index
+## =========================
+
+index_stats <- score_df %>%
+  select(sample, group, immune_reprogramming_index) %>%
+  group_by(group) %>%
+  summarise(
+    n = n(),
+    median = median(immune_reprogramming_index),
+    mean = mean(immune_reprogramming_index),
+    sd = sd(immune_reprogramming_index),
+    .groups = "drop"
+  )
+
+write.csv(
+  index_stats,
+  file.path(outdir, "Fig5C_immune_reprogramming_index_summary.csv"),
+  row.names = FALSE
+)
+
+pC <- ggplot(
+  score_df,
+  aes(
+    x = group,
+    y = immune_reprogramming_index,
+    fill = group
+  )
+) +
+  geom_boxplot(
+    width = 0.55,
+    outlier.shape = NA,
+    linewidth = 0.45,
+    color = "black",
+    alpha = 0.75
+  ) +
+  geom_jitter(
+    width = 0.12,
+    size = 2.2,
+    alpha = 0.8,
+    color = "black"
+  ) +
+  scale_fill_manual(values = group_cols) +
+  stat_compare_means(
+    comparisons = list(
+      c("HC", "TC"),
+      c("HC", "SCI"),
+      c("TC", "SCI")
+    ),
+    method = "wilcox.test",
+    label = "p.signif",
+    size = 4
+  ) +
+  labs(
+    title = "Immune reprogramming index",
+    subtitle = "Integrated innate activation and adaptive suppression",
+    x = NULL,
+    y = "Innate score − adaptive score"
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none"
+  )
+
+ggsave(
+  file.path(outdir, "Fig5C_immune_reprogramming_index.pdf"),
+  pC,
+  width = 10,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 10. Fig5D:
+## HC-to-SCI immune-state projection
+## =========================
+
+pD <- ggplot(
+  score_df,
+  aes(
+    x = group,
+    y = HC_to_SCI_projection,
+    fill = group
+  )
+) +
+  geom_hline(
+    yintercept = 0,
+    linetype = "dashed",
+    linewidth = 0.4,
+    color = "grey40"
+  ) +
+  geom_hline(
+    yintercept = 1,
+    linetype = "dashed",
+    linewidth = 0.4,
+    color = "grey40"
+  ) +
+  geom_boxplot(
+    width = 0.55,
+    outlier.shape = NA,
+    linewidth = 0.45,
+    color = "black",
+    alpha = 0.75
+  ) +
+  geom_jitter(
+    width = 0.12,
+    size = 2.2,
+    alpha = 0.8,
+    color = "black"
+  ) +
+  annotate(
+    "text",
+    x = 3.25,
+    y = 0,
+    label = "HC centroid",
+    size = 3.3,
+    hjust = 0
+  ) +
+  annotate(
+    "text",
+    x = 3.25,
+    y = 1,
+    label = "SCI centroid",
+    size = 3.3,
+    hjust = 0
+  ) +
+  scale_fill_manual(values = group_cols) +
+  stat_compare_means(
+    comparisons = list(
+      c("HC", "TC"),
+      c("HC", "SCI"),
+      c("TC", "SCI")
+    ),
+    method = "wilcox.test",
+    label = "p.signif",
+    size = 4
+  ) +
+  coord_cartesian(clip = "off") +
+  labs(
+    title = "HC-to-SCI immune-state continuum",
+    subtitle = "Projection of each sample onto the HC→SCI state axis",
+    x = NULL,
+    y = "HC→SCI projection score"
+  ) +
+  theme_pub(11) +
+  theme(
+    legend.position = "none",
+    plot.margin = margin(8, 30, 8, 8)
+  )
+
+ggsave(
+  file.path(outdir, "Fig5D_HC_to_SCI_immune_state_projection.pdf"),
+  pD,
+  width = 11,
+  height = 10,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 11. Supplementary permutation test
+## =========================
+
+hc_sci_df <- score_df %>%
+  filter(group %in% c("HC", "SCI")) %>%
+  mutate(group = droplevels(group))
+
+obs_dist <- centroid_distance(hc_sci_df, "HC", "SCI")
+
+n_perm <- 5000
+perm_dist <- rep(NA_real_, n_perm)
+
+for (i in seq_len(n_perm)) {
+  perm_df <- hc_sci_df
+  perm_df$group <- sample(perm_df$group)
+
+  perm_dist[i] <- centroid_distance(
+    perm_df,
+    "HC",
+    "SCI"
+  )
+}
+
+perm_p <- (sum(perm_dist >= obs_dist) + 1) / (n_perm + 1)
+
+perm_out <- data.frame(
+  permutation_distance = perm_dist
+)
+
+write.csv(
+  perm_out,
+  file.path(outdir, "Fig5_supp_permutation_centroid_distance.csv"),
+  row.names = FALSE
+)
+
+write.csv(
+  data.frame(
+    observed_HC_SCI_centroid_distance = obs_dist,
+    permutation_p_value = perm_p,
+    n_perm = n_perm
+  ),
+  file.path(outdir, "Fig5_supp_permutation_stats.csv"),
+  row.names = FALSE
+)
+
+p_perm <- ggplot(
+  perm_out,
+  aes(x = permutation_distance)
+) +
+  geom_histogram(
+    bins = 40,
+    fill = "grey70",
+    color = "white",
+    linewidth = 0.25
+  ) +
+  geom_vline(
+    xintercept = obs_dist,
+    color = "#D73027",
+    linewidth = 1.1
+  ) +
+  labs(
+    title = "Permutation test for HC-SCI immune-state separation",
+    subtitle = paste0(
+      "Observed distance = ",
+      round(obs_dist, 3),
+      "; permutation P = ",
+      signif(perm_p, 3)
+    ),
+    x = "Permuted HC-SCI centroid distance",
+    y = "Frequency"
+  ) +
+  theme_pub(11)
+
+ggsave(
+  file.path(outdir, "Fig5_supp_permutation_immune_state_separation.pdf"),
+  p_perm,
+  width = 11,
+  height = 9,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 12. Combined main Figure 5 ABCD
+## =========================
+
+pABCD <- pA + pB + pC + pD +
+  plot_layout(
+    ncol = 4,
+    widths = c(1.25, 1.05, 0.9, 0.95)
+  ) +
+  plot_annotation(
+    tag_levels = "A",
+    theme = theme(
+      plot.tag = element_text(size = 16, face = "bold")
+    )
+  )
+
+ggsave(
+  file.path(outdir, "Fig5ABCD_immune_state_main.pdf"),
+  pABCD,
+  width = 44,
+  height = 11,
+  units = "cm",
+  device = cairo_pdf
+)
+
+## =========================
+## 13. Summary table
+## =========================
+
+summary_out <- data.frame(
+  figure = "Figure 5",
+  concept = "Immune-state landscape and HC-to-SCI continuum",
+  main_message = "SCI induces a coordinated transition toward an innate-high/adaptive-low immune state",
+  x_axis = "Refined innate module score",
+  y_axis = "Refined adaptive module score",
+  index = "Refined innate score minus refined adaptive score",
+  projection = "Sample projection onto HC-to-SCI centroid axis",
+  HC_n = sum(score_df$group == "HC"),
+  TC_n = sum(score_df$group == "TC"),
+  SCI_n = sum(score_df$group == "SCI"),
+  HC_SCI_centroid_distance = obs_dist,
+  permutation_p_value = perm_p
+)
+
+write.csv(
+  summary_out,
+  file.path(outdir, "Fig5_immune_state_ABCD_summary.csv"),
+  row.names = FALSE
+)
+
+message("Done. Final Fig5 ABCD outputs saved to: ", outdir)
+```
+
+```{r 数据归总}
+library(openxlsx)
+
+wb <- createWorkbook()
+
+add_sheet_from_csv <- function(wb, sheet_name, file_path) {
+  df <- read.csv(
+    file_path,
+    check.names = FALSE,
+    stringsAsFactors = FALSE
+  )
+  
+  addWorksheet(wb, sheet_name)
+  writeData(wb, sheet = sheet_name, x = df)
+  freezePane(wb, sheet = sheet_name, firstRow = TRUE)
+  setColWidths(wb, sheet = sheet_name, cols = 1:ncol(df), widths = "auto")
+}
+
+add_sheet_from_csv(wb, "S1_DEGs",
+                   "S1：SCI vs HC differential expression results.csv")
+
+add_sheet_from_csv(wb, "S2A_GO_Up",
+                   "S2A：Upregulated GO enrichment.csv")
+
+add_sheet_from_csv(wb, "S2B_GO_Down",
+                   "S2B：Downregulated GO enrichment.csv")
+
+add_sheet_from_csv(wb, "S3_Cluster_Assignment",
+                   "S3：Union DEG cluster assignment.csv")
+
+add_sheet_from_csv(wb, "S4A_Cluster1_Genes",
+                   "S4A：Cluster 1 gene list.csv")
+
+add_sheet_from_csv(wb, "S4B_Cluster2_Genes",
+                   "S4B：Cluster 2 gene list.csv")
+
+add_sheet_from_csv(wb, "S4C_Cluster3_Genes",
+                   "S4C：Cluster 3 gene list.csv")
+
+add_sheet_from_csv(wb, "S5A_Cluster1_GO",
+                   "S5A：Cluster 1 GO enrichment.csv")
+
+add_sheet_from_csv(wb, "S5B_Cluster2_GO",
+                   "S5B：Cluster 2 GO enrichment.csv")
+
+add_sheet_from_csv(wb, "S5C_Cluster3_GO",
+                   "S5C：Cluster 3 GO enrichment.csv")
+
+add_sheet_from_csv(wb, "S6_Refined_Modules",
+                   "S6：Refined innate or adaptive module genes.csv")
+
+add_sheet_from_csv(wb, "S7A_ML_Freq_Innate",
+                   "S7A：Innate module ML selection frequency.csv")
+
+add_sheet_from_csv(wb, "S7B_ML_Freq_Adaptive",
+                   "S7B：Adaptive module ML selection frequency.csv")
+
+add_sheet_from_csv(wb, "S8_Longitudinal_Scores",
+                   "S8：Longitudinal module scores.csv")
+
+add_sheet_from_csv(wb, "S9_Paired_Subjects",
+                   "S9：Paired longitudinal subject scores.csv")
+
+add_sheet_from_csv(wb, "S10_Immune_State",
+                   "S10：Immune-state scores.csv")
+
+add_sheet_from_csv(wb, "S11_Index_Summary",
+                   "S11：Immune reprogramming index summary.csv")
+
+add_sheet_from_csv(wb, "S12_Permutation",
+                   "S12：Permutation test statistics.csv")
+
+saveWorkbook(
+  wb,
+  "Supplementary_Tables.xlsx",
+  overwrite = TRUE
+)
+```
+

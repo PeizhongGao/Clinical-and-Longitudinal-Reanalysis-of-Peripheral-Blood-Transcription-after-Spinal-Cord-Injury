@@ -1,0 +1,26 @@
+{
+  "all_passed": true,
+  "checks": {
+    "protocol_unchanged": true,
+    "inputs_unchanged": true,
+    "all_expected_repeats_folds_predictions": true,
+    "predictions_finite_in_range": true,
+    "each_subject_once_per_outer_repeat": true,
+    "each_inner_role_partition_complete": true,
+    "outer_test_never_inner_train_or_validation": true,
+    "independent_auc_brier_recalculation": true,
+    "independent_AP_logloss_recalculation": true,
+    "empty_models_return_exact_training_prior": true,
+    "all_1998_permutations_and_9990_outer_fits": true,
+    "every_null_statistic_finite": true,
+    "permutation_comparator_and_plus_one_correct": true,
+    "classifier_holm2_recalculated": true,
+    "every_permutation_preserves_sex_case_counts": true,
+    "independent_numpy_HC3_reproduction": true,
+    "clinical_8_complete_null_distributions": true,
+    "clinical_resampling_p_recalculated": true,
+    "clinical_holm4_families_recalculated": true
+  },
+  "unit": "participant; CV repeats/folds and resamples are not independent participants",
+  "scientific_boundary": "Internal evaluation and conditional resampling; no independent validation or restored historical nine-gene model"
+}

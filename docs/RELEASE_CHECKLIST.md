@@ -27,3 +27,10 @@ Use this directory as the repository root and respect `.gitignore` and the
 byte-preserving `.gitattributes`. Rebuild manifests after an intentional package
 change, then run `python check_upload.py`. Keep manuscripts, reviewer correspondence,
 local caches and working outputs outside this public repository.
+
+## Revision 1.1.0 scope
+
+Data 4 provenance, Data 9 nested/resampling code and outputs, Tables S8-S9,
+Figures S10-S11 and seven redrawn figures are included in this repository tree.
+See `REVISION_EXTENSIONS.md` for safe execution and historical-record boundaries.
+Original-code licensing remains the explicitly deferred author choice.

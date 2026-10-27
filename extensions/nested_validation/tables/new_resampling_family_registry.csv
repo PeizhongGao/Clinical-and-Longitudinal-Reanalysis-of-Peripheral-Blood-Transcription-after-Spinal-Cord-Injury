@@ -1,0 +1,4 @@
+family,tests,method,resamples_per_test,p_field,adjusted_field,original_BH_families_unchanged
+Nested_raw_classifier_Holm2,2,within-sex complete-pipeline label permutation,999,p_permutation,p_Holm2,TRUE
+Clinical_BTM_FreedmanLane_Holm4,4,within-sex nuisance-residual permutation,9999,p_resampling,p_Holm4,TRUE
+Clinical_BTM_wild_Holm4,4,HC2-adjusted Rademacher null wild bootstrap,9999,p_resampling,p_Holm4,TRUE

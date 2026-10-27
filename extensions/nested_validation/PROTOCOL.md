@@ -1,0 +1,39 @@
+# Nested LASSO and resampling audit
+
+Locked before new outcome calculations on 27 October 2026 (Asia/Hong_Kong). This is a revision-stage, exploratory computational audit, not prospective registration. The original nine-gene signature and its historical P values remain withdrawn. This protocol does not change the frozen 15+15 or longitudinal BTM analyses.
+
+## Questions and units
+
+1. Evaluate a newly rebuilt, fully nested LASSO workflow on the original SCI versus healthy-control task (38 SCI, 10 HC), then separately on SCI versus trauma controls (38 SCI, 10 TC). One sample per independent participant; cohorts are never pooled. Both are internal evaluations in GSE151371, not external validation.
+2. Test the complete rebuilt algorithm under a sex-stratified label-exchangeability null. This is a distributional association test conditional on sex and cohort group counts. It does not test an age-, injury-, batch- or treatment-independent SCI effect. Missing batch information remains a limitation; exchangeability is an assumption, not established by a P value.
+3. Assess the four published-definition BTM SCI-minus-TC coefficients on the frozen 43-person clinical set using approximate Freedman–Lane residual permutation and a separate heteroskedasticity-oriented wild-bootstrap sensitivity. These fixed-score tests do not repair the historical selected-axis permutation.
+
+## Primary nested algorithm
+
+The raw integer count matrix is the primary source. Calculate each sample's CPM using its own library size and log2(CPM + 0.5), with no between-sample estimated normalization or ComBat. Within every training set, require CPM >= 1 in at least ceiling(20% of training participants), and positive training variance. Fit limma's group contrast and empirical-Bayes moderation on the training participants only. BH correction uses the entire training-filtered gene universe.
+
+Rebuild the two historical keyword-defined pools from training-only differential statistics (positive or negative group coefficient and BH q < 0.10), together with the historical manual candidate additions, after training expression/variance filtering. The keywords/manual lists are copied from code/3.Rmd. Their historical data-independent provenance is unavailable. They are fixed for this audit but not asserted to have been prospectively selected. The union is fitted with one logistic LASSO (alpha = 1). This is a newly specified sparse-classifier audit, not a rerun that forces the original two selected module sizes or recreates the old 5+4 model.
+
+Use participant-stratified five-fold outer and three-fold inner cross-validation, repeated 20 times for observed descriptive evaluation. Training means and standard deviations are fitted anew at every inner and outer training stage and applied to the corresponding held-out participants. No whole-data filter, scale, selected list, or lambda is reused. The 25 predeclared lambda fractions are logarithmically spaced from 1 to 0.001 relative to each training fit's lambda maximum. Inner validation mean binomial deviance chooses the most regularized fraction within one standard error of the minimum (three inner fold losses); refit on all outer training participants. Empty eligible/selected sets produce an explicitly recorded intercept-only model; do not relax a rule to force genes into the result. No threshold search or sign reversal based on test labels.
+
+Reported metrics: ROC AUC (primary), average precision, Brier score, and log loss. Report all 20 repeat-level metrics, their split variation, mean out-of-fold predictions per participant, and gene-selection frequencies across the 100 outer training fits as descriptive stability only. The primary performance summary is the mean of repeat-level metrics; do not interpret 20 repeats or 100 folds as independent sample size. A 5,000-resample, group-stratified participant bootstrap of fixed mean out-of-fold predictions supplies explicitly conditional, approximate intervals; it does not include training-algorithm uncertainty. Intercept-only probabilities are estimated from each outer training set.
+
+The archived 17,498-gene processed/ComBat matrix is a separately labelled sensitivity with the same nested fitting steps but no CPM filter; use training variance filtering. Its upstream whole-cohort processing cannot be reconstructed and is not claimed leakage-free. Original processed results are not replaced.
+
+## Complete-pipeline label permutations
+
+Use 999 sex-stratified label permutations for each raw-count comparison. Every permutation preserves the case count within each sex and reruns training-only filtering, candidate construction, scaling, inner tuning, fitting and outer prediction. The predeclared test statistic is the first five-fold/three-fold nested-CV AUC, with a fixed splitting algorithm/seed re-applied to the permuted labels. Its observed comparator uses exactly that single-repeat schedule; the 20-repeat descriptive mean is not substituted. Outer/inner stratification is regenerated from each label vector. P = (1 + number of permuted statistics >= observed statistic)/(999 + 1). Report binomial Monte Carlo precision and Holm correction for the two raw-count classifier tests. Do not run permutations on processed data or multiply test families through unplanned model variants. No early stopping based on significance.
+
+## Clinical fixed-score resampling
+
+Use only published M37.1, M163, M7.0 and M223 on the frozen 36 SCI / 7 TC set, with the existing M2 design: group + centered age + sex + centered ISS + TBI + prior CNS pathology. Reproduce existing OLS estimates and HC3 standard errors before resampling. Nuisance-only model excludes group. Use 9,999 common row permutations of nuisance residuals within sex, add back nuisance fits, refit the full model, and compare absolute HC3-studentized group statistics. Freedman–Lane is approximate with fitted nuisance effects and requires appropriate within-sex residual exchangeability; sex blocks do not eliminate all heteroskedasticity or unmeasured confounding.
+
+Separately use 9,999 common Rademacher wild-bootstrap weights on HC2-adjusted nuisance residuals, add nuisance fits, and use the same HC3 statistic. Label this a null wild bootstrap, not a permutation or an exact finite-sample test. Report residual/variance/leverage diagnostics and both methods regardless of agreement. Holm adjustment covers the four BTMs separately for each resampling method. Retain existing effect estimates and intervals and the original BH16 family unchanged; new Holm4 values are not called BH16. No longitudinal visit-label permutation is performed.
+
+## Reproducibility and acceptance
+
+Seeds: observed outer/inner schedules 20261027 (explicit offsets by comparison/source/repeat), label permutations 20261028, fixed-prediction intervals 20261029, Freedman–Lane 20261030, wild bootstrap 20261031. Save input SHA-256 values, protocol hash, explicit split assignments, per-fit candidate/selection audits, out-of-fold predictions, all null statistics, package versions, convergence/failure records and source code.
+
+Before full runs, check held-out-data invariance of the fitted training state, disjoint participant splits, fold class balance, training-only candidate dependence and no silent loss of failed resamples. Pilot computations validate implementation/runtime only and cannot select parameters for favorable results. Any implementation correction is logged before rerunning affected outputs.
+
+Completion means auditable estimates and uncertainty, complete null distributions, correct reviewer-item mapping and revised text that acknowledges the remaining boundaries. It does not require significance, the same original nine genes, or restored diagnostic/biological claims. New work belongs primarily in supplementary material. Cover-letter and final journal-template/page-line work remain outside this task.

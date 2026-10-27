@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Hong_Kong",
+  "locked_at": "2026-10-27T20:14:47.773908+08:00",
+  "protocol_sha256": "5dca4d67f4952984e53adaf0f657cb7fff7484ca3492eb896f9eaf5729277b9a",
+  "status": "LOCKED_BEFORE_NEW_OUTCOME_FITS",
+  "inputs": [
+    {
+      "source": "code/GSE151371_raw_gene_counts_de-ID.csv",
+      "snapshot": "inputs/raw_counts.csv",
+      "bytes": 4862130,
+      "sha256": "61b6be101139570b307717639a952a9ded1ea1451a797e53242e72fe400914cf"
+    },
+    {
+      "source": "SCI_upload_ready/inputs/project/explore/Report/GSE151371_normalized_expression_matrix_comBat_de-ID.csv",
+      "snapshot": "inputs/processed_expression.csv",
+      "bytes": 13786662,
+      "sha256": "0f14d6d514057836a3bc0164774dc1ebbc6f85db4bf7b67597b4b112beded7ad"
+    },
+    {
+      "source": "revision_R2_20261008/tables/ODC405_sample_crosswalk.csv",
+      "snapshot": "inputs/participants58.csv",
+      "bytes": 13664,
+      "sha256": "2be56b17a016964fdcd181a8fa891b5d130cbd417d1ba8639015ae2cef506d18"
+    },
+    {
+      "source": "revision_external_adjusted_20261016/tables/discovery_model_inputs.csv",
+      "snapshot": "inputs/btm_model_inputs.csv",
+      "bytes": 1330836,
+      "sha256": "7c4a37410bbfcd1e88a426a5d2f06191bc9fa6a0b28bd180166e05e488cf45f9"
+    },
+    {
+      "source": "revision_external_adjusted_20261016/tables/discovery_models.csv",
+      "snapshot": "inputs/btm_frozen_models.csv",
+      "bytes": 27332,
+      "sha256": "29f8df60376efac7405d2fb47893b79d3ca21e3e179d230548976aa661231be6"
+    },
+    {
+      "source": "code/3.Rmd",
+      "snapshot": "inputs/historical_source.Rmd",
+      "bytes": 108153,
+      "sha256": "61ea123a0ba7e8e05099d1c67037cad5520ac1d43e974e4e19f896263db905fd"
+    }
+  ]
+}

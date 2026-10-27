@@ -1,0 +1,2337 @@
+---
+title: "Untitled"
+output: html_document
+date: "2026-07-13"
+---
+
+```{r}
+############################################################
+# SCI Stage 2
+# Lock discovery signature in GSE151371
+# Validate predefined innate/adaptive/balance scores in GSE293559
+#
+# Author: Peizhong Gao project workflow
+# Purpose:
+#   1. Use GSE151371 raw counts only to lock innate/adaptive signature.
+#   2. Directly score GSE293559 without re-selecting genes.
+#
+# Required input files in working directory:
+#   1) GSE151371_raw_gene_counts_de-ID.csv
+#   2) GSE293559_Normalized_Morrison_2025_processed_data.txt
+#   3) GSE293559_sample_metadata_curated.csv
+#
+# Optional:
+#   4) GSE151371_metadata.csv
+#      Required columns: sample, group
+#      group must be one of HC, TC, SCI
+#
+# Main outputs:
+#   01_discovery_signature/
+#   02_external_validation_GSE293559/
+############################################################
+
+
+############################
+# 0. User settings
+############################
+
+set.seed(20260713)
+
+gse151371_count_file <- "GSE151371_raw_gene_counts_de-ID.csv"
+gse151371_meta_file  <- "GSE151371_metadata.csv"
+
+gse293559_expr_file  <- "GSE293559_Normalized_Morrison_2025_processed_data.txt"
+gse293559_meta_file  <- "GSE293559_sample_metadata_curated.csv"
+
+outdir_discovery <- "01_discovery_signature"
+outdir_validation <- "02_external_validation_GSE293559"
+
+dir.create(outdir_discovery, showWarnings = FALSE, recursive = TRUE)
+dir.create(outdir_validation, showWarnings = FALSE, recursive = TRUE)
+
+# Stability-selection parameters
+B <- 500
+subsample_fraction <- 0.80
+top_n_per_module_per_iteration <- 15
+min_selection_frequency <- 0.40
+min_direction_consistency <- 0.80
+min_genes_per_module <- 5
+max_genes_per_module <- 20
+
+# Differential-expression thresholds for reporting
+fdr_cutoff_report <- 0.05
+logfc_cutoff_report <- 1
+
+
+############################
+# 1. Package loading
+############################
+
+required_pkgs <- c(
+  "data.table",
+  "edgeR",
+  "limma",
+  "ggplot2",
+  "jsonlite",
+  "AnnotationDbi",
+  "org.Hs.eg.db"
+)
+
+missing_pkgs <- required_pkgs[!vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)]
+
+if (length(missing_pkgs) > 0) {
+  stop(
+    "Missing packages: ",
+    paste(missing_pkgs, collapse = ", "),
+    "\nPlease install CRAN packages with install.packages(), and Bioconductor packages with BiocManager::install()."
+  )
+}
+
+library(data.table)
+library(edgeR)
+library(limma)
+library(ggplot2)
+library(jsonlite)
+library(AnnotationDbi)
+library(org.Hs.eg.db)
+
+
+############################
+# 2. Helper functions
+############################
+
+clean_gene_symbol <- function(x) {
+  x <- as.character(x)
+  x <- trimws(x)
+  x <- sub("\\..*$", "", x)
+  x
+}
+
+extract_ensembl_gene_id <- function(x) {
+  x <- as.character(x)
+  out <- regmatches(x, regexpr("ENSG[0-9]+", x))
+  out[out == ""] <- NA
+  out
+}
+
+collapse_duplicate_rows <- function(mat, method = c("mean", "sum")) {
+  method <- match.arg(method)
+  rn <- rownames(mat)
+
+  if (any(is.na(rn)) || any(rn == "")) {
+    keep <- !is.na(rn) & rn != ""
+    mat <- mat[keep, , drop = FALSE]
+    rn <- rownames(mat)
+  }
+
+  if (!anyDuplicated(rn)) {
+    return(mat)
+  }
+
+  if (method == "sum") {
+    out <- rowsum(mat, group = rn, reorder = FALSE)
+  } else {
+    out <- rowsum(mat, group = rn, reorder = FALSE)
+    tab <- table(rn)
+    out <- out / as.numeric(tab[rownames(out)])
+  }
+
+  out
+}
+
+infer_gse151371_group <- function(sample_names) {
+  s <- sample_names
+  s_low <- tolower(s)
+
+  group <- rep(NA_character_, length(s))
+
+  group[grepl("sci", s_low)] <- "SCI"
+
+  group[
+    grepl("trauma", s_low) |
+      grepl("^tc", s_low) |
+      grepl("_tc", s_low) |
+      grepl("-tc", s_low) |
+      grepl("tc[0-9]", s_low)
+  ] <- "TC"
+
+  group[
+    grepl("healthy", s_low) |
+      grepl("control", s_low) |
+      grepl("^hc", s_low) |
+      grepl("_hc", s_low) |
+      grepl("-hc", s_low) |
+      grepl("hc[0-9]", s_low)
+  ] <- "HC"
+
+  # If a sample contains both "control" and "trauma", trauma control should win.
+  group[
+    grepl("trauma", s_low) |
+      grepl("^tc", s_low) |
+      grepl("_tc", s_low) |
+      grepl("-tc", s_low) |
+      grepl("tc[0-9]", s_low)
+  ] <- "TC"
+
+  data.frame(
+    sample = sample_names,
+    group = group,
+    stringsAsFactors = FALSE
+  )
+}
+
+read_count_matrix <- function(file) {
+  message("Reading count matrix: ", file)
+
+  dt <- data.table::fread(file, data.table = FALSE, check.names = FALSE)
+
+  # Guess gene column.
+  possible_gene_cols <- c(
+    "gene", "Gene", "genes", "Genes",
+    "symbol", "Symbol", "SYMBOL",
+    "gene_symbol", "GeneSymbol", "Gene.symbol",
+    "ID", "id", "Geneid", "GeneID"
+  )
+
+  gene_col <- intersect(possible_gene_cols, colnames(dt))[1]
+
+  if (is.na(gene_col)) {
+    gene_col <- colnames(dt)[1]
+  }
+
+  genes <- clean_gene_symbol(dt[[gene_col]])
+
+  mat_df <- dt[, setdiff(colnames(dt), gene_col), drop = FALSE]
+
+  # Keep numeric-like columns only.
+  numeric_ok <- vapply(mat_df, function(z) {
+    suppressWarnings(all(!is.na(as.numeric(as.character(z)))))
+  }, logical(1))
+
+  mat_df <- mat_df[, numeric_ok, drop = FALSE]
+
+  mat <- as.matrix(sapply(mat_df, function(z) as.numeric(as.character(z))))
+  rownames(mat) <- genes
+  colnames(mat) <- colnames(mat_df)
+
+  mat <- mat[!is.na(rownames(mat)) & rownames(mat) != "", , drop = FALSE]
+  mat <- collapse_duplicate_rows(mat, method = "sum")
+
+  storage.mode(mat) <- "numeric"
+
+  mat
+}
+
+read_metadata_or_infer <- function(sample_names, meta_file) {
+  if (file.exists(meta_file)) {
+    message("Reading GSE151371 metadata: ", meta_file)
+
+    meta <- data.table::fread(meta_file, data.table = FALSE)
+    colnames(meta) <- tolower(colnames(meta))
+
+    if (!all(c("sample", "group") %in% colnames(meta))) {
+      stop("GSE151371_metadata.csv must contain columns: sample, group")
+    }
+
+    meta <- meta[, c("sample", "group")]
+    meta$sample <- as.character(meta$sample)
+    meta$group <- toupper(as.character(meta$group))
+
+  } else {
+    message("No GSE151371_metadata.csv found. Trying to infer group from sample names.")
+    meta <- infer_gse151371_group(sample_names)
+  }
+
+  meta <- meta[meta$sample %in% sample_names, , drop = FALSE]
+
+  missing_samples <- setdiff(sample_names, meta$sample)
+  if (length(missing_samples) > 0) {
+    stop(
+      "Metadata missing samples: ",
+      paste(missing_samples, collapse = ", ")
+    )
+  }
+
+  if (any(is.na(meta$group))) {
+    bad <- meta$sample[is.na(meta$group)]
+    stop(
+      "Could not infer group for samples: ",
+      paste(bad, collapse = ", "),
+      "\nPlease provide GSE151371_metadata.csv with columns sample, group."
+    )
+  }
+
+  meta$group <- factor(meta$group, levels = c("HC", "TC", "SCI"))
+
+  if (any(is.na(meta$group))) {
+    stop("Group must be one of HC, TC, SCI.")
+  }
+
+  meta <- meta[match(sample_names, meta$sample), , drop = FALSE]
+
+  meta
+}
+
+run_voom_limma <- function(counts, meta) {
+  stopifnot(all(colnames(counts) == meta$sample))
+
+  group <- factor(meta$group, levels = c("HC", "TC", "SCI"))
+  design <- model.matrix(~ 0 + group)
+  colnames(design) <- levels(group)
+
+  y <- edgeR::DGEList(counts = counts)
+  keep <- edgeR::filterByExpr(y, design = design)
+
+  if (sum(keep) < 1000) {
+    warning("Fewer than 1000 genes retained by filterByExpr. Please check count matrix and metadata.")
+  }
+
+  y <- y[keep, , keep.lib.sizes = FALSE]
+  y <- edgeR::calcNormFactors(y, method = "TMM")
+
+  v <- limma::voom(y, design, plot = FALSE)
+  fit <- limma::lmFit(v, design)
+
+  contrast_matrix <- limma::makeContrasts(
+    SCI_vs_TC = SCI - TC,
+    SCI_vs_HC = SCI - HC,
+    TC_vs_HC  = TC - HC,
+    levels = design
+  )
+
+  fit2 <- limma::contrasts.fit(fit, contrast_matrix)
+  fit2 <- limma::eBayes(fit2)
+
+  list(
+    y = y,
+    v = v,
+    fit = fit2,
+    design = design,
+    contrasts = contrast_matrix
+  )
+}
+
+top_table_all <- function(fit, coef_name) {
+  tt <- limma::topTable(fit, coef = coef_name, number = Inf, sort.by = "P")
+  tt$gene <- rownames(tt)
+  tt <- tt[, c("gene", setdiff(colnames(tt), "gene"))]
+  rownames(tt) <- NULL
+  tt
+}
+
+safe_sd <- function(x) {
+  s <- stats::sd(x, na.rm = TRUE)
+  if (is.na(s) || s == 0) {
+    s <- NA_real_
+  }
+  s
+}
+
+control_referenced_z_score <- function(expr, meta, genes, ref_group) {
+  # expr: genes x samples
+  # meta: columns sample, group
+  genes <- intersect(genes, rownames(expr))
+
+  if (length(genes) == 0) {
+    stop("No signature genes found in expression matrix.")
+  }
+
+  meta <- meta[match(colnames(expr), meta$sample), , drop = FALSE]
+
+  ref_samples <- meta$sample[as.character(meta$group) == ref_group]
+  ref_samples <- intersect(ref_samples, colnames(expr))
+
+  if (length(ref_samples) < 2) {
+    stop("Reference group has fewer than 2 samples: ", ref_group)
+  }
+
+  x <- expr[genes, , drop = FALSE]
+
+  ref_mean <- rowMeans(x[, ref_samples, drop = FALSE], na.rm = TRUE)
+  ref_sd <- apply(x[, ref_samples, drop = FALSE], 1, safe_sd)
+
+  valid <- !is.na(ref_sd) & ref_sd > 0
+
+  x <- x[valid, , drop = FALSE]
+  ref_mean <- ref_mean[valid]
+  ref_sd <- ref_sd[valid]
+
+  z <- sweep(x, 1, ref_mean, "-")
+  z <- sweep(z, 1, ref_sd, "/")
+
+  score <- colMeans(z, na.rm = TRUE)
+
+  list(
+    score = score,
+    z = z,
+    genes_requested = genes,
+    genes_used = rownames(z),
+    n_requested = length(genes),
+    n_used = nrow(z)
+  )
+}
+
+hedges_g <- function(x, y) {
+  x <- x[is.finite(x)]
+  y <- y[is.finite(y)]
+
+  nx <- length(x)
+  ny <- length(y)
+
+  if (nx < 2 || ny < 2) return(NA_real_)
+
+  sx <- stats::var(x)
+  sy <- stats::var(y)
+
+  sp <- sqrt(((nx - 1) * sx + (ny - 1) * sy) / (nx + ny - 2))
+
+  if (!is.finite(sp) || sp == 0) return(NA_real_)
+
+  d <- (mean(x) - mean(y)) / sp
+  J <- 1 - 3 / (4 * (nx + ny) - 9)
+
+  d * J
+}
+
+bootstrap_hedges_ci <- function(x, y, n_boot = 2000, conf = 0.95) {
+  x <- x[is.finite(x)]
+  y <- y[is.finite(y)]
+
+  if (length(x) < 2 || length(y) < 2) {
+    return(c(ci_low = NA_real_, ci_high = NA_real_))
+  }
+
+  vals <- replicate(n_boot, {
+    xb <- sample(x, replace = TRUE)
+    yb <- sample(y, replace = TRUE)
+    hedges_g(xb, yb)
+  })
+
+  alpha <- (1 - conf) / 2
+  stats::quantile(vals, probs = c(alpha, 1 - alpha), na.rm = TRUE, names = FALSE) |>
+    setNames(c("ci_low", "ci_high"))
+}
+
+compare_two_groups <- function(df, score_col, group_col = "group", group_case = "SCI", group_ref = "CTL") {
+  d <- df[is.finite(df[[score_col]]) & df[[group_col]] %in% c(group_case, group_ref), , drop = FALSE]
+
+  x <- d[[score_col]][d[[group_col]] == group_case]
+  y <- d[[score_col]][d[[group_col]] == group_ref]
+
+  p <- tryCatch(
+    stats::wilcox.test(x, y, exact = FALSE)$p.value,
+    error = function(e) NA_real_
+  )
+
+  g <- hedges_g(x, y)
+  ci <- bootstrap_hedges_ci(x, y)
+
+  data.frame(
+    score = score_col,
+    group_case = group_case,
+    group_ref = group_ref,
+    n_case = length(x),
+    n_ref = length(y),
+    mean_case = mean(x, na.rm = TRUE),
+    mean_ref = mean(y, na.rm = TRUE),
+    median_case = stats::median(x, na.rm = TRUE),
+    median_ref = stats::median(y, na.rm = TRUE),
+    mean_difference = mean(x, na.rm = TRUE) - mean(y, na.rm = TRUE),
+    hedges_g = g,
+    hedges_g_ci_low = ci[1],
+    hedges_g_ci_high = ci[2],
+    wilcox_p = p,
+    stringsAsFactors = FALSE
+  )
+}
+
+plot_score_boxplot <- function(df, score_col, title, outfile, group_col = "group") {
+  d <- df[df[[group_col]] %in% c("CTL", "SCI"), , drop = FALSE]
+  d[[group_col]] <- factor(d[[group_col]], levels = c("CTL", "SCI"))
+
+  p <- ggplot(d, aes_string(x = group_col, y = score_col, fill = group_col)) +
+    geom_boxplot(width = 0.55, outlier.shape = NA, alpha = 0.70) +
+    geom_jitter(width = 0.12, size = 2, alpha = 0.85) +
+    theme_classic(base_size = 12) +
+    labs(
+      title = title,
+      x = NULL,
+      y = score_col
+    ) +
+    theme(
+      legend.position = "none",
+      plot.title = element_text(face = "bold", hjust = 0.5)
+    )
+
+  ggsave(outfile, p, width = 4.2, height = 4.0)
+}
+
+parse_gse293559_metadata_if_needed <- function(expr_sample_names, meta_file) {
+  if (file.exists(meta_file)) {
+    message("Reading curated GSE293559 metadata: ", meta_file)
+    meta <- data.table::fread(meta_file, data.table = FALSE, check.names = FALSE)
+
+    # Normalize likely column names.
+    cn <- colnames(meta)
+
+    if (!"library_name" %in% cn) {
+      if ("Library name" %in% cn) {
+        colnames(meta)[colnames(meta) == "Library name"] <- "library_name"
+      } else if ("sample" %in% cn) {
+        colnames(meta)[colnames(meta) == "sample"] <- "library_name"
+      }
+    }
+
+    if (!"group" %in% colnames(meta)) {
+      stop("GSE293559 metadata must contain a group column.")
+    }
+
+    meta$library_name <- as.character(meta$library_name)
+    meta$group <- as.character(meta$group)
+
+  } else {
+    message("No curated GSE293559 metadata found. Inferring minimal metadata from library names.")
+
+    library_name <- expr_sample_names
+
+    subject_id <- sub("v0$", "", library_name, ignore.case = TRUE)
+
+    group <- ifelse(subject_id %in% paste0("ID", 13:21), "CTL", "SCI")
+
+    reused <- subject_id %in% c(paste0("ID", 1:10), paste0("ID", 13:21))
+
+    meta <- data.frame(
+      library_name = library_name,
+      subject_id = subject_id,
+      group = group,
+      treatment = ifelse(group == "SCI", "Acute", "Control"),
+      reused_from_gse226238 = reused,
+      stringsAsFactors = FALSE
+    )
+  }
+
+  # Harmonize names.
+  if (!"sample" %in% colnames(meta)) {
+    meta$sample <- meta$library_name
+  }
+
+  if (!"subject_id" %in% colnames(meta)) {
+    meta$subject_id <- sub("v0$", "", meta$library_name, ignore.case = TRUE)
+  }
+
+  if (!"reused_from_gse226238" %in% colnames(meta)) {
+    meta$reused_from_gse226238 <- meta$subject_id %in% c(paste0("ID", 1:10), paste0("ID", 13:21))
+  }
+
+  meta$group <- toupper(meta$group)
+  meta$group[meta$group %in% c("CONTROL", "CTRL", "UNINJURED")] <- "CTL"
+
+  meta <- meta[meta$library_name %in% expr_sample_names, , drop = FALSE]
+  meta <- meta[match(expr_sample_names, meta$library_name), , drop = FALSE]
+
+  if (any(is.na(meta$group))) {
+    stop("Some GSE293559 samples have missing group.")
+  }
+
+  meta$sample <- meta$library_name
+
+  meta
+}
+
+read_gse293559_expression <- function(file) {
+  message("Reading GSE293559 processed expression matrix: ", file)
+
+  dt <- data.table::fread(file, data.table = FALSE, check.names = FALSE)
+
+  if (!"Library name" %in% colnames(dt)) {
+    stop("Expected first/sample column named 'Library name' in GSE293559 processed data.")
+  }
+
+  sample_names <- as.character(dt[["Library name"]])
+
+  expr_df <- dt[, setdiff(colnames(dt), "Library name"), drop = FALSE]
+
+  mat <- as.matrix(expr_df)
+  storage.mode(mat) <- "numeric"
+
+  rownames(mat) <- sample_names
+
+  # Current orientation: samples x transcript/features.
+  # Convert to features x samples.
+  mat <- t(mat)
+
+  feature_id <- rownames(mat)
+  ensembl_gene <- extract_ensembl_gene_id(feature_id)
+
+  mapping <- data.frame(
+    feature_id = feature_id,
+    ensembl_gene = ensembl_gene,
+    stringsAsFactors = FALSE
+  )
+
+  valid <- !is.na(mapping$ensembl_gene)
+
+  gene_symbols <- AnnotationDbi::mapIds(
+    org.Hs.eg.db,
+    keys = unique(mapping$ensembl_gene[valid]),
+    keytype = "ENSEMBL",
+    column = "SYMBOL",
+    multiVals = "first"
+  )
+
+  mapping$gene_symbol <- NA_character_
+  mapping$gene_symbol[valid] <- as.character(gene_symbols[mapping$ensembl_gene[valid]])
+
+  keep <- !is.na(mapping$gene_symbol) & mapping$gene_symbol != ""
+
+  mat2 <- mat[keep, , drop = FALSE]
+  rownames(mat2) <- mapping$gene_symbol[keep]
+
+  # Multiple transcripts/features per gene symbol: average them.
+  mat2 <- collapse_duplicate_rows(mat2, method = "mean")
+
+  list(
+    expr = mat2,
+    mapping = mapping
+  )
+}
+
+
+############################
+# 3. Predefined candidate pools
+############################
+# These are broad biologically interpretable candidate pools.
+# The final signature is selected only from GSE151371 stability analysis.
+# GSE293559 is never used for feature selection.
+
+innate_candidate_pool <- unique(c(
+  "S100A8", "S100A9", "S100A12",
+  "ANXA3", "CLEC4D", "FCGR1A", "FCGR1B", "FCGR2A", "FCGR3A",
+  "BST1", "IRAK3", "TLR2", "TLR4", "TLR5", "TLR8",
+  "NLRC4", "BCL2A1", "MIR223", "QPCT", "SLC37A3", "SLC22A4",
+  "PLIN3", "CD14", "IL1B", "IL1R1", "IL1RN", "NLRP3",
+  "LYZ", "FCN1", "LST1", "CTSS", "CTSD", "LGALS3",
+  "LILRB1", "LILRB2", "MS4A7", "MNDA", "CEACAM8",
+  "MPO", "ELANE", "OLR1", "ARG1", "RETN", "HP",
+  "CXCL1", "CXCL2", "CXCL8", "CXCR1", "CXCR2",
+  "C5AR1", "FPR1", "FPR2", "ITGAM", "ITGAX",
+  "TYROBP", "AIF1", "S100P", "VCAN", "NAMPT"
+))
+
+adaptive_candidate_pool <- unique(c(
+  "CD3D", "CD3E", "CD3G",
+  "TRAC", "TRBC1", "TRBC2",
+  "IL7R", "CCR7", "TCF7", "LEF1",
+  "ZAP70", "LCK", "LAT", "CD247",
+  "CD27", "CD28", "CD2", "LTB",
+  "FOXP3", "RUNX3", "GATA3", "CXCR3",
+  "IL2RB", "IL2RG", "CD40LG",
+  "KLRD1", "NKG7", "GNLY", "PRF1", "GZMB", "GZMA",
+  "GZMK", "KLRB1", "KLRF1", "KLRK1",
+  "MS4A1", "CD79A", "CD79B",
+  "HLA-DRA", "HLA-DRB1", "HLA-DPA1", "HLA-DPB1",
+  "CD74", "ICOS", "ITK", "BCL11B", "SELL"
+))
+
+
+############################
+# 4. GSE151371 discovery analysis
+############################
+
+message("\n==============================")
+message("Step 1: GSE151371 discovery")
+message("==============================")
+
+counts151 <- read_count_matrix(gse151371_count_file)
+meta151 <- read_metadata_or_infer(colnames(counts151), gse151371_meta_file)
+
+# Reorder columns and metadata.
+meta151 <- meta151[match(colnames(counts151), meta151$sample), , drop = FALSE]
+
+message("GSE151371 group counts:")
+print(table(meta151$group))
+
+if (!all(c("HC", "TC", "SCI") %in% meta151$group)) {
+  stop("GSE151371 must contain HC, TC, and SCI groups.")
+}
+
+fit151 <- run_voom_limma(counts151, meta151)
+
+de_sci_tc <- top_table_all(fit151$fit, "SCI_vs_TC")
+de_sci_hc <- top_table_all(fit151$fit, "SCI_vs_HC")
+de_tc_hc  <- top_table_all(fit151$fit, "TC_vs_HC")
+
+data.table::fwrite(de_sci_tc, file.path(outdir_discovery, "GSE151371_DE_SCI_vs_TC_primary.csv"))
+data.table::fwrite(de_sci_hc, file.path(outdir_discovery, "GSE151371_DE_SCI_vs_HC_supporting.csv"))
+data.table::fwrite(de_tc_hc,  file.path(outdir_discovery, "GSE151371_DE_TC_vs_HC_audit.csv"))
+
+report_deg_counts <- function(tt, contrast) {
+  data.frame(
+    contrast = contrast,
+    up = sum(tt$adj.P.Val < fdr_cutoff_report & tt$logFC > logfc_cutoff_report, na.rm = TRUE),
+    down = sum(tt$adj.P.Val < fdr_cutoff_report & tt$logFC < -logfc_cutoff_report, na.rm = TRUE),
+    stringsAsFactors = FALSE
+  )
+}
+
+deg_summary <- rbind(
+  report_deg_counts(de_sci_tc, "SCI_vs_TC"),
+  report_deg_counts(de_sci_hc, "SCI_vs_HC"),
+  report_deg_counts(de_tc_hc, "TC_vs_HC")
+)
+
+data.table::fwrite(deg_summary, file.path(outdir_discovery, "GSE151371_DEG_count_summary.csv"))
+
+
+############################
+# 5. Stability selection in GSE151371
+############################
+
+message("\n==============================")
+message("Step 2: Stability selection")
+message("==============================")
+
+expr_genes <- rownames(fit151$v$E)
+
+innate_pool_present <- intersect(innate_candidate_pool, expr_genes)
+adaptive_pool_present <- intersect(adaptive_candidate_pool, expr_genes)
+
+message("Innate candidate genes present in GSE151371: ", length(innate_pool_present))
+message("Adaptive candidate genes present in GSE151371: ", length(adaptive_pool_present))
+
+if (length(innate_pool_present) < min_genes_per_module) {
+  stop("Too few innate candidate genes present in GSE151371.")
+}
+if (length(adaptive_pool_present) < min_genes_per_module) {
+  stop("Too few adaptive candidate genes present in GSE151371.")
+}
+
+stability_record <- data.frame(
+  gene = c(innate_pool_present, adaptive_pool_present),
+  module = c(rep("innate", length(innate_pool_present)), rep("adaptive", length(adaptive_pool_present))),
+  selected_n = 0,
+  tested_n = 0,
+  direction_correct_n = 0,
+  mean_logFC_SCI_vs_TC = 0,
+  mean_logFC_SCI_vs_HC = 0,
+  stringsAsFactors = FALSE
+)
+
+for (b in seq_len(B)) {
+  if (b %% 25 == 0) {
+    message("Stability iteration: ", b, " / ", B)
+  }
+
+  sampled_samples <- unlist(lapply(levels(meta151$group), function(g) {
+    ss <- meta151$sample[meta151$group == g]
+    n_take <- max(2, floor(length(ss) * subsample_fraction))
+    sample(ss, n_take, replace = FALSE)
+  }))
+
+  counts_b <- counts151[, sampled_samples, drop = FALSE]
+  meta_b <- meta151[match(sampled_samples, meta151$sample), , drop = FALSE]
+
+  fit_b <- tryCatch(
+    run_voom_limma(counts_b, meta_b),
+    error = function(e) NULL
+  )
+
+  if (is.null(fit_b)) {
+    next
+  }
+
+  tt_primary <- top_table_all(fit_b$fit, "SCI_vs_TC")
+  tt_support <- top_table_all(fit_b$fit, "SCI_vs_HC")
+
+  rownames(tt_primary) <- tt_primary$gene
+  rownames(tt_support) <- tt_support$gene
+
+  # Innate: higher in SCI than TC and directionally higher than HC.
+  innate_present_b <- intersect(innate_pool_present, rownames(tt_primary))
+  innate_df <- data.frame(
+    gene = innate_present_b,
+    logFC_primary = tt_primary[innate_present_b, "logFC"],
+    p_primary = tt_primary[innate_present_b, "P.Value"],
+    logFC_support = tt_support[innate_present_b, "logFC"],
+    stringsAsFactors = FALSE
+  )
+
+  innate_df$direction_ok <- innate_df$logFC_primary > 0 & innate_df$logFC_support > 0
+  innate_df <- innate_df[order(innate_df$p_primary), , drop = FALSE]
+  selected_innate <- head(innate_df$gene[innate_df$direction_ok], top_n_per_module_per_iteration)
+
+  # Adaptive: lower in SCI than TC and directionally lower than HC.
+  adaptive_present_b <- intersect(adaptive_pool_present, rownames(tt_primary))
+  adaptive_df <- data.frame(
+    gene = adaptive_present_b,
+    logFC_primary = tt_primary[adaptive_present_b, "logFC"],
+    p_primary = tt_primary[adaptive_present_b, "P.Value"],
+    logFC_support = tt_support[adaptive_present_b, "logFC"],
+    stringsAsFactors = FALSE
+  )
+
+  adaptive_df$direction_ok <- adaptive_df$logFC_primary < 0 & adaptive_df$logFC_support < 0
+  adaptive_df <- adaptive_df[order(adaptive_df$p_primary), , drop = FALSE]
+  selected_adaptive <- head(adaptive_df$gene[adaptive_df$direction_ok], top_n_per_module_per_iteration)
+
+  # Update records.
+  update_one_module <- function(module_name, df_module, selected_genes) {
+    idx <- match(df_module$gene, stability_record$gene)
+    idx <- idx[!is.na(idx) & stability_record$module[idx] == module_name]
+
+    stability_record$tested_n[idx] <<- stability_record$tested_n[idx] + 1
+
+    direction_correct <- df_module$direction_ok[match(stability_record$gene[idx], df_module$gene)]
+    direction_correct[is.na(direction_correct)] <- FALSE
+
+    stability_record$direction_correct_n[idx] <<-
+      stability_record$direction_correct_n[idx] + as.integer(direction_correct)
+
+    lf1 <- df_module$logFC_primary[match(stability_record$gene[idx], df_module$gene)]
+    lf2 <- df_module$logFC_support[match(stability_record$gene[idx], df_module$gene)]
+
+    lf1[is.na(lf1)] <- 0
+    lf2[is.na(lf2)] <- 0
+
+    stability_record$mean_logFC_SCI_vs_TC[idx] <<-
+      stability_record$mean_logFC_SCI_vs_TC[idx] + lf1
+
+    stability_record$mean_logFC_SCI_vs_HC[idx] <<-
+      stability_record$mean_logFC_SCI_vs_HC[idx] + lf2
+
+    sel_idx <- match(selected_genes, stability_record$gene)
+    sel_idx <- sel_idx[!is.na(sel_idx) & stability_record$module[sel_idx] == module_name]
+
+    stability_record$selected_n[sel_idx] <<-
+      stability_record$selected_n[sel_idx] + 1
+  }
+
+  update_one_module("innate", innate_df, selected_innate)
+  update_one_module("adaptive", adaptive_df, selected_adaptive)
+}
+
+stability_record$selection_frequency <- stability_record$selected_n / B
+stability_record$direction_consistency <- stability_record$direction_correct_n / pmax(stability_record$tested_n, 1)
+stability_record$mean_logFC_SCI_vs_TC <- stability_record$mean_logFC_SCI_vs_TC / pmax(stability_record$tested_n, 1)
+stability_record$mean_logFC_SCI_vs_HC <- stability_record$mean_logFC_SCI_vs_HC / pmax(stability_record$tested_n, 1)
+
+# Add full-data DE statistics.
+rownames(de_sci_tc) <- de_sci_tc$gene
+rownames(de_sci_hc) <- de_sci_hc$gene
+
+stability_record$full_logFC_SCI_vs_TC <- de_sci_tc[stability_record$gene, "logFC"]
+stability_record$full_FDR_SCI_vs_TC <- de_sci_tc[stability_record$gene, "adj.P.Val"]
+stability_record$full_logFC_SCI_vs_HC <- de_sci_hc[stability_record$gene, "logFC"]
+stability_record$full_FDR_SCI_vs_HC <- de_sci_hc[stability_record$gene, "adj.P.Val"]
+
+stability_record <- stability_record[order(
+  stability_record$module,
+  -stability_record$selection_frequency,
+  -stability_record$direction_consistency,
+  stability_record$full_FDR_SCI_vs_TC
+), ]
+
+data.table::fwrite(
+  stability_record,
+  file.path(outdir_discovery, "GSE151371_stability_selection_all_candidates.csv")
+)
+
+lock_module <- function(stab, module_name) {
+  d <- stab[stab$module == module_name, , drop = FALSE]
+
+  if (module_name == "innate") {
+    direction_full_ok <- d$full_logFC_SCI_vs_TC > 0 & d$full_logFC_SCI_vs_HC > 0
+  } else {
+    direction_full_ok <- d$full_logFC_SCI_vs_TC < 0 & d$full_logFC_SCI_vs_HC < 0
+  }
+
+  locked <- d[
+    d$selection_frequency >= min_selection_frequency &
+      d$direction_consistency >= min_direction_consistency &
+      direction_full_ok,
+    ,
+    drop = FALSE
+  ]
+
+  locked <- locked[order(
+    -locked$selection_frequency,
+    -locked$direction_consistency,
+    locked$full_FDR_SCI_vs_TC
+  ), , drop = FALSE]
+
+  if (nrow(locked) < min_genes_per_module) {
+    warning(
+      "Fewer than ", min_genes_per_module,
+      " genes passed strict threshold for ", module_name,
+      ". Falling back to top-ranked stable direction-consistent genes."
+    )
+
+    fallback <- d[direction_full_ok, , drop = FALSE]
+    fallback <- fallback[order(
+      -fallback$selection_frequency,
+      -fallback$direction_consistency,
+      fallback$full_FDR_SCI_vs_TC
+    ), , drop = FALSE]
+
+    locked <- head(fallback, min_genes_per_module)
+  }
+
+  head(locked, max_genes_per_module)
+}
+
+locked_innate <- lock_module(stability_record, "innate")
+locked_adaptive <- lock_module(stability_record, "adaptive")
+
+data.table::fwrite(
+  locked_innate,
+  file.path(outdir_discovery, "locked_innate_gene_set_v1.csv")
+)
+
+data.table::fwrite(
+  locked_adaptive,
+  file.path(outdir_discovery, "locked_adaptive_gene_set_v1.csv")
+)
+
+locked_signature <- list(
+  project = "SCI discovery-replication",
+  discovery_dataset = "GSE151371",
+  validation_dataset = "GSE293559",
+  primary_contrast = "SCI_vs_TC",
+  supporting_contrast = "SCI_vs_HC",
+  stability_selection = list(
+    B = B,
+    subsample_fraction = subsample_fraction,
+    top_n_per_module_per_iteration = top_n_per_module_per_iteration,
+    min_selection_frequency = min_selection_frequency,
+    min_direction_consistency = min_direction_consistency,
+    min_genes_per_module = min_genes_per_module,
+    max_genes_per_module = max_genes_per_module
+  ),
+  innate_genes = locked_innate$gene,
+  adaptive_genes = locked_adaptive$gene,
+  score_formula = list(
+    innate_score = "mean control-referenced z-score of locked innate genes",
+    adaptive_score = "mean control-referenced z-score of locked adaptive genes",
+    balance_score = "innate_score - adaptive_score"
+  )
+)
+
+jsonlite::write_json(
+  locked_signature,
+  path = file.path(outdir_discovery, "locked_signature_v1.json"),
+  pretty = TRUE,
+  auto_unbox = TRUE
+)
+
+message("\nLocked innate genes:")
+print(locked_innate$gene)
+
+message("\nLocked adaptive genes:")
+print(locked_adaptive$gene)
+
+
+############################
+# 6. Score GSE151371 using locked signature
+############################
+
+message("\n==============================")
+message("Step 3: Score GSE151371")
+message("==============================")
+
+expr151 <- fit151$v$E
+
+score151_innate <- control_referenced_z_score(
+  expr = expr151,
+  meta = data.frame(sample = meta151$sample, group = meta151$group, stringsAsFactors = FALSE),
+  genes = locked_innate$gene,
+  ref_group = "TC"
+)
+
+score151_adaptive <- control_referenced_z_score(
+  expr = expr151,
+  meta = data.frame(sample = meta151$sample, group = meta151$group, stringsAsFactors = FALSE),
+  genes = locked_adaptive$gene,
+  ref_group = "TC"
+)
+
+scores151 <- data.frame(
+  sample = colnames(expr151),
+  group = as.character(meta151$group),
+  innate_score = as.numeric(score151_innate$score[colnames(expr151)]),
+  adaptive_score = as.numeric(score151_adaptive$score[colnames(expr151)]),
+  stringsAsFactors = FALSE
+)
+
+scores151$balance_score <- scores151$innate_score - scores151$adaptive_score
+
+data.table::fwrite(
+  scores151,
+  file.path(outdir_discovery, "GSE151371_locked_signature_scores_TC_reference.csv")
+)
+
+coverage151 <- data.frame(
+  dataset = "GSE151371",
+  module = c("innate", "adaptive"),
+  n_requested = c(length(locked_innate$gene), length(locked_adaptive$gene)),
+  n_used = c(length(score151_innate$genes_used), length(score151_adaptive$genes_used)),
+  genes_used = c(
+    paste(score151_innate$genes_used, collapse = ";"),
+    paste(score151_adaptive$genes_used, collapse = ";")
+  ),
+  stringsAsFactors = FALSE
+)
+
+data.table::fwrite(
+  coverage151,
+  file.path(outdir_discovery, "GSE151371_locked_signature_gene_coverage.csv")
+)
+
+
+############################
+# 7. Read and score GSE293559
+############################
+
+message("\n==============================")
+message("Step 4: GSE293559 validation")
+message("==============================")
+
+gse293559 <- read_gse293559_expression(gse293559_expr_file)
+expr293 <- gse293559$expr
+mapping293 <- gse293559$mapping
+
+data.table::fwrite(
+  mapping293,
+  file.path(outdir_validation, "GSE293559_feature_mapping_ensembl_to_symbol.csv")
+)
+
+meta293 <- parse_gse293559_metadata_if_needed(
+  expr_sample_names = colnames(expr293),
+  meta_file = gse293559_meta_file
+)
+
+# Keep only samples with metadata.
+expr293 <- expr293[, meta293$sample, drop = FALSE]
+
+meta293$group <- factor(meta293$group, levels = c("CTL", "SCI"))
+
+message("GSE293559 group counts:")
+print(table(meta293$group))
+
+message("GSE293559 reused_from_gse226238 counts:")
+print(table(meta293$group, meta293$reused_from_gse226238, useNA = "ifany"))
+
+score293_innate <- control_referenced_z_score(
+  expr = expr293,
+  meta = data.frame(sample = meta293$sample, group = meta293$group, stringsAsFactors = FALSE),
+  genes = locked_innate$gene,
+  ref_group = "CTL"
+)
+
+score293_adaptive <- control_referenced_z_score(
+  expr = expr293,
+  meta = data.frame(sample = meta293$sample, group = meta293$group, stringsAsFactors = FALSE),
+  genes = locked_adaptive$gene,
+  ref_group = "CTL"
+)
+
+scores293 <- meta293
+scores293$innate_score <- as.numeric(score293_innate$score[scores293$sample])
+scores293$adaptive_score <- as.numeric(score293_adaptive$score[scores293$sample])
+scores293$balance_score <- scores293$innate_score - scores293$adaptive_score
+
+data.table::fwrite(
+  scores293,
+  file.path(outdir_validation, "GSE293559_locked_signature_scores.csv")
+)
+
+coverage293 <- data.frame(
+  dataset = "GSE293559",
+  module = c("innate", "adaptive"),
+  n_requested = c(length(locked_innate$gene), length(locked_adaptive$gene)),
+  n_used = c(length(score293_innate$genes_used), length(score293_adaptive$genes_used)),
+  gene_coverage = c(
+    length(score293_innate$genes_used) / length(locked_innate$gene),
+    length(score293_adaptive$genes_used) / length(locked_adaptive$gene)
+  ),
+  genes_missing = c(
+    paste(setdiff(locked_innate$gene, score293_innate$genes_used), collapse = ";"),
+    paste(setdiff(locked_adaptive$gene, score293_adaptive$genes_used), collapse = ";")
+  ),
+  genes_used = c(
+    paste(score293_innate$genes_used, collapse = ";"),
+    paste(score293_adaptive$genes_used, collapse = ";")
+  ),
+  stringsAsFactors = FALSE
+)
+
+data.table::fwrite(
+  coverage293,
+  file.path(outdir_validation, "GSE293559_locked_signature_gene_coverage.csv")
+)
+
+
+############################
+# 8. Validation statistics
+############################
+
+message("\n==============================")
+message("Step 5: Validation statistics")
+message("==============================")
+
+score_cols <- c("innate_score", "adaptive_score", "balance_score")
+
+# Main analysis: all 36 SCI vs 9 CTL.
+stats_main <- do.call(rbind, lapply(score_cols, function(sc) {
+  out <- compare_two_groups(scores293, score_col = sc, group_col = "group", group_case = "SCI", group_ref = "CTL")
+  out$analysis <- "main_all_GSE293559_36_SCI_vs_9_CTL"
+  out
+}))
+
+# Sensitivity analysis:
+# Exclude reused SCI samples ID1v0-ID10v0.
+# CTL samples are all reused from GSE226238, so strict non-reused CTL comparison is impossible.
+scores293_sens <- scores293[
+  scores293$group == "CTL" |
+    (scores293$group == "SCI" & !as.logical(scores293$reused_from_gse226238)),
+  ,
+  drop = FALSE
+]
+
+stats_sens <- do.call(rbind, lapply(score_cols, function(sc) {
+  out <- compare_two_groups(scores293_sens, score_col = sc, group_col = "group", group_case = "SCI", group_ref = "CTL")
+  out$analysis <- "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+  out
+}))
+
+validation_stats <- rbind(stats_main, stats_sens)
+
+validation_stats <- validation_stats[, c(
+  "analysis",
+  "score",
+  "group_case",
+  "group_ref",
+  "n_case",
+  "n_ref",
+  "mean_case",
+  "mean_ref",
+  "median_case",
+  "median_ref",
+  "mean_difference",
+  "hedges_g",
+  "hedges_g_ci_low",
+  "hedges_g_ci_high",
+  "wilcox_p"
+)]
+
+data.table::fwrite(
+  validation_stats,
+  file.path(outdir_validation, "GSE293559_validation_statistics.csv")
+)
+
+print(validation_stats)
+
+
+############################
+# 9. Optional linear model sensitivity
+############################
+
+message("\n==============================")
+message("Step 6: Optional linear-model sensitivity")
+message("==============================")
+
+lm_results <- list()
+
+run_lm_if_possible <- function(df, score_col) {
+  d <- df[is.finite(df[[score_col]]) & df$group %in% c("CTL", "SCI"), , drop = FALSE]
+  d$group <- factor(d$group, levels = c("CTL", "SCI"))
+
+  rhs <- "group"
+
+  if ("platform" %in% colnames(d) && length(unique(na.omit(d$platform))) > 1) {
+    tab <- table(d$group, d$platform)
+    if (all(rowSums(tab > 0) >= 1) && all(colSums(tab > 0) >= 1)) {
+      rhs <- paste(rhs, "+ platform")
+    }
+  }
+
+  if ("age" %in% colnames(d)) {
+    suppressWarnings(d$age_numeric <- as.numeric(d$age))
+    if (sum(is.finite(d$age_numeric)) >= 10) {
+      rhs <- paste(rhs, "+ age_numeric")
+    }
+  }
+
+  if ("sex" %in% colnames(d)) {
+    if (length(unique(na.omit(d$sex))) > 1) {
+      rhs <- paste(rhs, "+ sex")
+    }
+  } else if ("Sex" %in% colnames(d)) {
+    d$sex <- d$Sex
+    if (length(unique(na.omit(d$sex))) > 1) {
+      rhs <- paste(rhs, "+ sex")
+    }
+  }
+
+  form <- as.formula(paste(score_col, "~", rhs))
+
+  fit <- tryCatch(lm(form, data = d), error = function(e) NULL)
+
+  if (is.null(fit)) return(NULL)
+
+  co <- summary(fit)$coefficients
+  co <- as.data.frame(co)
+  co$term <- rownames(co)
+  rownames(co) <- NULL
+  co$score <- score_col
+  co$formula <- paste(deparse(form), collapse = "")
+
+  co
+}
+
+for (sc in score_cols) {
+  lm_results[[sc]] <- run_lm_if_possible(scores293, sc)
+}
+
+lm_results <- do.call(rbind, lm_results)
+
+if (!is.null(lm_results) && nrow(lm_results) > 0) {
+  data.table::fwrite(
+    lm_results,
+    file.path(outdir_validation, "GSE293559_validation_lm_sensitivity.csv")
+  )
+}
+
+
+############################
+# 10. Plots
+############################
+
+message("\n==============================")
+message("Step 7: Plotting")
+message("==============================")
+
+plot_score_boxplot(
+  scores293,
+  "innate_score",
+  "GSE293559 main: innate score",
+  file.path(outdir_validation, "GSE293559_main_innate_score.pdf")
+)
+
+plot_score_boxplot(
+  scores293,
+  "adaptive_score",
+  "GSE293559 main: adaptive score",
+  file.path(outdir_validation, "GSE293559_main_adaptive_score.pdf")
+)
+
+plot_score_boxplot(
+  scores293,
+  "balance_score",
+  "GSE293559 main: balance score",
+  file.path(outdir_validation, "GSE293559_main_balance_score.pdf")
+)
+
+plot_score_boxplot(
+  scores293_sens,
+  "innate_score",
+  "GSE293559 sensitivity: innate score",
+  file.path(outdir_validation, "GSE293559_sensitivity_innate_score.pdf")
+)
+
+plot_score_boxplot(
+  scores293_sens,
+  "adaptive_score",
+  "GSE293559 sensitivity: adaptive score",
+  file.path(outdir_validation, "GSE293559_sensitivity_adaptive_score.pdf")
+)
+
+plot_score_boxplot(
+  scores293_sens,
+  "balance_score",
+  "GSE293559 sensitivity: balance score",
+  file.path(outdir_validation, "GSE293559_sensitivity_balance_score.pdf")
+)
+
+
+############################
+# 11. Final project summary
+############################
+
+message("\n==============================")
+message("Step 8: Final summary")
+message("==============================")
+
+summary_lines <- c(
+  "SCI Stage 2 signature locking and GSE293559 validation completed.",
+  "",
+  "Discovery dataset:",
+  "  GSE151371 raw counts only.",
+  "  Primary contrast: SCI vs TC.",
+  "  Supporting contrast: SCI vs HC.",
+  "",
+  "Locked innate genes:",
+  paste("  ", paste(locked_innate$gene, collapse = ", ")),
+  "",
+  "Locked adaptive genes:",
+  paste("  ", paste(locked_adaptive$gene, collapse = ", ")),
+  "",
+  "GSE293559 validation design:",
+  "  Main analysis: all available GSE293559 RNA-seq samples, SCI vs CTL.",
+  "  Sensitivity analysis: exclude SCI samples reused from GSE226238; CTL samples remain reused because no non-reused CTL exists.",
+  "",
+  "Score formula:",
+  "  Innate score = mean control-referenced z-score of locked innate genes.",
+  "  Adaptive score = mean control-referenced z-score of locked adaptive genes.",
+  "  Balance score = innate score - adaptive score.",
+  "",
+  "Key output files:",
+  paste0("  ", file.path(outdir_discovery, "locked_innate_gene_set_v1.csv")),
+  paste0("  ", file.path(outdir_discovery, "locked_adaptive_gene_set_v1.csv")),
+  paste0("  ", file.path(outdir_discovery, "locked_signature_v1.json")),
+  paste0("  ", file.path(outdir_validation, "GSE293559_locked_signature_scores.csv")),
+  paste0("  ", file.path(outdir_validation, "GSE293559_validation_statistics.csv")),
+  paste0("  ", file.path(outdir_validation, "GSE293559_locked_signature_gene_coverage.csv"))
+)
+
+writeLines(summary_lines, con = "SCI_stage2_signature_validation_run_summary.txt")
+writeLines(summary_lines)
+
+message("\nDone.")
+```
+
+```{r}
+############################################################
+# GSE293559 external validation plotting
+# Main figure + sensitivity figure
+#
+# Input:
+#   GSE293559_locked_signature_scores.csv
+#   GSE293559_locked_signature_gene_coverage.csv
+#
+# Output:
+#   03_GSE293559_validation_figures/
+#     Fig_GSE293559_external_validation_main.pdf
+#     SuppFig_GSE293559_sensitivity_exclude_reused_SCI.pdf
+#     GSE293559_plot_statistics.csv
+############################################################
+
+
+############################
+# 0. Settings
+############################
+
+set.seed(20260714)
+
+score_file <- "GSE293559_locked_signature_scores.csv"
+coverage_file <- "GSE293559_locked_signature_gene_coverage.csv"
+
+outdir <- "03_GSE293559_validation_figures"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+# Colors can be adjusted later if needed.
+group_colors <- c(
+  "CTL" = "#6E6E6E",
+  "SCI" = "#D73027"
+)
+
+# Figure size
+single_panel_width <- 4.2
+single_panel_height <- 4.2
+
+combined_width <- 12.0
+combined_height <- 4.2
+
+
+############################
+# 1. Load packages
+############################
+
+cran_pkgs <- c("ggplot2", "dplyr", "tidyr", "readr", "patchwork")
+
+for (pkg in cran_pkgs) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+}
+
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(readr)
+library(patchwork)
+
+
+############################
+# 2. Helper functions
+############################
+
+to_logical_safe <- function(x) {
+  x <- tolower(as.character(x))
+  x %in% c("true", "t", "yes", "y", "1")
+}
+
+format_p <- function(p) {
+  if (is.na(p)) return("P = NA")
+  if (p < 0.001) {
+    return(paste0("P = ", formatC(p, format = "e", digits = 2)))
+  } else {
+    return(paste0("P = ", sprintf("%.3f", p)))
+  }
+}
+
+format_g <- function(g) {
+  if (is.na(g)) return("g = NA")
+  paste0("g = ", sprintf("%.2f", g))
+}
+
+hedges_g <- function(x, y) {
+  x <- x[is.finite(x)]
+  y <- y[is.finite(y)]
+
+  nx <- length(x)
+  ny <- length(y)
+
+  if (nx < 2 || ny < 2) return(NA_real_)
+
+  sx <- stats::var(x)
+  sy <- stats::var(y)
+
+  sp <- sqrt(((nx - 1) * sx + (ny - 1) * sy) / (nx + ny - 2))
+
+  if (!is.finite(sp) || sp == 0) return(NA_real_)
+
+  d <- (mean(x) - mean(y)) / sp
+
+  # Small-sample correction
+  J <- 1 - 3 / (4 * (nx + ny) - 9)
+
+  d * J
+}
+
+compare_sci_vs_ctl <- function(df, score_col, analysis_name) {
+  d <- df %>%
+    filter(group %in% c("CTL", "SCI")) %>%
+    filter(is.finite(.data[[score_col]]))
+
+  x <- d %>% filter(group == "SCI") %>% pull(.data[[score_col]])
+  y <- d %>% filter(group == "CTL") %>% pull(.data[[score_col]])
+
+  p <- tryCatch(
+    wilcox.test(x, y, exact = FALSE)$p.value,
+    error = function(e) NA_real_
+  )
+
+  g <- hedges_g(x, y)
+
+  tibble(
+    analysis = analysis_name,
+    score = score_col,
+    n_CTL = length(y),
+    n_SCI = length(x),
+    mean_CTL = mean(y, na.rm = TRUE),
+    mean_SCI = mean(x, na.rm = TRUE),
+    median_CTL = median(y, na.rm = TRUE),
+    median_SCI = median(x, na.rm = TRUE),
+    mean_difference_SCI_minus_CTL = mean(x, na.rm = TRUE) - mean(y, na.rm = TRUE),
+    hedges_g_SCI_vs_CTL = g,
+    wilcox_p = p
+  )
+}
+
+make_score_plot <- function(df, score_col, panel_title, y_lab, analysis_name) {
+  d <- df %>%
+    filter(group %in% c("CTL", "SCI")) %>%
+    filter(is.finite(.data[[score_col]]))
+
+  d$group <- factor(d$group, levels = c("CTL", "SCI"))
+
+  stat <- compare_sci_vs_ctl(d, score_col, analysis_name)
+
+  n_ctl <- stat$n_CTL
+  n_sci <- stat$n_SCI
+
+  x_labels <- c(
+    "CTL" = paste0("CTL\nn=", n_ctl),
+    "SCI" = paste0("SCI\nn=", n_sci)
+  )
+
+  y_max <- max(d[[score_col]], na.rm = TRUE)
+  y_min <- min(d[[score_col]], na.rm = TRUE)
+  y_range <- y_max - y_min
+
+  if (!is.finite(y_range) || y_range == 0) {
+    y_range <- 1
+  }
+
+  y_annot <- y_max + 0.12 * y_range
+
+  annot_text <- paste0(
+    format_p(stat$wilcox_p),
+    "\n",
+    format_g(stat$hedges_g_SCI_vs_CTL)
+  )
+
+  p <- ggplot(d, aes(x = group, y = .data[[score_col]], fill = group)) +
+    geom_hline(yintercept = 0, linewidth = 0.35, linetype = "dashed", color = "grey45") +
+    geom_boxplot(
+      width = 0.55,
+      outlier.shape = NA,
+      linewidth = 0.45,
+      alpha = 0.75
+    ) +
+    geom_jitter(
+      aes(color = group),
+      width = 0.11,
+      height = 0,
+      size = 2.4,
+      alpha = 0.88
+    ) +
+    scale_fill_manual(values = group_colors) +
+    scale_color_manual(values = group_colors) +
+    scale_x_discrete(labels = x_labels) +
+    annotate(
+      "text",
+      x = 1.5,
+      y = y_annot,
+      label = annot_text,
+      size = 3.4
+    ) +
+    coord_cartesian(
+      ylim = c(y_min - 0.08 * y_range, y_max + 0.28 * y_range),
+      clip = "off"
+    ) +
+    labs(
+      title = panel_title,
+      x = NULL,
+      y = y_lab
+    ) +
+    theme_classic(base_size = 12) +
+    theme(
+      legend.position = "none",
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0.5,
+        size = 12
+      ),
+      axis.text.x = element_text(
+        size = 11,
+        color = "black"
+      ),
+      axis.text.y = element_text(
+        size = 10,
+        color = "black"
+      ),
+      axis.title.y = element_text(
+        size = 11,
+        color = "black"
+      ),
+      axis.line = element_line(linewidth = 0.45),
+      axis.ticks = element_line(linewidth = 0.4),
+      plot.margin = margin(8, 8, 8, 8)
+    )
+
+  list(plot = p, stats = stat)
+}
+
+
+############################
+# 3. Read data
+############################
+
+scores <- read_csv(score_file, show_col_types = FALSE)
+coverage <- read_csv(coverage_file, show_col_types = FALSE)
+
+# Harmonize sample column
+if (!"sample" %in% colnames(scores)) {
+  if ("library_name" %in% colnames(scores)) {
+    scores$sample <- scores$library_name
+  } else if ("Library name" %in% colnames(scores)) {
+    scores$sample <- scores$`Library name`
+  } else {
+    stop("Cannot find sample/library_name column in score file.")
+  }
+}
+
+# Harmonize group
+scores$group <- toupper(as.character(scores$group))
+scores$group[scores$group %in% c("CONTROL", "CTRL", "UNINJURED")] <- "CTL"
+scores$group <- factor(scores$group, levels = c("CTL", "SCI"))
+
+# Harmonize reused flag
+if ("reused_from_gse226238" %in% colnames(scores)) {
+  scores$reused_from_gse226238 <- to_logical_safe(scores$reused_from_gse226238)
+} else {
+  # Fallback inference from sample/library name:
+  # Reused SCI: ID1v0-ID10v0
+  # Reused CTL: ID13-ID21
+  subject_id <- sub("v0$", "", scores$sample, ignore.case = TRUE)
+
+  scores$reused_from_gse226238 <- subject_id %in% c(
+    paste0("ID", 1:10),
+    paste0("ID", 13:21)
+  )
+}
+
+# Check required score columns
+required_score_cols <- c("innate_score", "adaptive_score", "balance_score")
+
+missing_scores <- setdiff(required_score_cols, colnames(scores))
+
+if (length(missing_scores) > 0) {
+  stop("Missing score columns: ", paste(missing_scores, collapse = ", "))
+}
+
+
+############################
+# 4. Print basic checks
+############################
+
+cat("\nGroup counts in all GSE293559 samples:\n")
+print(table(scores$group, useNA = "ifany"))
+
+cat("\nReused-from-GSE226238 status:\n")
+print(table(scores$group, scores$reused_from_gse226238, useNA = "ifany"))
+
+cat("\nGene coverage:\n")
+print(coverage)
+
+
+############################
+# 5. Main figure: all SCI vs CTL
+############################
+
+main_df <- scores %>%
+  filter(group %in% c("CTL", "SCI"))
+
+p1 <- make_score_plot(
+  df = main_df,
+  score_col = "innate_score",
+  panel_title = "A  Innate score",
+  y_lab = "Innate score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+p2 <- make_score_plot(
+  df = main_df,
+  score_col = "adaptive_score",
+  panel_title = "B  Adaptive score",
+  y_lab = "Adaptive score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+p3 <- make_score_plot(
+  df = main_df,
+  score_col = "balance_score",
+  panel_title = "C  Balance score",
+  y_lab = "Balance score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+fig_main <- p1$plot + p2$plot + p3$plot +
+  plot_annotation(
+    title = "External validation of the locked innate-adaptive signature in GSE293559",
+    theme = theme(
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0.5,
+        size = 14
+      )
+    )
+  )
+
+ggsave(
+  filename = file.path(outdir, "Fig_GSE293559_external_validation_main.pdf"),
+  plot = fig_main,
+  width = combined_width,
+  height = combined_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Fig_GSE293559_external_validation_main.png"),
+  plot = fig_main,
+  width = combined_width,
+  height = combined_height,
+  dpi = 600
+)
+
+
+############################
+# 6. Supplementary sensitivity figure
+#    Exclude SCI samples reused from GSE226238.
+#    CTL samples remain reused because no non-reused CTL exists.
+############################
+
+sensitivity_df <- scores %>%
+  filter(
+    group == "CTL" |
+      (group == "SCI" & reused_from_gse226238 == FALSE)
+  )
+
+s1 <- make_score_plot(
+  df = sensitivity_df,
+  score_col = "innate_score",
+  panel_title = "A  Innate score",
+  y_lab = "Innate score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+s2 <- make_score_plot(
+  df = sensitivity_df,
+  score_col = "adaptive_score",
+  panel_title = "B  Adaptive score",
+  y_lab = "Adaptive score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+s3 <- make_score_plot(
+  df = sensitivity_df,
+  score_col = "balance_score",
+  panel_title = "C  Balance score",
+  y_lab = "Balance score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+fig_sensitivity <- s1$plot + s2$plot + s3$plot +
+  plot_annotation(
+    title = "Sensitivity analysis excluding SCI samples reused from GSE226238",
+    subtitle = "Control samples remain reused because no non-reused controls are available in GSE293559",
+    theme = theme(
+      plot.title = element_text(
+        face = "bold",
+        hjust = 0.5,
+        size = 14
+      ),
+      plot.subtitle = element_text(
+        hjust = 0.5,
+        size = 10
+      )
+    )
+  )
+
+ggsave(
+  filename = file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI.pdf"),
+  plot = fig_sensitivity,
+  width = combined_width,
+  height = combined_height + 0.35,
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI.png"),
+  plot = fig_sensitivity,
+  width = combined_width,
+  height = combined_height + 0.35,
+  dpi = 600
+)
+
+
+############################
+# 7. Save individual panels
+############################
+
+ggsave(
+  file.path(outdir, "Main_A_innate_score.pdf"),
+  p1$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  file.path(outdir, "Main_B_adaptive_score.pdf"),
+  p2$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  file.path(outdir, "Main_C_balance_score.pdf"),
+  p3$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  file.path(outdir, "Sensitivity_A_innate_score.pdf"),
+  s1$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  file.path(outdir, "Sensitivity_B_adaptive_score.pdf"),
+  s2$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+ggsave(
+  file.path(outdir, "Sensitivity_C_balance_score.pdf"),
+  s3$plot,
+  width = single_panel_width,
+  height = single_panel_height,
+  useDingbats = FALSE
+)
+
+
+############################
+# 8. Save plotting statistics
+############################
+
+plot_stats <- bind_rows(
+  p1$stats,
+  p2$stats,
+  p3$stats,
+  s1$stats,
+  s2$stats,
+  s3$stats
+)
+
+write_csv(
+  plot_stats,
+  file.path(outdir, "GSE293559_plot_statistics.csv")
+)
+
+cat("\nPlot statistics:\n")
+print(plot_stats)
+
+cat("\nFinished.\n")
+cat("Main figure saved to:\n")
+cat(file.path(outdir, "Fig_GSE293559_external_validation_main.pdf"), "\n")
+cat("Sensitivity figure saved to:\n")
+cat(file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI.pdf"), "\n")
+```
+
+```{r}
+############################################################
+# Publication-style GSE293559 validation figure
+# Main figure + sensitivity figure
+#
+# Input files:
+#   GSE293559_locked_signature_scores.csv
+#   GSE293559_locked_signature_gene_coverage.csv
+#
+# Output:
+#   03_GSE293559_validation_figures_pub/
+#     Fig_GSE293559_external_validation_main_pub.pdf
+#     SuppFig_GSE293559_sensitivity_exclude_reused_SCI_pub.pdf
+############################################################
+
+
+############################
+# 0. Settings
+############################
+
+set.seed(20260714)
+
+score_file <- "GSE293559_locked_signature_scores.csv"
+coverage_file <- "GSE293559_locked_signature_gene_coverage.csv"
+
+outdir <- "03_GSE293559_validation_figures_pub"
+dir.create(outdir, showWarnings = FALSE, recursive = TRUE)
+
+# Figure size required by previous manuscript style
+fig_width_mm <- 180
+fig_height_mm <- 65
+
+single_panel_width_mm <- 60
+single_panel_height_mm <- 65
+
+# Colors
+group_colors <- c(
+  "CTL" = "#7A7A7A",
+  "SCI" = "#D73027"
+)
+
+# Font family
+# Use "sans" for cross-platform compatibility.
+# If Arial is available on your system, you can change this to "Arial".
+base_family <- "sans"
+
+
+############################
+# 1. Packages
+############################
+
+pkgs <- c("ggplot2", "dplyr", "readr", "patchwork")
+
+for (pkg in pkgs) {
+  if (!requireNamespace(pkg, quietly = TRUE)) {
+    install.packages(pkg)
+  }
+}
+
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(patchwork)
+
+
+############################
+# 2. Helper functions
+############################
+
+to_logical_safe <- function(x) {
+  x <- tolower(as.character(x))
+  x %in% c("true", "t", "yes", "y", "1")
+}
+
+hedges_g <- function(x, y) {
+  x <- x[is.finite(x)]
+  y <- y[is.finite(y)]
+
+  nx <- length(x)
+  ny <- length(y)
+
+  if (nx < 2 || ny < 2) return(NA_real_)
+
+  sx <- var(x)
+  sy <- var(y)
+
+  sp <- sqrt(((nx - 1) * sx + (ny - 1) * sy) / (nx + ny - 2))
+
+  if (!is.finite(sp) || sp == 0) return(NA_real_)
+
+  d <- (mean(x) - mean(y)) / sp
+  J <- 1 - 3 / (4 * (nx + ny) - 9)
+
+  d * J
+}
+
+format_p_pub <- function(p) {
+  if (is.na(p)) return("P = NA")
+  if (p < 0.001) return("P < 0.001")
+  paste0("P = ", sprintf("%.3f", p))
+}
+
+format_g_pub <- function(g) {
+  if (is.na(g)) return("Hedges' g = NA")
+  paste0("Hedges' g = ", sprintf("%.2f", g))
+}
+
+compare_sci_vs_ctl <- function(df, score_col, analysis_name) {
+  d <- df %>%
+    filter(group %in% c("CTL", "SCI")) %>%
+    filter(is.finite(.data[[score_col]]))
+
+  x <- d %>% filter(group == "SCI") %>% pull(.data[[score_col]])
+  y <- d %>% filter(group == "CTL") %>% pull(.data[[score_col]])
+
+  p <- tryCatch(
+    wilcox.test(x, y, exact = FALSE)$p.value,
+    error = function(e) NA_real_
+  )
+
+  g <- hedges_g(x, y)
+
+  data.frame(
+    analysis = analysis_name,
+    score = score_col,
+    n_CTL = length(y),
+    n_SCI = length(x),
+    mean_CTL = mean(y, na.rm = TRUE),
+    mean_SCI = mean(x, na.rm = TRUE),
+    median_CTL = median(y, na.rm = TRUE),
+    median_SCI = median(x, na.rm = TRUE),
+    mean_difference_SCI_minus_CTL = mean(x, na.rm = TRUE) - mean(y, na.rm = TRUE),
+    hedges_g_SCI_vs_CTL = g,
+    wilcox_p = p,
+    stringsAsFactors = FALSE
+  )
+}
+
+make_pub_score_plot <- function(
+    df,
+    score_col,
+    panel_label,
+    panel_title,
+    y_lab,
+    analysis_name
+) {
+  d <- df %>%
+    filter(group %in% c("CTL", "SCI")) %>%
+    filter(is.finite(.data[[score_col]]))
+
+  d$group <- factor(d$group, levels = c("CTL", "SCI"))
+
+  stat <- compare_sci_vs_ctl(d, score_col, analysis_name)
+
+  x_labels <- c(
+    "CTL" = paste0("CTL\nn=", stat$n_CTL),
+    "SCI" = paste0("SCI\nn=", stat$n_SCI)
+  )
+
+  y_min <- min(d[[score_col]], na.rm = TRUE)
+  y_max <- max(d[[score_col]], na.rm = TRUE)
+  y_range <- y_max - y_min
+
+  if (!is.finite(y_range) || y_range == 0) {
+    y_range <- 1
+  }
+
+  y_lower <- y_min - 0.10 * y_range
+  y_upper <- y_max + 0.30 * y_range
+  y_annot <- y_max + 0.13 * y_range
+
+  annot_text <- paste0(
+    format_p_pub(stat$wilcox_p),
+    "\n",
+    format_g_pub(stat$hedges_g_SCI_vs_CTL)
+  )
+
+  p <- ggplot(d, aes(x = group, y = .data[[score_col]], fill = group)) +
+    geom_hline(
+      yintercept = 0,
+      linewidth = 0.35,
+      linetype = "dashed",
+      color = "grey50"
+    ) +
+    geom_boxplot(
+      width = 0.52,
+      outlier.shape = NA,
+      linewidth = 0.45,
+      alpha = 0.78,
+      color = "black"
+    ) +
+    geom_jitter(
+      aes(color = group),
+      width = 0.105,
+      height = 0,
+      size = 1.8,
+      alpha = 0.88
+    ) +
+    scale_fill_manual(values = group_colors) +
+    scale_color_manual(values = group_colors) +
+    scale_x_discrete(labels = x_labels) +
+    annotate(
+      "text",
+      x = 1.5,
+      y = y_annot,
+      label = annot_text,
+      size = 2.8,
+      family = base_family,
+      lineheight = 0.92
+    ) +
+    coord_cartesian(
+      ylim = c(y_lower, y_upper),
+      clip = "off"
+    ) +
+    labs(
+      title = paste0(panel_label, "  ", panel_title),
+      x = NULL,
+      y = y_lab
+    ) +
+    theme_classic(base_size = 9, base_family = base_family) +
+    theme(
+      legend.position = "none",
+
+      plot.title = element_text(
+        size = 11,
+        face = "bold",
+        hjust = 0,
+        color = "black",
+        margin = margin(b = 5)
+      ),
+
+      axis.title.y = element_text(
+        size = 9.5,
+        color = "black",
+        margin = margin(r = 4)
+      ),
+
+      axis.text.x = element_text(
+        size = 8.5,
+        color = "black",
+        lineheight = 0.9
+      ),
+
+      axis.text.y = element_text(
+        size = 8.5,
+        color = "black"
+      ),
+
+      axis.line = element_line(
+        linewidth = 0.45,
+        color = "black"
+      ),
+
+      axis.ticks = element_line(
+        linewidth = 0.4,
+        color = "black"
+      ),
+
+      axis.ticks.length = unit(1.5, "mm"),
+
+      plot.margin = margin(
+        t = 4,
+        r = 7,
+        b = 4,
+        l = 7
+      )
+    )
+
+  list(plot = p, stats = stat)
+}
+
+
+############################
+# 3. Read data
+############################
+
+scores <- read_csv(score_file, show_col_types = FALSE)
+coverage <- read_csv(coverage_file, show_col_types = FALSE)
+
+# Harmonize sample column
+if (!"sample" %in% colnames(scores)) {
+  if ("library_name" %in% colnames(scores)) {
+    scores$sample <- scores$library_name
+  } else if ("Library name" %in% colnames(scores)) {
+    scores$sample <- scores$`Library name`
+  } else {
+    stop("Cannot find sample/library_name column.")
+  }
+}
+
+# Harmonize group
+scores$group <- toupper(as.character(scores$group))
+scores$group[scores$group %in% c("CONTROL", "CTRL", "UNINJURED")] <- "CTL"
+scores$group <- factor(scores$group, levels = c("CTL", "SCI"))
+
+# Harmonize reused flag
+if ("reused_from_gse226238" %in% colnames(scores)) {
+  scores$reused_from_gse226238 <- to_logical_safe(scores$reused_from_gse226238)
+} else {
+  subject_id <- sub("v0$", "", scores$sample, ignore.case = TRUE)
+  scores$reused_from_gse226238 <- subject_id %in% c(
+    paste0("ID", 1:10),
+    paste0("ID", 13:21)
+  )
+}
+
+required_score_cols <- c("innate_score", "adaptive_score", "balance_score")
+missing_score_cols <- setdiff(required_score_cols, colnames(scores))
+
+if (length(missing_score_cols) > 0) {
+  stop("Missing score columns: ", paste(missing_score_cols, collapse = ", "))
+}
+
+cat("\nGroup counts:\n")
+print(table(scores$group, useNA = "ifany"))
+
+cat("\nReused-from-GSE226238 counts:\n")
+print(table(scores$group, scores$reused_from_gse226238, useNA = "ifany"))
+
+cat("\nGene coverage:\n")
+print(coverage)
+
+
+############################
+# 4. Main figure
+#    All GSE293559 samples: 36 SCI vs 9 CTL
+############################
+
+main_df <- scores %>%
+  filter(group %in% c("CTL", "SCI"))
+
+pA <- make_pub_score_plot(
+  df = main_df,
+  score_col = "innate_score",
+  panel_label = "A",
+  panel_title = "Innate score",
+  y_lab = "Innate score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+pB <- make_pub_score_plot(
+  df = main_df,
+  score_col = "adaptive_score",
+  panel_label = "B",
+  panel_title = "Adaptive score",
+  y_lab = "Adaptive score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+pC <- make_pub_score_plot(
+  df = main_df,
+  score_col = "balance_score",
+  panel_label = "C",
+  panel_title = "Balance score",
+  y_lab = "Balance score",
+  analysis_name = "main_all_GSE293559_36_SCI_vs_9_CTL"
+)
+
+fig_main <- pA$plot + pB$plot + pC$plot +
+  plot_layout(ncol = 3)
+
+ggsave(
+  filename = file.path(outdir, "Fig_GSE293559_external_validation_main_pub.pdf"),
+  plot = fig_main,
+  width = fig_width_mm,
+  height = fig_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Fig_GSE293559_external_validation_main_pub.png"),
+  plot = fig_main,
+  width = fig_width_mm,
+  height = fig_height_mm,
+  units = "mm",
+  dpi = 600
+)
+
+
+############################
+# 5. Supplementary sensitivity figure
+#    Exclude reused SCI samples.
+#    CTL samples are retained because no non-reused CTL exists.
+############################
+
+sensitivity_df <- scores %>%
+  filter(
+    group == "CTL" |
+      (group == "SCI" & reused_from_gse226238 == FALSE)
+  )
+
+sA <- make_pub_score_plot(
+  df = sensitivity_df,
+  score_col = "innate_score",
+  panel_label = "A",
+  panel_title = "Innate score",
+  y_lab = "Innate score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+sB <- make_pub_score_plot(
+  df = sensitivity_df,
+  score_col = "adaptive_score",
+  panel_label = "B",
+  panel_title = "Adaptive score",
+  y_lab = "Adaptive score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+sC <- make_pub_score_plot(
+  df = sensitivity_df,
+  score_col = "balance_score",
+  panel_label = "C",
+  panel_title = "Balance score",
+  y_lab = "Balance score",
+  analysis_name = "sensitivity_exclude_reused_SCI_26_new_SCI_vs_9_reused_CTL"
+)
+
+fig_sensitivity <- sA$plot + sB$plot + sC$plot +
+  plot_layout(ncol = 3)
+
+ggsave(
+  filename = file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI_pub.pdf"),
+  plot = fig_sensitivity,
+  width = fig_width_mm,
+  height = fig_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI_pub.png"),
+  plot = fig_sensitivity,
+  width = fig_width_mm,
+  height = fig_height_mm,
+  units = "mm",
+  dpi = 600
+)
+
+
+############################
+# 6. Save individual panels
+############################
+
+ggsave(
+  filename = file.path(outdir, "Main_A_innate_score_pub.pdf"),
+  plot = pA$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Main_B_adaptive_score_pub.pdf"),
+  plot = pB$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Main_C_balance_score_pub.pdf"),
+  plot = pC$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Sensitivity_A_innate_score_pub.pdf"),
+  plot = sA$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Sensitivity_B_adaptive_score_pub.pdf"),
+  plot = sB$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+ggsave(
+  filename = file.path(outdir, "Sensitivity_C_balance_score_pub.pdf"),
+  plot = sC$plot,
+  width = single_panel_width_mm,
+  height = single_panel_height_mm,
+  units = "mm",
+  useDingbats = FALSE
+)
+
+
+############################
+# 7. Save statistics table
+############################
+
+plot_stats <- bind_rows(
+  pA$stats,
+  pB$stats,
+  pC$stats,
+  sA$stats,
+  sB$stats,
+  sC$stats
+)
+
+write_csv(
+  plot_stats,
+  file.path(outdir, "GSE293559_plot_statistics_pub.csv")
+)
+
+cat("\nPlot statistics:\n")
+print(plot_stats)
+
+cat("\nFinished.\n")
+cat("Main figure:\n")
+cat(file.path(outdir, "Fig_GSE293559_external_validation_main_pub.pdf"), "\n")
+cat("Sensitivity figure:\n")
+cat(file.path(outdir, "SuppFig_GSE293559_sensitivity_exclude_reused_SCI_pub.pdf"), "\n")
+```
+

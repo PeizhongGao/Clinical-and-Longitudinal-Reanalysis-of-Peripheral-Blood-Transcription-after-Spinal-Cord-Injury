@@ -1,0 +1,187 @@
+{
+  "date": "2026-10-28",
+  "package_metadata_version": "1.1.0",
+  "all_passed": true,
+  "scope": "Local portability and independent saved-output checks; not a full refit of every permutation",
+  "relocated_outside_original_project": true,
+  "original_standard_analysis_code_inputs_numeric_freeze_unchanged": true,
+  "nested_pilot": {
+    "status": "PASS",
+    "heldout_expression_label_invariance": true,
+    "training_state_fit_invariance": true,
+    "auc_formula_check": true,
+    "fold_disjointness_assertions": true,
+    "seconds": 2.27,
+    "n": 48,
+    "source_gene_count": 26485
+  },
+  "saved_result_checks": {
+    "all_passed": true,
+    "checks": {
+      "protocol_unchanged": true,
+      "inputs_unchanged": true,
+      "all_expected_repeats_folds_predictions": true,
+      "predictions_finite_in_range": true,
+      "each_subject_once_per_outer_repeat": true,
+      "each_inner_role_partition_complete": true,
+      "outer_test_never_inner_train_or_validation": true,
+      "independent_auc_brier_recalculation": true,
+      "independent_AP_logloss_recalculation": true,
+      "empty_models_return_exact_training_prior": true,
+      "all_1998_permutations_and_9990_outer_fits": true,
+      "every_null_statistic_finite": true,
+      "permutation_comparator_and_plus_one_correct": true,
+      "classifier_holm2_recalculated": true,
+      "every_permutation_preserves_sex_case_counts": true,
+      "independent_numpy_HC3_reproduction": true,
+      "clinical_8_complete_null_distributions": true,
+      "clinical_resampling_p_recalculated": true,
+      "clinical_holm4_families_recalculated": true
+    },
+    "unit": "participant; CV repeats/folds and resamples are not independent participants",
+    "scientific_boundary": "Internal evaluation and conditional resampling; no independent validation or restored historical nine-gene model"
+  },
+  "all_7_figures_rerendered": true,
+  "figure_checks": [
+    {
+      "figure": "Figure1_Discovery_transcriptomic_comparisons",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        4086
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure2_Fixed_immune_GO_CAMERA",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        3236
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure3_Frozen_30_gene_heatmap",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        4275
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure4_Gene_clustering_diagnostics",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        3850
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure5_Frozen_score_longitudinal",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        4181
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure6_Frozen_score_discovery_coordinates",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        4015
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    },
+    {
+      "figure": "Figure7_Additional_cohort_reuse_sensitivity",
+      "tiff_pixels_identical": true,
+      "pdf_text_identical": true,
+      "vector_pdf": true,
+      "page_size_identical": true,
+      "pdf_width_mm": 169.6861111111111,
+      "tiff_size": [
+        4015,
+        4417
+      ],
+      "tiff_dpi": [
+        600.0,
+        600.0
+      ],
+      "compression": "tiff_lzw"
+    }
+  ],
+  "source_materials": {
+    "copied": 119,
+    "byte_identical": 117,
+    "documented_readme_manifest_adaptations": 2,
+    "scientific_script_input_or_result_changes": 0
+  },
+  "R_environment": {
+    "original_102_package_records_preserved": true,
+    "total_packages": 108,
+    "added_packages": {
+      "codetools": "0.2-20",
+      "foreach": "1.5.2",
+      "glmnet": "5.0",
+      "iterators": "1.0.14",
+      "shape": "1.4.6.1",
+      "survival": "3.8-6"
+    }
+  },
+  "full_1998_permutation_refit_during_synchronization": false,
+  "clean_machine_installation_tested": false,
+  "license": "PENDING_AUTHOR_DECISION"
+}

@@ -1,7 +1,7 @@
 # Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury
 
 **Manuscript:** Neurology International, neurolint-4585750.  
-**Package version:** 1.0.0, prepared 26 October 2026.  
+**Package version:** 1.1.0, updated 28 October 2026.  
 **Materials:** analysis code, supporting data and reproducibility records for the manuscript.
 Original-code licensing is awaiting the authors' decision; no permanent archive DOI is
 recorded. See `LICENSE_STATUS.md` for the current licensing status.
@@ -12,6 +12,12 @@ results, and an executable reproduction workflow. It is not merely a script inve
 Read `docs/RELEASE_CHECKLIST.md` for deposition guidance and
 `docs/CODE_COMPLETENESS.md` for the code audit.
 Run `python check_upload.py` to verify the package after a clone or download.
+
+The 28 October revision adds the Data 4 provenance reconciliation, the complete
+Data 9 nested/resampling analysis, Tables S8-S9, Figures S10-S11 and the R code,
+source data and exports for seven redrawn figures. Start with
+`docs/REVISION_EXTENSIONS.md`; use `reproduce_revision.py` for these extensions.
+The original `reproduce.py` workflow and its numerical references are unchanged.
 
 ## What the workflow reproduces
 
@@ -42,7 +48,7 @@ Use Python 3.12 and the recorded R 4.6.1 environment. Install Python dependencie
 python -m pip install -r environment/requirements.txt
 ```
 
-Restore R package versions from the provided 102-package lockfile:
+Restore R package versions from the provided 108-package lockfile:
 
 ```shell
 Rscript --vanilla environment/restore.R .
@@ -111,7 +117,10 @@ comparison lacks matched trauma controls over time and does not establish SCI-sp
 recovery, causality or a cell-intrinsic mechanism.
 
 The withdrawn 5+4 LASSO/prediction and postselection label-permutation claims are not
-restored. No nested LASSO was performed. Complete retained families and negative
+restored. A separately specified nested LASSO and complete-pipeline permutation
+audit has now been performed and is included in `extensions/nested_validation/`.
+It is internal methodological evidence, not independent validation of the frozen
+15+15 score or reinstatement of the old nine-gene model. Complete retained families and negative
 findings remain available, including the full BTM16 and fixed immune-GO panels.
 The unchanged original supplemental workbooks and their `original_*` imports can
 contain superseded nine-gene/permutation sheets. Those records are source provenance,
@@ -129,7 +138,7 @@ prohibited-to-redistribute data. Dataset-specific rights continue to apply.
 The code and supporting data are publicly available at https://github.com/PeizhongGao/Clinical-and-Longitudinal-Reanalysis-of-Peripheral-Blood-Transcription-after-Spinal-Cord-Injury.
 Anonymous access and the downloaded archive were verified on 27 October 2026.
 The analysis snapshot cited in the manuscript is commit `6415b0bdc3dff91d3949e940c363ed22f48f387c`.
-Version 1.0.0 is the package metadata version; no Git tag, GitHub Release or
+Version 1.1.0 is the current package metadata version; no Git tag, GitHub Release or
 separate archive DOI has been assigned. The original-code license remains
 awaiting author decision. See `docs/AVAILABILITY_STATUS.md` for the verified scope.
 

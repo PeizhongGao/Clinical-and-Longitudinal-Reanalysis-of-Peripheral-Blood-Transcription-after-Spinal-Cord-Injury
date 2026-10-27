@@ -21,3 +21,12 @@ created. The authors have deferred selecting a reuse license for their original 
 
 Historical NOT_UPLOADED or local-only records describe earlier preparation states
 and are preserved as dated provenance, not current availability statements.
+
+## Repository revision prepared 28 October 2026
+
+The current tree adds the Data 4 provenance reconciliation, complete Data 9
+analysis extension and seven redrawn figures, with metadata version 1.1.0.
+The earlier public-access verification above remains explicitly dated.
+The exact revision identifier is the Git commit containing this tree; the
+original scientific analysis snapshot remains separately identified.
+See `REVISION_EXTENSIONS.md` and `validation/revision_extension_20261028.json`.

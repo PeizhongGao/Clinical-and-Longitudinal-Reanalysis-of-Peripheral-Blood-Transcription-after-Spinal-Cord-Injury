@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "frozen_estimates_reproduced": {
+    "M37.1": {
+      "estimate_difference": 2.9698e-15,
+      "SE_difference": -1.138e-15,
+      "passed": true
+    },
+    "M163": {
+      "estimate_difference": 2.6298e-15,
+      "SE_difference": 2.2204e-16,
+      "passed": true
+    },
+    "M7.0": {
+      "estimate_difference": 4.4409e-16,
+      "SE_difference": -4.996e-16,
+      "passed": true
+    },
+    "M223": {
+      "estimate_difference": 2.1372e-15,
+      "SE_difference": 1.1102e-16,
+      "passed": true
+    }
+  },
+  "full_rank": 9,
+  "nuisance_rank": 8,
+  "permutation_count": 9999,
+  "wild_count": 9999,
+  "shared_resampling_across_modules": true,
+  "all_null_statistics_finite": true
+}

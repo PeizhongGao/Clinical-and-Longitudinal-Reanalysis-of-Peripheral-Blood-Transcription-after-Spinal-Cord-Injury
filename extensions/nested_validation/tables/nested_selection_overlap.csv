@@ -1,0 +1,5 @@
+source,contrast,mean_jaccard,median_jaccard,min_jaccard,max_jaccard,dependent_fit_pairs,scope
+raw,SCI_HC,0.299588021917345,0.285714285714286,0,1,4950,descriptive overlap; fits and pairs are dependent
+raw,SCI_TC,0.308355777219414,0.3,0,1,4950,descriptive overlap; fits and pairs are dependent
+processed,SCI_HC,0.34957705911862,0.333333333333333,0.0526315789473684,1,4950,descriptive overlap; fits and pairs are dependent
+processed,SCI_TC,0.241266773156585,0.230769230769231,0,1,4950,descriptive overlap; fits and pairs are dependent

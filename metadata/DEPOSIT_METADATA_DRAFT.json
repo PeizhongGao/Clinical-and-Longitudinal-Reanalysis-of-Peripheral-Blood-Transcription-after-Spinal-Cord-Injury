@@ -10,7 +10,7 @@
     }
   ],
   "resource_type": "software with supporting research data",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "prepared_date": "2026-10-26",
   "description": "Source scripts, reused public-study inputs, metadata curation, fixed signatures and BTM definitions, complete retained model families, reference outputs, a portable reproduction entry point and numerical validation. These are exploratory secondary analyses. The withdrawn LASSO and supervised postselection-permutation claims are not reinstated.",
   "keywords": [
@@ -43,5 +43,12 @@
   "github_prepared_date": "2026-10-27",
   "verified_analysis_commit": "6415b0bdc3dff91d3949e940c363ed22f48f387c",
   "public_access_verified_date": "2026-10-27",
-  "package_version_note": "Metadata version 1.0.0; no Git tag or GitHub Release published."
+  "package_version_note": "Metadata version 1.1.0; no Git tag or GitHub Release assigned.",
+  "updated_date": "2026-10-28",
+  "revision_extensions": [
+    "Data 4 provenance reconciliation",
+    "Data 9 nested validation and resampling",
+    "Seven redrawn figures with R source"
+  ],
+  "extension_guide": "docs/REVISION_EXTENSIONS.md"
 }

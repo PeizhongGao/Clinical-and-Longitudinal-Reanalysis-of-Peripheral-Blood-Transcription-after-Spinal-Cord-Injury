@@ -1,0 +1,32 @@
+﻿cell,gene,in_published_BTM_union,in_original30,excluded_by_current_union,excluded_by_BTM_only,additional_exclusion_from_original30
+Neutrophils,CA4,False,False,False,False,False
+Neutrophils,CEACAM3,False,False,False,False,False
+Neutrophils,CXCR1,True,False,True,True,False
+Neutrophils,CXCR2,False,False,False,False,False
+Neutrophils,CYP4F3,True,False,True,True,False
+Neutrophils,FCGR3B,True,False,True,True,False
+Neutrophils,HAL,False,False,False,False,False
+Neutrophils,KCNJ15,True,False,True,True,False
+Neutrophils,MEGF9,False,False,False,False,False
+Neutrophils,SLC25A37,False,False,False,False,False
+Neutrophils,STEAP4,True,False,True,True,False
+Neutrophils,TECPR2,False,False,False,False,False
+Neutrophils,TLE3,False,False,False,False,False
+Neutrophils,TNFRSF10C,True,False,True,True,False
+Neutrophils,VNN3,False,False,False,False,False
+T cells,CD28,True,True,True,True,False
+T cells,CD3D,True,False,True,True,False
+T cells,CD3G,True,True,True,True,False
+T cells,CD5,False,False,False,False,False
+T cells,CD6,True,False,True,True,False
+T cells,CHRM3-AS2,False,False,False,False,False
+T cells,CTLA4,False,False,False,False,False
+T cells,FLT3LG,True,False,True,True,False
+T cells,ICOS,True,True,True,True,False
+T cells,MAL,True,False,True,True,False
+T cells,MGC40069,False,False,False,False,False
+T cells,PBX4,False,False,False,False,False
+T cells,SIRPG,True,False,True,True,False
+T cells,THEMIS,False,False,False,False,False
+T cells,TNFRSF25,False,False,False,False,False
+T cells,TRAT1,True,False,True,True,False

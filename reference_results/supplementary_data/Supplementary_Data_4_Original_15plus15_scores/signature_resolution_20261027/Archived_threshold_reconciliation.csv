@@ -1,0 +1,19 @@
+﻿module,frequency_cutoff,direction_cutoff,genes_before_size_bounds,fallback_required,max20_truncation_required,jaccard_vs_frozen,genes,analysis_scope
+innate,0.3,0.7,16,False,False,0.9375,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3;RETN,reconciliation of archived frequency table; no expression rerun
+adaptive,0.3,0.7,16,False,False,0.9375,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7;LCK,reconciliation of archived frequency table; no expression rerun
+innate,0.3,0.8,16,False,False,0.9375,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3;RETN,reconciliation of archived frequency table; no expression rerun
+adaptive,0.3,0.8,16,False,False,0.9375,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7;LCK,reconciliation of archived frequency table; no expression rerun
+innate,0.3,0.9,16,False,False,0.9375,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3;RETN,reconciliation of archived frequency table; no expression rerun
+adaptive,0.3,0.9,16,False,False,0.9375,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7;LCK,reconciliation of archived frequency table; no expression rerun
+innate,0.4,0.7,15,False,False,1.0,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3,reconciliation of archived frequency table; no expression rerun
+adaptive,0.4,0.7,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun
+innate,0.4,0.8,15,False,False,1.0,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3,reconciliation of archived frequency table; no expression rerun
+adaptive,0.4,0.8,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun
+innate,0.4,0.9,15,False,False,1.0,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1;LGALS3,reconciliation of archived frequency table; no expression rerun
+adaptive,0.4,0.9,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun
+innate,0.5,0.7,14,False,False,0.9333333333333333,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1,reconciliation of archived frequency table; no expression rerun
+adaptive,0.5,0.7,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun
+innate,0.5,0.8,14,False,False,0.9333333333333333,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1,reconciliation of archived frequency table; no expression rerun
+adaptive,0.5,0.8,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun
+innate,0.5,0.9,14,False,False,0.9333333333333333,ARG1;S100A8;S100A12;NLRC4;ANXA3;CLEC4D;TLR5;FCGR1A;S100A9;TLR8;IRAK3;BST1;SLC37A3;BCL2A1,reconciliation of archived frequency table; no expression rerun
+adaptive,0.5,0.9,15,False,False,1.0,TCF7;BCL11B;LEF1;CD28;GATA3;CD3G;CD27;ICOS;FOXP3;ITK;CD3E;IL2RB;RUNX3;CD40LG;CCR7,reconciliation of archived frequency table; no expression rerun

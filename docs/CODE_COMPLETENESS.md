@@ -39,7 +39,7 @@ biological validation. The original selected gene identities were checked as wel
   this secondary-analysis package begins at supplied public count/processed matrices
   and cell fractions. It does not claim to provide or rerun those upstream pipelines.
 - Withdrawn nine-gene LASSO/prediction and postselection label-permutation branches:
-  excluded from current execution; no nested LASSO was performed or fabricated.
+  excluded from current execution; the new, separately specified nested audit is included under `extensions/nested_validation/`.
 - Old duplicate exploration notebooks, Word/report generation and reviewer-letter
   formatting utilities are not required to reproduce the retained scientific analyses.
 - Fixed definitions, selection checkpoints and historical diagnostic results are
@@ -51,3 +51,11 @@ The public GitHub repository and its verified analysis commit are recorded in
 `AVAILABILITY_STATUS.md`. The original-code license remains undecided at the
 author's request. No separate archive DOI, Git tag or GitHub Release is assigned.
 These remaining metadata/reuse choices are distinct from the included analysis code.
+
+## Revision extensions (28 October 2026)
+
+The complete Data 9 source, inputs and reference outputs, Data 4 provenance addition,
+Tables S8-S9, Figures S10-S11 and seven redrawn figures are now included.
+`reproduce_revision.py` supplies verify, pilot, full and figure-only tasks in new
+output directories. See `REVISION_EXTENSIONS.md` and
+`validation/revision_extension_20261028.json` for the exact checks performed.

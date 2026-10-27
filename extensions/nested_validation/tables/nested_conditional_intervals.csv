@@ -1,0 +1,17 @@
+source,contrast,metric,mean_oof_prediction_metric,conditional_interval_low,conditional_interval_high,bootstrap_resamples,interval_scope
+raw,SCI_HC,AUC,0.989473684210526,0.960526315789474,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_HC,average_precision,0.997334682860999,0.990179717586649,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_HC,Brier,0.0463100393576367,0.025172055101716,0.071472820049335,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_HC,log_loss,0.172706961483828,0.121233336076977,0.232513298235349,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_TC,AUC,0.957894736842105,0.884210526315789,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_TC,average_precision,0.988335521989349,0.968377239230441,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_TC,Brier,0.106250151566226,0.0891562127465362,0.125587294008173,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+raw,SCI_TC,log_loss,0.348192174361022,0.305150483566766,0.397518251175629,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_HC,AUC,1,1,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_HC,average_precision,1,1,1,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_HC,Brier,0.0197174719740726,0.00626578116697159,0.0357109392542489,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_HC,log_loss,0.0882986541180752,0.0507101058446728,0.131911820173227,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_TC,AUC,0.936842105263158,0.857894736842105,0.989473684210526,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_TC,average_precision,0.984362670249455,0.964012851236454,0.997493734335839,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_TC,Brier,0.113538827763806,0.0951881630073644,0.131435172582803,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty
+processed,SCI_TC,log_loss,0.362734477702856,0.319100060233285,0.408706316412572,5000,stratified participant bootstrap of fixed mean OOF predictions; excludes model-training uncertainty

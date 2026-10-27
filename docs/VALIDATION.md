@@ -69,3 +69,11 @@ validation/upload_v1_*.csv and validation/upload_v1_logs/.
 
 All optional-analysis, fresh-installation and cross-platform limits stated above
 continue to apply. Code completeness is separate from full optional test coverage.
+
+## Extension validation (28 October 2026)
+
+See `validation/revision_extension_20261028.json` for the relocated-package
+verification, nested pilot and seven-figure rerender. These checks are separate
+from the historical standard-pipeline validation. The complete 1,998 classifier
+permutations are supplied from the executed analysis and checked from their saved
+outputs; they were not all refitted during this synchronization.

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "heldout_expression_label_invariance": true,
+  "training_state_fit_invariance": true,
+  "auc_formula_check": true,
+  "fold_disjointness_assertions": true,
+  "seconds": 2.3,
+  "n": 48,
+  "source_gene_count": 26485
+}
