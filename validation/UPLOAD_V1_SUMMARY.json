@@ -1,0 +1,17 @@
+{
+  "package_version": "1.0.0",
+  "standard_workflow_passed": true,
+  "analysis_stages": 19,
+  "validation_groups": 21,
+  "numeric_values_compared": 357077,
+  "exported_figure_names": 10,
+  "execution_entries_included": 24,
+  "missing_execution_entries": 0,
+  "source_and_input_fingerprint_matches": true,
+  "output_guard_cases_passed": 6,
+  "original_code_license": "PENDING_AUTHOR_DECISION",
+  "publication_status": "NOT_UPLOADED",
+  "optional_original_selection_complete": false,
+  "optional_extended_permutations_complete": false,
+  "clean_machine_restore_tested": false
+}

@@ -1,0 +1,10 @@
+subset,variable,TC_n,SCI_n,TC_min,TC_max,SCI_min,SCI_max,overlap_low,overlap_high,TC_n_in_range_overlap,SCI_n_in_range_overlap,caveat
+"full48","age",10,38,22,78,20,89,22,78,10,30,"Univariate observed-range intersection; not sufficient multivariable common support"
+"full48","iss",7,36,1,14,9,75,9,14,3,2,"Univariate observed-range intersection; not sufficient multivariable common support"
+"full48","draw_hours",6,38,15,32,5,97,15,32,6,20,"Univariate observed-range intersection; not sufficient multivariable common support"
+"clinical43","age",7,36,22,78,20,89,22,78,7,28,"Univariate observed-range intersection; not sufficient multivariable common support"
+"clinical43","iss",7,36,1,14,9,75,9,14,3,2,"Univariate observed-range intersection; not sufficient multivariable common support"
+"clinical43","draw_hours",5,36,19,32,5,97,19,32,5,13,"Univariate observed-range intersection; not sufficient multivariable common support"
+"time41","age",5,36,22,78,20,89,22,78,5,28,"Univariate observed-range intersection; not sufficient multivariable common support"
+"time41","iss",5,36,4,14,9,75,9,14,3,2,"Univariate observed-range intersection; not sufficient multivariable common support"
+"time41","draw_hours",5,36,19,32,5,97,19,32,5,13,"Univariate observed-range intersection; not sufficient multivariable common support"

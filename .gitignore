@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.Rhistory
+.RData
+.Rproj.user/
+.venv/
+environment/r_library/
+outputs/
+upload_archives/
+renv/library/
+renv/staging/
+.DS_Store
+Thumbs.db

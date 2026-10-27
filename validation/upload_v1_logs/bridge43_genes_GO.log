@@ -1,0 +1,14 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+Analysis: locked 43-participant fixed-set gene and GO bridge v1
+Start Asia/Hong_Kong: 2026-10-26 21:45:33 HKT 
+Completed M0 43-participant genes: 17498 GO sets: 4032 
+Completed M1 43-participant genes: 17498 GO sets: 4032 
+Completed M2 43-participant genes: 17498 GO sets: 4032 
+PASS: M2 prior-result reproduction (all six locked statistics, abs/rel <= 1e-8).
+PASS: three gene families and three pathway families; all full result tables retained.
+PASS: sealed pre-analysis protocol, input and design packet SHA-256 unchanged.
+Finish Asia/Hong_Kong: 2026-10-26 21:45:35 HKT 

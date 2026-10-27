@@ -1,0 +1,112 @@
+sample,subject,time,score,value
+ID1v0,ID1,acute,Innate-associated,3.1788747131757
+ID1v3,ID1,3m,Innate-associated,2.27314010984297
+ID1v6,ID1,6m,Innate-associated,0.858130493177052
+ID1v12,ID1,12m,Innate-associated,1.5081095284102
+ID2v0,ID2,acute,Innate-associated,3.52258138710402
+ID2v3,ID2,3m,Innate-associated,1.92880027328796
+ID2v6,ID2,6m,Innate-associated,1.881757572054
+ID2v12,ID2,12m,Innate-associated,1.62662234289006
+ID3v0,ID3,acute,Innate-associated,4.49547111982318
+ID3v3,ID3,3m,Innate-associated,1.21668034293615
+ID3v6,ID3,6m,Innate-associated,0.262466996355104
+ID3v12,ID3,12m,Innate-associated,0.833971575968382
+ID4v0,ID4,acute,Innate-associated,2.78555628940321
+ID4v3,ID4,3m,Innate-associated,-0.914684435382921
+ID4v6,ID4,6m,Innate-associated,-1.32384772785278
+ID4v12,ID4,12m,Innate-associated,-1.40331319535167
+ID5v0,ID5,acute,Innate-associated,5.11803705208164
+ID5v3,ID5,3m,Innate-associated,-0.0957602521700317
+ID5v6,ID5,6m,Innate-associated,0.439693879941918
+ID6v0,ID6,acute,Innate-associated,3.81989087654123
+ID6v3,ID6,3m,Innate-associated,0.29646491545877
+ID6v6,ID6,6m,Innate-associated,0.959260648020336
+ID6v12,ID6,12m,Innate-associated,0.19440830641529
+ID7v0,ID7,acute,Innate-associated,4.1848879655693
+ID7v3,ID7,3m,Innate-associated,0.726206245241297
+ID7v6,ID7,6m,Innate-associated,2.15226031630746
+ID8v0,ID8,acute,Innate-associated,4.04655607520768
+ID8v3,ID8,3m,Innate-associated,2.15547589704144
+ID8v6,ID8,6m,Innate-associated,1.86311521409028
+ID8v12,ID8,12m,Innate-associated,1.03806146667233
+ID9v0,ID9,acute,Innate-associated,4.6332173081978
+ID9v3,ID9,3m,Innate-associated,2.76403641006033
+ID9v6,ID9,6m,Innate-associated,3.66498696453922
+ID10v0,ID10,acute,Innate-associated,4.02854711341151
+ID10v3,ID10,3m,Innate-associated,2.0261966360181
+ID10v6,ID10,6m,Innate-associated,1.73486461771564
+ID10v12,ID10,12m,Innate-associated,1.02430102800962
+ID1v0,ID1,acute,Lymphocyte/T-cell-associated,-4.45417211506894
+ID1v3,ID1,3m,Lymphocyte/T-cell-associated,-1.62113983551508
+ID1v6,ID1,6m,Lymphocyte/T-cell-associated,-0.48753409426042
+ID1v12,ID1,12m,Lymphocyte/T-cell-associated,-0.788523828685141
+ID2v0,ID2,acute,Lymphocyte/T-cell-associated,-3.53807258111431
+ID2v3,ID2,3m,Lymphocyte/T-cell-associated,-2.18823762635283
+ID2v6,ID2,6m,Lymphocyte/T-cell-associated,-1.74260522579684
+ID2v12,ID2,12m,Lymphocyte/T-cell-associated,-1.70111466412297
+ID3v0,ID3,acute,Lymphocyte/T-cell-associated,-5.50391709071773
+ID3v3,ID3,3m,Lymphocyte/T-cell-associated,-1.36247212893652
+ID3v6,ID3,6m,Lymphocyte/T-cell-associated,-0.305706313497645
+ID3v12,ID3,12m,Lymphocyte/T-cell-associated,-0.987319982195842
+ID4v0,ID4,acute,Lymphocyte/T-cell-associated,-3.83684399130012
+ID4v3,ID4,3m,Lymphocyte/T-cell-associated,0.0910206913601392
+ID4v6,ID4,6m,Lymphocyte/T-cell-associated,-0.0613643331162666
+ID4v12,ID4,12m,Lymphocyte/T-cell-associated,0.000847205176640172
+ID5v0,ID5,acute,Lymphocyte/T-cell-associated,-6.02713930683087
+ID5v3,ID5,3m,Lymphocyte/T-cell-associated,-0.587021895727112
+ID5v6,ID5,6m,Lymphocyte/T-cell-associated,-0.778158505505471
+ID6v0,ID6,acute,Lymphocyte/T-cell-associated,-3.08031596233634
+ID6v3,ID6,3m,Lymphocyte/T-cell-associated,0.0401800431068314
+ID6v6,ID6,6m,Lymphocyte/T-cell-associated,-0.689749250047621
+ID6v12,ID6,12m,Lymphocyte/T-cell-associated,-0.072883210859974
+ID7v0,ID7,acute,Lymphocyte/T-cell-associated,-3.65435625849747
+ID7v3,ID7,3m,Lymphocyte/T-cell-associated,-0.745526389588678
+ID7v6,ID7,6m,Lymphocyte/T-cell-associated,-0.917985558809995
+ID8v0,ID8,acute,Lymphocyte/T-cell-associated,-3.33954674476863
+ID8v3,ID8,3m,Lymphocyte/T-cell-associated,-1.63230950796118
+ID8v6,ID8,6m,Lymphocyte/T-cell-associated,-1.12998884531397
+ID8v12,ID8,12m,Lymphocyte/T-cell-associated,-1.79964101511566
+ID9v0,ID9,acute,Lymphocyte/T-cell-associated,-2.73028153297528
+ID9v3,ID9,3m,Lymphocyte/T-cell-associated,-1.49560666419465
+ID9v6,ID9,6m,Lymphocyte/T-cell-associated,-1.69394531398849
+ID10v0,ID10,acute,Lymphocyte/T-cell-associated,-5.27464100382678
+ID10v3,ID10,3m,Lymphocyte/T-cell-associated,-1.9742761572712
+ID10v6,ID10,6m,Lymphocyte/T-cell-associated,-1.89054385517203
+ID10v12,ID10,12m,Lymphocyte/T-cell-associated,-1.2105916572655
+ID1v0,ID1,acute,Balance (secondary),7.63304682824465
+ID1v3,ID1,3m,Balance (secondary),3.89427994535805
+ID1v6,ID1,6m,Balance (secondary),1.34566458743747
+ID1v12,ID1,12m,Balance (secondary),2.29663335709535
+ID2v0,ID2,acute,Balance (secondary),7.06065396821834
+ID2v3,ID2,3m,Balance (secondary),4.11703789964079
+ID2v6,ID2,6m,Balance (secondary),3.62436279785084
+ID2v12,ID2,12m,Balance (secondary),3.32773700701304
+ID3v0,ID3,acute,Balance (secondary),9.99938821054091
+ID3v3,ID3,3m,Balance (secondary),2.57915247187268
+ID3v6,ID3,6m,Balance (secondary),0.56817330985275
+ID3v12,ID3,12m,Balance (secondary),1.82129155816422
+ID4v0,ID4,acute,Balance (secondary),6.62240028070333
+ID4v3,ID4,3m,Balance (secondary),-1.00570512674306
+ID4v6,ID4,6m,Balance (secondary),-1.26248339473651
+ID4v12,ID4,12m,Balance (secondary),-1.40416040052831
+ID5v0,ID5,acute,Balance (secondary),11.1451763589125
+ID5v3,ID5,3m,Balance (secondary),0.49126164355708
+ID5v6,ID5,6m,Balance (secondary),1.21785238544739
+ID6v0,ID6,acute,Balance (secondary),6.90020683887756
+ID6v3,ID6,3m,Balance (secondary),0.256284872351938
+ID6v6,ID6,6m,Balance (secondary),1.64900989806796
+ID6v12,ID6,12m,Balance (secondary),0.267291517275264
+ID7v0,ID7,acute,Balance (secondary),7.83924422406677
+ID7v3,ID7,3m,Balance (secondary),1.47173263482997
+ID7v6,ID7,6m,Balance (secondary),3.07024587511745
+ID8v0,ID8,acute,Balance (secondary),7.38610281997631
+ID8v3,ID8,3m,Balance (secondary),3.78778540500262
+ID8v6,ID8,6m,Balance (secondary),2.99310405940425
+ID8v12,ID8,12m,Balance (secondary),2.83770248178799
+ID9v0,ID9,acute,Balance (secondary),7.36349884117308
+ID9v3,ID9,3m,Balance (secondary),4.25964307425499
+ID9v6,ID9,6m,Balance (secondary),5.35893227852771
+ID10v0,ID10,acute,Balance (secondary),9.30318811723829
+ID10v3,ID10,3m,Balance (secondary),4.0004727932893
+ID10v6,ID10,6m,Balance (secondary),3.62540847288767
+ID10v12,ID10,12m,Balance (secondary),2.23489268527511

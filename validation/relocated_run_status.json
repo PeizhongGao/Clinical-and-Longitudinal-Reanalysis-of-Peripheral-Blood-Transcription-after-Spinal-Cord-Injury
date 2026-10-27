@@ -1,0 +1,259 @@
+{
+  "package_version": "0.1.0-rc1",
+  "profile": "standard",
+  "original_selection": false,
+  "steps": [
+    {
+      "name": "environment",
+      "script": "code/check_environment.R",
+      "script_sha256": "5d8e6539ec09eaee3aa4fe92a62939f41328f18133d074f2ef15e7da2adfface",
+      "seconds": 16.78,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {}
+    },
+    {
+      "name": "metadata_R1",
+      "script": "revision_R1_20261007/scripts/prepare_metadata.py",
+      "script_sha256": "07df85901c5dfc0bc9f8cb55fd9d86c5e21360e355a4102a58a86e408796ad6c",
+      "seconds": 0.52,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R1_20261007/tables/sample_manifest.csv": "b66fceed6240108e26af6fa9d2a740d54c0f78ffaad2cd3c257245de75b6b460"
+      }
+    },
+    {
+      "name": "discovery_and_original_scores",
+      "script": "revision_R1_20261007/scripts/run_R1.R",
+      "script_sha256": "e47b4393ce2132ce60fe9d1fc38c5c485f4c16949fe56f4eaa7d5dd7d3955855",
+      "seconds": 254.14,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R1_20261007/tables/analysis_state.rds": "a2d5e41180ad6982b50e9b715fea7610afa78af4aeac34dca507195636336e43",
+        "revision_R1_20261007/tables/locked_signature_reused_S14.csv": "7d4856db76a0e5ec81de8862ce1b04b728d510fa3be2d6e0150d07cc11328b0e",
+        "revision_R1_20261007/tables/discovery_locked_scores_descriptive.csv": "a76dcaebeb68c434a79f3ccf9c934fe2b0dd54a14bea0f9899c337fe9f207156",
+        "revision_R1_20261007/tables/processed_matrix_topN_B_sensitivity.csv": "e38fbaafa5374f995b26abdce4ad08d1617b98d4ea0c485c665d71ace5e30eb2",
+        "revision_R1_20261007/tables/SCI_vs_TC_GO_camera.csv": "dcd276a92239072446577072afc77c38234a2afa48039a6fe71a7fa86488df91"
+      }
+    },
+    {
+      "name": "count_normalization_scores",
+      "script": "revision_R1_20261007/scripts/NCBI_count_followup.R",
+      "script_sha256": "d6cc5301e725139958892a39606a53dccf2edf234445b064e477b32c0850c83c",
+      "seconds": 24.65,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R1_20261007/tables/NCBI_longitudinal_full_scores.csv": "d75aec338504a2ca49cad14ba00acaf7c99e14b521f5fa61ec2e42fc1a7821cf",
+        "revision_R1_20261007/tables/NCBI_longitudinal_mixed_contrasts.csv": "31164b3cc51750b77402100e18bf9a38f677ef5392453b5b9fc907f3f92d9f20"
+      }
+    },
+    {
+      "name": "external_BTM_scores",
+      "script": "revision_R1_20261007/scripts/external_BTM_analysis.R",
+      "script_sha256": "668b8a3d94c411cfabb2120f39ec87cb5e8734a60a9952727ae892498e6d6910",
+      "seconds": 107.43,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R1_20261007/tables/external_BTM_scores.csv": "6c260922c840b1318203169c9cccde9c7126b7d416ac5b5b57d191a145810dd1",
+        "revision_R1_20261007/tables/external_BTM_used_genes.csv": "41d331713663727c07eae449150853d613cbd6de338be4252a427239364e49a4"
+      }
+    },
+    {
+      "name": "metadata_R2",
+      "script": "revision_R2_20261008/scripts/metadata_r2.py",
+      "script_sha256": "cdbf72a4156cf680f4180ccb0c5098ced478cadbf76dbe188a56ae55de3abe80",
+      "seconds": 8.66,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/tables/sample_manifest_R2.csv": "7be5c78421fe5dddaed1399dc0af1fbe62959615a89872e3b7bc7aa20a086537"
+      }
+    },
+    {
+      "name": "clinical_ODC405",
+      "script": "revision_R2_20261008/scripts/odc405_adjusted_analysis.R",
+      "script_sha256": "6eba9e5a9dbdb9eb20b2e3ec3a09b8ac104e17089a6a690fbf315e2342247437",
+      "seconds": 28.19,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/tables/ODC405_sample_crosswalk.csv": "2be56b17a016964fdcd181a8fa891b5d130cbd417d1ba8639015ae2cef506d18",
+        "revision_R2_20261008/tables/ODC405_locked_scores_with_clinical_and_cell_estimates.csv": "a1c28208db3bac36ed9d9ee7eb4872be182161a11e42bab7e160d817de8f89b1",
+        "revision_R2_20261008/supplement/ODC405_locked_score_models.csv": "2e6f07d267b7385021a421892c2a8cc14a867c5bdf892fdf0ff5711a2a0bf655"
+      }
+    },
+    {
+      "name": "original_score_sensitivities",
+      "script": "revision_R2_20261008/scripts/sensitivity_analysis.R",
+      "script_sha256": "371e11fd6eb9a5bc7f52477fbf8f18cacfb8c73689afa725a2527a26ef2097f5",
+      "seconds": 26.3,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/tables/R2_longitudinal_sensitivities.csv": "8594837f166d94a87b1f149753c3b7dd025d3a42e1d47fd0e81d592ceadbc2f3",
+        "revision_R2_20261008/tables/GSE226238_official_MCPcounter.csv": "54bfde917eac53cda70bbe124123b1e7dab055c3809619f8eabc0d044d0b7ba1",
+        "revision_R2_20261008/tables/same_platform_sensitivity.csv": "1e6ec12affc209899a32e783b2b32d802a6874b792d8982c05ea0cdd19bf45cd"
+      }
+    },
+    {
+      "name": "fixed_sample_models",
+      "script": "revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R",
+      "script_sha256": "77ace9389ce335bc5c53c779698cf0bc9a85a7dc4925c9e98e4c32dbfb656d38",
+      "seconds": 5.7,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/fixed_sample_20261012/tables/fixed_sample_models.csv": "29711ddd78dc773fa2b927e8a21779e4e1a06ef37126b84109b0524c3e0921e3"
+      }
+    },
+    {
+      "name": "BTM_all_adjusted_models",
+      "script": "revision_external_adjusted_20261016/scripts/analyze.R",
+      "script_sha256": "7666fbfd72d67407199fdd90cf282bc791a669c4be883fb03dfeb3b76d9dd39c",
+      "seconds": 48.52,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_external_adjusted_20261016/tables/discovery_models.csv": "29f8df60376efac7405d2fb47893b79d3ca21e3e179d230548976aa661231be6",
+        "revision_external_adjusted_20261016/tables/longitudinal_models.csv": "e12c0205823eaf13b96d9c9e17a315068598a42410372c263cdda4895f1af0d5"
+      }
+    },
+    {
+      "name": "bridge_input_reconstruction",
+      "script": "code/reconstruct_bridge_inputs.R",
+      "script_sha256": "23b699d87035471f488ae4e35f5b0b1d75c426a9636e7cb828f3540c8d0d853d",
+      "seconds": 6.3,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {}
+    },
+    {
+      "name": "bridge43_genes_GO",
+      "script": "revision_numeric_freeze_20261019/scripts/run_bridge43.R",
+      "script_sha256": "583c728bb2d1948745e383d27336793d62839a9c35ffcf7124c84ebf4cb1786f",
+      "seconds": 6.16,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_followup_20261019/bridge43/results/gene_models_M0.csv": "0943f1beb206fe4114d57bbbad3095cdee3d18e581b745407b1b54d773903d35",
+        "revision_followup_20261019/bridge43/results/gene_models_M1.csv": "d6095d621b8a05c170b3c593068279db15864e026d4a9862fd70500a6cba00bc",
+        "revision_followup_20261019/bridge43/results/gene_models_M2.csv": "f89122286281878caa80664e9279dd4ff1963a15ad1a469e016a6b616d7bc634",
+        "revision_followup_20261019/bridge43/results/camera_models_M0.csv": "7669ef4ada1cf412058b50eaa1b75c3b7a73b946a5a9cf930fe5049f1b22326a",
+        "revision_followup_20261019/bridge43/results/camera_models_M1.csv": "9594de27ec100c8028ebcf03d9c101426209e16fea981a004bac853391aeeda5",
+        "revision_followup_20261019/bridge43/results/camera_models_M2.csv": "fec2045d7b08952acfc286ec0d43e104ec7fc8325930fb3b22735d1d9c3034c0"
+      }
+    },
+    {
+      "name": "assemble_final_numeric_tables",
+      "script": "code/assemble_numeric.R",
+      "script_sha256": "71551e426f417ffac276080736f1a3b865401c2171cee073eba763d4713e55a9",
+      "seconds": 1.2,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_numeric_freeze_20261019/tables/BTM_primary16.csv": "e278a028ce06a94a589b2a78dbc885166c695846fcb6195e2fba11677dbe6c36",
+        "revision_numeric_freeze_20261019/tables/bridge43_fixed_eight_GO.csv": "a6f4fd66d0f63b93e84f65a38372ffdf89a1020f2e16a79c953bede1ef16abb0"
+      }
+    },
+    {
+      "name": "main_Figure1",
+      "script": "revision_Day3_20261021/scripts/Figure1_BTM_supported4.R",
+      "script_sha256": "579a56684e1b7d9b40a1c2278f09ac8ed736c58c6c0572ed6fa9a8316bdf986e",
+      "seconds": 7.62,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_Day3_20261021/main_figures/Figure1_BTM_supported4.png": "aacb7bf9053aa720883cd5f5fed9d7610ed2126456bbb851c32fb19397db82a8"
+      }
+    },
+    {
+      "name": "supplement_GO_BTM_figures",
+      "script": "revision_numeric_freeze_20261019/scripts/figures.R",
+      "script_sha256": "6420f79de18dfda6ed75ce64cb602e603baca50b22f213058840d9f01d975398",
+      "seconds": 15.09,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_numeric_freeze_20261019/figures/figure01_fixed_immune_GO.png": "4132d607757f851f4b8f0f0856902da9c8b9aefbe6e2deef47816370391aac26",
+        "revision_numeric_freeze_20261019/figures/figure02_BTM_primary16.png": "88f54a1f7c2c057aa90320a404dbdad42c316fb034f5c1c878c8501733802da6"
+      }
+    },
+    {
+      "name": "supplement_original_longitudinal",
+      "script": "revision_R1_20261007/scripts/render_NCBI_figures.R",
+      "script_sha256": "a8a197ce7eef031827daf4280dfe91429227093723d0f577860ef8af45239085",
+      "seconds": 25.85,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R1_20261007/figures/Figure5_revised.png": "3ecb6047d7b4e04baa5aeb3dfe71c229086f4ff1ce77acf73b762189b562f7cd"
+      }
+    },
+    {
+      "name": "supplement_fixed_sample",
+      "script": "revision_integrated_20261012/fixed_sample/scripts/fixed_sample_figures.R",
+      "script_sha256": "39a65255d152f8adcbcbf9ec7b1f425620d2aa120432e8c225fdabb5d1b235e2",
+      "seconds": 37.96,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/fixed_sample_20261012/figures/figure01_fixed_sample_effects.png": "f73d36c17c5ebe0aa025ec96cccfc2ae54ab09f496ec077aa5c2efb62cc027fa",
+        "revision_R2_20261008/fixed_sample_20261012/figures/figure03_covariate_support.png": "072b79ea8998dece87e27e2cb961569831c17a1697d96b0e323592cab9d54d26"
+      }
+    },
+    {
+      "name": "supplement_BTM_sensitivity",
+      "script": "revision_external_adjusted_20261016/scripts/figures.R",
+      "script_sha256": "6612e1cd7c6967e1a922f4ba8b6e7d46902e54e06e83b7db119ce10172c69c9d",
+      "seconds": 16.09,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_external_adjusted_20261016/figures/figure02_external_composition.png": "655df0a3d86a1b0b5e939b6b19e1174afb22cd8ed7e75a6d34e8f56075e51a34"
+      }
+    },
+    {
+      "name": "supplement_other_figures",
+      "script": "revision_R2_20261008/scripts/render_R2.R",
+      "script_sha256": "7daa1d52b7a8842af4959389e0bd3fc54d48b92714a45265fbb0f70818c2d67b",
+      "seconds": 48.43,
+      "exit_code": 0,
+      "missing_outputs": [],
+      "status": "PASS",
+      "output_sha256": {
+        "revision_R2_20261008/figures/Figure4_revised.png": "ab131560a52b86635e1e4bb04b34efc3f114d6a159c464a754aa3d4a1a1751dc",
+        "revision_R2_20261008/figures/Figure7_revised.png": "43fc5db84637f0c27ce6d941810c0d1536f4f67da8489e132d98fe8e475038dc"
+      }
+    }
+  ],
+  "execution_fingerprint": "74acbd1ce6dea2b9b4f3230ac50496b4bcc52811c2aea0116049dcb21c11a701",
+  "validation_exit_code": 0,
+  "completed": true,
+  "not_recomputed": [
+    "historical clustering resampling",
+    "historical preranked GSEA permutations",
+    "original count-based signature selection; frozen gene lists and selection-frequency inputs reused"
+  ]
+}

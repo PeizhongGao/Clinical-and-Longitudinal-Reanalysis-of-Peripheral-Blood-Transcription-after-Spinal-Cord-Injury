@@ -1,0 +1,4 @@
+query_name,query,date,count,retrieved_ids,status,purpose
+human_SCI_blood,"(""spinal cord injury""[All Fields] OR ""spinal cord injuries""[All Fields]) AND ""Homo sapiens""[Organism] AND (blood[All Fields] OR peripheral[All Fields] OR leukocyte[All Fields]) AND gse[Entry Type]",2026-10-07,19,19,success,revision-stage retrospective search; not original selection history
+human_SCI_transcriptome,"""spinal cord injury""[All Fields] AND ""Homo sapiens""[Organism] AND (""expression profiling by high throughput sequencing""[DataSet Type] OR ""expression profiling by array""[DataSet Type]) AND gse[Entry Type]",2026-10-07,41,41,success,revision-stage retrospective search; not original selection history
+context_known_series,GSE177034[All Fields] AND gse[Entry Type],2026-10-07,1,1,success,revision-stage retrospective search; not original selection history

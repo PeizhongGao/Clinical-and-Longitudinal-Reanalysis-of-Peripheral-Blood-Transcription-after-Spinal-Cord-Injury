@@ -1,0 +1,6 @@
+figure,width_mm,height_mm,PNG_dpi,TIFF_dpi,backend,vector_formats,font,minimum_text_pt
+"figure01_fixed_sample_effects",183,145,300,600,"R","PDF/SVG","Arial",8
+"figureS01_balance_effects",183,125,300,600,"R","PDF/SVG","Arial",8
+"figure02_TC_leave_one_out",183,190,300,600,"R","PDF/SVG","Arial",8
+"figure03_covariate_support",183,125,300,600,"R","PDF/SVG","Arial",8
+"figureS02_residual_diagnostics",183,250,300,NA,"R","PDF/SVG","Arial",8

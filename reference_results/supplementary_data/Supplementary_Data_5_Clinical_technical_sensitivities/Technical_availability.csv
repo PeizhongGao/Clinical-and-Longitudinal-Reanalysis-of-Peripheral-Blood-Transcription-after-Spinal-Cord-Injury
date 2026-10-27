@@ -1,0 +1,11 @@
+variable,available,disposition,note
+"platform",TRUE,"constant in GEO metadata","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"instrument",TRUE,"constant in GEO metadata","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"library_strategy",TRUE,"constant in GEO metadata","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"library_selection",TRUE,"constant in GEO metadata","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"library_source",TRUE,"constant in GEO metadata","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"batch",FALSE,"not supplied at participant level","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"RIN",FALSE,"not supplied at participant level","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"processing_date",FALSE,"not supplied; GEO submission date is not processing date","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"infection",FALSE,"not supplied in ODC-405 dictionary/table","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."
+"treatment",FALSE,"not supplied in ODC-405 dictionary/table","GEO describes the expression matrix as edgeR-normalized and ComBat batch-corrected; batch labels are unavailable for independent adjustment."

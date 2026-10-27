@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE226238",
+    "status": "captcha_page_not_repository_content",
+    "links": [],
+    "note": "No CAPTCHA bypass attempted; RNA-seq count download not verified"
+  },
+  {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/series/GSE226nnn/GSE226238/suppl/",
+    "status": "success",
+    "links": [
+      {
+        "label": "GSE226238_Morrison_et_al_processed_data.xlsx",
+        "href": "GSE226238_Morrison_et_al_processed_data.xlsx"
+      }
+    ]
+  }
+]

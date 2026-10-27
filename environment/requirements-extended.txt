@@ -1,0 +1,3 @@
+-r requirements.txt
+# Only the optional historical preranked GO profile uses gseapy.
+gseapy==1.3.1

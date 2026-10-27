@@ -1,0 +1,25 @@
+﻿package,installed,version,referenced_by
+AnnotationDbi,TRUE,1.74.0,code/4.Rmd | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R
+cluster,TRUE,2.1.8.2,revision_R2_20261008/scripts/cluster_validation.R
+data.table,TRUE,1.18.4,code/4.Rmd | revision_R1_20261007/scripts/NCBI_count_followup.R | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R | revision_R2_20261008/scripts/cluster_validation.R | revision_R2_20261008/scripts/odc405_adjusted_analysis.R | revision_R2_20261008/scripts/sensitivity_analysis.R | revision_external_adjusted_20261016/scripts/analyze.R | revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R | revision_numeric_freeze_20261019/scripts/check_consolidated_inference.R | revision_numeric_freeze_20261019/scripts/independent_formula_QA.R | revision_numeric_freeze_20261019/scripts/run_bridge43.R | revision_scope_lock_20261018/scripts/preflight_inputs.R
+digest,TRUE,0.6.39,revision_numeric_freeze_20261019/scripts/run_bridge43.R
+dplyr,TRUE,1.2.1,code/4.Rmd
+edgeR,TRUE,4.10.1,code/4.Rmd | revision_R1_20261007/scripts/NCBI_count_followup.R | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R2_20261008/scripts/sensitivity_analysis.R | revision_external_adjusted_20261016/scripts/analyze.R
+emmeans,TRUE,2.0.3,revision_R1_20261007/scripts/NCBI_count_followup.R | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R | revision_R2_20261008/scripts/sensitivity_analysis.R | revision_external_adjusted_20261016/scripts/analyze.R
+ggplot2,TRUE,4.0.3,code/4.Rmd | revision_Day3_20261021/scripts/Figure1_BTM_supported4.R | revision_R1_20261007/scripts/run_R1.R | revision_R2_20261008/scripts/odc405_adjusted_analysis.R
+grDevices,TRUE,4.6.1,revision_Day3_20261021/scripts/Figure1_BTM_supported4.R
+jsonlite,TRUE,2.0.0,code/4.Rmd | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R | revision_external_adjusted_20261016/scripts/analyze.R | revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R | revision_numeric_freeze_20261019/scripts/check_consolidated_inference.R | revision_numeric_freeze_20261019/scripts/independent_formula_QA.R | revision_numeric_freeze_20261019/scripts/run_bridge43.R | revision_scope_lock_20261018/scripts/preflight_inputs.R
+limma,TRUE,3.68.4,code/4.Rmd | revision_R1_20261007/scripts/run_R1.R | revision_R2_20261008/scripts/odc405_adjusted_analysis.R | revision_numeric_freeze_20261019/scripts/independent_formula_QA.R | revision_numeric_freeze_20261019/scripts/run_bridge43.R | revision_scope_lock_20261018/scripts/preflight_inputs.R
+lme4,TRUE,2.0-1,revision_R1_20261007/scripts/run_R1.R
+lmerTest,TRUE,3.2-1,revision_R1_20261007/scripts/NCBI_count_followup.R | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R | revision_R2_20261008/scripts/sensitivity_analysis.R | revision_external_adjusted_20261016/scripts/analyze.R
+lmtest,TRUE,0.9-40,revision_external_adjusted_20261016/scripts/analyze.R | revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R
+org.Hs.eg.db,TRUE,3.23.1,code/4.Rmd | revision_R1_20261007/scripts/external_BTM_analysis.R | revision_R1_20261007/scripts/run_R1.R
+patchwork,TRUE,1.3.2,code/4.Rmd | revision_R1_20261007/scripts/run_R1.R
+ragg,TRUE,1.5.2,revision_Day3_20261021/scripts/Figure1_BTM_supported4.R | revision_R1_20261007/scripts/run_R1.R
+readr,TRUE,2.2.0,code/4.Rmd
+readxl,TRUE,1.5.0,revision_R1_20261007/scripts/run_R1.R
+scales,TRUE,1.4.0,revision_R1_20261007/scripts/run_R1.R
+stats,TRUE,4.6.1,code/4.Rmd
+svglite,TRUE,2.2.2,revision_Day3_20261021/scripts/Figure1_BTM_supported4.R | revision_R1_20261007/scripts/run_R1.R
+tidyr,TRUE,1.3.2,code/4.Rmd
+tools,TRUE,4.6.1,revision_R2_20261008/scripts/odc405_adjusted_analysis.R | revision_external_adjusted_20261016/scripts/analyze.R | revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R

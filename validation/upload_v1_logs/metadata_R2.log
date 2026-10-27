@@ -1,0 +1,10 @@
+  dataset      group  participants  samples  age_n  age_mean        sex
+GSE151371         HC            10       10      0       NaN           
+GSE151371        SCI            38       38      0       NaN           
+GSE151371         TC            10       10      0       NaN           
+GSE177034 Persistent            49       98     49 63.221058 F:25; M:24
+GSE177034   Resolved            49       98     49 62.568164 M:33; F:16
+GSE226238        CTL             9        9      9 44.111111   M:8; F:1
+GSE226238        SCI            10       37     10 51.600000   M:9; F:1
+GSE293559        CTL             9        9      9 44.111111   M:8; F:1
+GSE293559        SCI            36       36     36 55.944444  M:27; F:9

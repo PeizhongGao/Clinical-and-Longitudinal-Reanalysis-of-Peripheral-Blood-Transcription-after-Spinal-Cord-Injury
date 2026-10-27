@@ -1,0 +1,5 @@
+label,source,query,date,status,count
+cell_marker_pubmed,pubmed,"(blood OR leukocyte) AND (""gene expression"" OR transcriptomic) AND (""immune cell"" OR ""cell type"") AND (signature OR deconvolution) AND (Monaco OR Newman OR Becht)",2026-10-07,success,6
+selection_pubmed,pubmed,"""stability selection"" AND (subsampling OR error OR thresholds)",2026-10-07,success,65
+cell_marker_crossref,crossref,immune cell type gene expression Monaco Newman Becht blood deconvolution,2026-10-07,success,728157
+selection_crossref,crossref,stability selection Meinshausen Buhlmann Shah Samworth,2026-10-07,success,1384963

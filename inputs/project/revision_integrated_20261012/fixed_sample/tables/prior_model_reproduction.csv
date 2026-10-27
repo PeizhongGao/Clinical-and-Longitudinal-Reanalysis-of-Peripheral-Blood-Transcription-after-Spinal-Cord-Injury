@@ -1,0 +1,13 @@
+subset,spec,outcome,max_abs_numeric_difference,q_difference,passed
+"full48","unadjusted","innate_score",2.88657986402541e-15,2.71050543121376e-20,TRUE
+"full48","unadjusted","adaptive_score",3.10862446895044e-15,1.00288700954909e-18,TRUE
+"full48","unadjusted","balance_score",4.44089209850063e-15,2.71050543121376e-20,TRUE
+"full48","age_sex","innate_score",4.88498130835069e-15,1.62630325872826e-19,TRUE
+"full48","age_sex","adaptive_score",7.21644966006352e-16,9.10729824887824e-18,TRUE
+"full48","age_sex","balance_score",5.32907051820075e-15,1.62630325872826e-19,TRUE
+"clinical43","clinical","innate_score",5.10702591327572e-15,5.55111512312578e-16,TRUE
+"clinical43","clinical","adaptive_score",1.33226762955019e-15,5.55111512312578e-16,TRUE
+"clinical43","clinical","balance_score",4.44089209850063e-15,5.55111512312578e-16,TRUE
+"time41","clinical_time","innate_score",2.66453525910038e-15,6.10622663543836e-16,TRUE
+"time41","clinical_time","adaptive_score",1.83186799063151e-15,6.10622663543836e-16,TRUE
+"time41","clinical_time","balance_score",3.10862446895044e-15,6.10622663543836e-16,TRUE

@@ -1,0 +1,29 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+SOURCE POLICY: original Supplementary_Data1-4 and processed expression matrices; no replacement of preprocessing
+                          check        value
+1 HC_vs_SCI_max_abs_logFC_delta 3.816020e-09
+2     HC_vs_SCI_max_abs_t_delta 1.523214e-08
+3   HC_vs_SCI_max_abs_FDR_delta 6.606223e-09
+4                original_genes 1.749800e+04
+5        processed_matrix_genes 1.749800e+04
+Warning message:
+In score_module(E226, m226, "GSE226238", "CTL", allow_low_coverage = TRUE) :
+  LOW COVERAGE PROJECTION, not full signature validation: GSE226238 innate
+Processed-matrix resampling 50 / 500 
+Processed-matrix resampling 100 / 500 
+Processed-matrix resampling 150 / 500 
+Processed-matrix resampling 200 / 500 
+Processed-matrix resampling 250 / 500 
+Processed-matrix resampling 300 / 500 
+Processed-matrix resampling 350 / 500 
+Processed-matrix resampling 400 / 500 
+Processed-matrix resampling 450 / 500 
+Processed-matrix resampling 500 / 500 
+'select()' returned 1:1 mapping between keys and columns
+Building GO BP membership; camera on existing processed matrix
+'select()' returned 1:many mapping between keys and columns
+COMPLETED. Figures and full numerical tables written.

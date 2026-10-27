@@ -1,0 +1,5 @@
+dataset,module,n_requested,n_present,n_used,coverage,missing,reference,sd_min,minimum_coverage
+"GSE151371","adaptive",15,15,15,1,"","TC",1e-06,0.8
+"GSE151371","innate",15,15,15,1,"","TC",1e-06,0.8
+"GSE226238","adaptive",15,13,13,0.866666666666667,"ICOS;ITK","CTL",1e-06,0.8
+"GSE226238","innate",15,8,8,0.533333333333333,"S100A12;ANXA3;CLEC4D;TLR5;S100A9;TLR8;BST1","CTL",1e-06,0.8

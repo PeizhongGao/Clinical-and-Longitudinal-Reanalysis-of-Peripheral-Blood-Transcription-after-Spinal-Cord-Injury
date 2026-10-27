@@ -1,0 +1,30 @@
+{
+  "locked_at_utc": "2026-10-07T13:20:52.276577+00:00",
+  "stage": "before new BTM score/effect calculation; previous study results known",
+  "commit": "e973bf374956d40367487492d825de97f96ae095",
+  "source_doi": "10.1038/ni.2789",
+  "modules": [
+    "M7.0",
+    "M223",
+    "M37.1",
+    "M163"
+  ],
+  "files": [
+    {
+      "path": "PROJECT_ROOT\\revision_R1_20261007\\R1_11_external_module_protocol.md",
+      "sha256": "c239aadbd8347a706cb22d78cda038da11120ec4d0042026f3e910cc5bfe801c"
+    },
+    {
+      "path": "PROJECT_ROOT\\revision_R1_20261007\\inputs\\external_modules\\BTM_for_GSEA_20131008.gmt",
+      "sha256": "dff51cc7df3c30f26ad75ba75ca89081c08300d38a5ba2649087477b22408b67"
+    },
+    {
+      "path": "PROJECT_ROOT\\revision_R1_20261007\\tables\\external_BTM_source_members.csv",
+      "sha256": "1ae8559afa69ff4bf0811804c106f3596c92cf65e9aee5dc4127944d1bb48ded"
+    },
+    {
+      "path": "PROJECT_ROOT\\revision_R1_20261007\\tables\\external_BTM_module_selection.csv",
+      "sha256": "58ace20b6abb61e3cc01767d1ba58d65c815867c250054bc01a7cc77cc6fe3aa"
+    }
+  ]
+}

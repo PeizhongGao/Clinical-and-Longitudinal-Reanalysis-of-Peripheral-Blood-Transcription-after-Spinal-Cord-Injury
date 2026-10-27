@@ -1,0 +1,29 @@
+[
+  {
+    "query_name": "human_SCI_blood",
+    "query": "(\"spinal cord injury\"[All Fields] OR \"spinal cord injuries\"[All Fields]) AND \"Homo sapiens\"[Organism] AND (blood[All Fields] OR peripheral[All Fields] OR leukocyte[All Fields]) AND gse[Entry Type]",
+    "date": "2026-10-07",
+    "count": "19",
+    "retrieved_ids": 19,
+    "status": "success",
+    "purpose": "revision-stage retrospective search; not original selection history"
+  },
+  {
+    "query_name": "human_SCI_transcriptome",
+    "query": "\"spinal cord injury\"[All Fields] AND \"Homo sapiens\"[Organism] AND (\"expression profiling by high throughput sequencing\"[DataSet Type] OR \"expression profiling by array\"[DataSet Type]) AND gse[Entry Type]",
+    "date": "2026-10-07",
+    "count": "41",
+    "retrieved_ids": 41,
+    "status": "success",
+    "purpose": "revision-stage retrospective search; not original selection history"
+  },
+  {
+    "query_name": "context_known_series",
+    "query": "GSE177034[All Fields] AND gse[Entry Type]",
+    "date": "2026-10-07",
+    "count": "1",
+    "retrieved_ids": 1,
+    "status": "success",
+    "purpose": "revision-stage retrospective search; not original selection history"
+  }
+]

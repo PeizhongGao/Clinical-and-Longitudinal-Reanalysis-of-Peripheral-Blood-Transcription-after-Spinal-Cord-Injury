@@ -1,0 +1,16 @@
+field,meaning,units,coding,boundary
+dataset,Public GEO accession,text,GSE151371; GSE226238; GSE293559; GSE177034,missing unavailable
+sample,Source expression library key,text,dataset+sample unique,not imputed
+gsm,GEO specimen accession,text,original GSM retained for reused libraries,not replaced by synthetic accession
+subject,Participant identity within dataset,text,same participant across visits,independent unit for longitudinal clustering
+group,Source clinical/reference group,category,SCI; TC; HC; CTL,not imputed
+time,Visit used in longitudinal models,category,acute; 3m; 6m; 12m,missing visits not imputed
+overlap,Reused specimen mapping,category,reused_from_GSE226238; new_GSE293559,see curation rules
+score,Expression score,source-specific scale,15+15 control-referenced scores or BTM mean log expression,not comparable in absolute magnitude across source platforms
+estimate,Model coefficient or time contrast,score/log-expression units,SCI minus TC or later minus acute,point estimate
+lower_CL; upper_CL,Pointwise 95% confidence interval,estimate units,not simultaneous intervals,NA for inapplicable estimates
+p_value,Two-sided model test p value,probability,0 to 1,retained NA does not reduce planned family
+q_BH_primary16,BH across designated 4 clinical + 12 longitudinal tests,probability,0 to 1,exploratory family-specific control
+logFC,limma gene group coefficient,supplied log-expression units,SCI minus TC,not mechanistic change
+FDR,CAMERA within-model BH adjusted p,probability,4032 GO sets per M0/M1/M2,not pathway effect magnitude
+Unknown,Source-coded unknown clinical category,category,retained separately from No,not converted to observed negative

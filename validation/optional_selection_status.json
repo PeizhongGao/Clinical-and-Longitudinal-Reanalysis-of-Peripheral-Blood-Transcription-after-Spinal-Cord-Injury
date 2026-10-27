@@ -1,0 +1,7 @@
+{
+  "status": "STOPPED_AFTER_TIMEBOX",
+  "purpose": "optional original count-based signature selection",
+  "not_a_numerical_failure": true,
+  "complete_rerun_verified": false,
+  "final_validation_profile": "standard with frozen original selection checkpoint"
+}

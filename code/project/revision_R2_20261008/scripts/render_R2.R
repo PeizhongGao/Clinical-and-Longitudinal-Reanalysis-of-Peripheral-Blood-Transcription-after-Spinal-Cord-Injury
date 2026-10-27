@@ -1,0 +1,37 @@
+# Public-package copy: see metadata/code_changes.csv for provenance.
+args<-commandArgs(TRUE);root<-normalizePath(if(length(args))args[1] else '.',winslash='/');o<-file.path(root,'revision_R2_20261008');r1<-file.path(root,'revision_R1_20261007')
+suppressPackageStartupMessages({library(data.table);library(ggplot2);library(patchwork)})
+theme_set(theme_classic(base_size=10,base_family='Arial')+theme(plot.title=element_text(size=11,face='bold'),strip.text=element_text(face='bold'),legend.position='bottom'))
+read<-function(n)as.data.frame(fread(file.path(o,'tables',paste0(n,'.csv'))));pal<-c(SCI='#B9564F',HC='#4F6474',TC='#518AA0',CTL='#4F6474')
+save<-function(p,n,w=183,h=160){
+ stem<-file.path(o,'figures',n)
+ grDevices::cairo_pdf(paste0(stem,'.pdf'),width=w/25.4,height=h/25.4,family='Arial');print(p);dev.off()
+ svglite::svglite(paste0(stem,'.svg'),width=w/25.4,height=h/25.4);print(p);dev.off()
+ ggsave(paste0(stem,'.png'),p,width=w/25.4,height=h/25.4,dpi=300,device=ragg::agg_png)
+ ggsave(paste0(stem,'.tiff'),p,width=w/25.4,height=h/25.4,dpi=600,device=ragg::agg_tiff,compression='lzw')
+}
+met<-read('cluster_metrics');gap<-read('cluster_gap');boot<-read('cluster_bootstrap');ini<-read('cluster_initializations')
+a<-ggplot(met,aes(k,silhouette))+geom_line(color='#518AA0')+geom_point(size=2)+scale_x_continuous(breaks=2:6)+labs(x='Number of clusters',y='Average silhouette',title='Silhouette favours k = 2')
+b<-ggplot(gap,aes(k,gap))+geom_line(color='#B9564F')+geom_errorbar(aes(ymin=gap-SE.sim,ymax=gap+SE.sim),width=.1)+geom_point(size=2)+scale_x_continuous(breaks=1:6)+labs(x='Number of clusters',y='Gap statistic (simulation SE)',title='Gap increases through k = 6')
+c<-ggplot(boot,aes(factor(k),max_jaccard,group=interaction(k,cluster)))+geom_boxplot(width=.5,outlier.size=.3,position=position_dodge2())+labs(x='Number of clusters',y='Best matched cluster Jaccard',title='Participant-bootstrap stability',subtitle='200 group-stratified resamples; one box per cluster')
+d<-ggplot(ini,aes(factor(k),ARI))+geom_boxplot(width=.4,outlier.shape=NA)+geom_point(position=position_jitter(width=.1,seed=20261008),size=1)+labs(x='Number of clusters',y='Adjusted Rand index',title='Initialization stability',subtitle='20 single starts; 50-start reference')
+save((a+b)/(c+d)+plot_annotation(tag_levels='a',caption='2,509 original selected genes; 58 participants. Stability is conditional on feature selection.'),'Figure4_revised',183,175)
+pcs<-read('technical_PCA_scores');dpc<-pcs[pcs$dataset=='GSE293559',];a<-ggplot(dpc,aes(PC1,PC2,color=group,shape=platform))+geom_point(size=2.5)+scale_color_manual(values=pal)+labs(title='Additional-cohort transcript PCA',subtitle='36 SCI and 9 reused controls; two platforms')
+cr<-read('R2_cross_sectional_sensitivities');cr<-cr[cr$dataset=='GSE293559' & cr$spec%in%c('platform','age_sex_platform'),];cr$spec<-factor(cr$spec,levels=c('platform','age_sex_platform'))
+b<-ggplot(cr,aes(estimate,spec))+geom_vline(xintercept=0,linetype=2,color='gray60')+geom_errorbar(aes(xmin=lower.CL,xmax=upper.CL),orientation='y',width=.12)+geom_point(size=2)+facet_wrap(~score,ncol=1,scales='free_x')+labs(x='SCI minus CTL coefficient (95% CI)',y=NULL,title='Covariate sensitivity',subtitle='45 participants; fixed scores')
+save((a+b+plot_layout(widths=c(1.1,1.2),guides='collect'))&theme(legend.position='bottom',legend.text=element_text(size=8),legend.title=element_text(size=8)),'Supp_technical_covariates',183,160)
+ml<-read('R2_longitudinal_sensitivities');ml<-ml[ml$spec%in%c('age','sex','severity_AB_CD','official_MCPcounter') & ml$contrast=='12m - acute',]
+p<-ggplot(ml,aes(estimate,spec))+geom_vline(xintercept=0,linetype=2,color='gray60')+geom_errorbar(aes(xmin=lower.CL,xmax=upper.CL),orientation='y',width=.15)+geom_point(size=2,color='#518AA0')+facet_wrap(~score,ncol=1,scales='free_x')+labs(x='12-month minus acute estimate (95% CI)',y=NULL,title='Longitudinal sensitivity to clinical and cell-abundance covariates',subtitle='10 SCI participants; 37 observations; pointwise intervals')
+save(p,'Supp_longitudinal_covariates',183,155)
+orig<-as.data.frame(fread(file.path(r1,'tables/GSE293559_reconciled_statistics.csv')));print(names(orig))
+for(n in c(1,2,3,5,6))for(ext in c('pdf','svg','png','tiff'))file.copy(file.path(r1,'figures',paste0('Figure',n,'_revised.',ext)),file.path(o,'figures',paste0('Figure',n,'_revised.',ext)),overwrite=TRUE)
+ss<-as.data.frame(fread(file.path(r1,'tables/original_Table_S16.csv')))
+long<-data.table::melt(as.data.table(ss),id.vars=c('sample','group','reused_from_gse226238'),measure.vars=c('innate_score','adaptive_score','balance_score'),variable.name='score',value.name='value')
+long$score<-factor(long$score,levels=c('innate_score','adaptive_score','balance_score'),labels=c('Innate associated','Lymphocyte associated','Secondary balance'))
+long$reused<-long$reused_from_gse226238=='yes'
+a<-ggplot(long,aes(group,value,color=group))+geom_boxplot(width=.45,outlier.shape=NA,alpha=.15)+geom_point(aes(shape=reused),position=position_jitter(width=.12,seed=20261008),size=1.8)+facet_wrap(~score,nrow=1,scales='free_y')+scale_color_manual(values=pal)+scale_shape_manual(values=c('FALSE'=16,'TRUE'=17),name='Reused sample')+labs(x=NULL,y='Control-referenced score',title='Additional cohort observations',subtitle='36 SCI and 9 uninjured controls; all controls reused')+theme(legend.position='bottom')
+orig$score<-factor(orig$score,levels=c('innate_score','adaptive_score','balance_score'),labels=c('Innate associated','Lymphocyte associated','Secondary balance'))
+orig$scope<-factor(orig$scope,levels=c('exclude_reused_SCI','all_available'),labels=c('26 SCI / 9 reused CTL','36 SCI / 9 reused CTL'))
+b<-ggplot(orig,aes(hedges_g,scope))+geom_vline(xintercept=0,linetype=2,color='gray60')+geom_errorbar(aes(xmin=ci_low,xmax=ci_high),orientation='y',width=.12)+geom_point(size=2,color='#518AA0')+facet_wrap(~score,nrow=1,scales='free_x')+labs(x="Hedges' g (95% bootstrap CI)",y=NULL,title='Full and partial-overlap comparisons',subtitle='2,000 participant resamples; supplied score transformation held fixed')+theme(axis.text.y=element_text(size=8))
+save(a/b+plot_annotation(tag_levels='a'),'Figure7_revised',183,180)
+if(file.exists(file.path(o,'tables/SCI_vs_TC_GSEA.csv'))){gg<-read('SCI_vs_TC_GSEA');focus<-as.data.frame(fread(file.path(r1,'tables/GO_camera_figure_panel.csv')));gg<-gg[gg$go_id%in%focus$go_id,];gg$term<-factor(gg$term,levels=gg$term[order(gg$NES)]);p<-ggplot(gg,aes(NES,term,color=BH_q<.05))+geom_vline(xintercept=0,linetype=2,color='gray60')+geom_point(size=2.5)+scale_color_manual(values=c('FALSE'='#518AA0','TRUE'='#B9564F'),name='BH q < 0.05')+labs(x='Normalized enrichment score',y=NULL,title='Exploratory SCI versus TC preranked enrichment',subtitle='Fixed immune panel; all displayed terms retained; full-family BH correction');save(p,'Supp_GSEA',183,150)}

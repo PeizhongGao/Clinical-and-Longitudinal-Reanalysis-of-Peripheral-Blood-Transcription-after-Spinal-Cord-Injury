@@ -1,0 +1,13 @@
+source,scope,spec,score,singular,fixed_design_rank,fixed_design_columns,kappa,random_intercept_variance,residual_sd,residual_shapiro_p,convergence_message
+"NCBI_full_15plus15","all_available","unadjusted","innate_score",FALSE,4,4,4.86348774634365,0.685449477443866,0.724537309895433,0.594915978699757,""
+"NCBI_full_15plus15","all_available","unadjusted","adaptive_score",FALSE,4,4,4.86348774634365,0.162712623548067,0.742334815588192,0.773869445539576,""
+"NCBI_full_15plus15","all_available","unadjusted","balance_score",FALSE,4,4,4.86348774634365,1.18564756691853,1.3714111154127,0.330341169243746,""
+"NCBI_full_15plus15","complete_cases","unadjusted","innate_score",FALSE,4,4,5.05309000340706,0.704327816017031,0.5774146748027,0.122527767591801,""
+"NCBI_full_15plus15","complete_cases","unadjusted","adaptive_score",FALSE,4,4,5.05309000340706,0.299989457932403,0.62900667379288,0.720506150440637,""
+"NCBI_full_15plus15","complete_cases","unadjusted","balance_score",FALSE,4,4,5.05309000340706,1.80294825102733,1.08034271334771,0.600690725009602,""
+"NCBI_restricted_8plus13","all_available","unadjusted","innate_score",FALSE,4,4,4.86348774634365,0.568798946602915,0.704511361729578,0.572077280063544,""
+"NCBI_restricted_8plus13","all_available","unadjusted","adaptive_score",FALSE,4,4,4.86348774634365,0.191406736155918,0.72704029403955,0.783272738630693,""
+"NCBI_restricted_8plus13","all_available","unadjusted","balance_score",FALSE,4,4,4.86348774634365,1.25260281021565,1.36702275206625,0.234445761697564,""
+"NCBI_full_15plus15","all_available","marker_adjusted","innate_score",FALSE,6,6,15.1076783347724,0.503850062633787,0.479010887582518,0.561282151751319,""
+"NCBI_full_15plus15","all_available","marker_adjusted","adaptive_score",FALSE,6,6,15.1076783347724,0.218675262305095,0.335035664709625,0.384620362635634,""
+"NCBI_full_15plus15","all_available","marker_adjusted","balance_score",FALSE,6,6,15.1076783347724,1.01612307318208,0.681637987109365,0.859868424534193,""

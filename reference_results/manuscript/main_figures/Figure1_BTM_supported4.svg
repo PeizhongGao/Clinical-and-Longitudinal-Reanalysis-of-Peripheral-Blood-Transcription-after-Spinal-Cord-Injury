@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='457.20pt' height='219.60pt' viewBox='0 0 457.20 219.60'>
+<g class='svglite'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+    .svglite text {
+      white-space: pre;
+    }
+    .svglite g.glyphgroup path {
+      fill: inherit;
+      stroke: none;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw0NTcuMjB8MC4wMHwyMTkuNjA='>
+    <rect x='0.00' y='0.00' width='457.20' height='219.60' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw0NTcuMjB8MC4wMHwyMTkuNjA=)'>
+<rect x='0.00' y='0.00' width='457.20' height='219.60' style='stroke-width: 0.82; stroke: #FFFFFF; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpMTEyLjgxfDQ0OC4yM3wyMy4zNnwxODguNjU='>
+    <rect x='112.81' y='23.36' width='335.42' height='165.30' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTEyLjgxfDQ0OC4yM3wyMy4zNnwxODguNjU=)'>
+<rect x='112.81' y='23.36' width='335.42' height='165.30' style='stroke-width: 0.82; stroke: none; fill: #FFFFFF;' />
+<line x1='123.63' y1='188.65' x2='123.63' y2='23.36' style='stroke-width: 0.96; stroke: #777777; stroke-dasharray: 2.56,2.56; stroke-linecap: butt;' />
+<line x1='172.41' y1='46.97' x2='338.73' y2='46.97' style='stroke-width: 1.71; stroke: #2C6E8F;' />
+<line x1='184.76' y1='86.33' x2='356.69' y2='86.33' style='stroke-width: 1.71; stroke: #2C6E8F;' />
+<line x1='155.64' y1='125.68' x2='343.10' y2='125.68' style='stroke-width: 1.71; stroke: #2C6E8F;' />
+<line x1='165.94' y1='165.04' x2='418.18' y2='165.04' style='stroke-width: 1.71; stroke: #B6763D;' />
+<circle cx='255.57' cy='46.97' r='3.05' style='stroke-width: 0.55; stroke: #2C6E8F; fill: #2C6E8F;' />
+<circle cx='270.73' cy='86.33' r='3.05' style='stroke-width: 0.55; stroke: #2C6E8F; fill: #2C6E8F;' />
+<circle cx='249.37' cy='125.68' r='3.05' style='stroke-width: 0.55; stroke: #2C6E8F; fill: #2C6E8F;' />
+<circle cx='292.06' cy='165.04' r='3.05' style='stroke-width: 0.55; stroke: #B6763D; fill: #B6763D;' />
+</g>
+<g clip-path='url(#cpMC4wMHw0NTcuMjB8MC4wMHwyMTkuNjA=)'>
+<polyline points='112.81,188.65 112.81,23.36 ' style='stroke-width: 0.75; stroke-linecap: square;' />
+<text x='105.71' y='168.09' text-anchor='end' style='font-size: 8.50px;fill: #222222; font-family: "Arial";' textLength='97.38px' lengthAdjust='spacingAndGlyphs'>M223   6 months vs acute</text>
+<text x='105.71' y='128.73' text-anchor='end' style='font-size: 8.50px;fill: #222222; font-family: "Arial";' textLength='99.73px' lengthAdjust='spacingAndGlyphs'>M7.0   12 months vs acute</text>
+<text x='105.71' y='89.37' text-anchor='end' style='font-size: 8.50px;fill: #222222; font-family: "Arial";' textLength='95.00px' lengthAdjust='spacingAndGlyphs'>M7.0   6 months vs acute</text>
+<text x='105.71' y='50.02' text-anchor='end' style='font-size: 8.50px;fill: #222222; font-family: "Arial";' textLength='95.00px' lengthAdjust='spacingAndGlyphs'>M7.0   3 months vs acute</text>
+<polyline points='110.69,165.04 112.81,165.04 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='110.69,125.68 112.81,125.68 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='110.69,86.33 112.81,86.33 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='110.69,46.97 112.81,46.97 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='112.81,188.65 448.23,188.65 ' style='stroke-width: 0.75; stroke-linecap: square;' />
+<polyline points='123.63,190.77 123.63,188.65 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='210.19,190.77 210.19,188.65 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='296.75,190.77 296.75,188.65 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<polyline points='383.31,190.77 383.31,188.65 ' style='stroke-width: 0.75; stroke-linecap: butt;' />
+<text x='123.63' y='197.33' text-anchor='middle' style='font-size: 6.80px;fill: #222222; font-family: "Arial";' textLength='9.45px' lengthAdjust='spacingAndGlyphs'>0.0</text>
+<text x='210.19' y='197.33' text-anchor='middle' style='font-size: 6.80px;fill: #222222; font-family: "Arial";' textLength='9.45px' lengthAdjust='spacingAndGlyphs'>0.2</text>
+<text x='296.75' y='197.33' text-anchor='middle' style='font-size: 6.80px;fill: #222222; font-family: "Arial";' textLength='9.45px' lengthAdjust='spacingAndGlyphs'>0.4</text>
+<text x='383.31' y='197.33' text-anchor='middle' style='font-size: 6.80px;fill: #222222; font-family: "Arial";' textLength='9.45px' lengthAdjust='spacingAndGlyphs'>0.6</text>
+<text x='280.52' y='211.83' text-anchor='middle' style='font-size: 8.50px; font-family: "Arial";' textLength='175.83px' lengthAdjust='spacingAndGlyphs'>Estimate (source-specific log-expression units)</text>
+<text x='112.81' y='13.70' style='font-size: 8.00px;fill: #444444; font-family: "Arial";' textLength='268.09px' lengthAdjust='spacingAndGlyphs'>Four longitudinal contrasts meeting the designated BH16 q &lt; 0.05 threshold</text>
+</g>
+</g>
+</svg>

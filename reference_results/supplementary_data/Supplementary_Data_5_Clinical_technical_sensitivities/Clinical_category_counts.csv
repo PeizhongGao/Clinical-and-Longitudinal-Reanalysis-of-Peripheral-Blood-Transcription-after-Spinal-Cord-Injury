@@ -1,0 +1,15 @@
+variable,group,category,n
+"sex","TC","F",3
+"sex","TC","M",4
+"sex","SCI","F",13
+"sex","SCI","M",23
+"tbi","TC","No",7
+"tbi","SCI","Yes",7
+"tbi","SCI","No",27
+"tbi","SCI","Unknown",2
+"prior_cns","TC","No",7
+"prior_cns","SCI","No",21
+"prior_cns","SCI","Yes",11
+"prior_cns","SCI","Unknown",4
+"group","TC","TC",7
+"group","SCI","SCI",36

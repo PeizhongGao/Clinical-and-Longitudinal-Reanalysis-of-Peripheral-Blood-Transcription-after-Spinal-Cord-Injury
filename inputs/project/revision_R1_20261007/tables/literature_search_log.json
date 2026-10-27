@@ -1,0 +1,34 @@
+[
+  {
+    "label": "cell_marker_pubmed",
+    "source": "pubmed",
+    "query": "(blood OR leukocyte) AND (\"gene expression\" OR transcriptomic) AND (\"immune cell\" OR \"cell type\") AND (signature OR deconvolution) AND (Monaco OR Newman OR Becht)",
+    "date": "2026-10-07",
+    "status": "success",
+    "count": "6"
+  },
+  {
+    "label": "selection_pubmed",
+    "source": "pubmed",
+    "query": "\"stability selection\" AND (subsampling OR error OR thresholds)",
+    "date": "2026-10-07",
+    "status": "success",
+    "count": "65"
+  },
+  {
+    "label": "cell_marker_crossref",
+    "source": "crossref",
+    "query": "immune cell type gene expression Monaco Newman Becht blood deconvolution",
+    "date": "2026-10-07",
+    "status": "success",
+    "count": 728157
+  },
+  {
+    "label": "selection_crossref",
+    "source": "crossref",
+    "query": "stability selection Meinshausen Buhlmann Shah Samworth",
+    "date": "2026-10-07",
+    "status": "success",
+    "count": 1384963
+  }
+]

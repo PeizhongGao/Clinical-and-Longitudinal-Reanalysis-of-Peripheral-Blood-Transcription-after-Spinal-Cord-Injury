@@ -1,0 +1,147 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+Started UTC: 2026-10-26 13:45:18 
+        subset          spec        outcome n_samples SCI_n  TC_n   estimate
+        <char>        <char>         <char>     <int> <int> <int>      <num>
+ 1:     full48    unadjusted   innate_score        48    38    10  1.3884555
+ 2:     full48    unadjusted adaptive_score        48    38    10 -1.2531621
+ 3:     full48       age_sex   innate_score        48    38    10  1.3798980
+ 4:     full48       age_sex adaptive_score        48    38    10 -1.1390803
+ 5: clinical43    unadjusted   innate_score        43    36     7  1.0644199
+ 6: clinical43    unadjusted adaptive_score        43    36     7 -0.8741083
+ 7: clinical43       age_sex   innate_score        43    36     7  1.0697564
+ 8: clinical43       age_sex adaptive_score        43    36     7 -0.8188068
+ 9: clinical43      clinical   innate_score        43    36     7  0.3617612
+10: clinical43      clinical adaptive_score        43    36     7 -0.3063910
+11:     time41    unadjusted   innate_score        41    36     5  1.0609723
+12:     time41    unadjusted adaptive_score        41    36     5 -0.9114515
+13:     time41       age_sex   innate_score        41    36     5  1.0672647
+14:     time41       age_sex adaptive_score        41    36     5 -0.8615947
+15:     time41      clinical   innate_score        41    36     5  0.4218129
+16:     time41      clinical adaptive_score        41    36     5 -0.3739298
+17:     time41 clinical_time   innate_score        41    36     5  0.5162077
+18:     time41 clinical_time adaptive_score        41    36     5 -0.4633328
+      lower_CL   upper_CL robust_SE_HC3   hat_max group_VIF
+         <num>      <num>         <num>     <num>     <num>
+ 1:  0.8170778  1.9598331     0.2838585 0.1000000  1.000000
+ 2: -1.8681975 -0.6381266     0.3055476 0.1000000  1.000000
+ 3:  0.7403509  2.0194452     0.3173352 0.1848660  1.103205
+ 4: -1.7819027 -0.4962579     0.3189604 0.1848660  1.103205
+ 5:  0.4675302  1.6613095     0.2955571 0.1428571  1.000000
+ 6: -1.3970594 -0.3511572     0.2589455 0.1428571  1.000000
+ 7:  0.4292663  1.7102465     0.3166525 0.2405598  1.057838
+ 8: -1.3554028 -0.2822108     0.2652882 0.2405598  1.057838
+ 9: -0.8368557  1.5603780     0.5897995 0.7010724  1.806540
+10: -1.1138065  0.5010244     0.3973023 0.7010724  1.806540
+11:  0.3168895  1.8050551     0.3678678 0.2000000  1.000000
+12: -1.6198128 -0.2030903     0.3502074 0.2000000  1.000000
+13:  0.2647270  1.8698024     0.3960817 0.3112961  1.029306
+14: -1.5747536 -0.1484358     0.3519700 0.3112961  1.029306
+15: -0.8279879  1.6716136     0.6135698 0.7093744  1.529750
+16: -1.2605316  0.5126720     0.4352630 0.7093744  1.529750
+17: -0.5672573  1.5996728     0.5312370 0.7204571  1.543351
+18: -1.3623524  0.4356868     0.4408010 0.7204571  1.543351
+       subset          spec        outcome n_deletions estimate_min
+       <char>        <char>         <char>       <int>        <num>
+1: clinical43      clinical   innate_score           7    0.1502770
+2: clinical43      clinical adaptive_score           7   -0.4835734
+3: clinical43      clinical  balance_score           7    0.4004496
+4:     time41      clinical   innate_score           5    0.1688391
+5:     time41      clinical adaptive_score           5   -0.6359325
+6:     time41      clinical  balance_score           5    0.4533999
+7:     time41 clinical_time   innate_score           5    0.2279919
+8:     time41 clinical_time adaptive_score           5   -0.7074993
+9:     time41 clinical_time  balance_score           5    0.6098797
+   estimate_max max_abs_change most_influential_TC any_direction_changed
+          <num>          <num>              <char>                <lgcl>
+1:    0.5002176      0.2114841                TC09                 FALSE
+2:   -0.2047707      0.1771823                TC06                 FALSE
+3:    0.9837910      0.3156388                TC06                 FALSE
+4:    0.6173842      0.2529738                TC09                 FALSE
+5:   -0.2318678      0.2620027                TC06                 FALSE
+6:    1.2533166      0.4575740                TC06                 FALSE
+7:    0.6936081      0.2882158                TC09                 FALSE
+8:   -0.3657297      0.2441665                TC06                 FALSE
+9:    1.4011074      0.4215669                TC06                 FALSE
+   all_HC3_CI_include_zero min_lower_CL max_upper_CL min_HC3_SE max_HC3_SE
+                    <lgcl>        <num>        <num>      <num>      <num>
+1:                    TRUE   -1.1708821    1.7463721  0.5846943  0.6493729
+2:                    TRUE   -1.2373073    0.6820975  0.3704735  0.4582271
+3:                    TRUE   -1.3938109    2.5620890  0.7757612  0.8819105
+4:                    TRUE   -1.1893056    1.9585431  0.6026670  0.6746943
+5:                    TRUE   -1.4608194    0.8056968  0.3541576  0.5556512
+6:                    TRUE   -1.6054784    3.0695179  0.8199211  1.0474230
+7:                    TRUE   -0.8310628    1.8794588  0.5185668  0.6027302
+8:                   FALSE   -1.4799572    0.7161817  0.3438713  0.5376704
+9:                   FALSE   -1.0271930    2.9701425  0.6636983  0.9392921
+       subset   variable  TC_n SCI_n TC_min TC_max SCI_min SCI_max overlap_low
+       <char>     <char> <int> <int>  <int>  <int>   <int>   <int>       <int>
+1:     full48        age    10    38     22     78      20      89          22
+2:     full48        iss     7    36      1     14       9      75           9
+3:     full48 draw_hours     6    38     15     32       5      97          15
+4: clinical43        age     7    36     22     78      20      89          22
+5: clinical43        iss     7    36      1     14       9      75           9
+6: clinical43 draw_hours     5    36     19     32       5      97          19
+7:     time41        age     5    36     22     78      20      89          22
+8:     time41        iss     5    36      4     14       9      75           9
+9:     time41 draw_hours     5    36     19     32       5      97          19
+   overlap_high TC_n_in_range_overlap SCI_n_in_range_overlap
+          <int>                 <int>                  <int>
+1:           78                    10                     30
+2:           14                     3                      2
+3:           32                     6                     20
+4:           78                     7                     28
+5:           14                     3                      2
+6:           32                     5                     13
+7:           78                     5                     28
+8:           14                     3                      2
+9:           32                     5                     13
+                                                                                caveat
+                                                                                <char>
+1: Univariate observed-range intersection; not sufficient multivariable common support
+2: Univariate observed-range intersection; not sufficient multivariable common support
+3: Univariate observed-range intersection; not sufficient multivariable common support
+4: Univariate observed-range intersection; not sufficient multivariable common support
+5: Univariate observed-range intersection; not sufficient multivariable common support
+6: Univariate observed-range intersection; not sufficient multivariable common support
+7: Univariate observed-range intersection; not sufficient multivariable common support
+8: Univariate observed-range intersection; not sufficient multivariable common support
+9: Univariate observed-range intersection; not sufficient multivariable common support
+       subset          spec        outcome   max_hat max_hat_sample
+       <char>        <char>         <char>     <num>         <char>
+1: clinical43      clinical   innate_score 0.7010724          SCI21
+2: clinical43      clinical adaptive_score 0.7010724          SCI21
+3: clinical43      clinical  balance_score 0.7010724          SCI21
+4:     time41      clinical   innate_score 0.7093744          SCI21
+5:     time41      clinical adaptive_score 0.7093744          SCI21
+6:     time41      clinical  balance_score 0.7093744          SCI21
+7:     time41 clinical_time   innate_score 0.7204571          SCI21
+8:     time41 clinical_time adaptive_score 0.7204571          SCI21
+9:     time41 clinical_time  balance_score 0.7204571          SCI21
+   max_hat_group max_abs_group_change_all most_influential_all_sample
+          <char>                    <num>                      <char>
+1:           SCI                0.2759943                       SCI21
+2:           SCI                0.1771823                        TC06
+3:           SCI                0.3315077                       SCI03
+4:           SCI                0.2529738                        TC09
+5:           SCI                0.2620027                        TC06
+6:           SCI                0.4575740                        TC06
+7:           SCI                0.2882158                        TC09
+8:           SCI                0.2441665                        TC06
+9:           SCI                0.4215669                        TC06
+   max_abs_group_change_TC  max_Cook
+                     <num>     <num>
+1:               0.2114841 0.6871388
+2:               0.1771823 0.2194362
+3:               0.3156388 0.1550932
+4:               0.2529738 0.6140966
+5:               0.2620027 0.2134851
+6:               0.4575740 0.1559476
+7:               0.2882158 0.3422356
+8:               0.2441665 0.1996555
+9:               0.4215669 0.1694596
+Completed UTC: 2026-10-26 13:45:19 
+PASS

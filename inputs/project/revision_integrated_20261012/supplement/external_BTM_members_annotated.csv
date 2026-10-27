@@ -1,0 +1,142 @@
+source_token,module_id,title,lineage,source_url,symbol,mapping,overlaps_original_106
+"BCL11B","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","BCL11B","exact_SYMBOL",TRUE
+"CCL5","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CCL5","exact_SYMBOL",FALSE
+"CD2","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD2","exact_SYMBOL",TRUE
+"CD247","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD247","exact_SYMBOL",TRUE
+"CD27","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD27","exact_SYMBOL",TRUE
+"CD28","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD28","exact_SYMBOL",TRUE
+"CD3D","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD3D","exact_SYMBOL",TRUE
+"CD3E","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD3E","exact_SYMBOL",TRUE
+"CD3G","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD3G","exact_SYMBOL",TRUE
+"CD6","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD6","exact_SYMBOL",FALSE
+"CD7","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD7","exact_SYMBOL",FALSE
+"CD96","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","CD96","exact_SYMBOL",FALSE
+"EOMES","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","EOMES","exact_SYMBOL",FALSE
+"ETS1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","ETS1","exact_SYMBOL",FALSE
+"FLT3LG","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","FLT3LG","exact_SYMBOL",FALSE
+"GATA3","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GATA3","exact_SYMBOL",TRUE
+"GIMAP6","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GIMAP6","exact_SYMBOL",FALSE
+"GIMAP7","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GIMAP7","exact_SYMBOL",FALSE
+"GNLY","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GNLY","exact_SYMBOL",TRUE
+"GPR171","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GPR171","exact_SYMBOL",FALSE
+"GZMA","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GZMA","exact_SYMBOL",TRUE
+"GZMB","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GZMB","exact_SYMBOL",TRUE
+"GZMH","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GZMH","exact_SYMBOL",FALSE
+"GZMK","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GZMK","exact_SYMBOL",TRUE
+"GZMM","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","GZMM","exact_SYMBOL",FALSE
+"ICOS","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","ICOS","exact_SYMBOL",TRUE
+"IL32","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","IL32","exact_SYMBOL",FALSE
+"IL7R","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","IL7R","exact_SYMBOL",TRUE
+"ITK","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","ITK","exact_SYMBOL",TRUE
+"ITM2A","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","ITM2A","exact_SYMBOL",FALSE
+"KLRB1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","KLRB1","exact_SYMBOL",TRUE
+"LAT","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","LAT","exact_SYMBOL",TRUE
+"LCK","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","LCK","exact_SYMBOL",TRUE
+"LEF1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","LEF1","exact_SYMBOL",TRUE
+"MAL","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","MAL","exact_SYMBOL",FALSE
+"NELL2","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","NELL2","exact_SYMBOL",FALSE
+"NKG7","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","NKG7","exact_SYMBOL",TRUE
+"NLRC3","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","NLRC3","exact_SYMBOL",FALSE
+"PRF1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","PRF1","exact_SYMBOL",TRUE
+"PRKCH","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","PRKCH","exact_SYMBOL",FALSE
+"PRKCQ","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","PRKCQ","exact_SYMBOL",FALSE
+"PTPRCAP","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","PTPRCAP","exact_SYMBOL",FALSE
+"RASGRP1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","RASGRP1","exact_SYMBOL",FALSE
+"RORA","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","RORA","exact_SYMBOL",FALSE
+"SAMD3","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","SAMD3","exact_SYMBOL",FALSE
+"SH2D1A","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","SH2D1A","exact_SYMBOL",FALSE
+"SIRPG","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","SIRPG","exact_SYMBOL",FALSE
+"SIT1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","SIT1","exact_SYMBOL",FALSE
+"SLA2","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","SLA2","exact_SYMBOL",FALSE
+"TARP","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TARP","exact_SYMBOL",FALSE
+"TIGIT","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TIGIT","exact_SYMBOL",FALSE
+"TRA@","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRA","unique_ALIAS",FALSE
+"TRAC","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRAC","exact_SYMBOL",TRUE
+"TRAJ17","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRAJ17","exact_SYMBOL",FALSE
+"TRAT1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRAT1","exact_SYMBOL",FALSE
+"TRAV20","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRAV20","exact_SYMBOL",FALSE
+"TRBC1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRBC1","exact_SYMBOL",TRUE
+"TRD@","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","TRD","unique_ALIAS",FALSE
+"UBASH3A","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","UBASH3A","exact_SYMBOL",FALSE
+"XCL1","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","XCL1","exact_SYMBOL",FALSE
+"XCL2","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","XCL2","exact_SYMBOL",FALSE
+"ZAP70","M7.0","enriched in T cells (I) (M7.0)","T_cell","http://mummichog.org/BTM/M7.0.htm","ZAP70","exact_SYMBOL",TRUE
+"ALPL","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","ALPL","exact_SYMBOL",FALSE
+"BASP1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","BASP1","exact_SYMBOL",FALSE
+"C5AR1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","C5AR1","exact_SYMBOL",TRUE
+"CDA","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CDA","exact_SYMBOL",FALSE
+"CHI3L1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CHI3L1","exact_SYMBOL",FALSE
+"CMTM2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CMTM2","exact_SYMBOL",FALSE
+"CREB5","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CREB5","exact_SYMBOL",FALSE
+"CSF3R","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CSF3R","exact_SYMBOL",FALSE
+"CXCR1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CXCR1","exact_SYMBOL",TRUE
+"CYP4F3","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","CYP4F3","exact_SYMBOL",FALSE
+"DGAT2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","DGAT2","exact_SYMBOL",FALSE
+"EMR3","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","ADGRE3","unique_ALIAS",FALSE
+"FCGR2A","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FCGR2A","exact_SYMBOL",TRUE
+"FCGR3A","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FCGR3A","exact_SYMBOL",TRUE
+"FCGR3B","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FCGR3B","exact_SYMBOL",FALSE
+"FFAR2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FFAR2","exact_SYMBOL",FALSE
+"FPR1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FPR1","exact_SYMBOL",TRUE
+"FPR2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","FPR2","exact_SYMBOL",TRUE
+"G0S2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","G0S2","exact_SYMBOL",FALSE
+"GLT1D1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","GLT1D1","exact_SYMBOL",FALSE
+"GPR109B","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","HCAR3","unique_ALIAS",FALSE
+"GPR97","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","ADGRG3","unique_ALIAS",FALSE
+"KCNJ15","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","KCNJ15","exact_SYMBOL",FALSE
+"KRT23","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","KRT23","exact_SYMBOL",FALSE
+"LIN7A","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","LIN7A","exact_SYMBOL",FALSE
+"LRG1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","LRG1","exact_SYMBOL",FALSE
+"LRRC4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","LRRC4","exact_SYMBOL",FALSE
+"MANSC1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","MANSC1","exact_SYMBOL",FALSE
+"MGAM","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","MGAM","exact_SYMBOL",FALSE
+"MGC31957","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm",NA,"unmapped",FALSE
+"MME","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","MME","exact_SYMBOL",FALSE
+"MXD1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","MXD1","exact_SYMBOL",FALSE
+"NCF4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","NCF4","exact_SYMBOL",FALSE
+"NFE2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","NFE2","exact_SYMBOL",FALSE
+"NLRP12","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","NLRP12","exact_SYMBOL",FALSE
+"ORM1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","ORM1","exact_SYMBOL",FALSE
+"PFKFB4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","PFKFB4","exact_SYMBOL",FALSE
+"PROK2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","PROK2","exact_SYMBOL",FALSE
+"PTAFR","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","PTAFR","exact_SYMBOL",FALSE
+"PYGL","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","PYGL","exact_SYMBOL",FALSE
+"REPS2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","REPS2","exact_SYMBOL",FALSE
+"RGL4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","RGL4","exact_SYMBOL",FALSE
+"RNF24","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","RNF24","exact_SYMBOL",FALSE
+"S100P","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","S100P","exact_SYMBOL",TRUE
+"SEPX1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","MSRB1","unique_ALIAS",FALSE
+"SLC22A4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","SLC22A4","exact_SYMBOL",TRUE
+"ST6GALNAC2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","ST6GALNAC2","exact_SYMBOL",FALSE
+"STEAP4","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","STEAP4","exact_SYMBOL",FALSE
+"TNFRSF10C","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","TNFRSF10C","exact_SYMBOL",FALSE
+"TREM1","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","TREM1","exact_SYMBOL",FALSE
+"VNN2","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","VNN2","exact_SYMBOL",FALSE
+"VNN3","M37.1","enriched in neutrophils (I) (M37.1)","neutrophil","http://mummichog.org/BTM/M37.1.htm","VNN3P","unique_ALIAS",FALSE
+"ARAP3","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","ARAP3","exact_SYMBOL",FALSE
+"BEST1","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","BEST1","exact_SYMBOL",FALSE
+"BTNL8","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","BTNL8","exact_SYMBOL",FALSE
+"CFD","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","CFD","exact_SYMBOL",FALSE
+"DENND3","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","DENND3","exact_SYMBOL",FALSE
+"FLJ10357","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm",NA,"unmapped",FALSE
+"FRAT2","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","FRAT2","exact_SYMBOL",FALSE
+"HSPA6","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","HSPA6","exact_SYMBOL",FALSE
+"IMPA2","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","IMPA2","exact_SYMBOL",FALSE
+"MBOAT7","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","MBOAT7","exact_SYMBOL",FALSE
+"NPL","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","NPL","exact_SYMBOL",FALSE
+"SLC40A1","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","SLC40A1","exact_SYMBOL",FALSE
+"TSPAN2","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","TSPAN2","exact_SYMBOL",FALSE
+"TYROBP","M163","enriched in neutrophils (II) (M163)","neutrophil","http://mummichog.org/BTM/M163.htm","TYROBP","exact_SYMBOL",TRUE
+"CD40LG","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","CD40LG","exact_SYMBOL",TRUE
+"CLEC2D","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","CLEC2D","exact_SYMBOL",FALSE
+"DENND2D","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","DENND2D","exact_SYMBOL",FALSE
+"DPP4","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","DPP4","exact_SYMBOL",FALSE
+"FGFBP2","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","FGFBP2","exact_SYMBOL",FALSE
+"HOPX","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","HOPX","exact_SYMBOL",FALSE
+"LBH","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","LBH","exact_SYMBOL",FALSE
+"LOC439949","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm",NA,"unmapped",FALSE
+"LRRN3","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","LRRN3","exact_SYMBOL",FALSE
+"PLEKHF1","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","PLEKHF1","exact_SYMBOL",FALSE
+"SLC38A1","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","SLC38A1","exact_SYMBOL",FALSE
+"TC2N","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","TC2N","exact_SYMBOL",FALSE
+"TRGC2","M223","enriched in T cells (II) (M223)","T_cell","http://mummichog.org/BTM/M223.htm","TRGC2","exact_SYMBOL",FALSE

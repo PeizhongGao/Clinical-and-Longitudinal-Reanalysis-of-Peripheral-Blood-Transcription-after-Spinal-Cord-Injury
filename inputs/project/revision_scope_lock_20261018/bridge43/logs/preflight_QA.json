@@ -1,0 +1,278 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "exact_existing_43_membership",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "group_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "source_reuse_byte_content_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "latest_BTM_input_same_keys_and_covariates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "crosswalk_43_found_unique",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "crosswalk_identity_group",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "crosswalk_clinical_covariates",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "complete_required_fields",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "numeric_finite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "all_source_category_values_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "17498_unique_genes_original_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "raw_matrix_has_exact_58_sample_keys",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "all_frozen_genes_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "all_frozen_samples_present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "matrix_17498_by43",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "matrix_finite",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "expression_and_clinical_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "saved_matrix_exact_roundtrip",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "4032_unique_go_sets",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "go_set_sizes_and_uniqueness",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "go_genes_in_frozen_universe",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "go_term_id_identity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "go_term_membership_counts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "existing_eight_term_display_panel",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M0_full_rank_and_df",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M0_groupSCI_estimable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M0_identical_row_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1_full_rank_and_df",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1_groupSCI_estimable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M1_identical_row_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2_full_rank_and_df",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2_groupSCI_estimable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "M2_identical_row_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "old_score_design_only_differs_by_center_constants",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "reuse_candidate_exact_gene_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "reuse_candidate_model_n_and_rank",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "reuse_candidate_formula",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "reuse_candidate_full_finite_statistics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "limma_version_locked",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "n_checks": 39,
+  "participants": {
+    "n": 43,
+    "SCI": 36,
+    "TC": 7
+  },
+  "expression": {
+    "n_genes": 17498,
+    "n_samples": 43,
+    "source_duplicate_rows_retained_first": 0
+  },
+  "GO": {
+    "n_sets": 4032,
+    "minimum": 15,
+    "maximum": 486,
+    "fixed_display_terms": ["GO:0002446", "GO:0030098", "GO:0030217", "GO:0030595", "GO:0032496", "GO:0042110", "GO:0042742", "GO:0050851"]
+  },
+  "centering": {
+    "age": 52.7674,
+    "iss": 24.3023,
+    "historical_center_difference_checked_at_design_only": true
+  },
+  "models": [
+    {
+      "model_id": "M0",
+      "formula": "expression ~ group",
+      "n": 43,
+      "SCI_n": 36,
+      "TC_n": 7,
+      "rank": 2,
+      "columns": 2,
+      "residual_df": 41,
+      "coef": "groupSCI",
+      "max_design_leverage": 0.1429,
+      "condition_number_scaled": 1.0118
+    },
+    {
+      "model_id": "M1",
+      "formula": "expression ~ group + age_c + sex",
+      "n": 43,
+      "SCI_n": 36,
+      "TC_n": 7,
+      "rank": 4,
+      "columns": 4,
+      "residual_df": 39,
+      "coef": "groupSCI",
+      "max_design_leverage": 0.2406,
+      "condition_number_scaled": 1.565
+    },
+    {
+      "model_id": "M2",
+      "formula": "expression ~ group + age_c + sex + iss_c + tbi + prior_cns",
+      "n": 43,
+      "SCI_n": 36,
+      "TC_n": 7,
+      "rank": 9,
+      "columns": 9,
+      "residual_df": 34,
+      "coef": "groupSCI",
+      "max_design_leverage": 0.7011,
+      "condition_number_scaled": 2.9424
+    }
+  ],
+  "old_M2_reuse_candidate": {
+    "provenance_and_structure_checked": true,
+    "numerical_reproduction_performed": false
+  },
+  "software": {
+    "R": "R version 4.6.1 (2026-06-24 ucrt)",
+    "limma": "3.68.4",
+    "data_table": "1.18.4",
+    "jsonlite": "2.0.0"
+  },
+  "new_effect_models_fitted": 0,
+  "new_inferential_tests": 0,
+  "new_CAMERA_tests": 0,
+  "manuscript_or_reply_edited": false,
+  "clinical_inputs_published": false
+}

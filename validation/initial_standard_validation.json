@@ -1,0 +1,336 @@
+{
+  "all_passed": true,
+  "tests": [
+    {
+      "status": "PASS",
+      "rows_rebuilt": 58,
+      "rows_reference": 58,
+      "numeric_values_compared": 174,
+      "maximum_absolute_differences": {
+        "innate_score": 0.0,
+        "adaptive_score": 0.0,
+        "balance_score": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "discovery_15plus15_scores",
+      "regenerated_file": "revision_R1_20261007/tables/discovery_locked_scores_descriptive.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/discovery_locked_scores_descriptive.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 46,
+      "rows_reference": 46,
+      "numeric_values_compared": 92,
+      "maximum_absolute_differences": {
+        "lib.size": 0.0,
+        "norm.factors": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "TMM_normalization",
+      "regenerated_file": "revision_R1_20261007/tables/NCBI_GSE226238_normalization.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/NCBI_GSE226238_normalization.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 46,
+      "rows_reference": 46,
+      "numeric_values_compared": 138,
+      "maximum_absolute_differences": {
+        "innate_score": 0.0,
+        "adaptive_score": 0.0,
+        "balance_score": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "longitudinal_15plus15_scores",
+      "regenerated_file": "revision_R1_20261007/tables/NCBI_longitudinal_full_scores.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/NCBI_longitudinal_full_scores.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 832,
+      "rows_reference": 832,
+      "numeric_values_compared": 832,
+      "maximum_absolute_differences": {
+        "score": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "16_BTM_score_series",
+      "regenerated_file": "revision_R1_20261007/tables/external_BTM_scores.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/external_BTM_scores.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 466,
+      "rows_reference": 466,
+      "numeric_values_compared": 0,
+      "maximum_absolute_differences": {},
+      "error_count": 0,
+      "errors": [],
+      "test": "BTM_gene_membership",
+      "regenerated_file": "revision_R1_20261007/tables/external_BTM_used_genes.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/external_BTM_used_genes.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 891,
+      "rows_reference": 891,
+      "numeric_values_compared": 1782,
+      "maximum_absolute_differences": {
+        "selection_frequency": 0.0,
+        "direction_consistency_500": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "original_score_selection_sensitivity",
+      "regenerated_file": "revision_R1_20261007/tables/processed_matrix_topN_B_sensitivity.csv",
+      "reference_file": "inputs/project/revision_R1_20261007/tables/processed_matrix_topN_B_sensitivity.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 58,
+      "rows_reference": 58,
+      "numeric_values_compared": 100,
+      "maximum_absolute_differences": {
+        "group": 0.0,
+        "age": 0.0,
+        "sex": 0.0,
+        "iss": 0.0,
+        "tbi": 0.0,
+        "prior_cns": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "ODC_clinical_mapping",
+      "regenerated_file": "revision_R2_20261008/tables/ODC405_sample_crosswalk.csv",
+      "reference_file": "inputs/project/revision_R2_20261008/tables/ODC405_sample_crosswalk.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 27,
+      "rows_reference": 27,
+      "numeric_values_compared": 135,
+      "maximum_absolute_differences": {
+        "estimate": 0.0,
+        "lower_CL": 0.0,
+        "upper_CL": 0.0,
+        "p_value": 0.0,
+        "robust_SE_HC3": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "fixed_sample_27_models",
+      "regenerated_file": "revision_R2_20261008/fixed_sample_20261012/tables/fixed_sample_models.csv",
+      "reference_file": "inputs/project/revision_R2_20261008/fixed_sample_20261012/tables/fixed_sample_models.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 88,
+      "rows_reference": 88,
+      "numeric_values_compared": 620,
+      "maximum_absolute_differences": {
+        "estimate": 0.0,
+        "SE": 0.0,
+        "lower_CL": 0.0,
+        "upper_CL": 0.0,
+        "p_value": 0.0,
+        "q_BH_within_spec": 0.0,
+        "q_BH_all88": 0.0,
+        "q_BH_primary16": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "BTM_88_clinical_models",
+      "regenerated_file": "revision_external_adjusted_20261016/tables/discovery_models.csv",
+      "reference_file": "inputs/project/revision_external_adjusted_20261016/tables/discovery_models.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 240,
+      "rows_reference": 240,
+      "numeric_values_compared": 1692,
+      "maximum_absolute_differences": {
+        "estimate": 0.0,
+        "SE": 0.0,
+        "lower_CL": 0.0,
+        "upper_CL": 0.0,
+        "p_value": 0.0,
+        "q_BH_within_spec": 0.0,
+        "q_BH_all240": 0.0,
+        "q_BH_primary16": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "BTM_240_longitudinal_contrasts",
+      "regenerated_file": "revision_external_adjusted_20261016/tables/longitudinal_models.csv",
+      "reference_file": "inputs/project/revision_external_adjusted_20261016/tables/longitudinal_models.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 42,
+      "rows_reference": 42,
+      "numeric_values_compared": 210,
+      "maximum_absolute_differences": {
+        "estimate": 0.0,
+        "lower.CL": 0.0,
+        "upper.CL": 0.0,
+        "p.value": 0.0,
+        "q_BH": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "original_score_longitudinal_sensitivities",
+      "regenerated_file": "revision_R2_20261008/tables/R2_longitudinal_sensitivities.csv",
+      "reference_file": "inputs/project/revision_R2_20261008/tables/R2_longitudinal_sensitivities.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 6,
+      "rows_reference": 6,
+      "numeric_values_compared": 30,
+      "maximum_absolute_differences": {
+        "g": 0.0,
+        "g_ci_low": 0.0,
+        "g_ci_high": 0.0,
+        "p.value": 0.0,
+        "q_BH": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "same_platform_reuse_sensitivity",
+      "regenerated_file": "revision_R2_20261008/tables/same_platform_sensitivity.csv",
+      "reference_file": "inputs/project/revision_R2_20261008/tables/same_platform_sensitivity.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 17498,
+      "rows_reference": 17498,
+      "numeric_values_compared": 104988,
+      "maximum_absolute_differences": {
+        "logFC": 0.0,
+        "CI.L": 0.0,
+        "CI.R": 0.0,
+        "t": 0.0,
+        "P.Value": 0.0,
+        "adj.P.Val": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "gene_M0",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/gene_models_M0.csv",
+      "reference_file": "reference_results/bridge43/gene_models_M0.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 4032,
+      "rows_reference": 4032,
+      "numeric_values_compared": 12096,
+      "maximum_absolute_differences": {
+        "NGenes": 0.0,
+        "Direction": 0.0,
+        "PValue": 0.0,
+        "FDR": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "camera_M0",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/camera_models_M0.csv",
+      "reference_file": "reference_results/bridge43/camera_models_M0.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 17498,
+      "rows_reference": 17498,
+      "numeric_values_compared": 104988,
+      "maximum_absolute_differences": {
+        "logFC": 0.0,
+        "CI.L": 0.0,
+        "CI.R": 0.0,
+        "t": 0.0,
+        "P.Value": 0.0,
+        "adj.P.Val": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "gene_M1",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/gene_models_M1.csv",
+      "reference_file": "reference_results/bridge43/gene_models_M1.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 4032,
+      "rows_reference": 4032,
+      "numeric_values_compared": 12096,
+      "maximum_absolute_differences": {
+        "NGenes": 0.0,
+        "Direction": 0.0,
+        "PValue": 0.0,
+        "FDR": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "camera_M1",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/camera_models_M1.csv",
+      "reference_file": "reference_results/bridge43/camera_models_M1.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 17498,
+      "rows_reference": 17498,
+      "numeric_values_compared": 104988,
+      "maximum_absolute_differences": {
+        "logFC": 0.0,
+        "CI.L": 0.0,
+        "CI.R": 0.0,
+        "t": 0.0,
+        "P.Value": 0.0,
+        "adj.P.Val": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "gene_M2",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/gene_models_M2.csv",
+      "reference_file": "reference_results/bridge43/gene_models_M2.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 4032,
+      "rows_reference": 4032,
+      "numeric_values_compared": 12096,
+      "maximum_absolute_differences": {
+        "NGenes": 0.0,
+        "Direction": 0.0,
+        "PValue": 0.0,
+        "FDR": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "camera_M2",
+      "regenerated_file": "revision_followup_20261019/bridge43/results/camera_models_M2.csv",
+      "reference_file": "reference_results/bridge43/camera_models_M2.csv"
+    },
+    {
+      "status": "PASS",
+      "rows_rebuilt": 4,
+      "rows_reference": 4,
+      "numeric_values_compared": 20,
+      "maximum_absolute_differences": {
+        "estimate": 0.0,
+        "lower_CL": 0.0,
+        "upper_CL": 0.0,
+        "p_value": 0.0,
+        "q_BH_primary16": 0.0
+      },
+      "error_count": 0,
+      "errors": [],
+      "test": "main_Figure1_four_effects",
+      "regenerated_file": "revision_Day3_20261021/main_figures/Figure1_BTM_supported4_source_data.csv",
+      "reference_file": "reference_results/manuscript/main_figures/Figure1_BTM_supported4_source_data.csv"
+    }
+  ],
+  "tolerance": "absolute 1e-8 + relative 1e-8 times reference magnitude",
+  "scope": "Rebuilt matrix-based standard pipeline; historical original selection, clustering and preranked GO are separate optional steps."
+}

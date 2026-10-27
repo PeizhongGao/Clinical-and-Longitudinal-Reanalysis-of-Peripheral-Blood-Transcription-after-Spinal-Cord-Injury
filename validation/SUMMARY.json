@@ -1,0 +1,16 @@
+{
+  "standard_pipeline_passed": true,
+  "relocated_outside_original_project": true,
+  "stages": 19,
+  "validation_groups": 21,
+  "numeric_values_compared": 357077,
+  "all_executed_scripts_match_delivered_sources": true,
+  "original_count_based_selection_complete": false,
+  "extended_clustering_and_preranked_GO_rerun": false,
+  "fresh_environment_restore_tested": false,
+  "cross_platform_execution_tested": false,
+  "original_code_license": "PENDING_AUTHOR_DECISION",
+  "permanent_public_deposition": "NOT_PERFORMED",
+  "source_project_unchanged": "checked separately in audit folder",
+  "run_seconds_sum": 685.59
+}

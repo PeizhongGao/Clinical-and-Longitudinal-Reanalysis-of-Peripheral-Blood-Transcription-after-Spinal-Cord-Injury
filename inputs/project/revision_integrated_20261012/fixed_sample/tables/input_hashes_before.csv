@@ -1,0 +1,7 @@
+role,source,md5
+"clinical_scores","PROJECT_ROOT/revision_R2_20261008/tables/ODC405_locked_scores_with_clinical_and_cell_estimates.csv","5d9ddbdcec72228b23e1c8e0188f4d37"
+"score_reference","PROJECT_ROOT/revision_R2_20261008/supplement/discovery_locked_scores_descriptive.csv","0bb7d7044e68a2d2cb8ac5b5c3832cfb"
+"prior_models","PROJECT_ROOT/revision_R2_20261008/supplement/ODC405_locked_score_models.csv","23a356dcfabadb49cf7a100628155517"
+"frozen_genes","PROJECT_ROOT/revision_R2_20261008/supplement/locked_signature_reused_S14.csv","d940432efad2c4982a435b721508e2b6"
+"standardization","PROJECT_ROOT/revision_R2_20261008/supplement/standardization_parameters.csv","4fe4b7e4d2fe7d78bf462f17641e71f5"
+"protocol","PROJECT_ROOT/revision_R2_20261008/fixed_sample_20261012/analysis-protocol.md","dcf8584c5173103d49242b81567f40cb"

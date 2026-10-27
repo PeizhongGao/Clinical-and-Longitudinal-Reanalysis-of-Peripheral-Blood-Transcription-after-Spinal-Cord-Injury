@@ -1,0 +1,142 @@
+module_id,title,lineage,source_token,source_url
+M7.0,enriched in T cells (I) (M7.0),T_cell,BCL11B,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CCL5,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD2,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD247,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD27,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD28,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD3D,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD3E,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD3G,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD6,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD7,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,CD96,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,EOMES,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,ETS1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,FLT3LG,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GATA3,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GIMAP6,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GIMAP7,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GNLY,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GPR171,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GZMA,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GZMB,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GZMH,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GZMK,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,GZMM,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,ICOS,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,IL32,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,IL7R,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,ITK,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,ITM2A,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,KLRB1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,LAT,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,LCK,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,LEF1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,MAL,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,NELL2,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,NKG7,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,NLRC3,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,PRF1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,PRKCH,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,PRKCQ,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,PTPRCAP,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,RASGRP1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,RORA,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,SAMD3,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,SH2D1A,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,SIRPG,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,SIT1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,SLA2,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TARP,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TIGIT,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRA@,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRAC,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRAJ17,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRAT1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRAV20,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRBC1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,TRD@,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,UBASH3A,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,XCL1,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,XCL2,http://mummichog.org/BTM/M7.0.htm
+M7.0,enriched in T cells (I) (M7.0),T_cell,ZAP70,http://mummichog.org/BTM/M7.0.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,ALPL,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,BASP1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,C5AR1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CDA,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CHI3L1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CMTM2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CREB5,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CSF3R,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CXCR1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,CYP4F3,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,DGAT2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,EMR3,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FCGR2A,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FCGR3A,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FCGR3B,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FFAR2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FPR1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,FPR2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,G0S2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,GLT1D1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,GPR109B,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,GPR97,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,KCNJ15,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,KRT23,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,LIN7A,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,LRG1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,LRRC4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,MANSC1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,MGAM,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,MGC31957,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,MME,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,MXD1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,NCF4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,NFE2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,NLRP12,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,ORM1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,PFKFB4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,PROK2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,PTAFR,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,PYGL,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,REPS2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,RGL4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,RNF24,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,S100P,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,SEPX1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,SLC22A4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,ST6GALNAC2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,STEAP4,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,TNFRSF10C,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,TREM1,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,VNN2,http://mummichog.org/BTM/M37.1.htm
+M37.1,enriched in neutrophils (I) (M37.1),neutrophil,VNN3,http://mummichog.org/BTM/M37.1.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,ARAP3,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,BEST1,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,BTNL8,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,CFD,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,DENND3,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,FLJ10357,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,FRAT2,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,HSPA6,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,IMPA2,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,MBOAT7,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,NPL,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,SLC40A1,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,TSPAN2,http://mummichog.org/BTM/M163.htm
+M163,enriched in neutrophils (II) (M163),neutrophil,TYROBP,http://mummichog.org/BTM/M163.htm
+M223,enriched in T cells (II) (M223),T_cell,CD40LG,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,CLEC2D,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,DENND2D,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,DPP4,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,FGFBP2,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,HOPX,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,LBH,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,LOC439949,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,LRRN3,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,PLEKHF1,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,SLC38A1,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,TC2N,http://mummichog.org/BTM/M223.htm
+M223,enriched in T cells (II) (M223),T_cell,TRGC2,http://mummichog.org/BTM/M223.htm

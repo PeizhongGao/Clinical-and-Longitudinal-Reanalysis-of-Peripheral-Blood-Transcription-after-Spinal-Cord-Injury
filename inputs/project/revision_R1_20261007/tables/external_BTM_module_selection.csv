@@ -1,0 +1,347 @@
+module_id,title,n_source_tokens,selected,reason
+M0,targets of FOSL1/2 (M0),12,False,outside locked literal title rule
+M1.0,integrin cell surface interactions (I) (M1.0),29,False,outside locked literal title rule
+M1.1,integrin cell surface interactions (II) (M1.1),12,False,outside locked literal title rule
+M2.0,extracellular matrix (I) (M2.0),30,False,outside locked literal title rule
+M2.1,extracellular matrix (II) (M2.1),45,False,outside locked literal title rule
+M2.2,extracellular matrix (III) (M2.2),14,False,outside locked literal title rule
+M3,regulation of signal transduction (M3),47,False,outside locked literal title rule
+M4.0,cell cycle and transcription (M4.0),335,False,outside locked literal title rule
+M4.1,cell cycle (I) (M4.1),145,False,outside locked literal title rule
+M4.2,PLK1 signaling events (M4.2),34,False,outside locked literal title rule
+M4.3,myeloid cell enriched receptors and transporters (M4.3),31,False,outside locked literal title rule
+M4.4,mitotic cell cycle - DNA replication (M4.4),30,False,outside locked literal title rule
+M4.5,mitotic cell cycle in stimulated CD4 T cells (M4.5),35,False,outside locked literal title rule
+M4.6,cell division in stimulated CD4 T cells (M4.6),20,False,outside locked literal title rule
+M4.7,mitotic cell cycle (M4.7),21,False,outside locked literal title rule
+M4.8,cell division - E2F transcription network (M4.8),19,False,outside locked literal title rule
+M4.9,mitotic cell cycle in stimulated CD4 T cells (M4.9),16,False,outside locked literal title rule
+M4.10,cell cycle (II) (M4.10),14,False,outside locked literal title rule
+M4.11,mitotic cell cycle in stimulated CD4 T cells (M4.11),12,False,outside locked literal title rule
+M4.12,C-MYC transcriptional network (M4.12),12,False,outside locked literal title rule
+M4.13,cell junction (GO) (M4.13),11,False,outside locked literal title rule
+M4.14,Rho GTPase cycle (M4.14),10,False,outside locked literal title rule
+M4.15,enriched in monocytes (I) (M4.15),11,False,outside locked literal title rule
+M5.0,regulation of antigen presentation and immune response (M5.0),81,False,outside locked literal title rule
+M5.1,T cell activation and signaling (M5.1),25,False,outside locked literal title rule
+M6,mitotic cell division (M6),32,False,outside locked literal title rule
+M7.0,enriched in T cells (I) (M7.0),62,True,literal cell-enrichment title rule
+M7.1,T cell activation (I) (M7.1),50,False,outside locked literal title rule
+M7.2,enriched in NK cells (I) (M7.2),49,False,outside locked literal title rule
+M7.3,T cell activation (II) (M7.3),31,False,outside locked literal title rule
+M7.4,T cell activation (III) (M7.4),14,False,outside locked literal title rule
+M8,E2F transcription factor network (M8),18,False,outside locked literal title rule
+M9,B cell development (M9),11,False,outside locked literal title rule
+M10.0,E2F1 targets (Q3) (M10.0),33,False,outside locked literal title rule
+M10.1,E2F1 targets (Q4) (M10.1),21,False,outside locked literal title rule
+M11.0,enriched in monocytes (II) (M11.0),189,False,outside locked literal title rule
+M11.1,blood coagulation (M11.1),22,False,outside locked literal title rule
+M11.2,formyl peptide receptor mediated neutrophil response (M11.2),10,False,outside locked literal title rule
+M12,CD28 costimulation (M12),10,False,outside locked literal title rule
+M13,innate activation by cytosolic DNA sensing (M13),11,False,outside locked literal title rule
+M14,T cell differentiation (M14),12,False,outside locked literal title rule
+M15,Ran mediated mitosis (M15),13,False,outside locked literal title rule
+M16,TLR and inflammatory signaling (M16),45,False,outside locked literal title rule
+M17.0,Hox cluster I (M17.0),16,False,outside locked literal title rule
+M17.1,Hox cluster II (M17.1),12,False,outside locked literal title rule
+M17.2,Hox cluster III (M17.2),12,False,outside locked literal title rule
+M17.3,Hox cluster IV (M17.3),10,False,outside locked literal title rule
+M18,T cell differentiation via ITK and PKC (M18),11,False,outside locked literal title rule
+M19,T cell differentiation (Th2) (M19),17,False,outside locked literal title rule
+M20,AP-1 transcription factor network (M20),15,False,outside locked literal title rule
+M21,cell adhesion (lymphocyte homing) (M21),10,False,outside locked literal title rule
+M22.0,mismatch repair (I) (M22.0),27,False,outside locked literal title rule
+M22.1,mismatch repair (II) (M22.1),13,False,outside locked literal title rule
+M23,"RA, WNT, CSF receptors network (monocyte) (M23)",12,False,outside locked literal title rule
+M24,"cell activation (IL15, IL23, TNF) (M24)",15,False,outside locked literal title rule
+M25,TLR8-BAFF network (M25),10,False,outside locked literal title rule
+M26.0,TBA (M26.0),30,False,outside locked literal title rule
+M26.1,TBA (M26.1),22,False,outside locked literal title rule
+M26.2,TBA (M26.2),14,False,outside locked literal title rule
+M27.0,chemokine cluster (I) (M27.0),26,False,outside locked literal title rule
+M27.1,chemokine cluster (II) (M27.1),15,False,outside locked literal title rule
+M28,antigen presentation (lipids and proteins) (M28),11,False,outside locked literal title rule
+M29,proinflammatory cytokines and chemokines (M29),10,False,outside locked literal title rule
+M30,"cell movement, Adhesion & Platelet activation (M30)",20,False,outside locked literal title rule
+M31,cell cycle and growth arrest (M31),12,False,outside locked literal title rule
+M32.0,platelet activation (I) (M32.0),23,False,outside locked literal title rule
+M32.1,platelet activation (II) (M32.1),21,False,outside locked literal title rule
+M32.2,CORO1A-DEF6 network (I) (M32.2),20,False,outside locked literal title rule
+M32.3,KLF12 targets network (M32.3),17,False,outside locked literal title rule
+M32.4,CORO1A-DEF6 network (II) (M32.4),15,False,outside locked literal title rule
+M32.5,TBA (M32.5),15,False,outside locked literal title rule
+M32.6,TBA (M32.6),13,False,outside locked literal title rule
+M32.7,TBA (M32.7),11,False,outside locked literal title rule
+M32.8,cytoskeletal remodeling (M32.8),10,False,outside locked literal title rule
+M33,inflammatory response (M33),11,False,outside locked literal title rule
+M34,cytoskeletal remodeling (enriched for SRF targets) (M34),10,False,outside locked literal title rule
+M35.0,signaling in T cells (I) (M35.0),14,False,outside locked literal title rule
+M35.1,signaling in T cells (II) (M35.1),11,False,outside locked literal title rule
+M36,"T cell surface, activation (M36)",12,False,outside locked literal title rule
+M37.0,immune activation - generic cluster (M37.0),347,False,outside locked literal title rule
+M37.1,enriched in neutrophils (I) (M37.1),52,True,literal cell-enrichment title rule
+M37.2,endoplasmic reticulum (M37.2),19,False,outside locked literal title rule
+M37.3,cell division (M37.3),10,False,outside locked literal title rule
+M38,chemokines and receptors (M38),11,False,outside locked literal title rule
+M39,integrin mediated leukocyte migration (M39),10,False,outside locked literal title rule
+M40,complement and other receptors in DCs (M40),13,False,outside locked literal title rule
+M41.0,TBA (M41.0),17,False,outside locked literal title rule
+M41.1,TBA (M41.1),15,False,outside locked literal title rule
+M41.2,TBA (M41.2),14,False,outside locked literal title rule
+M41.3,TBA (M41.3),10,False,outside locked literal title rule
+M41.4,ATF targets network (M41.4),10,False,outside locked literal title rule
+M42,platelet activation (III) (M42),10,False,outside locked literal title rule
+M43.0,"myeloid, dendritic cell activation via NFkB (I) (M43.0)",15,False,outside locked literal title rule
+M43.1,"myeloid, dendritic cell activation via NFkB (II) (M43.1)",14,False,outside locked literal title rule
+M44,T cell signaling and costimulation (M44),10,False,outside locked literal title rule
+M45,leukocyte activation and migration (M45),11,False,outside locked literal title rule
+M46,cell division (stimulated CD4+ T cells) (M46),28,False,outside locked literal title rule
+M47.0,enriched in B cells (I) (M47.0),53,False,outside locked literal title rule
+M47.1,enriched in B cells (II) (M47.1),43,False,outside locked literal title rule
+M47.2,enriched in B cells (III) (M47.2),37,False,outside locked literal title rule
+M47.3,enriched in B cells (IV) (M47.3),16,False,outside locked literal title rule
+M47.4,enriched in B cells (V) (M47.4),11,False,outside locked literal title rule
+M48,TBA (M48),13,False,outside locked literal title rule
+M49,transcription regulation in cell development (M49),47,False,outside locked literal title rule
+M50,CD1 and other DC receptors (M50),10,False,outside locked literal title rule
+M51,cell adhesion (M51),38,False,outside locked literal title rule
+M52,T cell activation (IV) (M52),13,False,outside locked literal title rule
+M53,inflammasome receptors and signaling (M53),12,False,outside locked literal title rule
+M54,BCR signaling (M54),12,False,outside locked literal title rule
+M55,TBA (M55),12,False,outside locked literal title rule
+M56,suppression of MAPK signaling (M56),12,False,outside locked literal title rule
+M57,"immuregulation - monocytes, T and B cells (M57)",13,False,outside locked literal title rule
+M58,B cell development/activation (M58),11,False,outside locked literal title rule
+M59,"CCR1, 7 and cell signaling (M59)",10,False,outside locked literal title rule
+M60,lymphocyte generic cluster (M60),17,False,outside locked literal title rule
+M61.0,enriched in NK cells (II) (M61.0),24,False,outside locked literal title rule
+M61.1,enriched in NK cells (KIR cluster) (M61.1),13,False,outside locked literal title rule
+M61.2,enriched in NK cells (receptor activation) (M61.2),16,False,outside locked literal title rule
+M62.0,"T & B cell development, activation (M62.0)",44,False,outside locked literal title rule
+M62.1,enriched for unknown TF motif CTCNANGTGNY (M62.1),12,False,outside locked literal title rule
+M63,regulation of localization (GO) (M63),12,False,outside locked literal title rule
+M64,enriched in activated dendritic cells/monocytes (M64),17,False,outside locked literal title rule
+M65,"IL2, IL7, TCR network (M65)",12,False,outside locked literal title rule
+M66,TBA (M66),17,False,outside locked literal title rule
+M67,activated dendritic cells (M67),12,False,outside locked literal title rule
+M68,RIG-1 like receptor signaling (M68),10,False,outside locked literal title rule
+M69,enriched in B cells (VI) (M69),20,False,outside locked literal title rule
+M70.0,TBA (M70.0),20,False,outside locked literal title rule
+M70.1,TBA (M70.1),10,False,outside locked literal title rule
+M71,enriched in antigen presentation (I) (M71),18,False,outside locked literal title rule
+M72.0,TBA (M72.0),24,False,outside locked literal title rule
+M72.1,TBA (M72.1),17,False,outside locked literal title rule
+M72.2,TBA (M72.2),12,False,outside locked literal title rule
+M73,enriched in monocytes (III) (M73),12,False,outside locked literal title rule
+M74,transcriptional targets of glucocorticoid receptor (M74),12,False,outside locked literal title rule
+M75,antiviral IFN signature (M75),22,False,outside locked literal title rule
+M76,DNA repair (M76),22,False,outside locked literal title rule
+M77,"collagen, TGFB family et al (M77)",35,False,outside locked literal title rule
+M78,"myeloid cell cytokines, metallopeptidases and laminins (M78)",11,False,outside locked literal title rule
+M79,TBA (M79),10,False,outside locked literal title rule
+M80,TBA (M80),20,False,outside locked literal title rule
+M81,enriched in myeloid cells and monocytes (M81),35,False,outside locked literal title rule
+M82,"signal transduction, plasma membrane (M82)",13,False,outside locked literal title rule
+M83,enriched in naive and memory B cells (M83),10,False,outside locked literal title rule
+M84,integrins and cell adhesion (M84),10,False,outside locked literal title rule
+M85,platelet activation and degranulation (M85),12,False,outside locked literal title rule
+M86.0,chemokines and inflammatory molecules in myeloid cells (M86.0),19,False,outside locked literal title rule
+M86.1,"proinflammatory dendritic cell, myeloid cell response (M86.1)",13,False,outside locked literal title rule
+M87,transmembrane transport (I) (M87),24,False,outside locked literal title rule
+M88.0,leukocyte migration (M88.0),51,False,outside locked literal title rule
+M88.1,enriched in hepatocyte nuclear factors (I) (M88.1),13,False,outside locked literal title rule
+M88.2,enriched in hepatocyte nuclear factors (II) (M88.2),12,False,outside locked literal title rule
+M89.0,putative targets of PAX3 (M89.0),16,False,outside locked literal title rule
+M89.1,putative targets of PAX3 (M89.1),10,False,outside locked literal title rule
+M90,TBA (M90),12,False,outside locked literal title rule
+M91,"adhesion and migration, chemotaxis (M91)",13,False,outside locked literal title rule
+M92,"lipid metabolism, endoplasmic reticulum (M92)",10,False,outside locked literal title rule
+M93,TBA (M93),10,False,outside locked literal title rule
+M94,"growth factor induced, enriched in nuclear receptor subfamily 4 (M94)",12,False,outside locked literal title rule
+M95.0,enriched in antigen presentation (II) (M95.0),24,False,outside locked literal title rule
+M95.1,enriched in antigen presentation (III) (M95.1),15,False,outside locked literal title rule
+M96,Hox cluster V (M96),10,False,outside locked literal title rule
+M97,enriched for SMAD2/3 signaling (M97),10,False,outside locked literal title rule
+M98.0,TBA (M98.0),18,False,outside locked literal title rule
+M98.1,TBA (M98.1),10,False,outside locked literal title rule
+M99,TBA (M99),10,False,outside locked literal title rule
+M100,"MAPK, RAS signaling (M100)",10,False,outside locked literal title rule
+M101,phosphatidylinositol signaling system (M101),14,False,outside locked literal title rule
+M102,TBA (M102),12,False,outside locked literal title rule
+M103,cell cycle (III) (M103),51,False,outside locked literal title rule
+M104,TBA (M104),10,False,outside locked literal title rule
+M105,TBA (M105),18,False,outside locked literal title rule
+M106.0,nuclear pore complex (M106.0),17,False,outside locked literal title rule
+M106.1,nuclear pore complex (mitosis) (M106.1),11,False,outside locked literal title rule
+M107,Hox cluster VI (M107),11,False,outside locked literal title rule
+M108,TBA (M108),11,False,outside locked literal title rule
+M109,"receptors, cell migration (M109)",15,False,outside locked literal title rule
+M110,axon guidance (M110),10,False,outside locked literal title rule
+M111.0,viral sensing & immunity; IRF2 targets network (I) (M111.0),17,False,outside locked literal title rule
+M111.1,viral sensing & immunity; IRF2 targets network (II) (M111.1),11,False,outside locked literal title rule
+M112.0,complement activation (I) (M112.0),17,False,outside locked literal title rule
+M112.1,complement activation (II) (M112.1),10,False,outside locked literal title rule
+M113,golgi membrane (I) (M113),10,False,outside locked literal title rule
+M114.0,TBA (M114.0),39,False,outside locked literal title rule
+M114.1,glycerophospholipid metabolism (M114.1),11,False,outside locked literal title rule
+M115,cytokines - recepters cluster (M115),11,False,outside locked literal title rule
+M116,TBA (M116),13,False,outside locked literal title rule
+M117,cell adhesion (GO) (M117),21,False,outside locked literal title rule
+M118.0,enriched in monocytes (IV) (M118.0),57,False,outside locked literal title rule
+M118.1,enriched in monocytes (surface) (M118.1),17,False,outside locked literal title rule
+M119,enriched in activated dendritic cells (I) (M119),11,False,outside locked literal title rule
+M120,TBA (M120),11,False,outside locked literal title rule
+M121,TBA (M121),12,False,outside locked literal title rule
+M122,enriched for cell migration (M122),11,False,outside locked literal title rule
+M123,enriched in B cell differentiation (M123),13,False,outside locked literal title rule
+M124,enriched in membrane proteins (M124),19,False,outside locked literal title rule
+M125,TBA (M125),11,False,outside locked literal title rule
+M126,double positive thymocytes (M126),13,False,outside locked literal title rule
+M127,type I interferon response (M127),12,False,outside locked literal title rule
+M128,TBA (M128),12,False,outside locked literal title rule
+M129,inositol phosphate metabolism (M129),13,False,outside locked literal title rule
+M130,enriched in G-protein coupled receptors (M130),10,False,outside locked literal title rule
+M131,TBA (M131),14,False,outside locked literal title rule
+M132,recruitment of neutrophils (M132),11,False,outside locked literal title rule
+M133.0,"cell adhesion, membrane (M133.0)",14,False,outside locked literal title rule
+M133.1,cell cell adhesion (M133.1),11,False,outside locked literal title rule
+M134,"Membrane, ER proteins (M134)",17,False,outside locked literal title rule
+M135.0,enriched in plasma membrane proteins (I) (M135.0),16,False,outside locked literal title rule
+M135.1,enriched in plasma membrane proteins (II) (M135.1),15,False,outside locked literal title rule
+M136,TBA (M136),17,False,outside locked literal title rule
+M137,TBA (M137),16,False,outside locked literal title rule
+M138,enriched for ubiquitination (M138),11,False,outside locked literal title rule
+M139,lysosomal/endosomal proteins (M139),11,False,outside locked literal title rule
+M140,"extracellular matrix, complement (M140)",14,False,outside locked literal title rule
+M141,TBA (M141),27,False,outside locked literal title rule
+M142,transmembrane and ion transporters (I) (M142),13,False,outside locked literal title rule
+M143,"nuclear pore, transport; mRNA splicing, processing (M143)",11,False,outside locked literal title rule
+M144,"cell cycle, ATP binding (M144)",16,False,outside locked literal title rule
+M145.0,cytoskeleton/actin (SRF transcription targets) (M145.0),16,False,outside locked literal title rule
+M145.1,cytoskeleton/actin (SRF transcription targets) (M145.1),14,False,outside locked literal title rule
+M146,MHC-TLR7-TLR8 cluster (M146),17,False,outside locked literal title rule
+M147,intracellular transport (M147),17,False,outside locked literal title rule
+M148,TBA (M148),11,False,outside locked literal title rule
+M149,TBA (M149),10,False,outside locked literal title rule
+M150,innate antiviral response (M150),12,False,outside locked literal title rule
+M151,TBA (M151),10,False,outside locked literal title rule
+M152.0,TBA (source: B cells) (M152.0),25,False,outside locked literal title rule
+M152.1,TBA (source: naive B cells) (M152.1),21,False,outside locked literal title rule
+M152.2,TBA (source: memory B cells) (M152.2),18,False,outside locked literal title rule
+M153,TBA (M153),16,False,outside locked literal title rule
+M154.0,amino acid metabolishm and transport (M154.0),33,False,outside locked literal title rule
+M154.1,transmembrane transport (SLC cluster) (M154.1),17,False,outside locked literal title rule
+M155,G protein coupled receptors cluster (M155),10,False,outside locked literal title rule
+M156.0,"plasma cells & B cells, immunoglobulins (M156.0)",43,False,outside locked literal title rule
+M156.1,"plasma cells, immunoglobulins (M156.1)",36,False,outside locked literal title rule
+M157,enriched in NK cells (III) (M157),14,False,outside locked literal title rule
+M158.0,interferon alpha response (I) (M158.0),16,False,outside locked literal title rule
+M158.1,interferon alpha response (II) (M158.1),13,False,outside locked literal title rule
+M159,G protein mediated calcium signaling (M159),10,False,outside locked literal title rule
+M160,leukocyte differentiation (M160),16,False,outside locked literal title rule
+M161,TBA (M161),14,False,outside locked literal title rule
+M162.0,"plasma membrane, cell junction (M162.0)",18,False,outside locked literal title rule
+M162.1,cell junction (M162.1),11,False,outside locked literal title rule
+M163,enriched in neutrophils (II) (M163),14,True,literal cell-enrichment title rule
+M164,xenobiotic metabolism (M164),10,False,outside locked literal title rule
+M165,enriched in activated dendritic cells (II) (M165),35,False,outside locked literal title rule
+M166,TBA (M166),17,False,outside locked literal title rule
+M167,enriched in cell cycle (M167),15,False,outside locked literal title rule
+M168,enriched in dendritic cells (M168),19,False,outside locked literal title rule
+M169,mitosis (TF motif CCAATNNSNNNGCG) (M169),16,False,outside locked literal title rule
+M170,TBA (M170),12,False,outside locked literal title rule
+M171,heme biosynthesis (I) (M171),11,False,outside locked literal title rule
+M172,enriched for TF motif TTCNRGNNNNTTC (M172),10,False,outside locked literal title rule
+M173,erythrocyte differentiation (M173),14,False,outside locked literal title rule
+M174,TBA (M174),24,False,outside locked literal title rule
+M175,cell development (M175),13,False,outside locked literal title rule
+M176,TBA (M176),10,False,outside locked literal title rule
+M177.0,TBA (M177.0),34,False,outside locked literal title rule
+M177.1,TBA (M177.1),15,False,outside locked literal title rule
+M178,enriched for promoter motif NATCACGTGAY (putative SREBF1 targets) (M178),10,False,outside locked literal title rule
+M179,enriched for TF motif PAX3 (M179),10,False,outside locked literal title rule
+M180,TBA (M180),11,False,outside locked literal title rule
+M181,nucleotide metabolism (M181),10,False,outside locked literal title rule
+M182,enriched in DNA interacting proteins (M182),16,False,outside locked literal title rule
+M183,TBA (M183),10,False,outside locked literal title rule
+M184.0,TBA (M184.0),18,False,outside locked literal title rule
+M184.1,TBA (M184.1),11,False,outside locked literal title rule
+M185,TBA (M185),14,False,outside locked literal title rule
+M186,TBA (M186),11,False,outside locked literal title rule
+M187,"metabolism in mitochondria, peroxisome (M187)",12,False,outside locked literal title rule
+M188,TBA (M188),10,False,outside locked literal title rule
+M189,extracellular region cluster (GO) (M189),16,False,outside locked literal title rule
+M190,TBA (M190),11,False,outside locked literal title rule
+M191,transmembrane transport (II) (M191),18,False,outside locked literal title rule
+M192,TBA (M192),12,False,outside locked literal title rule
+M193,TBA (M193),11,False,outside locked literal title rule
+M194,TBA (M194),14,False,outside locked literal title rule
+M195,"muscle contraction, SRF targets (M195)",12,False,outside locked literal title rule
+M196,platelet activation - actin binding (M196),17,False,outside locked literal title rule
+M197,TBA (M197),14,False,outside locked literal title rule
+M198,TBA (M198),12,False,outside locked literal title rule
+M199,platelet activation & blood coagulation (M199),13,False,outside locked literal title rule
+M200,antigen processing and presentation (M200),11,False,outside locked literal title rule
+M201,TBA (M201),18,False,outside locked literal title rule
+M202,enriched in extracellular matrix & associated proteins (M202),12,False,outside locked literal title rule
+M203,TBA (M203),13,False,outside locked literal title rule
+M204.0,chaperonin mediated protein folding (I) (M204.0),14,False,outside locked literal title rule
+M204.1,chaperonin mediated protein folding (II) (M204.1),10,False,outside locked literal title rule
+M205,TBA (M205),11,False,outside locked literal title rule
+M206,Wnt signaling pathway (M206),14,False,outside locked literal title rule
+M207,TBA (M207),10,False,outside locked literal title rule
+M208,TBA (M208),10,False,outside locked literal title rule
+M209,lysosome (M209),10,False,outside locked literal title rule
+M210,"extracellular matrix, collagen (M210)",32,False,outside locked literal title rule
+M211,TBA (M211),11,False,outside locked literal title rule
+M212,purine nucleotide biosynthesis (M212),12,False,outside locked literal title rule
+M213,"regulation of transcription, transcription factors (M213)",21,False,outside locked literal title rule
+M214,TBA (M214),12,False,outside locked literal title rule
+M215,small GTPase mediated signal transduction (M215),16,False,outside locked literal title rule
+M216,respiratory electron transport chain (mitochondrion) (M216),12,False,outside locked literal title rule
+M217,TBA (source: B cells) (M217),10,False,outside locked literal title rule
+M218,TBA (M218),15,False,outside locked literal title rule
+M219,respiratory electron transport chain (mitochondrion) (M219),18,False,outside locked literal title rule
+M220,TBA (M220),10,False,outside locked literal title rule
+M221,TBA (M221),16,False,outside locked literal title rule
+M222,heme biosynthesis (II) (M222),13,False,outside locked literal title rule
+M223,enriched in T cells (II) (M223),13,True,literal cell-enrichment title rule
+M224,transmembrane and ion transporters (II) (M224),11,False,outside locked literal title rule
+M225,metabolism of steroids (M225),10,False,outside locked literal title rule
+M226,proteasome (M226),12,False,outside locked literal title rule
+M227,translation initiation (M227),10,False,outside locked literal title rule
+M228,olfactory receptors (M228),13,False,outside locked literal title rule
+M229,TBA (M229),11,False,outside locked literal title rule
+M230,"cell cycle, mitotic phase (M230)",12,False,outside locked literal title rule
+M231,respiratory electron transport chain (mitochondrion) (M231),11,False,outside locked literal title rule
+M232,enriched for TF motif TNCATNTCCYR (M232),13,False,outside locked literal title rule
+M233,TBA (M233),15,False,outside locked literal title rule
+M234,"transcription elongation, RNA polymerase II (M234)",14,False,outside locked literal title rule
+M235,mitochondrial cluster (M235),19,False,outside locked literal title rule
+M236,TBA (M236),14,False,outside locked literal title rule
+M237,golgi membrane (II) (M237),17,False,outside locked literal title rule
+M238,respiratory electron transport chain (mitochondrion) (M238),17,False,outside locked literal title rule
+M239,enriched in calcium signaling proteins (M239),15,False,outside locked literal title rule
+M240,chromosome Y linked (M240),17,False,outside locked literal title rule
+M241,TBA (M241),10,False,outside locked literal title rule
+M242,TBA (M242),11,False,outside locked literal title rule
+M243,TBA (M243),12,False,outside locked literal title rule
+M244,TBA (M244),13,False,outside locked literal title rule
+M245,translation initiation factor 3 complex (M245),13,False,outside locked literal title rule
+M246,TBA (M246),16,False,outside locked literal title rule
+M247,enriched in nuclear pore complex interacting proteins (M247),14,False,outside locked literal title rule
+M248,TBA (M248),11,False,outside locked literal title rule
+M249,TBA (M249),10,False,outside locked literal title rule
+M250,spliceosome (M250),12,False,outside locked literal title rule
+S0,T cell surface signature (S0),27,False,outside locked literal title rule
+S1,NK cell surface signature (S1),48,False,outside locked literal title rule
+S2,B cell surface signature (S2),169,False,outside locked literal title rule
+S3,Plasma cell surface signature (S3),24,False,outside locked literal title rule
+S4,Monocyte surface signature (S4),94,False,outside locked literal title rule
+S5,DC surface signature (S5),82,False,outside locked literal title rule
+S6,CD4 T cell surface signature Th1-stimulated (S6),9,False,outside locked literal title rule
+S7,CD4 T cell surface signature Th2-stimulated (S7),13,False,outside locked literal title rule
+S8,Naive B cell surface signature (S8),54,False,outside locked literal title rule
+S9,Memory B cell surface signature (S9),37,False,outside locked literal title rule
+S10,Resting dendritic cell surface signature (S10),75,False,outside locked literal title rule
+S11,Activated (LPS) dendritic cell surface signature (S11),37,False,outside locked literal title rule

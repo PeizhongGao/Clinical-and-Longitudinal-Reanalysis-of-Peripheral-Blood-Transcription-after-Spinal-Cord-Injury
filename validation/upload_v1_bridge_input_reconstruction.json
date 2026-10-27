@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "expression_source_match": true,
+  "clinical_source_match": true,
+  "design_reconstruction_match": true,
+  "GO_index_reconstruction_match": true
+}

@@ -1,0 +1,7 @@
+case,returncode,rejected_before_staging
+package_root,2,True
+input_root,2,True
+source_root,2,True
+reference_root,2,True
+metadata_root,2,True
+package_parent,2,True

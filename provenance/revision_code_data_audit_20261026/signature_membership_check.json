@@ -1,0 +1,20 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "module": "innate",
+      "original_n": 15,
+      "final_n": 15,
+      "same_members": true,
+      "same_order": true
+    },
+    {
+      "module": "adaptive",
+      "original_n": 15,
+      "final_n": 15,
+      "same_members": true,
+      "same_order": true
+    }
+  ],
+  "scope": "Membership and order only; selection/bootstrap not rerun"
+}

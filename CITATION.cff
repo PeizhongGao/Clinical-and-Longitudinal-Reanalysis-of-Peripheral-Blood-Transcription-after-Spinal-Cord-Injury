@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "Please cite the associated manuscript and each reused source dataset. Add the verified archive DOI after publication of this release."
+type: software
+title: "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury — code and supporting data"
+authors:
+  - family-names: Gao
+    given-names: Peizhong
+  - family-names: Zhong
+    given-names: Huan
+version: 1.0.0
+abstract: "Reproducibility materials containing the analysis source, published-data inputs, metadata curation, complete retained statistical families, numerical reference results and an executable reproduction workflow. Original-code licensing and permanent deposition remain pending."
+keywords:
+  - spinal cord injury
+  - blood transcriptomics
+  - reproducibility
+  - exploratory reanalysis

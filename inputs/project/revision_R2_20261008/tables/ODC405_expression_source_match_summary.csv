@@ -1,0 +1,2 @@
+n_original_tested_genes,n_common_exact_gene_symbols,n_duplicate_gene_sample_pairs_in_ODC,median_sample_correlation,minimum_sample_correlation,maximum_abs_difference,interpretation
+17498,16749,0,0.999999999999997,0.999999387367427,0.0499300000000016,"ODC expression is a concordance check only; models use the original GEO matrix and frozen tested-gene set."

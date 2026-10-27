@@ -1,0 +1,179 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+ODC-SCI 405 revision sensitivity analysis; see ODC405_reanalysis_protocol.md
+R: R version 4.6.1 (2026-06-24 ucrt) 
+Mapping: 58 samples; common expression genes: 16749 ; median per-sample correlation: 1 ; minimum: 0.9999994 
+       contrast                     spec
+         <char>                   <char>
+1: SCI minus TC               unadjusted
+2: SCI minus HC               unadjusted
+3:  TC minus HC               unadjusted
+4: SCI minus TC                  age_sex
+5: SCI minus TC   clinical_complete_case
+6: SCI minus TC  clinical_plus_draw_time
+7: SCI minus TC clinical_plus_CIBERSORTx
+8: SCI minus HC        age_sex_prior_CNS
+9:  TC minus HC                  age_sex
+                                                                                 model
+                                                                                <char>
+1:                                                                  expression ~ group
+2:                                                                  expression ~ group
+3:                                                                  expression ~ group
+4:                                                    expression ~ group + age_c + sex
+5:                          expression ~ group + age_c + sex + iss_c + tbi + prior_cns
+6:           expression ~ group + age_c + sex + iss_c + tbi + prior_cns + draw_hours_c
+7: expression ~ group + age_c + sex + iss_c + tbi + prior_cns + neutrophil_z + tcell_z
+8:                                        expression ~ group + age_c + sex + prior_cns
+9:                                                    expression ~ group + age_c + sex
+   n_samples n_participants case_n reference_n design_rank design_columns
+       <int>          <int>  <int>       <int>       <int>          <int>
+1:        48             48     38          10           2              2
+2:        48             48     38          10           2              2
+3:        20             20     10          10           2              2
+4:        48             48     38          10           4              4
+5:        43             43     36           7           9              9
+6:        41             41     36           5          10             10
+7:        43             43     36           7          11             11
+8:        47             47     38           9           6              6
+9:        19             19     10           9           4              4
+   residual_df n_tested_genes n_FDR_lt_0_05 n_FDR_and_abs_logFC_gt_1
+         <int>          <int>         <int>                    <int>
+1:          46          17498          3416                      812
+2:          46          17498          7026                     2048
+3:          18          17498           579                      411
+4:          44          17498          2093                      658
+5:          34          17498             0                        0
+6:          31          17498             0                        0
+7:          32          17498             0                        0
+8:          41          17498          5758                     2013
+9:          15          17498           383                      332
+   median_logFC
+          <num>
+1: -0.060076175
+2: -0.042986671
+3:  0.015723200
+4: -0.058721239
+5: -0.004398050
+6:  0.007579424
+7:  0.004134498
+8: -0.059172485
+9:  0.014856276
+      estimate robust_SE_HC3  statistic    df   lower_CL   upper_CL
+         <num>         <num>      <num> <int>      <num>      <num>
+ 1:  1.3884555     0.2838585  4.8913640    46  0.8170778  1.9598331
+ 2: -1.2531621     0.3055476 -4.1013642    46 -1.8681975 -0.6381266
+ 3:  2.6416175     0.5617551  4.7024366    46  1.5108632  3.7723718
+ 4:  1.3798980     0.3173352  4.3483923    44  0.7403509  2.0194452
+ 5: -1.1390803     0.3189604 -3.5712283    44 -1.7819027 -0.4962579
+ 6:  2.5189783     0.5987076  4.2073596    44  1.3123624  3.7255943
+ 7:  0.3617612     0.5897995  0.6133629    34 -0.8368557  1.5603780
+ 8: -0.3063910     0.3973023 -0.7711786    34 -1.1138065  0.5010244
+ 9:  0.6681522     0.8063871  0.8285750    34 -0.9706236  2.3069280
+10:  0.5162077     0.5312370  0.9717089    31 -0.5672573  1.5996728
+11: -0.4633328     0.4408010 -1.0511155    31 -1.3623524  0.4356868
+12:  0.9795405     0.7595875  1.2895691    31 -0.5696483  2.5287294
+13:  0.7271025     0.6085648  1.1947824    32 -0.5125035  1.9667085
+14: -0.5654228     0.3544183 -1.5953544    32 -1.2873492  0.1565036
+15:  1.2925253     0.7941373  1.6275842    32 -0.3250794  2.9101300
+         p_value   hat_max design_rank design_columns                     spec
+           <num>     <num>       <int>          <int>                   <char>
+ 1: 1.264532e-05 0.1000000           2              2               unadjusted
+ 2: 1.656845e-04 0.1000000           2              2               unadjusted
+ 3: 2.368450e-05 0.1000000           2              2               unadjusted
+ 4: 8.004451e-05 0.1848660           4              4                  age_sex
+ 5: 8.747518e-04 0.1848660           4              4                  age_sex
+ 6: 1.251039e-04 0.1848660           4              4                  age_sex
+ 7: 5.437182e-01 0.7010724           9              9   clinical_complete_case
+ 8: 4.459276e-01 0.7010724           9              9   clinical_complete_case
+ 9: 4.131239e-01 0.7010724           9              9   clinical_complete_case
+10: 3.387168e-01 0.7204571          10             10  clinical_plus_draw_time
+11: 3.013307e-01 0.7204571          10             10  clinical_plus_draw_time
+12: 2.067389e-01 0.7204571          10             10  clinical_plus_draw_time
+13: 2.409526e-01 0.7141045          11             11 clinical_plus_CIBERSORTx
+14: 1.204633e-01 0.7141045          11             11 clinical_plus_CIBERSORTx
+15: 1.134211e-01 0.7141045          11             11 clinical_plus_CIBERSORTx
+           outcome
+            <char>
+ 1:   innate_score
+ 2: adaptive_score
+ 3:  balance_score
+ 4:   innate_score
+ 5: adaptive_score
+ 6:  balance_score
+ 7:   innate_score
+ 8: adaptive_score
+ 9:  balance_score
+10:   innate_score
+11: adaptive_score
+12:  balance_score
+13:   innate_score
+14: adaptive_score
+15:  balance_score
+                                                                                           model
+                                                                                          <char>
+ 1:                                                                         innate_score ~ group
+ 2:                                                                       adaptive_score ~ group
+ 3:                                                                        balance_score ~ group
+ 4:                                                           innate_score ~ group + age_c + sex
+ 5:                                                         adaptive_score ~ group + age_c + sex
+ 6:                                                          balance_score ~ group + age_c + sex
+ 7:                                 innate_score ~ group + age_c + sex + iss_c + tbi + prior_cns
+ 8:                               adaptive_score ~ group + age_c + sex + iss_c + tbi + prior_cns
+ 9:                                balance_score ~ group + age_c + sex + iss_c + tbi + prior_cns
+10:             innate_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      draw_hours_c
+11:           adaptive_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      draw_hours_c
+12:            balance_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      draw_hours_c
+13:   innate_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      neutrophil_z + tcell_z
+14: adaptive_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      neutrophil_z + tcell_z
+15:  balance_score ~ group + age_c + sex + iss_c + tbi + prior_cns +      neutrophil_z + tcell_z
+    n_samples n_participants SCI_n  TC_n postselection         q_BH
+        <int>          <int> <int> <int>        <lgcl>        <num>
+ 1:        48             48    38    10          TRUE 3.552675e-05
+ 2:        48             48    38    10          TRUE 1.656845e-04
+ 3:        48             48    38    10          TRUE 3.552675e-05
+ 4:        48             48    38    10          TRUE 1.876558e-04
+ 5:        48             48    38    10          TRUE 8.747518e-04
+ 6:        48             48    38    10          TRUE 1.876558e-04
+ 7:        43             43    36     7          TRUE 5.437182e-01
+ 8:        43             43    36     7          TRUE 5.437182e-01
+ 9:        43             43    36     7          TRUE 5.437182e-01
+10:        41             41    36     5          TRUE 3.387168e-01
+11:        41             41    36     5          TRUE 3.387168e-01
+12:        41             41    36     5          TRUE 3.387168e-01
+13:        43             43    36     7          TRUE 2.409526e-01
+14:        43             43    36     7          TRUE 1.806949e-01
+15:        43             43    36     7          TRUE 1.806949e-01
+                           cell n_SCI  n_TC     mean_SCI       sd_SCI
+                         <char> <int> <int>        <num>        <num>
+1:                  T_cells_CD8    38    10 0.0016587374 0.0070935414
+2:            T_cells_CD4_naive    38    10 0.0874182506 0.0179888056
+3:   T_cells_CD4_memory_resting    38    10 0.0408746562 0.0394043094
+4: T_cells_CD4_memory_activated    38    10 0.0292974344 0.0177360317
+5:    T_cells_follicular_helper    38    10 0.0000000000 0.0000000000
+6:     T_cells_regulatory_Tregs    38    10 0.0001137832 0.0007014067
+7:          T_cells_gamma_delta    38    10 0.0179114668 0.0158914749
+8:                  Neutrophils    38    10 0.5112730967 0.0704878653
+       mean_TC       sd_TC median_SCI  median_TC mean_diff_SCI_minus_TC
+         <num>       <num>      <num>      <num>                  <num>
+1: 0.003830426 0.009506706 0.00000000 0.00000000          -0.0021716886
+2: 0.122658362 0.027870051 0.08520403 0.11680494          -0.0352401118
+3: 0.054742144 0.042821302 0.03095033 0.03648569          -0.0138674876
+4: 0.023027862 0.012530874 0.03536377 0.02174014           0.0062695726
+5: 0.000000000 0.000000000 0.00000000 0.00000000           0.0000000000
+6: 0.000000000 0.000000000 0.00000000 0.00000000           0.0001137832
+7: 0.005746921 0.007798488 0.01991239 0.00000000           0.0121645459
+8: 0.544897872 0.147952777 0.50717715 0.56306306          -0.0336247754
+    Welch_CI_low Welch_CI_high   wilcoxon_P     q_BH_22
+           <num>         <num>        <num>       <num>
+1: -0.0092005678  0.0048571907 0.0700768061 0.266291863
+2: -0.0556625913 -0.0148176323 0.0002695358 0.005121181
+3: -0.0461439216  0.0184089464 0.3276469762 0.622529255
+4: -0.0039566204  0.0164957655 0.2805706496 0.592315816
+5:           NaN           NaN          NaN         NaN
+6: -0.0001167634  0.0003443298 0.6443034579 0.720103865
+7:  0.0048840834  0.0194450085 0.0233790013 0.167207088
+8: -0.1407987325  0.0735491817 0.1245687908 0.373258999
+COMPLETE

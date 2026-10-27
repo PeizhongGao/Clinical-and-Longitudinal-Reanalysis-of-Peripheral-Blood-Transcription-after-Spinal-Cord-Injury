@@ -1,0 +1,133 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+Analysis started UTC: 2026-10-26 13:44:42 UTC 
+      dataset             variant module_id n_used n_source_tokens  coverage
+       <char>              <char>    <char>  <int>           <int>     <num>
+ 1: GSE151371           published      M7.0     56              62 0.9032258
+ 2: GSE151371           published     M37.1     51              52 0.9807692
+ 3: GSE151371           published      M163     13              14 0.9285714
+ 4: GSE151371           published      M223     11              13 0.8461538
+ 5: GSE151371 exclude_original106      M7.0     33              37 0.8918919
+ 6: GSE151371 exclude_original106     M37.1     43              44 0.9772727
+ 7: GSE151371 exclude_original106      M163     12              13 0.9230769
+ 8: GSE151371 exclude_original106      M223     10              12 0.8333333
+ 9: GSE226238           published      M7.0     60              62 0.9677419
+10: GSE226238           published     M37.1     51              52 0.9807692
+11: GSE226238           published      M163     13              14 0.9285714
+12: GSE226238           published      M223     12              13 0.9230769
+13: GSE226238 exclude_original106      M7.0     35              37 0.9459459
+14: GSE226238 exclude_original106     M37.1     43              44 0.9772727
+15: GSE226238 exclude_original106      M163     12              13 0.9230769
+16: GSE226238 exclude_original106      M223     11              12 0.9166667
+    eligible
+      <lgcl>
+ 1:     TRUE
+ 2:     TRUE
+ 3:     TRUE
+ 4:     TRUE
+ 5:     TRUE
+ 6:     TRUE
+ 7:     TRUE
+ 8:     TRUE
+ 9:     TRUE
+10:     TRUE
+11:     TRUE
+12:     TRUE
+13:     TRUE
+14:     TRUE
+15:     TRUE
+16:     TRUE
+                        family module_id    contrast   estimate    lower.CL
+1                 published_16      M7.0    SCI - TC -0.4609497 -0.89934830
+2                 published_16      M7.0  3m - acute  1.0737194  0.85736915
+3                 published_16      M7.0  6m - acute  1.1235042  0.90715391
+4                 published_16      M7.0 12m - acute  1.1520105  0.90828414
+5  published_complete_cases_12      M7.0  3m - acute  1.0631358  0.82960394
+6  published_complete_cases_12      M7.0  6m - acute  1.1511635  0.91763164
+7  published_complete_cases_12      M7.0 12m - acute  1.1311554  0.89762351
+8                 published_16     M37.1    SCI - TC  0.1997486 -0.20596071
+9                 published_16     M37.1  3m - acute -1.0436428 -1.40653598
+10                published_16     M37.1  6m - acute -0.9408979 -1.30379110
+11                published_16     M37.1 12m - acute -1.0347778 -1.44287777
+12 published_complete_cases_12     M37.1  3m - acute -0.9780009 -1.39018722
+13 published_complete_cases_12     M37.1  6m - acute -0.9273543 -1.33954060
+14 published_complete_cases_12     M37.1 12m - acute -1.0108698 -1.42305612
+15                published_16      M163    SCI - TC  0.2208176 -0.04760693
+16                published_16      M163  3m - acute -0.8009395 -1.08895480
+17                published_16      M163  6m - acute -0.7493964 -1.03741175
+18                published_16      M163 12m - acute -0.7342619 -1.05878648
+19 published_complete_cases_12      M163  3m - acute -0.7327011 -1.06754194
+20 published_complete_cases_12      M163  6m - acute -0.7228665 -1.05770735
+21 published_complete_cases_12      M163 12m - acute -0.7220445 -1.05688538
+22                published_16      M223    SCI - TC -0.4734602 -0.91756363
+23                published_16      M223  3m - acute  1.1201908  0.86873720
+24                published_16      M223  6m - acute  1.2146387  0.96318512
+25                published_16      M223 12m - acute  1.2062458  0.92364362
+26 published_complete_cases_12      M223  3m - acute  1.0883482  0.82899833
+27 published_complete_cases_12      M223  6m - acute  1.1612419  0.90189209
+28 published_complete_cases_12      M223 12m - acute  1.1780912  0.91874134
+29      exclude_original106_16      M7.0    SCI - TC -0.4211062 -0.83699096
+30      exclude_original106_16      M7.0  3m - acute  1.0197693  0.81185624
+31      exclude_original106_16      M7.0  6m - acute  1.0662456  0.85833255
+32      exclude_original106_16      M7.0 12m - acute  1.1168093  0.88236774
+33      exclude_original106_16     M37.1    SCI - TC  0.1777858 -0.24166544
+34      exclude_original106_16     M37.1  3m - acute -1.0144903 -1.37827397
+35      exclude_original106_16     M37.1  6m - acute -0.9035460 -1.26732963
+36      exclude_original106_16     M37.1 12m - acute -0.9925450 -1.40135017
+37      exclude_original106_16      M163    SCI - TC  0.1985838 -0.07701103
+38      exclude_original106_16      M163  3m - acute -0.8100977 -1.09544958
+39      exclude_original106_16      M163  6m - acute -0.7554045 -1.04075643
+40      exclude_original106_16      M163 12m - acute -0.7318219 -1.05306129
+41      exclude_original106_16      M223    SCI - TC -0.4691190 -0.92923563
+42      exclude_original106_16      M223  3m - acute  1.0700508  0.82843559
+43      exclude_original106_16      M223  6m - acute  1.1524149  0.91079972
+44      exclude_original106_16      M223 12m - acute  1.1508741  0.87887660
+       upper.CL      p.value         q_BH    status
+1  -0.022551096 4.049158e-02 4.627609e-02 estimated
+2   1.290069641 3.316486e-10 2.653189e-09 estimated
+3   1.339854400 1.356116e-10 2.169785e-09 estimated
+4   1.395736792 7.056438e-10 2.822575e-09 estimated
+5   1.296667664 1.764803e-08 5.445678e-08 estimated
+6   1.384695360 5.197639e-09 4.092723e-08 estimated
+7   1.364687226 6.821205e-09 4.092723e-08 estimated
+8   0.605457841 2.988909e-01 2.988909e-01 estimated
+9  -0.680749618 4.024802e-06 9.199547e-06 estimated
+10 -0.578004730 1.722699e-05 2.756319e-05 estimated
+11 -0.626677926 2.181915e-05 3.173694e-05 estimated
+12 -0.565814667 9.592852e-05 1.438928e-04 estimated
+13 -0.515168043 1.682991e-04 2.243988e-04 estimated
+14 -0.598683559 6.683115e-05 1.145677e-04 estimated
+15  0.489242105 9.773097e-02 1.042464e-01 estimated
+16 -0.512924122 6.659198e-06 1.331840e-05 estimated
+17 -0.461381075 1.669046e-05 2.756319e-05 estimated
+18 -0.409737266 9.433066e-05 1.257742e-04 estimated
+19 -0.397860201 2.235959e-04 2.590501e-04 estimated
+20 -0.388025608 2.561231e-04 2.590501e-04 estimated
+21 -0.387203643 2.590501e-04 2.590501e-04 estimated
+22 -0.029356854 3.820525e-02 4.627609e-02 estimated
+23  1.371644418 2.398652e-09 7.675688e-09 estimated
+24  1.466092335 5.045724e-10 2.691053e-09 estimated
+25  1.488847997 4.334782e-09 1.155942e-08 estimated
+26  1.347697969 5.979394e-08 1.195879e-07 estimated
+27  1.420591724 2.269033e-08 5.445678e-08 estimated
+28  1.437440979 1.824369e-08 5.445678e-08 estimated
+29 -0.005221458 4.749923e-02 5.428483e-02 estimated
+30  1.227682349 4.192664e-10 2.639347e-09 estimated
+31  1.274158662 1.747117e-10 2.639347e-09 estimated
+32  1.351250922 6.249167e-10 2.639347e-09 estimated
+33  0.597237064 3.677378e-01 3.677378e-01 estimated
+34 -0.650706624 6.230078e-06 1.246016e-05 estimated
+35 -0.539762282 3.019416e-05 4.831065e-05 estimated
+36 -0.583739800 3.815995e-05 5.550538e-05 estimated
+37  0.474178632 1.413530e-01 1.507766e-01 estimated
+38 -0.524745811 4.957166e-06 1.133067e-05 estimated
+39 -0.470052663 1.321420e-05 2.349192e-05 estimated
+40 -0.410582452 8.651446e-05 1.153526e-04 estimated
+41 -0.009002401 4.620214e-02 5.428483e-02 estimated
+42  1.311666010 2.730778e-09 8.738489e-09 estimated
+43  1.394030131 6.598367e-10 2.639347e-09 estimated
+44  1.422871695 5.398354e-09 1.439561e-08 estimated
+Analysis completed UTC: 2026-10-26 13:45:02 UTC 

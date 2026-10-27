@@ -1,0 +1,41 @@
+{
+  "all_passed": true,
+  "checks": [
+    {
+      "check": "BTM_18_recorded_input_hashes",
+      "passed": true,
+      "detail": "18 of 18"
+    },
+    {
+      "check": "R1_discovery_state_matches_source_matrix",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "check": "locked_43_expression_matches_source",
+      "passed": true,
+      "detail": "0"
+    },
+    {
+      "check": "count_library_order_matches_normalization",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "BTM_score_reproduction_16_series",
+      "passed": true,
+      "detail": "5.32907051820075e-15"
+    },
+    {
+      "check": "BTM_4_models_12_contrasts_refit",
+      "passed": true,
+      "detail": "maximum CI delta 4.43922565374066e-10"
+    },
+    {
+      "check": "main_Figure1_all_four_results_match_refit",
+      "passed": true,
+      "detail": "maximum q delta 3.74613742804009e-11"
+    }
+  ],
+  "scope": "Selected score reconstruction and primary model refit; not a clean-environment end-to-end rerun"
+}

@@ -1,0 +1,8 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+Started UTC 2026-10-26 13:15:07 
+Frozen columns gene module selected_n tested_n direction_correct_n mean_logFC_SCI_vs_TC mean_logFC_SCI_vs_HC selection_frequency direction_consistency full_logFC_SCI_vs_TC full_FDR_SCI_vs_TC full_logFC_SCI_vs_HC full_FDR_SCI_vs_HC 
+COMPLETE 88 240 

@@ -1,0 +1,4 @@
+score,n,NCBI_full_vs_author_partial_spearman,NCBI_restricted_vs_author_partial_spearman,NCBI_full_vs_NCBI_restricted_spearman
+"innate_score",46,0.941412272587111,0.939685476410731,0.995929694727104
+"adaptive_score",46,0.903052728954671,0.945605920444033,0.979895158803577
+"balance_score",46,0.972741288930003,0.97890841813136,0.995436324390996

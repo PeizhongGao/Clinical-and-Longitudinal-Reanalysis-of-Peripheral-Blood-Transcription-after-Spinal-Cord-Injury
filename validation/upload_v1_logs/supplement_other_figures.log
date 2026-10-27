@@ -1,0 +1,8 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+ [1] "scope"       "score"       "n_SCI"       "n_CTL"       "mean_SCI"   
+ [6] "mean_CTL"    "hedges_g"    "ci_low"      "ci_high"     "p"          
+[11] "reference"   "uncertainty" "q_BH"       

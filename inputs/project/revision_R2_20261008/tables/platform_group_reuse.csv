@@ -1,0 +1,12 @@
+dataset,group,platform,overlap,samples
+GSE151371,HC,GPL20301,not_assessed_other_cohorts,10
+GSE151371,SCI,GPL20301,not_assessed_other_cohorts,38
+GSE151371,TC,GPL20301,not_assessed_other_cohorts,10
+GSE177034,Persistent,GPL11154,not_assessed_other_cohorts,98
+GSE177034,Resolved,GPL11154,not_assessed_other_cohorts,98
+GSE226238,CTL,GPL18573,not_assessed_other_cohorts,9
+GSE226238,SCI,GPL18573,not_assessed_other_cohorts,37
+GSE293559,CTL,GPL18573,reused_from_GSE226238,9
+GSE293559,SCI,GPL18573,new_GSE293559,21
+GSE293559,SCI,GPL18573,reused_from_GSE226238,10
+GSE293559,SCI,GPL24676,new_GSE293559,5

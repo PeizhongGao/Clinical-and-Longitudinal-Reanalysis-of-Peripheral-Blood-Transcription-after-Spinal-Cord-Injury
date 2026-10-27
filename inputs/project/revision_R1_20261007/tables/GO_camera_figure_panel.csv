@@ -1,0 +1,9 @@
+NGenes,Direction,PValue,FDR,go_id,term,label
+29,"Up",0.000725545609227274,0.0509518190722634,"GO:0002446","neutrophil mediated immunity","neutrophil mediated immunity"
+316,"Down",0.172874622395532,0.542389262322083,"GO:0030098","lymphocyte differentiation","lymphocyte differentiation"
+230,"Down",0.155735950808338,0.521101538306405,"GO:0030217","T cell differentiation","T cell differentiation"
+157,"Up",0.0237472300288928,0.2364168678432,"GO:0030595","leukocyte chemotaxis","leukocyte chemotaxis"
+239,"Up",0.0318870223559308,0.275307225137287,"GO:0032496","response to lipopolysaccharide","response to lipopolysaccharide"
+413,"Down",0.343811341158681,0.710531690185444,"GO:0042110","T cell activation","T cell activation"
+163,"Up",0.0167952562714166,0.209355615808119,"GO:0042742","defense response to bacterium","defense response to bacterium"
+166,"Down",0.0188883568455045,0.219475085882058,"GO:0050851","antigen receptor-mediated signaling pathway","antigen receptor-mediated signaling pathway"

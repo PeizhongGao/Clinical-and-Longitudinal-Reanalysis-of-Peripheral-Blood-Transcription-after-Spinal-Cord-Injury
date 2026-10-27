@@ -1,0 +1,7 @@
+scope,score,singular,random_intercept_variance,residual_sd,residual_shapiro_p,n_samples,n_participants
+"all_available","innate_score",FALSE,0.64151448797609,0.884538629919202,0.387651514706581,37,10
+"all_available","adaptive_score",FALSE,0.525214169094983,0.617458123590471,0.984056601774413,37,10
+"all_available","balance_score",FALSE,1.62512844331199,1.32077005699031,0.128602337264637,37,10
+"complete_cases","innate_score",FALSE,0.615609161096095,0.707102043806278,0.376440977465543,28,7
+"complete_cases","adaptive_score",FALSE,0.491465239704868,0.523029368001976,0.970688855126059,28,7
+"complete_cases","balance_score",FALSE,1.68461041596722,1.05752263396131,0.629187082484573,28,7

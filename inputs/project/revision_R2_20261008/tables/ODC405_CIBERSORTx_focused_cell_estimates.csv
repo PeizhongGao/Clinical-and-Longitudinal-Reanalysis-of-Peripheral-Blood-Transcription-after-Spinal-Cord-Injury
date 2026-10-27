@@ -1,0 +1,117 @@
+sample,group,cell,fraction,percent
+"HC01","HC","Neutrophils",0.522916564,52.2916564
+"HC02","HC","Neutrophils",0.415056537,41.5056537
+"HC03","HC","Neutrophils",0.397348177,39.7348177
+"HC04","HC","Neutrophils",0.346452283,34.6452283
+"HC05","HC","Neutrophils",0.475470863,47.5470863
+"HC06","HC","Neutrophils",0.368806362,36.8806362
+"HC07","HC","Neutrophils",0.420649994,42.0649994
+"HC08","HC","Neutrophils",0.565709509,56.5709509
+"HC09","HC","Neutrophils",0.40556198,40.556198
+"HC10","HC","Neutrophils",0.23110855,23.110855
+"TC01","TC","Neutrophils",0.691586349,69.1586349
+"TC02","TC","Neutrophils",0.518637717,51.8637717
+"TC03","TC","Neutrophils",0.660910152,66.0910152
+"TC04","TC","Neutrophils",0.567623648,56.7623648
+"TC05","TC","Neutrophils",0.602236432,60.2236432
+"TC06","TC","Neutrophils",0.710189428,71.0189428
+"TC07","TC","Neutrophils",0.211280085,21.1280085
+"TC08","TC","Neutrophils",0.558502478,55.8502478
+"TC09","TC","Neutrophils",0.517137939,51.7137939
+"TC10","TC","Neutrophils",0.410874493,41.0874493
+"SCI01","SCI","Neutrophils",0.483741123,48.3741123
+"SCI02","SCI","Neutrophils",0.582719107,58.2719107
+"SCI03","SCI","Neutrophils",0.502750672,50.2750672
+"SCI04","SCI","Neutrophils",0.422231269,42.2231269
+"SCI05","SCI","Neutrophils",0.489530717,48.9530717
+"SCI06","SCI","Neutrophils",0.543602738,54.3602738
+"SCI07","SCI","Neutrophils",0.589588784,58.9588784
+"SCI08","SCI","Neutrophils",0.532073663,53.2073663
+"SCI09","SCI","Neutrophils",0.61277133,61.277133
+"SCI10","SCI","Neutrophils",0.527693917,52.7693917
+"SCI11","SCI","Neutrophils",0.528253596,52.8253596
+"SCI12","SCI","Neutrophils",0.544281888,54.4281888
+"SCI13","SCI","Neutrophils",0.446659931,44.6659931
+"SCI14","SCI","Neutrophils",0.499797903,49.9797903
+"SCI15","SCI","Neutrophils",0.55396075,55.396075
+"SCI16","SCI","Neutrophils",0.487207336,48.7207336
+"SCI17","SCI","Neutrophils",0.546788806,54.6788806
+"SCI18","SCI","Neutrophils",0.503476472,50.3476472
+"SCI19","SCI","Neutrophils",0.488141456,48.8141456
+"SCI20","SCI","Neutrophils",0.542752188,54.2752188
+"SCI21","SCI","Neutrophils",0.618982154,61.8982154
+"SCI22","SCI","Neutrophils",0.377000836,37.7000836
+"SCI23","SCI","Neutrophils",0.494290586,49.4290586
+"SCI24","SCI","Neutrophils",0.510877834,51.0877834
+"SCI25","SCI","Neutrophils",0.486133004,48.6133004
+"SCI26","SCI","Neutrophils",0.348517884,34.8517884
+"SCI27","SCI","Neutrophils",0.422313851,42.2313851
+"SCI28","SCI","Neutrophils",0.374299458,37.4299458
+"SCI29","SCI","Neutrophils",0.46012616,46.012616
+"SCI30","SCI","Neutrophils",0.542473781,54.2473781
+"SCI31","SCI","Neutrophils",0.616304104,61.6304104
+"SCI32","SCI","Neutrophils",0.615153216,61.5153216
+"SCI33","SCI","Neutrophils",0.49867504,49.867504
+"SCI34","SCI","Neutrophils",0.457580943,45.7580943
+"SCI35","SCI","Neutrophils",0.531673311,53.1673311
+"SCI36","SCI","Neutrophils",0.566143347,56.6143347
+"SCI37","SCI","Neutrophils",0.432323737,43.2323737
+"SCI38","SCI","Neutrophils",0.647484784,64.7484784
+"HC01","HC","Aggregate T-cell subsets",0.233436912,23.3436912
+"HC02","HC","Aggregate T-cell subsets",0.340561486,34.0561486
+"HC03","HC","Aggregate T-cell subsets",0.250717633,25.0717633
+"HC04","HC","Aggregate T-cell subsets",0.384385321,38.4385321
+"HC05","HC","Aggregate T-cell subsets",0.264458561,26.4458561
+"HC06","HC","Aggregate T-cell subsets",0.322944419,32.2944419
+"HC07","HC","Aggregate T-cell subsets",0.320544715,32.0544715
+"HC08","HC","Aggregate T-cell subsets",0.272619799,27.2619799
+"HC09","HC","Aggregate T-cell subsets",0.36979886,36.979886
+"HC10","HC","Aggregate T-cell subsets",0.415858348,41.5858348
+"TC01","TC","Aggregate T-cell subsets",0.179975164,17.9975164
+"TC02","TC","Aggregate T-cell subsets",0.192104832,19.2104832
+"TC03","TC","Aggregate T-cell subsets",0.183022296,18.3022296
+"TC04","TC","Aggregate T-cell subsets",0.241596271,24.1596271
+"TC05","TC","Aggregate T-cell subsets",0.179074907,17.9074907
+"TC06","TC","Aggregate T-cell subsets",0.152828909,15.2828909
+"TC07","TC","Aggregate T-cell subsets",0.298073949,29.8073949
+"TC08","TC","Aggregate T-cell subsets",0.314478631,31.4478631
+"TC09","TC","Aggregate T-cell subsets",0.162198664,16.2198664
+"TC10","TC","Aggregate T-cell subsets",0.196703526,19.6703526
+"SCI01","SCI","Aggregate T-cell subsets",0.164582677,16.4582677
+"SCI02","SCI","Aggregate T-cell subsets",0.168042245,16.8042245
+"SCI03","SCI","Aggregate T-cell subsets",0.226161597,22.6161597
+"SCI04","SCI","Aggregate T-cell subsets",0.116292438,11.6292438
+"SCI05","SCI","Aggregate T-cell subsets",0.229398743,22.9398743
+"SCI06","SCI","Aggregate T-cell subsets",0.167913356,16.7913356
+"SCI07","SCI","Aggregate T-cell subsets",0.118272075,11.8272075
+"SCI08","SCI","Aggregate T-cell subsets",0.216228514,21.6228514
+"SCI09","SCI","Aggregate T-cell subsets",0.198120698,19.8120698
+"SCI10","SCI","Aggregate T-cell subsets",0.24298659,24.298659
+"SCI11","SCI","Aggregate T-cell subsets",0.188563187,18.8563187
+"SCI12","SCI","Aggregate T-cell subsets",0.163795745,16.3795745
+"SCI13","SCI","Aggregate T-cell subsets",0.184766999,18.4766999
+"SCI14","SCI","Aggregate T-cell subsets",0.181110873,18.1110873
+"SCI15","SCI","Aggregate T-cell subsets",0.205868819,20.5868819
+"SCI16","SCI","Aggregate T-cell subsets",0.211187377,21.1187377
+"SCI17","SCI","Aggregate T-cell subsets",0.198028793,19.8028793
+"SCI18","SCI","Aggregate T-cell subsets",0.076531653,7.6531653
+"SCI19","SCI","Aggregate T-cell subsets",0.179687591,17.9687591
+"SCI20","SCI","Aggregate T-cell subsets",0.200925122,20.0925122
+"SCI21","SCI","Aggregate T-cell subsets",0.17230127,17.230127
+"SCI22","SCI","Aggregate T-cell subsets",0.187697873,18.7697873
+"SCI23","SCI","Aggregate T-cell subsets",0.097055802,9.7055802
+"SCI24","SCI","Aggregate T-cell subsets",0.171068933,17.1068933
+"SCI25","SCI","Aggregate T-cell subsets",0.242163172,24.2163172
+"SCI26","SCI","Aggregate T-cell subsets",0.119467631,11.9467631
+"SCI27","SCI","Aggregate T-cell subsets",0.175969261,17.5969261
+"SCI28","SCI","Aggregate T-cell subsets",0.242038107,24.2038107
+"SCI29","SCI","Aggregate T-cell subsets",0.210255097,21.0255097
+"SCI30","SCI","Aggregate T-cell subsets",0.174088806,17.4088806
+"SCI31","SCI","Aggregate T-cell subsets",0.100267222,10.0267222
+"SCI32","SCI","Aggregate T-cell subsets",0.152282983,15.2282983
+"SCI33","SCI","Aggregate T-cell subsets",0.1938248,19.38248
+"SCI34","SCI","Aggregate T-cell subsets",0.164336678,16.4336678
+"SCI35","SCI","Aggregate T-cell subsets",0.191095633,19.1095633
+"SCI36","SCI","Aggregate T-cell subsets",0.165497872,16.5497872
+"SCI37","SCI","Aggregate T-cell subsets",0.16254043,16.254043
+"SCI38","SCI","Aggregate T-cell subsets",0.176007825,17.6007825

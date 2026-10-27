@@ -1,0 +1,50 @@
+[
+  {
+    "claim": "同43人基因结果依赖临床模型",
+    "evidence": "tables/bridge43_model_summary.csv; bridge43/genes_M0.csv; bridge43/genes_M1.csv; bridge43/genes_M2_authority.csv",
+    "allowed": "同一43人中，FDR<.05基因数为953、349、0；变化反映调整敏感性和精度。",
+    "forbidden": "临床混杂解释了全部差异；无基因效应；等效；按计数计算混杂解释比例。",
+    "uncertainty": "7个TC，ISS支持稀疏，最大杠杆.701；临床模型依赖解释目标。",
+    "decision": "KEEP_WITH_LIMITS"
+  },
+  {
+    "claim": "固定八个免疫GO均未通过完整集合BH",
+    "evidence": "tables/bridge43_fixed_eight_GO.csv",
+    "allowed": "固定八条目在三模型中全部q≥.05；全体GO还有其他探索性关联。",
+    "forbidden": "45个GO发现证明预期免疫机制或八条目显著；按新结果更换显示条目。",
+    "uncertainty": "竞争检验、集合重叠、固定相关.01，非生物学效应量。",
+    "decision": "WEAKEN_ORIGINAL_IMMUNE_CLAIM"
+  },
+  {
+    "claim": "外部BTM临床SCI–TC关联不精确",
+    "evidence": "tables/BTM_primary16.csv; tables/BTM_discovery_all88.csv",
+    "allowed": "四模块临床系数95%CI均跨0，未给出稳定的创伤之外关联证据。",
+    "forbidden": "独立验证原15+15评分或证明SCI特异性；由未显著断言无差异。",
+    "uncertainty": "相同发现队列、小TC数、不可用混杂、外部定义与新队列独立性不同。",
+    "decision": "KEEP_NEGATIVE_RESULTS"
+  },
+  {
+    "claim": "纵向部分关联在组成代理调整后残留",
+    "evidence": "tables/BTM_primary16.csv; tables/BTM_longitudinal_all240.csv",
+    "allowed": "published M7.0三个时间比较及M223六月比较在BH16后保留；定义/族敏感性需同时报告。",
+    "forbidden": "全部模块稳健；细胞内重编程；组成解释百分比；SCI特异性恢复。",
+    "uncertainty": "10人37观察、失访、表达代理共源、排除106定义M7.0十二月BH12 q=.052655。",
+    "decision": "KEEP_WITH_DEPENDENCE"
+  },
+  {
+    "claim": "评估队列保留部分复用",
+    "evidence": "evidence/platform_group_reuse.csv; tables/reuse_sensitivity6.csv; tables/same_platform_sensitivity6.csv",
+    "allowed": "剔除10个复用SCI后为26/9，全部9个CTL仍复用；同平台为31/9及21/9。",
+    "forbidden": "完全独立外部验证、trauma-control replication。",
+    "uncertainty": "没有TC、来源平台/表达处理差异、仍有复用对照。",
+    "decision": "RESCOPE_EVALUATION"
+  },
+  {
+    "claim": "撤回旧九基因与监督后标签置换推断",
+    "evidence": "disposition/withdrawn_historical_index.csv; disposition/撤回与历史材料说明.md",
+    "allowed": "旧结果退出当前证据，历史字节可追溯；15+15仍明确探索性。",
+    "forbidden": "用外部BTM或BH修复旧选择后置换P；称旧频率为完整流程稳定性。",
+    "uncertainty": "撤回是一项方法处置，不产生新的验证证据。",
+    "decision": "WITHDRAW"
+  }
+]

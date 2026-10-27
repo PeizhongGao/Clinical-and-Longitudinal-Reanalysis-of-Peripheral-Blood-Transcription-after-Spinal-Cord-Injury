@@ -1,0 +1,17 @@
+{
+  "recorded_date": "2026-10-07",
+  "source": "direct author message in this task",
+  "author_statement": "我们暂时冻结这一部分进行4吧，我直接明确没有保存。",
+  "scope": "item 4: contemporaneous candidate-pool and selection-threshold formation records",
+  "historical_records": "not retained; author confirmed",
+  "recoverable_evidence": "original code, candidate lists, supplementary selection results",
+  "not_established": [
+    "definition before discovery-data inspection",
+    "gene-level historical literature sources",
+    "historical justification of numeric thresholds"
+  ],
+  "clinical_resource_acquisition_and_adjustment": "frozen at author request; no new models",
+  "no_further_historical_record_request": true,
+  "R1_11_action_status": "completed disclosure and sensitivity documentation",
+  "R1_11_scientific_status": "PARTIAL: historical justification cannot be recovered"
+}

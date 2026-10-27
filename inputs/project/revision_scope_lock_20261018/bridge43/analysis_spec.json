@@ -1,0 +1,247 @@
+{
+  "schema_version": "1.0",
+  "analysis_id": "bridge43_gene_GO_20261018_v1",
+  "stage": "SCOPE_AND_INPUT_LOCK_ONLY",
+  "client_date_context": "2026-10-18",
+  "prior_results_known": true,
+  "prospectively_registered": false,
+  "new_bridge_effects_computed": false,
+  "timing_statement": "Revision-stage exploratory protocol after original and prior adjusted results were known; locked before any new M0/M1 bridge effects or adjusted CAMERA computations.",
+  "purpose": "Bridge sample-set versus covariate-specification changes on the exact existing clinical43 set, without causal decomposition or new feature selection.",
+  "participants": {
+    "n": 43,
+    "SCI_n": 36,
+    "TC_n": 7,
+    "unit": "one sample per independent participant",
+    "inclusion": "exact previously saved clinical43 membership, not regenerated according to outcomes",
+    "numeric_imputation": false,
+    "unknown_categories": "retain source-coded Unknown in TBI and prior_CNS",
+    "drop_participants_after_lock": false
+  },
+  "sources": {
+    "expression_matrix": "explore/Report/GSE151371_normalized_expression_matrix_comBat_de-ID.csv",
+    "clinical43_authority": "revision_integrated_20261012/fixed_sample/tables/fixed_input_clinical43.csv",
+    "clinical43_reused_input": "revision_external_adjusted_20261016/inputs/fixed_input_clinical43.csv",
+    "clinical43_latest_covariates": "revision_external_adjusted_20261016/tables/fixed_input_clinical43.csv",
+    "sample_crosswalk": "revision_integrated_20261012/tables/ODC405_sample_crosswalk.csv",
+    "tested_gene_universe": "revision_integrated_20261012/supplement/GO_tested_gene_universe.csv",
+    "original_gene_order": "revision_integrated_20261012/supplement/SCI_vs_TC_processed_limma.csv",
+    "go_membership": "revision_integrated_20261012/supplement/GO_camera_membership.csv",
+    "go_terms_and_old_camera": "revision_integrated_20261012/supplement/SCI_vs_TC_GO_camera.csv",
+    "go_display_panel": "revision_integrated_20261012/supplement/GO_camera_figure_panel.csv",
+    "go_annotation_metadata": "revision_integrated_20261012/supplement/annotation_package_metadata.csv",
+    "old_clinical_de_candidate": "revision_integrated_20261012/supplement/ODC405_DE_SCI_vs_TC_clinical_complete_case.csv",
+    "old_de_model_summary": "revision_integrated_20261012/tables/ODC405_DE_model_summary.csv",
+    "old_de_processing_script": "revision_integrated_20261012/repository/scripts/odc405_adjusted_analysis.R",
+    "old_de_protocol": "revision_integrated_20261012/supplement/ODC405_reanalysis_protocol.md",
+    "original_cam_processing_script": "revision_R1_20261007/scripts/run_R1.R",
+    "fixed_sample_protocol": "revision_integrated_20261012/fixed_sample/analysis-protocol.md",
+    "fixed_sample_centers": "revision_integrated_20261012/fixed_sample/tables/covariate_center_constants.csv",
+    "existing_fixed_design": "revision_integrated_20261012/fixed_sample/tables/design_clinical43_clinical.csv",
+    "existing_covariate_support": "revision_integrated_20261012/fixed_sample/tables/covariate_range_overlap.csv",
+    "existing_BTM_protocol": "revision_external_adjusted_20261016/analysis-protocol.md",
+    "frozen_15plus15_members": "revision_integrated_20261012/supplement/locked_signature_reused_S14.csv",
+    "frozen_score_reference_parameters": "revision_integrated_20261012/supplement/standardization_parameters.csv",
+    "external_BTM_used_members": "revision_integrated_20261012/supplement/external_BTM_used_genes.csv",
+    "external_BTM_coverage": "revision_integrated_20261012/supplement/external_BTM_coverage.csv",
+    "external_BTM_existing_scores": "revision_integrated_20261012/supplement/external_BTM_scores.csv",
+    "composition_overlap_coverage": "revision_external_adjusted_20261016/tables/marker_overlap_coverage.csv",
+    "existing_BTM_discovery_results": "revision_external_adjusted_20261016/tables/discovery_models.csv",
+    "existing_BTM_longitudinal_results": "revision_external_adjusted_20261016/tables/longitudinal_models.csv",
+    "current_revision_clean_hash_only": "revision_external_adjusted_20261016/manuscript/Manuscript_external_adjusted_clean.docx",
+    "current_revision_marked_hash_only": "revision_external_adjusted_20261016/manuscript/Manuscript_external_adjusted_redmarked.docx",
+    "current_revision_reply_hash_only": "revision_external_adjusted_20261016/responses/Response_to_Reviewers_external_adjusted.docx",
+    "reviewer_audit": "revision_audit_20261017/item_audit.json",
+    "reviewer_original_and_reply_ledger": "revision_external_adjusted_20261016/responses/comment_and_action_ledger.json",
+    "four_day_plan": "revision_audit_20261017/四天大修完成计划_20261017.md"
+  },
+  "local_data_classification": "REUSED_PUBLIC_ODC405_CC_BY_4_0; see docs/DATA_PROVENANCE.md",
+  "expression": {
+    "n_genes": 17498,
+    "scale": "original supplied ComBat-normalized log expression scale; no further log transform, normalization or ComBat",
+    "gene_order": "exact GO_tested_gene_universe row order, verified identical to original SCI_vs_TC_processed_limma gene order",
+    "duplicate_symbols": "first source-matrix row retained, as prior analysis",
+    "new_symbol_mapping": false,
+    "additional_filtering": false,
+    "all_values_required_finite": true
+  },
+  "coding": {
+    "group_levels": [
+      "TC",
+      "SCI"
+    ],
+    "coefficient": "groupSCI",
+    "direction": "SCI minus TC",
+    "sex_levels": [
+      "F",
+      "M"
+    ],
+    "tbi_levels": [
+      "No",
+      "Yes",
+      "Unknown"
+    ],
+    "prior_cns_levels": [
+      "No",
+      "Yes",
+      "Unknown"
+    ],
+    "contrasts": "contr.treatment with first level as reference",
+    "age_c": "age minus mean(age) in exact clinical43",
+    "iss_c": "iss minus mean(iss) in exact clinical43",
+    "centering_note": "Uses same-43 centers as old whole-gene clinical model and latest BTM set. Earlier original-score fixed-sample protocol used full48 centers; constant centering with intercept and no interactions leaves group coefficient and fitted values unchanged. Do not alter historical files or frozen scores."
+  },
+  "models": [
+    {
+      "id": "M0",
+      "name": "unadjusted_same43",
+      "formula": "~ group",
+      "expected_rank": 2,
+      "expected_residual_df": 41
+    },
+    {
+      "id": "M1",
+      "name": "age_sex_same43",
+      "formula": "~ group + age_c + sex",
+      "expected_rank": 4,
+      "expected_residual_df": 39
+    },
+    {
+      "id": "M2",
+      "name": "clinical_same43",
+      "formula": "~ group + age_c + sex + iss_c + tbi + prior_cns",
+      "expected_rank": 9,
+      "expected_residual_df": 34
+    }
+  ],
+  "gene_test": {
+    "engine": "limma::lmFit then limma::eBayes",
+    "method": "ls",
+    "weights": null,
+    "ebayes": {
+      "proportion": 0.01,
+      "stdev.coef.lim": [
+        0.1,
+        4
+      ],
+      "trend": false,
+      "span": null,
+      "robust": false,
+      "winsor.tail.p": [
+        0.05,
+        0.1
+      ],
+      "legacy": null
+    },
+    "coefficient": "groupSCI",
+    "alternative": "two-sided moderated t",
+    "CI": "topTable(confint=0.95), pointwise moderated 95% intervals",
+    "gene_family_n_per_model": 17498,
+    "BH": "p.adjust(P.Value, method='BH', n=17498) separately for each of M0/M1/M2",
+    "sort": "preserve locked gene order, not significance",
+    "report_columns": [
+      "gene",
+      "logFC",
+      "CI.L",
+      "CI.R",
+      "AveExpr",
+      "t",
+      "P.Value",
+      "adj.P.Val",
+      "B",
+      "model",
+      "n_samples",
+      "n_participants",
+      "SCI_n",
+      "TC_n",
+      "design_rank",
+      "residual_df"
+    ],
+    "not_HC3": "limma moderated inference for genes; existing score regressions use OLS/HC3 and are separate analyses"
+  },
+  "pathway_test": {
+    "engine": "limma::camera",
+    "n_sets_per_model": 4032,
+    "ontology": "GO BP fixed existing membership",
+    "set_size": [
+      15,
+      500
+    ],
+    "input": "same 17498-by-43 expression and respective locked design",
+    "coefficient": "groupSCI column index",
+    "inter.gene.cor": 0.01,
+    "use.ranks": false,
+    "allow.neg.cor": false,
+    "trend.var": false,
+    "directional": true,
+    "sort": false,
+    "weights": null,
+    "BH": "all 4032 GO sets separately within M0/M1/M2; keep original IDs and names",
+    "display_panel": "reuse existing eight GO_camera_figure_panel IDs regardless of significance, no extra favorable terms",
+    "report": "complete NGenes, Direction, PValue, FDR, GO ID and term for every model; no pathway effect CI invented"
+  },
+  "multiplicity": {
+    "families": [
+      "M0:17498 genes",
+      "M1:17498 genes",
+      "M2:17498 genes",
+      "M0:4032 GO BP",
+      "M1:4032 GO BP",
+      "M2:4032 GO BP"
+    ],
+    "threshold": 0.05,
+    "family_failure_rule": "Keep NA failures and planned family n; do not silently reduce BH denominator or change method.",
+    "historical_families": "16/18/88/240 and within-spec families remain unchanged. Bridge families do not replace them or claim study-wide/post-selection error control.",
+    "cross_model_rule": "All 3 models and all tests are exploratory. Do not select a preferred model/term/gene by smallest q. FDR<0.05 for any of 3 models is not a jointly controlled study-wide claim.",
+    "CI_note": "95% pointwise intervals, not simultaneous or multiplicity-adjusted intervals"
+  },
+  "reuse": {
+    "M2_prior_result_exists": true,
+    "status": "candidate identified; provenance/design/universe checked in preflight; numerical equivalence deferred to execution",
+    "requirements": [
+      "exact participant IDs and all covariates",
+      "same original matrix and gene order",
+      "same factor coding and model column space",
+      "same limma and settings"
+    ],
+    "execution_check": "Validate new M2 fit against candidate by gene for logFC, CI.L, CI.R, t, P.Value and adj.P.Val, with absolute tolerance 1e-8 and relative tolerance 1e-8. A single reproduction for QA is not a new independent model. If not reproduced, investigate and retain discrepancy before any promotion.",
+    "camera_note": "old 48-person unadjusted CAMERA is only an anchor; 43-person CAMERA under all three models is new and cannot be relabeled as already done"
+  },
+  "diagnostics": [
+    "SHA-256 source and snapshot checks",
+    "identical membership/order/finite expression across 3 models",
+    "one participant/sample/GSM per row",
+    "model rank, residual df and group coefficient estimability",
+    "design-only leverage/condition and existing clinical overlap audit; no significance-driven exclusions",
+    "record numerical or variance/test warnings without changing gene universe"
+  ],
+  "reporting": {
+    "primary_interpretation": "estimated association and uncertainty, along with dependence on clinical adjustment and limited common support",
+    "DEG_counts": "descriptive FDR<0.05 counts, with historical abs(logFC)>1 counts if shown; no new fold-change threshold",
+    "model_change": "coefficient/CI changes are descriptive and path-dependent; no percentage explained or significance-of-difference claim",
+    "negative_results": "retain full null/non-significant results; no result-directed method/subset changes",
+    "independence": "no new cohort, no SCI specificity proven, no cell-intrinsic/functional inference"
+  },
+  "out_of_scope": [
+    "additional 41-person gene/pathway grid",
+    "new clinical or cell covariates",
+    "new feature selection, LASSO or prediction",
+    "new signature, weighting or threshold tuning",
+    "new normalization/ComBat/GO annotation update",
+    "new label permutation, ML or targeted subgroup selection"
+  ],
+  "stop_rules": [
+    "source or snapshot hash differs",
+    "43/36/7 membership, gene universe or GO membership mismatch",
+    "unestimable/rank-deficient design or nonfinite input",
+    "new M2 does not reproduce historical output within tolerance",
+    "unresolved numerical/test failure"
+  ],
+  "amendment_rule": "Do not edit a sealed protocol in place. Append a dated amendment, reason and before/after hashes, disclose whether new effects were already seen. Never backdate or silently widen scope.",
+  "execution_state": "NOT_RUN_PROTOCOL_AND_INPUTS_ONLY",
+  "packaging_amendment": {
+    "date": "2026-10-26",
+    "purpose": "Paths and data-sharing classification only; results were already known. No analysis method, participant set, gene universe or model changed.",
+    "original_spec_sha256": "5ac8f4d2ef44eb0002456131d5466e10d8f8005515a5cf15313825176d8033a3"
+  }
+}

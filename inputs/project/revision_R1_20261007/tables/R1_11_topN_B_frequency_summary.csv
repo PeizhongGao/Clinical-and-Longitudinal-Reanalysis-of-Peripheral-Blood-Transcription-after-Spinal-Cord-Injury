@@ -1,0 +1,19 @@
+module,top_n,iterations,n_available_candidates,n_frequency_ge_0_40,genes_frequency_ge_0_40,interpretation
+adaptive,10,100,40,10,BCL11B;CCR7;CD27;CD28;CD3G;GATA3;ICOS;ITK;LEF1;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,10,250,40,9,BCL11B;CD27;CD28;CD3G;GATA3;ICOS;ITK;LEF1;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,10,500,40,9,BCL11B;CD27;CD28;CD3G;GATA3;ICOS;ITK;LEF1;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,15,100,40,16,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;FOXP3;GATA3;ICOS;IL2RB;ITK;LCK;LEF1;RUNX3;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,15,250,40,16,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;FOXP3;GATA3;ICOS;IL2RB;ITK;LCK;LEF1;RUNX3;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,15,500,40,15,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;FOXP3;GATA3;ICOS;IL2RB;ITK;LEF1;RUNX3;TCF7,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,20,100,40,20,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;CD74;FOXP3;GATA3;ICOS;IL2RB;IL7R;ITK;KLRD1;LCK;LEF1;RUNX3;TCF7;ZAP70,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,20,250,40,20,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;CD74;FOXP3;GATA3;ICOS;IL2RB;IL7R;ITK;KLRD1;LCK;LEF1;RUNX3;TCF7;ZAP70,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+adaptive,20,500,40,20,BCL11B;CCR7;CD27;CD28;CD3E;CD3G;CD40LG;CD74;FOXP3;GATA3;ICOS;IL2RB;IL7R;ITK;KLRD1;LCK;LEF1;RUNX3;TCF7;ZAP70,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,10,100,59,10,ANXA3;ARG1;CLEC4D;FCGR1A;MIR223;NLRC4;PLIN3;RETN;S100A12;TLR5,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,10,250,59,10,ANXA3;ARG1;CLEC4D;FCGR1A;MIR223;NLRC4;PLIN3;RETN;S100A12;TLR5,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,10,500,59,10,ANXA3;ARG1;CLEC4D;FCGR1A;MIR223;NLRC4;PLIN3;RETN;S100A12;TLR5,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,15,100,59,16,ANXA3;ARG1;BCL2A1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;MIR223;NLRC4;PLIN3;RETN;S100A12;S100A8;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,15,250,59,16,ANXA3;ARG1;BCL2A1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;MIR223;NLRC4;PLIN3;RETN;S100A12;S100A8;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,15,500,59,16,ANXA3;ARG1;BCL2A1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;MIR223;NLRC4;PLIN3;RETN;S100A12;S100A8;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,20,100,59,20,ANXA3;ARG1;BCL2A1;BST1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;LGALS3;MIR223;MPO;NLRC4;PLIN3;RETN;S100A12;S100A8;SLC37A3;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,20,250,59,20,ANXA3;ARG1;BCL2A1;BST1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;LGALS3;MIR223;MPO;NLRC4;PLIN3;RETN;S100A12;S100A8;SLC37A3;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter
+innate,20,500,59,20,ANXA3;ARG1;BCL2A1;BST1;CLEC4D;ELANE;FCGR1A;HP;IRAK3;LGALS3;MIR223;MPO;NLRC4;PLIN3;RETN;S100A12;S100A8;SLC37A3;TLR5;TLR8,frequency-only diagnostic; not final modules; nested draws; no prefix-specific direction filter

@@ -1,0 +1,10 @@
+contrast,spec,model,n_samples,n_participants,case_n,reference_n,design_rank,design_columns,residual_df,n_tested_genes,n_FDR_lt_0_05,n_FDR_and_abs_logFC_gt_1,median_logFC
+"SCI minus TC","unadjusted","expression ~ group",48,48,38,10,2,2,46,17498,3416,812,-0.0600761752830039
+"SCI minus HC","unadjusted","expression ~ group",48,48,38,10,2,2,46,17498,7026,2048,-0.0429866713956178
+"TC minus HC","unadjusted","expression ~ group",20,20,10,10,2,2,18,17498,579,411,0.0157232000000001
+"SCI minus TC","age_sex","expression ~ group + age_c + sex",48,48,38,10,4,4,44,17498,2093,658,-0.0587212390097492
+"SCI minus TC","clinical_complete_case","expression ~ group + age_c + sex + iss_c + tbi + prior_cns",43,43,36,7,9,9,34,17498,0,0,-0.00439804963316565
+"SCI minus TC","clinical_plus_draw_time","expression ~ group + age_c + sex + iss_c + tbi + prior_cns + draw_hours_c",41,41,36,5,10,10,31,17498,0,0,0.00757942425096088
+"SCI minus TC","clinical_plus_CIBERSORTx","expression ~ group + age_c + sex + iss_c + tbi + prior_cns + neutrophil_z + tcell_z",43,43,36,7,11,11,32,17498,0,0,0.00413449835030866
+"SCI minus HC","age_sex_prior_CNS","expression ~ group + age_c + sex + prior_cns",47,47,38,9,6,6,41,17498,5758,2013,-0.0591724852216594
+"TC minus HC","age_sex","expression ~ group + age_c + sex",19,19,10,9,4,4,15,17498,383,332,0.0148562760977964

@@ -1,0 +1,194 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+calcNormFactors has been renamed to normLibSizes
+           score  n NCBI_full_vs_author_partial_spearman
+1   innate_score 46                            0.9414123
+2 adaptive_score 46                            0.9030527
+3  balance_score 46                            0.9727413
+  NCBI_restricted_vs_author_partial_spearman
+1                                  0.9396855
+2                                  0.9456059
+3                                  0.9789084
+  NCBI_full_vs_NCBI_restricted_spearman
+1                             0.9959297
+2                             0.9798952
+3                             0.9954363
+     contrast          score  estimate  lower.CL  upper.CL      p.value
+1  3m - acute   innate_score -2.743706 -3.412482 -2.074931 1.144437e-08
+2  6m - acute   innate_score -2.732093 -3.400869 -2.063317 1.236178e-08
+3 12m - acute   innate_score -3.133811 -3.886972 -2.380651 7.554610e-09
+4  3m - acute adaptive_score  2.996390  2.312053  3.680727 2.839426e-09
+5  6m - acute adaptive_score  3.174171  2.489833  3.858508 9.321555e-10
+6 12m - acute adaptive_score  3.210333  2.447813  3.972854 4.115848e-09
+7  3m - acute  balance_score -5.740096 -7.005094 -4.475098 1.570158e-09
+8  6m - acute  balance_score -5.906264 -7.171262 -4.641265 9.044157e-10
+9 12m - acute  balance_score -6.373878 -7.791852 -4.955904 1.406578e-09
+          q_BH
+1 1.236178e-08
+2 1.236178e-08
+3 9.713070e-09
+4 5.110966e-09
+5 3.532855e-09
+6 6.173772e-09
+7 3.532855e-09
+8 3.532855e-09
+9 3.532855e-09
+                                                                                 source
+NCBI_full_15plus15 all_available unadjusted innate_score             NCBI_full_15plus15
+NCBI_full_15plus15 all_available unadjusted adaptive_score           NCBI_full_15plus15
+NCBI_full_15plus15 all_available unadjusted balance_score            NCBI_full_15plus15
+NCBI_full_15plus15 complete_cases unadjusted innate_score            NCBI_full_15plus15
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score          NCBI_full_15plus15
+NCBI_full_15plus15 complete_cases unadjusted balance_score           NCBI_full_15plus15
+NCBI_restricted_8plus13 all_available unadjusted innate_score   NCBI_restricted_8plus13
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score NCBI_restricted_8plus13
+NCBI_restricted_8plus13 all_available unadjusted balance_score  NCBI_restricted_8plus13
+NCBI_full_15plus15 all_available marker_adjusted innate_score        NCBI_full_15plus15
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score      NCBI_full_15plus15
+NCBI_full_15plus15 all_available marker_adjusted balance_score       NCBI_full_15plus15
+                                                                         scope
+NCBI_full_15plus15 all_available unadjusted innate_score         all_available
+NCBI_full_15plus15 all_available unadjusted adaptive_score       all_available
+NCBI_full_15plus15 all_available unadjusted balance_score        all_available
+NCBI_full_15plus15 complete_cases unadjusted innate_score       complete_cases
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score     complete_cases
+NCBI_full_15plus15 complete_cases unadjusted balance_score      complete_cases
+NCBI_restricted_8plus13 all_available unadjusted innate_score    all_available
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score  all_available
+NCBI_restricted_8plus13 all_available unadjusted balance_score   all_available
+NCBI_full_15plus15 all_available marker_adjusted innate_score    all_available
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score  all_available
+NCBI_full_15plus15 all_available marker_adjusted balance_score   all_available
+                                                                           spec
+NCBI_full_15plus15 all_available unadjusted innate_score             unadjusted
+NCBI_full_15plus15 all_available unadjusted adaptive_score           unadjusted
+NCBI_full_15plus15 all_available unadjusted balance_score            unadjusted
+NCBI_full_15plus15 complete_cases unadjusted innate_score            unadjusted
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score          unadjusted
+NCBI_full_15plus15 complete_cases unadjusted balance_score           unadjusted
+NCBI_restricted_8plus13 all_available unadjusted innate_score        unadjusted
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score      unadjusted
+NCBI_restricted_8plus13 all_available unadjusted balance_score       unadjusted
+NCBI_full_15plus15 all_available marker_adjusted innate_score   marker_adjusted
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score marker_adjusted
+NCBI_full_15plus15 all_available marker_adjusted balance_score  marker_adjusted
+                                                                         score
+NCBI_full_15plus15 all_available unadjusted innate_score          innate_score
+NCBI_full_15plus15 all_available unadjusted adaptive_score      adaptive_score
+NCBI_full_15plus15 all_available unadjusted balance_score        balance_score
+NCBI_full_15plus15 complete_cases unadjusted innate_score         innate_score
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score     adaptive_score
+NCBI_full_15plus15 complete_cases unadjusted balance_score       balance_score
+NCBI_restricted_8plus13 all_available unadjusted innate_score     innate_score
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score adaptive_score
+NCBI_restricted_8plus13 all_available unadjusted balance_score   balance_score
+NCBI_full_15plus15 all_available marker_adjusted innate_score     innate_score
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score adaptive_score
+NCBI_full_15plus15 all_available marker_adjusted balance_score   balance_score
+                                                                singular
+NCBI_full_15plus15 all_available unadjusted innate_score           FALSE
+NCBI_full_15plus15 all_available unadjusted adaptive_score         FALSE
+NCBI_full_15plus15 all_available unadjusted balance_score          FALSE
+NCBI_full_15plus15 complete_cases unadjusted innate_score          FALSE
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score        FALSE
+NCBI_full_15plus15 complete_cases unadjusted balance_score         FALSE
+NCBI_restricted_8plus13 all_available unadjusted innate_score      FALSE
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score    FALSE
+NCBI_restricted_8plus13 all_available unadjusted balance_score     FALSE
+NCBI_full_15plus15 all_available marker_adjusted innate_score      FALSE
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score    FALSE
+NCBI_full_15plus15 all_available marker_adjusted balance_score     FALSE
+                                                                fixed_design_rank
+NCBI_full_15plus15 all_available unadjusted innate_score                        4
+NCBI_full_15plus15 all_available unadjusted adaptive_score                      4
+NCBI_full_15plus15 all_available unadjusted balance_score                       4
+NCBI_full_15plus15 complete_cases unadjusted innate_score                       4
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score                     4
+NCBI_full_15plus15 complete_cases unadjusted balance_score                      4
+NCBI_restricted_8plus13 all_available unadjusted innate_score                   4
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score                 4
+NCBI_restricted_8plus13 all_available unadjusted balance_score                  4
+NCBI_full_15plus15 all_available marker_adjusted innate_score                   6
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score                 6
+NCBI_full_15plus15 all_available marker_adjusted balance_score                  6
+                                                                fixed_design_columns
+NCBI_full_15plus15 all_available unadjusted innate_score                           4
+NCBI_full_15plus15 all_available unadjusted adaptive_score                         4
+NCBI_full_15plus15 all_available unadjusted balance_score                          4
+NCBI_full_15plus15 complete_cases unadjusted innate_score                          4
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score                        4
+NCBI_full_15plus15 complete_cases unadjusted balance_score                         4
+NCBI_restricted_8plus13 all_available unadjusted innate_score                      4
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score                    4
+NCBI_restricted_8plus13 all_available unadjusted balance_score                     4
+NCBI_full_15plus15 all_available marker_adjusted innate_score                      6
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score                    6
+NCBI_full_15plus15 all_available marker_adjusted balance_score                     6
+                                                                    kappa
+NCBI_full_15plus15 all_available unadjusted innate_score         4.863488
+NCBI_full_15plus15 all_available unadjusted adaptive_score       4.863488
+NCBI_full_15plus15 all_available unadjusted balance_score        4.863488
+NCBI_full_15plus15 complete_cases unadjusted innate_score        5.053090
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score      5.053090
+NCBI_full_15plus15 complete_cases unadjusted balance_score       5.053090
+NCBI_restricted_8plus13 all_available unadjusted innate_score    4.863488
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score  4.863488
+NCBI_restricted_8plus13 all_available unadjusted balance_score   4.863488
+NCBI_full_15plus15 all_available marker_adjusted innate_score   15.107678
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score 15.107678
+NCBI_full_15plus15 all_available marker_adjusted balance_score  15.107678
+                                                                random_intercept_variance
+NCBI_full_15plus15 all_available unadjusted innate_score                        0.6854495
+NCBI_full_15plus15 all_available unadjusted adaptive_score                      0.1627126
+NCBI_full_15plus15 all_available unadjusted balance_score                       1.1856476
+NCBI_full_15plus15 complete_cases unadjusted innate_score                       0.7043278
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score                     0.2999895
+NCBI_full_15plus15 complete_cases unadjusted balance_score                      1.8029483
+NCBI_restricted_8plus13 all_available unadjusted innate_score                   0.5687989
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score                 0.1914067
+NCBI_restricted_8plus13 all_available unadjusted balance_score                  1.2526028
+NCBI_full_15plus15 all_available marker_adjusted innate_score                   0.5038501
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score                 0.2186753
+NCBI_full_15plus15 all_available marker_adjusted balance_score                  1.0161231
+                                                                residual_sd
+NCBI_full_15plus15 all_available unadjusted innate_score          0.7245373
+NCBI_full_15plus15 all_available unadjusted adaptive_score        0.7423348
+NCBI_full_15plus15 all_available unadjusted balance_score         1.3714111
+NCBI_full_15plus15 complete_cases unadjusted innate_score         0.5774147
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score       0.6290067
+NCBI_full_15plus15 complete_cases unadjusted balance_score        1.0803427
+NCBI_restricted_8plus13 all_available unadjusted innate_score     0.7045114
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score   0.7270403
+NCBI_restricted_8plus13 all_available unadjusted balance_score    1.3670228
+NCBI_full_15plus15 all_available marker_adjusted innate_score     0.4790109
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score   0.3350357
+NCBI_full_15plus15 all_available marker_adjusted balance_score    0.6816380
+                                                                residual_shapiro_p
+NCBI_full_15plus15 all_available unadjusted innate_score                 0.5949160
+NCBI_full_15plus15 all_available unadjusted adaptive_score               0.7738694
+NCBI_full_15plus15 all_available unadjusted balance_score                0.3303412
+NCBI_full_15plus15 complete_cases unadjusted innate_score                0.1225278
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score              0.7205062
+NCBI_full_15plus15 complete_cases unadjusted balance_score               0.6006907
+NCBI_restricted_8plus13 all_available unadjusted innate_score            0.5720773
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score          0.7832727
+NCBI_restricted_8plus13 all_available unadjusted balance_score           0.2344458
+NCBI_full_15plus15 all_available marker_adjusted innate_score            0.5612822
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score          0.3846204
+NCBI_full_15plus15 all_available marker_adjusted balance_score           0.8598684
+                                                                convergence_message
+NCBI_full_15plus15 all_available unadjusted innate_score                           
+NCBI_full_15plus15 all_available unadjusted adaptive_score                         
+NCBI_full_15plus15 all_available unadjusted balance_score                          
+NCBI_full_15plus15 complete_cases unadjusted innate_score                          
+NCBI_full_15plus15 complete_cases unadjusted adaptive_score                        
+NCBI_full_15plus15 complete_cases unadjusted balance_score                         
+NCBI_restricted_8plus13 all_available unadjusted innate_score                      
+NCBI_restricted_8plus13 all_available unadjusted adaptive_score                    
+NCBI_restricted_8plus13 all_available unadjusted balance_score                     
+NCBI_full_15plus15 all_available marker_adjusted innate_score                      
+NCBI_full_15plus15 all_available marker_adjusted adaptive_score                    
+NCBI_full_15plus15 all_available marker_adjusted balance_score                     

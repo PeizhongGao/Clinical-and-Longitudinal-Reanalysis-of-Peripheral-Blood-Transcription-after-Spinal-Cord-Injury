@@ -1,0 +1,98 @@
+{
+  "analysis_id": "bridge43_gene_GO_20261018_v1",
+  "packaged_date": "2026-10-26",
+  "purpose": "Public portability lock created after results; not a prospective analysis registration",
+  "original_protocol_lock_sha256": "a1cdd42b953cde6854aa02c50c179523e9f77aa9f320403f96ed1789bb16e3e9",
+  "locked_files": [
+    {
+      "relative_path": "bridge43/analysis_spec.json",
+      "sha256": "1c954a0fe58349ed0b9d8a35a37be2061b9bd269f6408086e29abc71a4057a47",
+      "bytes": 12697
+    },
+    {
+      "relative_path": "bridge43/analysis_protocol_zh.md",
+      "sha256": "60a60b18bf51b537363c5f93edc2a317d50369c8e428abfcda22c238f0919a0c",
+      "bytes": 6959
+    },
+    {
+      "relative_path": "bridge43/analysis_protocol_en.md",
+      "sha256": "13df6263f46a7d75112318e1878ebb3f86c4842f7686418311dd1e6c86efc5ac",
+      "bytes": 5972
+    },
+    {
+      "relative_path": "bridge43/inputs_local/centering_constants.csv",
+      "sha256": "ea41e497a0809b2bfbcaa5f516efc02d754d4d9a903f6081a708fcf607b40ae8",
+      "bytes": 118
+    },
+    {
+      "relative_path": "bridge43/inputs_local/clinical43_covariates.csv",
+      "sha256": "131c680aee26f26045f196f04aa59b78a0985e512db45f7f2b120ef0dd00cafe",
+      "bytes": 4004
+    },
+    {
+      "relative_path": "bridge43/inputs_local/expression43.rds",
+      "sha256": "297328e9fc0c4e12e266e8a5f001c3ab495fb3632972f422260c4737c6fbfa64",
+      "bytes": 5766819
+    },
+    {
+      "relative_path": "bridge43/inputs_local/gene_universe.csv",
+      "sha256": "44acaf5044f691a49b6f1734ee289b9f2ef6f470aa82fd7bc5ed06254914b434",
+      "bytes": 175120
+    },
+    {
+      "relative_path": "bridge43/inputs_local/GO_annotation_metadata.csv",
+      "sha256": "022735cdd21de64ed9580f149ba962186978b1c88515491a64d5b8233649ef9d",
+      "bytes": 1063
+    },
+    {
+      "relative_path": "bridge43/inputs_local/GO_camera_membership.csv",
+      "sha256": "eb0ac3fcf387f50954e364a546e13eaf90741ae6aae7d3b763302818cb2b0b58",
+      "bytes": 1943710
+    },
+    {
+      "relative_path": "bridge43/inputs_local/GO_display_panel.csv",
+      "sha256": "565141410be8d68e0baf7d16baa20d4825bf6260099b5a8ff159a44e8f7b4090",
+      "bytes": 331
+    },
+    {
+      "relative_path": "bridge43/inputs_local/GO_indices.rds",
+      "sha256": "455f996a454b569ca24012164094aa413bf20075de2a7f6c9064753ef0c16797",
+      "bytes": 540952
+    },
+    {
+      "relative_path": "bridge43/inputs_local/GO_terms.csv",
+      "sha256": "69c29babab71d50b5cd2515c4440d97a51e808e0ffacb246a6ab35298b7d6363",
+      "bytes": 202666
+    },
+    {
+      "relative_path": "bridge43/inputs_local/participant_order.csv",
+      "sha256": "7baf8b88e0fd82cf93e8af4591e58bdce7a3bdb773b63e0c006cdae4ca5dd1e6",
+      "bytes": 1209
+    },
+    {
+      "relative_path": "bridge43/designs_local/design_M0.csv",
+      "sha256": "5709fc115605f626547588d9fe9946f441a50e3e911f2509219836e7a9ce95ed",
+      "bytes": 495
+    },
+    {
+      "relative_path": "bridge43/designs_local/design_M1.csv",
+      "sha256": "f520df6eaf889ba26d0678ad3e0291bca1bb0d5f092f2b0f2368aaf9d22702d6",
+      "bytes": 1348
+    },
+    {
+      "relative_path": "bridge43/designs_local/design_M2.csv",
+      "sha256": "50b45843ce89c7a73e0f878a5c26282a559c9ef689ed29e57d0cc72f374c5d0b",
+      "bytes": 2502
+    },
+    {
+      "relative_path": "bridge43/designs_local/design_matrices.rds",
+      "sha256": "52405fe5ed6b1219a6837330f821f5352b4ae8a3a14499e12444bcbfd10be91a",
+      "bytes": 897
+    },
+    {
+      "relative_path": "bridge43/logs/preflight_QA.json",
+      "sha256": "0906de1a77dadc3237681ab0c742f1266ddbb6bf6812eb9e63a5fe4e51dea45b",
+      "bytes": 6084
+    }
+  ]
+}

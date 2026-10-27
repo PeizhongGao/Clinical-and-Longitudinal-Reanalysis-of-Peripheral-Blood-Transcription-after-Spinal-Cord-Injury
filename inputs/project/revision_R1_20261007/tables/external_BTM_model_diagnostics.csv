@@ -1,0 +1,13 @@
+variant,module_id,scope,singular,fixed_design_rank,fixed_design_columns,residual_sd,random_intercept_variance,residual_shapiro_p,convergence_message
+"published","M7.0","all_available",FALSE,4,4,0.234299471026901,0.0765147693235414,0.56493691646562,""
+"published","M7.0","complete_cases",FALSE,4,4,0.207955410540649,0.0507298547880321,0.422352595608252,""
+"published","M37.1","all_available",FALSE,4,4,0.393114555726861,0.158126301003482,0.709337729976311,""
+"published","M37.1","complete_cases",FALSE,4,4,0.36704356558692,0.146134312145374,0.553319545527145,""
+"published","M163","all_available",FALSE,4,4,0.311894632784418,0.141036786386105,0.988290620207187,""
+"published","M163","complete_cases",FALSE,4,4,0.298169038866309,0.0827970337797946,0.767491656184508,""
+"published","M223","all_available",FALSE,4,4,0.27248101823629,0.068541960493256,0.961175981159117,""
+"published","M223","complete_cases",FALSE,4,4,0.230945780830889,0.0818575825771686,0.739019898387104,""
+"exclude_original106","M7.0","all_available",FALSE,4,4,0.225156753587406,0.0854936993774324,0.556359809717916,""
+"exclude_original106","M37.1","all_available",FALSE,4,4,0.394132729991745,0.141582657296605,0.557188705214504,""
+"exclude_original106","M163","all_available",FALSE,4,4,0.309008537828797,0.117464548190893,0.996830298177841,""
+"exclude_original106","M223","all_available",FALSE,4,4,0.261788331058378,0.0833741607634289,0.980351125020091,""

@@ -1,0 +1,4 @@
+model,formula,n_participants,SCI_n,TC_n,design_rank,residual_df,max_hat,condition_number_scaled,t2_prior_df,limma_version
+M0,~ group,43,36,7,2,41,0.142857142857143,1.0118,3.80559749173446,3.68.4
+M1,~ group + age_c + sex,43,36,7,4,39,0.24055984187325,1.565,3.84343203668219,3.68.4
+M2,~ group + age_c + sex + iss_c + tbi + prior_cns,43,36,7,9,34,0.701072396848862,2.9424,3.81299610530616,3.68.4

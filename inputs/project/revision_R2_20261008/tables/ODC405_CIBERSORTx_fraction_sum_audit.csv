@@ -1,0 +1,2 @@
+n_samples,sum_min,sum_median,sum_max,interpretation
+58,0.999940912,1,1.000049347,"Observed components sum to approximately 1. The dictionary labels them percent; models retain the supplied relative scale."

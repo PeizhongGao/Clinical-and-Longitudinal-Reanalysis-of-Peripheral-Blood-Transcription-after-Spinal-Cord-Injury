@@ -1,0 +1,34 @@
+﻿variable,group,n,observed,missing,n_unique,note,source_priority
+age,HC,10,9,1,8,NA,ODC405 recovered current authority
+age,TC,10,10,0,10,NA,ODC405 recovered current authority
+age,SCI,38,38,0,31,NA,ODC405 recovered current authority
+sex,HC,10,10,0,2,NA,ODC405 recovered current authority
+sex,TC,10,10,0,2,NA,ODC405 recovered current authority
+sex,SCI,38,38,0,2,NA,ODC405 recovered current authority
+race,HC,10,10,0,3,NA,ODC405 recovered current authority
+race,TC,10,10,0,4,NA,ODC405 recovered current authority
+race,SCI,38,38,0,5,NA,ODC405 recovered current authority
+prior_cns,HC,10,10,0,1,NA,ODC405 recovered current authority
+prior_cns,TC,10,10,0,1,NA,ODC405 recovered current authority
+prior_cns,SCI,38,38,0,3,NA,ODC405 recovered current authority
+tbi,HC,10,10,0,1,NA,ODC405 recovered current authority
+tbi,TC,10,10,0,1,NA,ODC405 recovered current authority
+tbi,SCI,38,38,0,3,NA,ODC405 recovered current authority
+iss,HC,10,0,10,0,NA,ODC405 recovered current authority
+iss,TC,10,7,3,5,NA,ODC405 recovered current authority
+iss,SCI,38,36,2,18,NA,ODC405 recovered current authority
+draw_hours,HC,10,0,10,0,NA,ODC405 recovered current authority
+draw_hours,TC,10,6,4,5,NA,ODC405 recovered current authority
+draw_hours,SCI,38,38,0,27,NA,ODC405 recovered current authority
+ais,HC,10,0,10,0,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+ais,TC,10,0,10,0,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+ais,SCI,38,33,5,4,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+nli,HC,10,0,10,0,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+nli,TC,10,0,10,0,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+nli,SCI,38,33,5,15,SCI-specific; not a common case-control adjustment variable,ODC405 recovered current authority
+neutrophil_fraction,HC,10,10,0,10,NA,CIBERSORTx expression estimate; not measured CBC
+neutrophil_fraction,TC,10,10,0,10,NA,CIBERSORTx expression estimate; not measured CBC
+neutrophil_fraction,SCI,38,38,0,38,NA,CIBERSORTx expression estimate; not measured CBC
+tcell_fraction,HC,10,10,0,10,NA,CIBERSORTx expression estimate; not measured CBC
+tcell_fraction,TC,10,10,0,10,NA,CIBERSORTx expression estimate; not measured CBC
+tcell_fraction,SCI,38,38,0,38,NA,CIBERSORTx expression estimate; not measured CBC

@@ -1,0 +1,618 @@
+[
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 4.884981308350689e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 3.58046925441613e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 6.661338147750939e-16
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 1.1102230246251565e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 8.382183835919932e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 2.4980018054066022e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 4.163336342344337e-16
+  },
+  {
+    "subset": "full48",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 2.3869795029440866e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.0547118733938987e-14
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 1.0547118733938987e-14
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.672273430841642e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 6.175615574477433e-16
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.3655743202889425e-14
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 8.826273045769994e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 2.040034807748725e-15
+  },
+  {
+    "subset": "full48",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 2.1163626406917047e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.709743457922741e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 2.0317081350640365e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 7.993605777301127e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 3.1086244689504383e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 9.992007221626409e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 2.3869795029440866e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 5.218048215738236e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 6.772360450213455e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 7.549516567451064e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 5.995204332975845e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.8318679906315083e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 2.1094237467877974e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.887379141862766e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 3.1086244689504383e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 2.7200464103316335e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 3.164135620181696e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.5543122344752192e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 1.709743457922741e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.021405182655144e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 8.93729534823251e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 8.881784197001252e-16
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 4.729550084903167e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.1213252548714081e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 1.1601830607332886e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.887379141862766e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 6.106226635438361e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 7.327471962526033e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 2.886579864025407e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 8.659739592076221e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 4.6629367034256575e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.4654943925052066e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_CIB",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 5.662137425588298e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.0769163338864018e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 9.159339953157541e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 6.5503158452884236e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 2.6645352591003757e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 7.105427357601002e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 6.661338147750939e-15
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.2323475573339238e-14
+  },
+  {
+    "subset": "clinical43",
+    "spec": "clinical_disjoint",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 9.048317650695026e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.4765966227514582e-14
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 1.021405182655144e-14
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 9.43689570931383e-16
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 4.052314039881821e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 1.3988810110276972e-14
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 2.886579864025407e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.0547118733938987e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "unadjusted",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 3.552713678800501e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 6.217248937900877e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 1.1435297153639112e-14
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 5.051514762044462e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 3.3306690738754696e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 5.820899318109696e-13
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 9.325873406851315e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 3.7192471324942744e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "age_sex",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 7.16093850883226e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 6.106226635438361e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 3.774758283725532e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.9845236565174673e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 2.4147350785597155e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 6.8833827526759706e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 2.6645352591003757e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 3.885780586188048e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 4.884981308350689e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "published",
+    "module_id": "M37.1",
+    "max_abs_difference": 3.191891195797325e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "published",
+    "module_id": "M163",
+    "max_abs_difference": 7.993605777301127e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "published",
+    "module_id": "M7.0",
+    "max_abs_difference": 1.5432100042289676e-14
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "published",
+    "module_id": "M223",
+    "max_abs_difference": 6.217248937900877e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "exclude_original106",
+    "module_id": "M37.1",
+    "max_abs_difference": 4.9960036108132044e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "exclude_original106",
+    "module_id": "M163",
+    "max_abs_difference": 5.218048215738236e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "exclude_original106",
+    "module_id": "M7.0",
+    "max_abs_difference": 2.949029909160572e-15
+  },
+  {
+    "subset": "time41",
+    "spec": "clinical_time",
+    "variant": "exclude_original106",
+    "module_id": "M223",
+    "max_abs_difference": 9.325873406851315e-15
+  }
+]

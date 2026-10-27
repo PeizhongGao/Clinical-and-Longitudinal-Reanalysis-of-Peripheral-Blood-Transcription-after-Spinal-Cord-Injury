@@ -1,0 +1,3200 @@
+[
+  {
+    "gsm": "GSM8885084",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID11v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885084"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 28",
+      "Sex: Male",
+      "ais: A",
+      "nli: T9"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID11v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742931",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219693"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885085",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID12v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885085"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 62",
+      "Sex: Male",
+      "ais: D",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID12v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742930",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219694"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885086",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID22v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885086"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 80",
+      "Sex: Male",
+      "ais: D",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID22v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742929",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219695"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885087",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID23v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885087"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 79",
+      "Sex: Male",
+      "ais: D",
+      "nli: C4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID23v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742928",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219696"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885088",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID24v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885088"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 21",
+      "Sex: Male",
+      "ais: B",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID24v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742927",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219697"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885089",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID25v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885089"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 85",
+      "Sex: Female",
+      "ais: D",
+      "nli: C4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID25v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742926",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219698"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885090",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID26v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885090"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 52",
+      "Sex: Female",
+      "ais: A",
+      "nli: T4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID26v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742925",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219699"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885091",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID27v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885091"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 63",
+      "Sex: Female",
+      "ais: D",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID27v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742924",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219700"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885092",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID28v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885092"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 79",
+      "Sex: Male",
+      "ais: A",
+      "nli: C7"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID28v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742923",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219701"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885093",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID29v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885093"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 65",
+      "Sex: Female",
+      "ais: D",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID29v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742922",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219702"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885094",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID30v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885094"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 52",
+      "Sex: Female",
+      "ais: D",
+      "nli: C7"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID30v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742921",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219703"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885095",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID31v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885095"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 78",
+      "Sex: Male",
+      "ais: A",
+      "nli: T2"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID31v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742920",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219704"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885096",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID32v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885096"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 68",
+      "Sex: Male",
+      "ais: A",
+      "nli: C6"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID32v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742919",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219705"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885097",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID33v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885097"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 57",
+      "Sex: Male",
+      "ais: A",
+      "nli: C4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID33v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742918",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219706"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885098",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID34v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885098"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 35",
+      "Sex: Male",
+      "ais: A",
+      "nli: T9"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID34v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742917",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219707"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885099",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID35v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885099"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 74",
+      "Sex: Male",
+      "ais: A",
+      "nli: T3"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID35v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742916",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219708"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885100",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID36v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885100"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 59",
+      "Sex: Male",
+      "ais: A",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID36v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742915",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219709"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885101",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID37v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885101"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 45",
+      "Sex: Female",
+      "ais: C",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID37v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742914",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219710"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885102",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID38v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885102"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 28",
+      "Sex: Female",
+      "ais: A",
+      "nli: T1"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID38v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742913",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219711"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885103",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID39v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885103"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 57",
+      "Sex: Male",
+      "ais: C",
+      "nli: C4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID39v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742912",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219712"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885104",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID40v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885104"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 60",
+      "Sex: Male",
+      "ais: D",
+      "nli: C5"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID40v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL18573"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "NextSeq 500"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742911",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219713"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885105",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID41v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885105"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 65",
+      "Sex: Male",
+      "ais: C",
+      "nli: T9"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID41v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL24676"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina NovaSeq 6000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742910",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219714"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885106",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID42v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885106"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 24",
+      "Sex: Male",
+      "ais: B",
+      "nli: C4"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID42v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL24676"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina NovaSeq 6000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742909",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219715"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885107",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID43v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885107"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 34",
+      "Sex: Male",
+      "ais: B",
+      "nli: C7"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID43v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL24676"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina NovaSeq 6000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742908",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219716"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885108",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID44v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885108"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 69",
+      "Sex: Female",
+      "ais: C",
+      "nli: C6"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID44v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL24676"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina NovaSeq 6000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742907",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219717"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM8885109",
+    "dataset": "GSE293559",
+    "Sample_title": [
+      "ID45v0, SCI, Acute"
+    ],
+    "Sample_geo_accession": [
+      "GSM8885109"
+    ],
+    "Sample_status": [
+      "Public on Sep 25 2025"
+    ],
+    "Sample_submission_date": [
+      "Apr 02 2025"
+    ],
+    "Sample_last_update_date": [
+      "Sep 25 2025"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "Whole blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "tissue: Whole blood",
+      "group: SCI",
+      "treatment: Acute",
+      "age: 79",
+      "Sex: Male",
+      "ais: D",
+      "nli: C6"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "Total RNA was isolated using the PAXgene total RNA kit and the Qiagen QIAcube, acccording to manufacturer's protocol",
+      "RNA seq libraries were prepared using Illumina TruSeq Stranded Total RNA according to manufacturer's instructions."
+    ],
+    "Sample_description": [
+      "Library name: ID45v0"
+    ],
+    "Sample_data_processing": [
+      "Partek Genomics Flow software",
+      "trimmed reads aligned to hg38 genome assembly using STAR",
+      "filtered for expression >50",
+      "normalized using the Trimmed Mean of M-values (TMM) method using the edgeR package",
+      "log2 transformed",
+      "Assembly: hg38",
+      "Supplementary files format and content: Normalized Morrison 2025 processed data.txt"
+    ],
+    "Sample_platform_id": [
+      "GPL24676"
+    ],
+    "Sample_contact_name": [
+      "Ona,,Bloom"
+    ],
+    "Sample_contact_email": [
+      "obloom@northwell.edu"
+    ],
+    "Sample_contact_phone": [
+      "516-562-3839"
+    ],
+    "Sample_contact_laboratory": [
+      "Bloom"
+    ],
+    "Sample_contact_department": [
+      "Molecular Medicine"
+    ],
+    "Sample_contact_institute": [
+      "Feinstein Institute"
+    ],
+    "Sample_contact_address": [
+      "350 Community Dr"
+    ],
+    "Sample_contact_city": [
+      "Manhasset"
+    ],
+    "Sample_contact_state": [
+      "New York"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "11030"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina NovaSeq 6000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN47742906",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX28219718"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE293559"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  }
+]

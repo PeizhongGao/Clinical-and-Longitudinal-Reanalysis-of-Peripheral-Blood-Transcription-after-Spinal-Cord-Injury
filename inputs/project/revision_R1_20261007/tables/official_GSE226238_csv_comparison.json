@@ -1,0 +1,9 @@
+{
+  "official_workbook_samples": 46,
+  "official_transcript_columns": 16373,
+  "local_csv_samples": 46,
+  "local_csv_transcript_columns": 16373,
+  "same_transcript_headers": true,
+  "same_sample_order": true,
+  "max_absolute_expression_difference": 1.1102230246251565e-16
+}

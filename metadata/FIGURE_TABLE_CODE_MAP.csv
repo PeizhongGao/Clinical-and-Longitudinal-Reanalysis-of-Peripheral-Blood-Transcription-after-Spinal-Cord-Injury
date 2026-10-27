@@ -1,0 +1,16 @@
+manuscript_item,evidence,analysis_script,display_script,execution_status
+Figure1 / Table2,BTM_primary16 / four displayed longitudinal effects,code/project/revision_external_adjusted_20261016/scripts/analyze.R,code/project/revision_Day3_20261021/scripts/Figure1_BTM_supported4.R,standard
+Figure S1,original 30-gene heatmap,code/project/revision_R1_20261007/scripts/run_R1.R,same script,standard; discovery-selected descriptive display
+Figure S2,count-based 15+15 longitudinal scores,code/project/revision_R1_20261007/scripts/NCBI_count_followup.R,code/project/revision_R1_20261007/scripts/render_NCBI_figures.R,standard
+Figure S3,fixed-sample score models,code/project/revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R,code/project/revision_integrated_20261012/fixed_sample/scripts/fixed_sample_figures.R,standard
+Figure S4,conditional clustering diagnostics,code/project/revision_R2_20261008/scripts/cluster_validation.R,code/project/revision_R2_20261008/scripts/render_R2.R,extended recomputes; standard reuses frozen clustering checkpoints
+Figure S5,clinical covariate common support,code/project/revision_integrated_20261012/fixed_sample/scripts/fixed_sample_analysis.R,code/project/revision_integrated_20261012/fixed_sample/scripts/fixed_sample_figures.R,standard
+Figure S6,BTM composition sensitivity,code/project/revision_external_adjusted_20261016/scripts/analyze.R,code/project/revision_external_adjusted_20261016/scripts/figures.R,standard
+Figure S7 / Table S5,additional cohort and reuse,code/project/revision_R1_20261007/scripts/run_R1.R,code/project/revision_R2_20261008/scripts/render_R2.R,standard; conditional on supplied original score transformation
+Figure S8 / Table S3,"fixed eight immune GO terms, all 3 models",code/project/revision_numeric_freeze_20261019/scripts/run_bridge43.R,code/project/revision_numeric_freeze_20261019/scripts/figures.R,standard
+Figure S9 / Table S4,complete BTM16 family,code/project/revision_external_adjusted_20261016/scripts/analyze.R,code/project/revision_numeric_freeze_20261019/scripts/figures.R,standard
+Tables S1-S2 / Data1,cohort counts and visit flow,code/project/revision_R1_20261007/scripts/prepare_metadata.py; code/project/revision_R2_20261008/scripts/metadata_r2.py,descriptive tables and archived index,standard metadata; original display tables supplied
+Table S6,source study comparison,source-grounded descriptive reference table,not a numerical model,provided reference table
+Table S7 / Data7,multiplicity registry and withdrawal disposition,reference_results/numeric_freeze/statistical_family_registry.csv,"complete retained families, no new multiplicity method",reference registry; primary and gene/GO families rebuilt
+Data2 historical GO,whole-48 preranked GO sensitivity,code/project/revision_R2_20261008/scripts/ranked_enrichment_sparse.py,code/project/revision_R2_20261008/scripts/render_R2.R,extended optional; standard uses historical checkpoint
+Original signature selection,original count-based 500-iteration selection,code/original_signature_selection.R,historical/code/4.Rmd contains complete original notebook,optional --original-selection; not nested validation

@@ -1,0 +1,6382 @@
+[
+  {
+    "gsm": "GSM4576308",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 1"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576308"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048473",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418492"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576309",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 2"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576309"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048472",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418493"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576310",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 3"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576310"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048471",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418494"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576311",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 4"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576311"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048470",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418495"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576312",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 5"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576312"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048469",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418496"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576313",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 6"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576313"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048464",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418497"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576314",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 7"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576314"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048462",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418498"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576315",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 8"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576315"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048461",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418499"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576316",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 9"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576316"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048460",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418500"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576317",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Healthy Control 10"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576317"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: healthy control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048459",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418501"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576318",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 1"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576318"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048458",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418502"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576319",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 2"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576319"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048457",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418503"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576320",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 3"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576320"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048463",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418504"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576321",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 4"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576321"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048456",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418505"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576322",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 5"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576322"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048455",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418506"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576323",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 6"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576323"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048454",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418507"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576324",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 7"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576324"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048453",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418508"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576325",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 8"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576325"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048452",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418509"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576326",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 9"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576326"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048451",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418510"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576327",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "non-CNS Trauma Control 10"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576327"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: trauma control"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048450",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418511"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576328",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 1"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576328"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048449",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418512"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576329",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 2"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576329"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048448",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418513"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576330",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 3"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576330"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048447",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418514"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576331",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 4"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576331"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048446",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418515"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576332",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 5"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576332"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048484",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418516"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576333",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 6"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576333"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048483",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418517"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576334",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 7"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576334"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048482",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418518"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576335",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 8"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576335"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048481",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418519"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576336",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 9"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576336"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048480",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418520"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576337",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 10"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576337"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048479",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418521"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576338",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 11"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576338"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048478",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418522"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576339",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 12"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576339"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048477",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418523"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576340",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 13"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576340"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048476",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418524"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576341",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 14"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576341"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048475",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418525"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576342",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 15"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576342"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048474",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418526"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576343",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 16"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576343"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048468",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418527"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576344",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 17"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576344"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048467",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418528"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576345",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 18"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576345"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048466",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418529"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576346",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 19"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576346"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048502",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418530"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576347",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 20"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576347"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048501",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418531"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576348",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 21"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576348"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048500",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418532"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576349",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 22"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576349"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048499",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418533"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576350",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 23"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576350"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048465",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418534"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576351",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 24"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576351"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048503",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418535"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576352",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 25"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576352"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048498",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418536"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576353",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 26"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576353"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048497",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418537"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576354",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 27"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576354"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048496",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418538"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576355",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 28"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576355"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048495",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418539"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576356",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 29"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576356"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048494",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418540"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576357",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 30"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576357"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048493",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418541"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576358",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 31"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576358"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048492",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418542"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576359",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 32"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576359"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048491",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418543"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576360",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 33"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576360"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048490",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418544"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576361",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 34"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576361"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048489",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418545"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576362",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 35"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576362"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048488",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418546"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576363",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 36"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576363"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048487",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418547"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576364",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 37"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576364"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048486",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418548"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  },
+  {
+    "gsm": "GSM4576365",
+    "dataset": "GSE151371",
+    "Sample_title": [
+      "Spinal Cord Injury patient 38"
+    ],
+    "Sample_geo_accession": [
+      "GSM4576365"
+    ],
+    "Sample_status": [
+      "Public on Jan 22 2021"
+    ],
+    "Sample_submission_date": [
+      "May 28 2020"
+    ],
+    "Sample_last_update_date": [
+      "Jan 22 2021"
+    ],
+    "Sample_type": [
+      "SRA"
+    ],
+    "Sample_channel_count": [
+      "1"
+    ],
+    "Sample_source_name_ch1": [
+      "blood"
+    ],
+    "Sample_organism_ch1": [
+      "Homo sapiens"
+    ],
+    "Sample_taxid_ch1": [
+      "9606"
+    ],
+    "Sample_characteristics_ch1": [
+      "cell type: white blood cells",
+      "disease state: spinal cord injury"
+    ],
+    "Sample_molecule_ch1": [
+      "total RNA"
+    ],
+    "Sample_extract_protocol_ch1": [
+      "total RNA was extracted using the TRIZOL method",
+      "libraries were created using Illumina's TruSeq Stranded Total RNA with Ribo-Zero Globin kit"
+    ],
+    "Sample_description": [
+      "RNA was processed to deplete rRNA and globin mRNA",
+      "normalized_expression_matrix_ComBat_de-ID.csv"
+    ],
+    "Sample_data_processing": [
+      "alignment with TopHat2",
+      "raw gene counts with featureCounts",
+      "normalized expression matrix with edgeR",
+      "batch-corrected normalized expression matrix with ComBat",
+      "Genome_build: hg38",
+      "Supplementary_files_format_and_content: the raw gene counts were generated using the featureCounts software",
+      "Supplementary_files_format_and_content: the normalized expression matrix file was generated in R with the edgeR package and was corrected for library batch effect with the R package ComBat"
+    ],
+    "Sample_platform_id": [
+      "GPL20301"
+    ],
+    "Sample_contact_name": [
+      "Nikolaos,,Kyritsis"
+    ],
+    "Sample_contact_department": [
+      "Neurological Surgery"
+    ],
+    "Sample_contact_institute": [
+      "University of California San Francisco (UCSF)"
+    ],
+    "Sample_contact_address": [
+      "1001 Potrero Ave"
+    ],
+    "Sample_contact_city": [
+      "San Francisco"
+    ],
+    "Sample_contact_state": [
+      "CALIFORNIA"
+    ],
+    "Sample_contact_zip/postal_code": [
+      "94110"
+    ],
+    "Sample_contact_country": [
+      "USA"
+    ],
+    "Sample_instrument_model": [
+      "Illumina HiSeq 4000"
+    ],
+    "Sample_library_selection": [
+      "cDNA"
+    ],
+    "Sample_library_source": [
+      "transcriptomic"
+    ],
+    "Sample_library_strategy": [
+      "RNA-Seq"
+    ],
+    "Sample_relation": [
+      "BioSample: https://www.ncbi.nlm.nih.gov/biosample/SAMN15048485",
+      "SRA: https://www.ncbi.nlm.nih.gov/sra?term=SRX8418549"
+    ],
+    "Sample_supplementary_file_1": [
+      "NONE"
+    ],
+    "Sample_series_id": [
+      "GSE151371"
+    ],
+    "Sample_data_row_count": [
+      "0"
+    ]
+  }
+]

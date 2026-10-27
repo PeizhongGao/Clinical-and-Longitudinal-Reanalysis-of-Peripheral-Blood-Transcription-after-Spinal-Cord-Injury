@@ -1,0 +1,44 @@
+{
+  "status": "LOCAL_UPLOAD_BUNDLE_NOT_PUBLISHED",
+  "title": "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury — code and supporting data",
+  "creators": [
+    {
+      "name": "Gao, Peizhong"
+    },
+    {
+      "name": "Zhong, Huan"
+    }
+  ],
+  "resource_type": "software with supporting research data",
+  "version": "1.0.0",
+  "prepared_date": "2026-10-26",
+  "description": "Source scripts, reused public-study inputs, metadata curation, fixed signatures and BTM definitions, complete retained model families, reference outputs, a portable reproduction entry point and numerical validation. These are exploratory secondary analyses. The withdrawn LASSO and supervised postselection-permutation claims are not reinstated.",
+  "keywords": [
+    "spinal cord injury",
+    "blood transcriptomics",
+    "reproducibility",
+    "BTM",
+    "exploratory reanalysis"
+  ],
+  "source_accessions": [
+    "GSE151371",
+    "GSE226238",
+    "GSE293559",
+    "ODC-SCI 405"
+  ],
+  "metadata_only_accessions": [
+    "GSE177034"
+  ],
+  "reused_dataset_doi": "10.34945/F5QC7J",
+  "original_code_license": "PENDING_AUTHOR_DECISION",
+  "third_party_rights": "See LICENSE_STATUS.md and licenses/THIRD_PARTY_NOTICES.md",
+  "permanent_repository_url": null,
+  "archive_doi": null,
+  "manuscript": {
+    "journal": "Neurology International",
+    "submission_id": "neurolint-4585750",
+    "current_revision_title": "Clinical and Longitudinal Reanalysis of Peripheral Blood Transcription after Spinal Cord Injury"
+  },
+  "note": "This is descriptive metadata for author review, not a ready API request. Repository-specific required fields and the selected license must be completed at actual publication.",
+  "github_prepared_date": "2026-10-27"
+}

@@ -1,0 +1,281 @@
+{
+  "raw_gene_rows": 39376,
+  "sample_columns": 46,
+  "sample_matching": "46/46 exact GSM IDs",
+  "frozen_signature_present": 30,
+  "multi_match_signature": [],
+  "annotation_release": "Homo sapiens annotation release 109.20190905, GRCh38.p13; screenshot download page",
+  "source": "NCBI-generated counts downloaded by author on 2026-10-07; distinct from submitter processed matrix",
+  "coverage": [
+    {
+      "gene": "ARG1",
+      "module": "innate",
+      "GeneIDs": "383",
+      "n_matches": 1,
+      "minimum_count": 13,
+      "maximum_count": 7918,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "S100A8",
+      "module": "innate",
+      "GeneIDs": "6279",
+      "n_matches": 1,
+      "minimum_count": 537,
+      "maximum_count": 223166,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "S100A12",
+      "module": "innate",
+      "GeneIDs": "6283",
+      "n_matches": 1,
+      "minimum_count": 169,
+      "maximum_count": 52780,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "NLRC4",
+      "module": "innate",
+      "GeneIDs": "58484",
+      "n_matches": 1,
+      "minimum_count": 118,
+      "maximum_count": 5674,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "ANXA3",
+      "module": "innate",
+      "GeneIDs": "306",
+      "n_matches": 1,
+      "minimum_count": 28,
+      "maximum_count": 12189,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CLEC4D",
+      "module": "innate",
+      "GeneIDs": "338339",
+      "n_matches": 1,
+      "minimum_count": 8,
+      "maximum_count": 2405,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "TLR5",
+      "module": "innate",
+      "GeneIDs": "7100",
+      "n_matches": 1,
+      "minimum_count": 93,
+      "maximum_count": 8210,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "FCGR1A",
+      "module": "innate",
+      "GeneIDs": "2209",
+      "n_matches": 1,
+      "minimum_count": 102,
+      "maximum_count": 8888,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "S100A9",
+      "module": "innate",
+      "GeneIDs": "6280",
+      "n_matches": 1,
+      "minimum_count": 5802,
+      "maximum_count": 439380,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "TLR8",
+      "module": "innate",
+      "GeneIDs": "51311",
+      "n_matches": 1,
+      "minimum_count": 446,
+      "maximum_count": 17484,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "IRAK3",
+      "module": "innate",
+      "GeneIDs": "11213",
+      "n_matches": 1,
+      "minimum_count": 166,
+      "maximum_count": 38465,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "BST1",
+      "module": "innate",
+      "GeneIDs": "683",
+      "n_matches": 1,
+      "minimum_count": 332,
+      "maximum_count": 10048,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "SLC37A3",
+      "module": "innate",
+      "GeneIDs": "84255",
+      "n_matches": 1,
+      "minimum_count": 77,
+      "maximum_count": 4553,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "BCL2A1",
+      "module": "innate",
+      "GeneIDs": "597",
+      "n_matches": 1,
+      "minimum_count": 24,
+      "maximum_count": 4492,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "LGALS3",
+      "module": "innate",
+      "GeneIDs": "3958",
+      "n_matches": 1,
+      "minimum_count": 355,
+      "maximum_count": 6689,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "TCF7",
+      "module": "adaptive",
+      "GeneIDs": "6932",
+      "n_matches": 1,
+      "minimum_count": 208,
+      "maximum_count": 10743,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "BCL11B",
+      "module": "adaptive",
+      "GeneIDs": "64919",
+      "n_matches": 1,
+      "minimum_count": 43,
+      "maximum_count": 3154,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "LEF1",
+      "module": "adaptive",
+      "GeneIDs": "51176",
+      "n_matches": 1,
+      "minimum_count": 40,
+      "maximum_count": 4782,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CD28",
+      "module": "adaptive",
+      "GeneIDs": "940",
+      "n_matches": 1,
+      "minimum_count": 39,
+      "maximum_count": 4279,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "GATA3",
+      "module": "adaptive",
+      "GeneIDs": "2625",
+      "n_matches": 1,
+      "minimum_count": 20,
+      "maximum_count": 940,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CD3G",
+      "module": "adaptive",
+      "GeneIDs": "917",
+      "n_matches": 1,
+      "minimum_count": 23,
+      "maximum_count": 2650,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CD27",
+      "module": "adaptive",
+      "GeneIDs": "939",
+      "n_matches": 1,
+      "minimum_count": 79,
+      "maximum_count": 1242,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "ICOS",
+      "module": "adaptive",
+      "GeneIDs": "29851",
+      "n_matches": 1,
+      "minimum_count": 5,
+      "maximum_count": 844,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "FOXP3",
+      "module": "adaptive",
+      "GeneIDs": "50943",
+      "n_matches": 1,
+      "minimum_count": 9,
+      "maximum_count": 244,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "ITK",
+      "module": "adaptive",
+      "GeneIDs": "3702",
+      "n_matches": 1,
+      "minimum_count": 77,
+      "maximum_count": 10062,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CD3E",
+      "module": "adaptive",
+      "GeneIDs": "916",
+      "n_matches": 1,
+      "minimum_count": 338,
+      "maximum_count": 16926,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "IL2RB",
+      "module": "adaptive",
+      "GeneIDs": "3560",
+      "n_matches": 1,
+      "minimum_count": 204,
+      "maximum_count": 4830,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "RUNX3",
+      "module": "adaptive",
+      "GeneIDs": "864",
+      "n_matches": 1,
+      "minimum_count": 233,
+      "maximum_count": 5408,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CD40LG",
+      "module": "adaptive",
+      "GeneIDs": "959",
+      "n_matches": 1,
+      "minimum_count": 27,
+      "maximum_count": 1858,
+      "n_samples_nonzero": 46
+    },
+    {
+      "gene": "CCR7",
+      "module": "adaptive",
+      "GeneIDs": "1236",
+      "n_matches": 1,
+      "minimum_count": 123,
+      "maximum_count": 6151,
+      "n_samples_nonzero": 46
+    }
+  ]
+}

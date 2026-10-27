@@ -1,0 +1,70 @@
+[
+  {
+    "doi": "10.1111/j.1467-9868.2010.00740.x",
+    "title": "Stability Selection",
+    "journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+    "year": 2010,
+    "authors": "Nicolai Meinshausen; Peter B\u00fchlmann",
+    "source": "CrossRef exact DOI",
+    "status": "verified_metadata",
+    "abstract": "<jats:title>Summary</jats:title><jats:p>Estimation of structure, such as in variable selection, graphical modelling or cluster analysis, is notoriously difficult, especially for high dimensional data. We introduce stability selection. It is based on subsampling in combination with (high dimensional) selection algorithms. As such, the method is extremely general and has a very wide range of applicability. Stability selection provides finite sample control for some error rates of false discoveries and hence a transparent principle to choose a proper amount of regularization for structure estimation. Variable selection and structure estimation improve markedly for a range of selection methods if stability selection is applied. We prove for the randomized lasso that stability selection will be variable selection consistent even if the necessary conditions for consistency of the original lasso method are violated. We demonstrate stability selection for variable selection and Gaussian graphical modelling, using real and simulated data.</jats:p>",
+    "url": "https://doi.org/10.1111/j.1467-9868.2010.00740.x"
+  },
+  {
+    "doi": "10.1111/j.1467-9868.2011.01034.x",
+    "title": "Variable Selection with Error Control: Another Look at Stability Selection",
+    "journal": "Journal of the Royal Statistical Society Series B: Statistical Methodology",
+    "year": 2012,
+    "authors": "Rajen D. Shah; Richard J. Samworth",
+    "source": "CrossRef exact DOI",
+    "status": "verified_metadata",
+    "abstract": "<jats:title>Summary</jats:title>\n                  <jats:p>Stability selection was recently introduced by Meinshausen and B\u00fchlmann as a very general technique designed to improve the performance of a variable selection algorithm. It is based on aggregating the results of applying a selection procedure to subsamples of the data. We introduce a variant, called complementary pairs stability selection, and derive bounds both on the expected number of variables included by complementary pairs stability selection that have low selection probability under the original procedure, and on the expected number of high selection probability variables that are excluded. These results require no (e.g. exchangeability) assumptions on the underlying model or on the quality of the original selection procedure. Under reasonable shape restrictions, the bounds can be further tightened, yielding improved error control, and therefore increasing the applicability of the methodology.</jats:p>",
+    "url": "https://doi.org/10.1111/j.1467-9868.2011.01034.x"
+  },
+  {
+    "doi": "10.1038/nmeth.3337",
+    "title": "Robust enumeration of cell subsets from tissue expression profiles",
+    "journal": "Nature Methods",
+    "year": 2015,
+    "authors": "Aaron M Newman; Chih Long Liu; Michael R Green; Andrew J Gentles; Weiguo Feng; Yue Xu; Chuong D Hoang; Maximilian Diehn; Ash A Alizadeh",
+    "source": "CrossRef exact DOI",
+    "status": "verified_metadata",
+    "abstract": "",
+    "url": "https://doi.org/10.1038/nmeth.3337"
+  },
+  {
+    "doi": "10.1016/j.celrep.2019.01.041",
+    "title": "RNA-Seq Signatures Normalized by mRNA Abundance Allow Absolute Deconvolution of Human Immune Cell Types",
+    "journal": "Cell Reports",
+    "year": 2019,
+    "authors": "Gianni Monaco; Bernett Lee; Weili Xu; Seri Mustafah; You Yi Hwang; Christophe Carr\u00e9; Nicolas Burdin; Lucian Visan; Michele Ceccarelli; Michael Poidinger; Alfred Zippelius; Jo\u00e3o Pedro de Magalh\u00e3es; Anis Larbi",
+    "source": "CrossRef exact DOI; PubMed abstract",
+    "status": "verified_metadata",
+    "abstract": "The molecular characterization of immune subsets is important for designing effective strategies to understand and treat diseases. We characterized 29 immune cell types within the peripheral blood mononuclear cell (PBMC) fraction of healthy donors using RNA-seq (RNA sequencing) and flow cytometry. Our dataset was used, first, to identify sets of genes that are specific, are co-expressed, and have housekeeping roles across the 29 cell types. Then, we examined differences in mRNA heterogeneity and mRNA abundance revealing cell type specificity. Last, we performed absolute deconvolution on a suitable set\u00a0of immune cell types using transcriptomics signatures normalized by mRNA abundance. Absolute deconvolution is ready to use for PBMC transcriptomic data using our Shiny app (https://github.com/giannimonaco/ABIS). We benchmarked different deconvolution and normalization methods and validated the resources in independent cohorts. Our work has research, clinical, and diagnostic value by making it possible to effectively associate observations in bulk transcriptomics data to specific immune subsets.",
+    "url": "https://doi.org/10.1016/j.celrep.2019.01.041",
+    "pmid": "30726743",
+    "pubmed_title": "RNA-Seq Signatures Normalized by mRNA Abundance Allow Absolute Deconvolution of Human Immune Cell Types."
+  },
+  {
+    "doi": "10.1186/s13059-016-1070-5",
+    "title": "Estimating the\u00a0population abundance of tissue-infiltrating immune and stromal cell populations using gene expression",
+    "journal": "Genome Biology",
+    "year": 2016,
+    "authors": "Etienne Becht; Nicolas A. Giraldo; Laetitia Lacroix; B\u00e9n\u00e9dicte Buttard; Nabila Elarouci; Florent Petitprez; Janick Selves; Pierre Laurent-Puig; Catherine Saut\u00e8s-Fridman; Wolf H. Fridman; Aur\u00e9lien de Reyni\u00e8s",
+    "source": "CrossRef exact DOI",
+    "status": "verified_metadata",
+    "abstract": "",
+    "url": "https://doi.org/10.1186/s13059-016-1070-5"
+  },
+  {
+    "doi": "10.1093/nar/gks461",
+    "title": "Camera: a competitive gene set test accounting for inter-gene correlation",
+    "journal": "Nucleic Acids Research",
+    "year": 2012,
+    "authors": "Di Wu; Gordon K. Smyth",
+    "source": "CrossRef exact DOI",
+    "status": "verified_metadata",
+    "abstract": "",
+    "url": "https://doi.org/10.1093/nar/gks461"
+  }
+]

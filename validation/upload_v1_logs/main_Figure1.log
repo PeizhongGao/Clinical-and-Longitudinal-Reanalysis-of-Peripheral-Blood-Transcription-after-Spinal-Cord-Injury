@@ -1,0 +1,25 @@
+During startup - Warning messages:
+1: Setting LC_COLLATE=C.UTF-8 failed 
+2: Setting LC_CTYPE=C.UTF-8 failed 
+3: Setting LC_MONETARY=C.UTF-8 failed 
+4: Setting LC_TIME=C.UTF-8 failed 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+BH16 family contrasts: 12
+Displayed q<0.05 contrasts: 4
+ module_id    contrast  estimate   lower_CL  upper_CL     p_value
+      M7.0  3m - acute 0.3048489 0.11269752 0.4970002 0.003199889
+      M7.0  6m - acute 0.3398675 0.14124752 0.5384874 0.001699771
+      M7.0 12m - acute 0.2905278 0.07396705 0.5070886 0.010674457
+      M223  6m - acute 0.3891556 0.09775767 0.6805535 0.010733777
+ q_BH_primary16 n_participants n_observations          spec   variant scope
+     0.02559911             10             37 disjoint_both published all37
+     0.02559911             10             37 disjoint_both published all37
+     0.04293511             10             37 disjoint_both published all37
+     0.04293511             10             37 disjoint_both published all37
